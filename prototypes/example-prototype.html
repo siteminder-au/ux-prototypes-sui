@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUI Components Prototype</title>
+
+  <!-- Load SUI component styles from the built library -->
+  <link rel="stylesheet" href="../dist/style.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: #f5f5f5;
+    }
+
+    .section {
+      margin-bottom: 3rem;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      display: flex;
+      gap: 20px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      color: #555;
+    }
+
+    .component-demo {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>SUI Vue3 Web Components Prototype</h1>
+
+  <div class="section">
+    <h2>Buttons</h2>
+    <div class="component-demo">
+      <sui-button type="primary">Primary Button</sui-button>
+      <sui-button type="secondary">Secondary Button</sui-button>
+      <sui-button type="danger">Danger Button</sui-button>
+      <sui-button disabled>Disabled Button</sui-button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Badges</h2>
+    <div class="component-demo">
+      <sui-badge>Default Badge</sui-badge>
+      <sui-badge type="success">Success</sui-badge>
+      <sui-badge type="warning">Warning</sui-badge>
+      <sui-badge type="danger">Danger</sui-badge>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Button Sizes</h2>
+    <div class="component-demo">
+      <sui-button size="small" type="primary">Small Button</sui-button>
+      <sui-button type="primary">Medium Button</sui-button>
+      <sui-button size="large" type="primary">Large Button</sui-button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Interactive Demo</h2>
+    <div class="component-demo">
+      <sui-button id="clickable-btn" type="primary">Click me!</sui-button>
+      <sui-badge id="click-count">0 clicks</sui-badge>
+    </div>
+  </div>
+
+  <!-- Note: Only sui-button and sui-badge are currently registered -->
+  <!-- To add more components, edit web-components-build/src/register-components.ts -->
+
+  <!-- Load the Web Components bundle -->
+  <script type="module" src="../dist/sui-components.js"></script>
+
+  <script>
+    // Wait for components to be registered
+    setTimeout(() => {
+      let clickCount = 0
+      const button = document.getElementById('clickable-btn')
+      const badge = document.getElementById('click-count')
+
+      if (button && badge) {
+        button.addEventListener('click', () => {
+          clickCount++
+          badge.textContent = `${clickCount} click${clickCount !== 1 ? 's' : ''}`
+          console.log('Button clicked!', clickCount)
+        })
+      }
+    }, 100)
+  </script>
+</body>
+</html>
