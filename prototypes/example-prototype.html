@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SUI Components Prototype</title>
 
-  <!-- Load SUI component styles from the built library -->
-  <link rel="stylesheet" href="../dist/style.css">
-
   <style>
     * {
       box-sizing: border-box;
@@ -46,12 +43,18 @@
       gap: 20px;
       flex-wrap: wrap;
       margin-top: 1rem;
+      align-items: flex-start;
+    }
+
+    /* Fix for button display issue when used in flex containers */
+    sui-button {
+      display: inline-block;
     }
 
   </style>
 </head>
 <body>
-  <h1>SUI Vue3 Web Components Prototype</h1>
+  <h1>SUI Vue3 Web Components Prototype 1</h1>
 
   <div class="section">
     <h2>Buttons</h2>
@@ -66,10 +69,10 @@
   <div class="section">
     <h2>Badges</h2>
     <div class="component-demo">
-      <sui-badge>Default Badge</sui-badge>
-      <sui-badge type="success">Success</sui-badge>
-      <sui-badge type="warning">Warning</sui-badge>
-      <sui-badge type="danger">Danger</sui-badge>
+      <sui-badge size="medium">Default Badge</sui-badge>
+      <sui-badge size="medium" type="success">Success</sui-badge>
+      <sui-badge size="medium" type="warning">Warning</sui-badge>
+      <sui-badge size="medium" type="info">Info</sui-badge>
     </div>
   </div>
 
@@ -83,15 +86,28 @@
   </div>
 
   <div class="section">
-    <h2>Interactive Demo</h2>
+    <h2>Cards</h2>
     <div class="component-demo">
-      <sui-button id="clickable-btn" type="primary">Click me!</sui-button>
-      <sui-badge id="click-count">0 clicks</sui-badge>
+      <sui-card>
+        <sui-card-content>
+          <h3>Card Title</h3>
+          <p>This is a card component to test styling with Shadow DOM.</p>
+        </sui-card-content>
+      </sui-card>
     </div>
   </div>
 
-  <!-- Note: Only sui-button and sui-badge are currently registered -->
+  <div class="section">
+    <h2>Interactive Demo</h2>
+    <div class="component-demo">
+      <sui-button id="clickable-btn" type="primary">Click me!</sui-button>
+      <sui-badge id="click-count" size="medium">0 clicks</sui-badge>
+    </div>
+  </div>
+
+  <!-- Note: sui-button, sui-badge, and sui-card are currently registered -->
   <!-- To add more components, edit web-components-build/src/register-components.ts -->
+  <!-- Some components don't work with defineCustomElement (sm-select, sm-multi-select, sm-checkbox) -->
 
   <!-- Load the Web Components bundle -->
   <script type="module" src="../dist/sui-components.js"></script>
