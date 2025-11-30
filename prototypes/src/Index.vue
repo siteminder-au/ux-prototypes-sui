@@ -8,7 +8,7 @@
         <router-link
           v-for="proto in prototypes"
           :key="proto.id"
-          :to="`/${proto.id}`"
+          :to="proto.path"
           class="prototype-card"
         >
           <h2>{{ proto.name }}</h2>
@@ -20,39 +20,21 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-
-// Automatically discover all prototype metadata
-const prototypeModules = import.meta.glob('./prototypes/*/index.js', { eager: true })
-
-// Transform discovered modules into prototype metadata
-const prototypes = computed(() => {
-  const protos = []
-
-  for (const path in prototypeModules) {
-    const module = prototypeModules[path]
-    const match = path.match(/\.\/prototypes\/([^/]+)\/index\.js/)
-
-    if (match && match[1] !== '_template') {
-      const id = match[1]
-      protos.push({
-        id,
-        name: module.name || formatName(id),
-        description: module.description || 'No description provided'
-      })
-    }
-  }
-
-  return protos.sort((a, b) => a.name.localeCompare(b.name))
-})
-
-// Format folder name to title case
-function formatName(id) {
-  return id
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
-}
+// List your prototypes here - add new ones when ready!
+const prototypes = [
+  {
+    id: 'component-showcase',
+    name: 'Component Showcase',
+    description: 'Demo of SUI Vue components with jQuery integration examples',
+    path: '/component-showcase'
+  },
+  {
+    id: 'example-multi-file',
+    name: 'Multi-File Example',
+    description: 'Example showing how to organize a complex prototype across multiple files',
+    path: '/example-multi-file'
+  },
+]
 </script>
 
 <style scoped>
