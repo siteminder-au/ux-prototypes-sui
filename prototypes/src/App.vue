@@ -1,93 +1,132 @@
 <template>
   <div class="app">
-    <nav class="prototype-nav">
-      <h1 class="nav-title">SUI Prototypes</h1>
-      <div class="nav-links">
-        <button
+    <div class="index-container">
+      <h1 class="index-title">SUI Prototypes</h1>
+      <p class="index-description">Select a prototype to view:</p>
+
+      <div class="prototype-grid">
+        <a
           v-for="proto in prototypes"
           :key="proto.id"
-          :class="['nav-button', { active: currentPrototype === proto.id }]"
-          @click="currentPrototype = proto.id"
+          :href="`#${proto.id}`"
+          class="prototype-card"
+          @click.prevent="openPrototype(proto.path)"
         >
-          {{ proto.name }}
-        </button>
+          <h2>{{ proto.name }}</h2>
+          <p>{{ proto.description }}</p>
+        </a>
       </div>
-    </nav>
-
-    <main class="prototype-content">
-      <component :is="prototypes.find(p => p.id === currentPrototype)?.component" />
-    </main>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import ComponentShowcase from './prototypes/component-showcase/ComponentShowcase.vue'
-import ExamplePrototype from './prototypes/example-multi-file/ExamplePrototype.vue'
+import { computed } from 'vue'
 
-const prototypes = [
-  { id: 'showcase', name: 'Component Showcase', component: ComponentShowcase },
-  { id: 'example', name: 'Multi-File Example', component: ExamplePrototype },
-  // Add more prototypes here as you create them:
-  // { id: 'login-flow', name: 'Login Flow', component: LoginFlow },
-  // { id: 'dashboard', name: 'Dashboard', component: Dashboard },
-]
+// Automatically discover all prototype entry files
+const prototypeModules = import.meta.glob('./prototypes/*/index.js', { eager: true })
 
-const currentPrototype = ref('showcase')
+// Transform discovered modules into prototype metadata
+const prototypes = computed(() => {
+  const protos = []
+
+  for (const path in prototypeModules) {
+    const module = prototypeModules[path]
+    const match = path.match(/\.\/prototypes\/([^/]+)\/index\.js/)
+
+    if (match && match[1] !== '_template') {
+      const id = match[1]
+      protos.push({
+        id,
+        name: module.name || formatName(id),
+        description: module.description || 'No description provided',
+        path: `/prototypes/${id}/`
+      })
+    }
+  }
+
+  return protos.sort((a, b) => a.name.localeCompare(b.name))
+})
+
+// Format folder name to title case
+function formatName(id) {
+  return id
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
+}
+
+// Open prototype in same or new tab
+function openPrototype(path) {
+  window.location.href = path
+}
 </script>
 
 <style scoped>
 .app {
   min-height: 100vh;
-  background: #f5f5f5;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
 }
 
-.prototype-nav {
+.index-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
   background: white;
-  border-bottom: 2px solid #e0e0e0;
-  padding: 1rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
-.nav-title {
-  margin: 0 0 1rem 0;
+.index-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 2.5rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.index-description {
+  margin: 0 0 2rem 0;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.prototype-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.prototype-card {
+  padding: 2rem;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.prototype-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: #2196F3;
+  background: white;
+}
+
+.prototype-card h2 {
+  margin: 0 0 0.5rem 0;
   font-size: 1.5rem;
   color: #333;
 }
 
-.nav-links {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.nav-button {
-  padding: 0.5rem 1rem;
-  background: #f5f5f5;
-  border: 2px solid transparent;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
+.prototype-card p {
+  margin: 0;
   color: #666;
-  transition: all 0.2s;
-}
-
-.nav-button:hover {
-  background: #e3f2fd;
-  color: #1976D2;
-}
-
-.nav-button.active {
-  background: #2196F3;
-  color: white;
-  border-color: #1976D2;
-}
-
-.prototype-content {
-  padding: 2rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 </style>
 
