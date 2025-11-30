@@ -5,6 +5,9 @@ package-lock.json
 # Build outputs
 dist/
 
+# External component library (separate git repo)
+sui-vue3/
+
 # OS files
 .DS_Store
 Thumbs.db
