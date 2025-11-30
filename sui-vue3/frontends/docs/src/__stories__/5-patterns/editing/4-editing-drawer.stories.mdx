@@ -1,0 +1,40 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import when from './images/patterns-editing-drawer-when.png'
+
+<Meta title="Design patterns/Editing/Drawer" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Editing</h1>
+  <p>Editing is the act of updating an existing resource or set of data within out product.</p>
+</SuiStorybookTitle>
+
+- [Drawer editing](#drawer-editing)
+- [Example in use](#example-in-use)
+- [Recommendations](#recommendations)
+- [How to build](#how-to-build)
+
+## Drawer editing
+
+### When to use drawer editing
+- If there are too many editable fields for an inline card edit
+- When you don't want the user to lose orientation within the platform
+- When editing items in a list with pagination and you would like the user to keep their place in the list
+
+
+## Example in use
+Below you can see an example layout using drawer editing.
+<img src={when} alt="When to use" width="960" />
+
+## Recommendations
+When using this pattern, keep the following recommendations in mind:
+
+- Use a drawer when what is being edited needs careful attention. This removes the likelihood of accidentally changing a critical value.
+- For extra fields, refrain from using multiple overlays. Use a single overlay/drawer if you have a complicated modification for a number of items.
+- Use a drawer if you don't need inline context when editing or if the editing requires the user's undivided attention.
+
+
+## How to build
+This pattern is built using the sm-drawer component, where the save and cancel action buttons property are set to true.

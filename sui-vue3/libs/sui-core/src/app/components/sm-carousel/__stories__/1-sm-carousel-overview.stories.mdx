@@ -1,0 +1,104 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/sm-carousel-anatomy.png'
+import specs from './images/sm-carousel-specs-dot-counter.png'
+import behavior from './images/sm-carousel-behaviour-element-behavior.png'
+import behaviorDesktop from './images/sm-carousel-behavior-desktop.gif'
+import behaviorMobile from './images/sm-carousel-behavior-mobile.gif'
+import behaviorDots from './images/sm-carousel-behavior-dots.gif'
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+  `}
+</style>
+
+<Meta title="Components/Carousel/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Carousel</h1>
+  <p>
+    A carousel is a slideshow-type component that allows a user to rotate through a number of images.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Specs](#specs)
+- [Behaviours](#behaviours)
+- [References](#references)
+
+
+
+## Usage
+The carousel is very specifically used for presenting a number of images to a user, allowing the user to rotate through them like a slideshow. The carousel condenses the images into a container which only takes up a small section of the page.
+
+### When to use a carousel?
+Only use a carousel if you need to present a number of images to the user but don't have a lot of space to do so. This is a very specific use case, and as such it is not recommended that you use this component for any other reason. If you can present the images in a different way, and allow the user to scan, please do so.
+
+A good example for when a carousel is required is the **Room types** page under **Rooms and Rates**, which allows the user to view all the images they have uploaded for a particular room. <br /><br />
+
+<div className="sui-storybook-highlight"> <strong>Accessibility considerations</strong> <br /> <br />Carousels are considered to have very poor accessibility and are not recommended. Unless every single image has alt text and is being uploaded and managed properly, people with low-vision that use screen readers will be at a major disadvantage when trying to consume content in a carousel. Please only use this component if you have the specific use case above, and ensure that engineering are implementing it in accordance with accessibility standards.<br /> <br /> </div>
+
+## Formatting
+
+  ### Anatomy
+  **1: Image area** - This is the container that the image will sit in. The image will always fill the container, proportionally.
+
+  **2: Dot counter** - This is a visual counter that allows users to see what image they are looking at in the entire series as a whole.
+
+  **3: Left and right arrows** - The user can rotate through images using these buttons.
+
+  **4: Numerical counter (optional)** - This is an optional counter for accessibility purposes. This allows the user to understand exactly what image they are looking at, in the series of images, with the least amount of cognitive load, and how many more images there are in total. Use this if you want to ensure the component to be as accessible as possible.
+
+  <img src={anatomy} className="img-padding" alt="Anatomy of a carousel" width="620" />
+
+
+## Specs
+
+  ### Gradient
+  There is a gradient behind the carousel forward/backward buttons so that they will be clearly seen regardless of what image is in the background
+
+  ### Dot Counter
+  All dots are size 8x8, dots are only visible if the slides are more than 5 images.
+  <img src={anatomy} className="img-padding" alt="Carousel specs" width="620" />
+
+## Behaviours
+
+  ### Element behaviour
+
+  <img src={behavior} className="img-padding" alt="Carousel behavior" width="620" />
+
+**1: Button behavior**
+  - For **desktop**, left and right arrows only **show on hover/focus**.  <br />
+  Either the left or right arrow disappears (depending on the direction the user is clicking) when there are no longer any images to scroll through.
+  <img src={behaviorDesktop} className="img-padding" alt="Carousel behavior on desktop - arrows are present on hover only" width="320" />
+
+  - For **mobile**, left and right arrows are **present all the time**. <br />
+  Either the left or right arrow disappears (depending on the direction the user is clicking) when there are no longer any images to scroll through.
+  <img src={behaviorMobile} className="img-padding" alt="Carousel behavior on mobile - arrows are present all the time" width="320" />
+
+** 2: Dot counter behavior**
+  - All image 'dots' are equal size.
+  - On active images, the corresponding dot counter is at 100% opacity, while the corresponding dot counters of inactive images are at 50% opacity.
+  <img src={behaviorDots} className="img-padding" alt="Dot counters all have the same size, active dot counter is at 100 percent opacity." width="320" />
+
+
+** 3: Number counter behavior**
+  - When there are 5 or less images in the carousel, no number counter is required
+  - When there are more than 5 images in the carousel, a number counter is required.
+
+
+## References
+
+[Carousel/slider design best practices](https://webflow.com/blog/carousel-slider-design-best-practices)
+
+[WAI Carousel tutorials](https://www.w3.org/WAI/tutorials/carousels/)
+
+[If you must use a carousel, make it accessible](https://medium.com/@lsnrae/if-you-must-use-a-carousel-make-it-accessible-977afd0173f4)

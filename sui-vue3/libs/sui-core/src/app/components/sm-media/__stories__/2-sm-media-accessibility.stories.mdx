@@ -1,0 +1,26 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import focusOrder from './images/sm-media-focus-order.png'
+
+
+<Meta title="Components/Media/Accessibility" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Media</h1>
+  <p>
+    The media gallery component allows users to select one or more files to upload to a specific location.
+  </p>
+</SuiStorybookTitle>
+
+## Keyboard interaction
+
+| Key | Usage |
+| :--- | :--- |
+| Tab | First focusable element within the component. |
+| Shift + Tab | Move focus to the previous element. |
+| Enter | Triggers the currently focused element. <br /><br />If focused on the image, this will select the image. <br /><br />If focused on the action button, this will trigger the action. |
+
+## Focus order
+<img src={focusOrder} className="img-padding" alt="Media gallery focus order" width="640" />

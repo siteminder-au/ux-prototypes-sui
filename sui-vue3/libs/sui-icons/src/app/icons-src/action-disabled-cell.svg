@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>sui-final/icons/24px/actions/action-disabled-cell</title>
+    <g id="sui-final/icons/24px/actions/action-disabled-cell" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M22,0 C23.1045695,0 24,0.8954305 24,2 L24,22 C24,23.1045695 23.1045695,24 22,24 L2,24 C0.8954305,24 0,23.1045695 0,22 L0,2 C0,0.8954305 0.8954305,0 2,0 L22,0 Z M22,3.414 L3.413,22 L8.58578644,22 L22,8.58578644 L22,3.414 Z M22,11.414 L11.414,22 L16.5857864,22 L22,16.5857864 L22,11.414 Z M22,19.414 L19.414,22 L22,22 L22,19.414 Z M20.585,2 L15.413,2 L2,15.413 L2,20.585 L20.585,2 Z M12.584,2 L7.413,2 L2,7.413 L2,12.584 L12.584,2 Z M4.585,2 L2,2 L2,4.585 L4.585,2 Z" id="Combined-Shape" fill="#333333"></path>
+    </g>
+</svg>

@@ -1,0 +1,55 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import tabOrder from './images/sm-drawer-tab-order.png'
+
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+    @media only screen and (min-width: 641px) {
+      .row {
+        display: flex;
+        column-gap: 24px;
+      }
+
+      .column {
+        flex: 0 auto;
+      }
+    }
+  `}
+</style>
+
+<Meta title="Components/Drawer/Accessibility" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Drawer</h1>
+  <p>
+    The drawer allows our users to update or make changes to their existing information or data.
+  </p>
+</SuiStorybookTitle>
+
+
+## Keyboard interaction
+
+| Key | Usage |
+| :--- | :--- |
+| Space | Opens drawer and moves to focus on close icon button. |
+| Enter | Opens drawer and moves to focus on close icon button. |
+| Escape | Closes drawer and moves focus to trigger action. |
+| Tab | Moves focus to the next item in the drawer. |
+| Shift + Tab | This key combination provides the same behaviour as the Tab key, but in the reverse order. |
+
+## Tab order
+
+1. Close button
+2. Content area, in order
+3. Save button
+4. Cancel button
+
+  <img src={tabOrder} alt="Drawer tab order" width="768" />

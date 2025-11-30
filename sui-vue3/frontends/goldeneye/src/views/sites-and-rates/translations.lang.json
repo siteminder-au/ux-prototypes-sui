@@ -1,0 +1,9 @@
+{
+  "page-title": "Translations",
+  "cancel-button": "Cancel",
+  "save-button": "Save",
+  "campsite-name-translation-label": "Campsite name",
+  "campsite-name-translation-placeholder": "Enter your campsite name",
+  "campsite-description-translation-label": "Campsite description",
+  "campsite-description-translation-placeholder": "Enter your campsite description"
+}

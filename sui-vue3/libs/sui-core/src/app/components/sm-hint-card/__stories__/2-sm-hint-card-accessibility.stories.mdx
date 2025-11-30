@@ -1,0 +1,40 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+    @media only screen and (min-width: 641px) {
+      .row {
+        display: flex;
+        column-gap: 24px;
+      }
+
+      .column {
+        flex: 0 auto;
+      }
+    }
+  `}
+</style>
+
+<Meta title="Components/Hint card/Accessibility" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Hint card</h1>
+  <p>
+    The sm-hint-card is a dismissible, inline message component used to provide hints, tips, nudges, or optimizations to users. It helps surface contextual guidance without disrupting the workflow.
+  </p>
+</SuiStorybookTitle>
+
+## Keyboard interaction
+
+| Key | Usage |
+| :--- | :--- |
+| Tab | Tabbing into the hint card focuses on action button and close button. |
+| Enter | Activates the action button. <br /> Dismisses the card when on close button. |

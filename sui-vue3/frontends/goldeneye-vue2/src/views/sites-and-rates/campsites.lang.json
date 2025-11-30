@@ -1,0 +1,81 @@
+{
+  "page-title": "Campsites",
+  "amenities": "Amenities",
+  "collapse-all": "Collapse all",
+  "expand-all": "Expand all",
+  "sites-and-rates": "Sites and rates",
+  "accordion": {
+    "description-label": "Description",
+    "accommodations-label": "Accommodations",
+    "smoking-policy-label": "Smoking policy",
+    "non-smoking": "Non-smoking",
+    "smoking": "Smoking",
+    "allow-pets-label": "Allow pets",
+    "booking-controls-label": "Booking controls",
+    "no-description": "No description provided",
+    "no-accommodations": "No accommodations selected",
+    "yes": "Yes",
+    "no": "No",
+    "read-more": "Read more",
+    "read-less": "Read less"
+  },
+  "discard-changes-dialog-title": "Discard changes?",
+  "discard-changes-dialog-message": "You have unsaved changes. Are you sure you want to discard them?",
+  "discard-changes-dialog-cancel-button": "Keep editing",
+  "discard-changes-dialog-confirm-button": "Discard changes",
+  "drawer": {
+    "title": "Edit campsite",
+    "form": {
+      "general-information": "General information",
+      "campsite-name-label": "Campsite name",
+      "campsite-description-label": "Campsite description",
+      "features": "Features",
+      "accommodations-label": "Accommodations",
+      "accommodations-placeholder": "Select available accommodations",
+      "booking-controls": "Booking controls",
+      "maximum-advance-booking-dates-label": "Maximum advance booking dates",
+      "dynamic-discounts-label": "Dynamic discounts",
+      "restrict-to-mobile-label": "Restrict rate to mobile device",
+      "restrict-to-mobile-tooltip": "Explain why this field is disabled",
+      "smoking-policy-label": "Smoking policy",
+      "non-smoking-label": "Non-smoking",
+      "smoking-label": "Smoking",
+      "allow-pets-label": "Allow pets",
+      "yes-label": "Yes",
+      "no-label": "No"
+    },
+    "cancel-button": "Cancel",
+    "save-button": "Save"
+  },
+  "dropdown": {
+    "aria-label": "More actions",
+    "edit": "Edit campsite"
+  },
+  "save-campsite-details-failed-toast-title": "Campsite details failed to save.",
+  "save-campsite-details-failed-toast-message": "Please check the form for errors and try again.",
+  "save-campsite-details-success-toast-title": "Campsite details saved successfully!",
+  "save-campsite-details-success-toast-message": "You should see the changes reflected in the list below. However, note that we are not saving the changes to the database and the changes will be lost when you refresh the page.",
+  "list": {
+    "title" : "Activities",
+    "description" : "Drag and drop activities below to create a custom itinerary for your campsite",
+    "dayOne": {
+      "title": "Day 1",
+      "activityOne": "Rock climbing",
+      "activityTwo": "Kayaking",
+      "activityThree": "Water skiing"
+    },
+    "dayTwo": {
+      "title": "Day 2",
+      "activityOne": "Hiking",
+      "activityTwo": "Cycling",
+      "activityThree": "Spelunking: the art of cave exploring"
+    }
+  },
+  "color-picker-theme-title": "Theme",
+  "color-picker-theme-description": "Select a pre-defined theme or create your own",
+  "applicable-start-date-calendar-label": "Applicable start date",
+  "applicable-start-date-calendar-help-text": "Starting date for the campsite to be available for booking",
+  "advertised-date-range-calendar-label": "Advertised date range",
+  "advertised-date-range-calendar-start-date-placeholder-text": "Start",
+  "advertised-date-range-calendar-end-date-placeholder-text": "End"
+}

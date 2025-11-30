@@ -1,0 +1,90 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/sm-media-anatomy.png'
+import states from './images/sm-media-states.png'
+import statesDropArea from './images/sm-media-states-drop-area.png'
+import variantStandard from './images/sm-media-variant-standard.png'
+import variantEmpty from './images/sm-media-variant-empty.png'
+import variantDragAndDrop from './images/sm-media-variant-drag-drop.png'
+import behaviour from './images/sm-media-behaviour.gif'
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+  `}
+</style>
+
+<Meta title="Components/Media/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Media</h1>
+  <p>
+    The media gallery component allows users to select one or more files to upload to a specific location.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [States](#states)
+- [Variants](#variants)
+- [Behaviours](#behaviours)
+
+
+
+## Usage
+
+The media gallery allows users to upload images, stored on their local computer, to their accounts which can be used in managing their properties. Common types of imagery used are rooms, amenities, extras, promotions, etc. This component features manual upload as well as drag and drop behaviour.
+
+## Formatting
+
+### Anatomy
+
+**1: Drop area -** This is the area that users can drop images into, to quickly upload them.
+
+**2: Image container -** Images will load in this container and will fill the area proportionally and responsively. The width is adjustable via the `griditemWidth` property.
+
+**3: Image actions -** This button offers the user a variety of actions pertaining to the individual image and appears on hover on desktop and is always present on touch devices.
+
+**4: Selected icon -** When a user selects an image, this icon appears as an additional visual aid.
+
+<img src={anatomy} className="img-padding" alt="Anatomy of media gallery" />
+
+## States
+
+### Image states
+<img src={states} className="img-padding" alt="Image media states" />
+
+### Drop area states
+<img src={statesDropArea} className="img-padding" alt="Drop area states" />
+
+## Variants
+
+### Standard
+This is the standard version of the media gallery. It has all property functions.
+<img src={variantStandard} className="img-padding" alt="Standard media variant" />
+
+### Empty
+When there are no images to display, and the emptyState property is set to true, the empty state variant will display within the drop zone. Empty state has a max-width of 550px.
+<img src={variantEmpty} className="img-padding" alt="Empty media variant" />
+
+### Drag and drop between groups
+Images can be drag and dropped between different groupings.
+<img src={variantDragAndDrop} className="img-padding" alt="Empty media variant" />
+
+### Conditional drag and drop
+Similar to the above, but allows certain conditions to be applied to groups, i.e. an image from group one can be moved into group two, but images from group two cannot be moved into group one.
+
+### Drag and drop to an empty container
+A variant that allows dragging and dropping from a populated list to an empty list.
+
+## Behaviours
+
+### Reordering
+Images can be reordered within this component, as well as moved from group to group. Reorder images by clicking and dragging the image to the desired spot in the grid. The image will move with the cursor.
+<img src={behaviour} className="img-padding" alt="Media re-order behaviour" />

@@ -1,0 +1,135 @@
+import { Meta } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/sm-date-picker-formatting-anatomy.png'
+import statesDays from './images/sm-date-picker-states-days.png'
+import statesControl from './images/sm-date-picker-states-controls.png'
+import specs from './images/sm-date-picker-specs.png'
+import variantSingle from './images/sm-date-picker-variant-single-date.png'
+import variantMultiple from './images/sm-date-picker-variant-multiple-single-dates.png'
+import variantRange from './images/sm-date-picker-variant-date-range.png'
+import variantTime from './images/sm-date-picker-variant-time-picker.png'
+import variantMonthYear from './images/sm-date-picker-variant-month-year-picker.png'
+import behaviorRange from './images/sm-date-picker-behavior-date-range.gif'
+import behaviorResponsive from './images/sm-date-picker-behavior-responsive.gif'
+
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+  `}
+</style>
+
+<Meta title="Components/Form/Date Picker/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Date picker</h1>
+  <p>
+    Date and time pickers allow users to select a single or a range of dates and times.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [States](#states)
+- [Specs](#specs)
+- [Variants](#variants)
+- [Behaviour](#behaviour)
+- [References](#references)
+
+
+## Usage
+
+Most commonly used in forms, the Date picker allows our users to select a date, date range, time or month and year. The format of the date picker can be customised based on the needs of the user and/or product.
+
+<div className="sui-storybook-highlight sui-storybook-highlight--alert">
+SUI uses two different components for date picking: <strong>sm-date-picker</strong> and <strong>sm-calendar</strong>. <br /><br />
+<strong>sm-date-picker</strong> uses a plugin that is very feature rich. Currently this is the main component to use for selecting date and time. <br /><br />
+<strong>sm-calendar</strong> has been built by the SUI team so we own the code. Currently this is only used for month and year picking, however we want to eventually build all our features into this component and depreciate <strong>sm-date-picker</strong>.
+</div>
+
+## Formatting
+
+  ### Anatomy
+
+  **1: Input field (trigger)** - The input field works similarly to our sm-select field. This will trigger the calendar dropdown. The icon placement in the select field inherits the same rules as the icon in our input field component: prefix, suffix, or both.
+
+  **2: Header** - The header contains button pagination as well as a sub-picker that contains both a month and year picker.
+
+  **3 Current day** - The users current date.
+
+  **4: Selected day** - The selected date.
+
+  **5: Date range** - This indicates a date range has been selected.
+
+  **6: Time picker** - This allows the user to also choose a specific time.
+
+  **7: Calendar grid** - This is the grid that allows a user to keyboard tab using up, down, left and right arrows.
+
+  <img src={anatomy} className="img-padding" alt="Date picker anatomy"/>
+
+
+  ### Placement
+  By default, the calendar dropdown will appear below the select field. If there is no space below the field in the viewport, then it will appear above the field.
+
+
+  ### Sizing
+  The width of the select input is adjustable by your engineers.
+
+  The width of the calendar dropdown is currently only adjustable by overriding css styles. This is not ideal, however it remains the only method of adjusting the width. When adjusting the width, the format and spacing of the content within the calendar dropdown is responsive and should display correctly.
+
+
+## States
+  ### Days
+  <img src={statesDays} className="img-padding" alt="Date picker day states" width="600"/>
+
+  ### Controls/Pagination
+  <img src={statesControl} className="img-padding" alt="Date picker control states" width="600"/>
+
+
+## Specs
+<img src={specs} className="img-padding" alt="Date picker specs" width="350"/>
+
+
+## Variants
+  ### Single date
+  <img src={variantSingle} className="img-padding" alt="Date picker single day variant" width="350"/>
+
+<!--- ### Multiple date -->
+<!--- In order to use multiple days in sm-date-picker your engineer will need to use the v-calendar `attributes` property and `dayclick` event to pass multiple dates in an array. Documentation available [here](https://vcalendar.io/calendar/dates.html#simple-dates) -->
+<!--- <img src={variantMultiple} className="img-padding" alt="Date picker multiple days variant" width="350"/> -->
+
+  ### Date range
+  <img src={variantRange} className="img-padding" alt="Date picker range variant" width="600"/>
+
+  ### Time picker
+  <img src={variantTime} className="img-padding" alt="Date picker time variant" width="600"/>
+
+  ### Month and year picker
+  <img src={variantMonthYear} className="img-padding" alt="Date picker month and year variant"/>
+
+## Behaviour
+  ### Date range
+  On selecting  date range, the starting date changes to a white circle background with primary blue stroke + primary blue text color  while in the process of selecting and end date.
+  <img src={behaviorRange} className="img-padding" alt="Date picker range behavior" width="600"/>
+
+  ### Motion
+  Upon triggering the calendar dropdown via the select field, the dropdown will animate in using the standard sui ease of 0.3ms. sm-date-picker also has a slight directional slide.
+
+  ### Responsive breakpoint behaviour
+  On tablet and mobile, the large 2-month calendar dropdown that appears when selecting a date range condenses down to the 1 month version due to small screen space.
+  <img src={behaviorResponsive} className="img-padding" alt="Date picker responsive behavior"/>
+
+
+## References
+
+[Date Picker Combobox Example](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-datepicker/)
+
+[Date Picker WAI ARIA](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/datepicker-dialog/)
+
+[VCalendar](https://vcalendar.io/)

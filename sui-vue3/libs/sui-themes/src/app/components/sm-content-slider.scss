@@ -1,0 +1,49 @@
+/**
+ * Content slider styles
+ * These are the actual CSS properties for the content slider component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+body {
+  .sm-content-slider {
+    &__button-prev {
+      background-image: var(--sm-c-content-slider-button-container-prev-image-background);
+    }
+
+    &__button-next {
+      background-image: var(--sm-c-content-slider-button-container-next-image-background);
+    }
+
+    &__button {
+      width: var(--sm-c-content-slider-button-container-width);
+
+      .sm-button .sm-button__content {
+        border: var(--sm-c-content-slider-button-border);
+      }
+    }
+
+    .sm-content-slider__list {
+      background: var(--sm-c-content-slider-list-color-background);
+    }
+  }
+
+  .sm-content-slider-item {
+    &__item-content {
+      border: var(--sm-c-content-slider-item-border);
+      border-radius: var(--sm-c-content-slider-item-border-radius);
+      background: var(--sm-c-content-slider-item-color-background);
+    }
+
+    &:hover,
+    &:focus {
+      .sm-content-slider-item__item-content {
+        border-color: var(--sm-c-content-slider-item-color-border-hover);
+        box-shadow: var(--sm-c-content-slider-item-box-shadow-hover);
+      }
+    }
+  }
+
+  .sm-content-slider-graphic {
+    border-radius: var(--sm-c-content-slider-graphic-border-radius);
+  }
+}

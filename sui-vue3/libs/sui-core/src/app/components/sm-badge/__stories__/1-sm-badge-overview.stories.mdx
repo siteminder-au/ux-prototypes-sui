@@ -1,0 +1,267 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/badge-anatomy.png'
+import behavior1 from './images/badge-behavior-1.png'
+import behavior2 from './images/badge-behavior-2.gif'
+import behavior3 from './images/badge-behavior-3.png'
+import behavior4 from './images/badge-behavior-4.png'
+import placementDefault from './images/badge-placement-default.png'
+import placementOptional from './images/badge-placement-optional.png'
+import sizeLarge from './images/badge-size-large.png'
+import sizeMedium from './images/badge-size-medium.png'
+import sizeSmall from './images/badge-size-small.png'
+import specsDot from './images/badge-specs-dot.png'
+import specsNew from './images/badge-specs-new.png'
+import specsNumber from './images/badge-specs-number.png'
+import typesDot1 from './images/badge-types-dot.png'
+import typesDot2 from './images/badge-types-dot-2.png'
+import typesNew1 from './images/badge-types-new.png'
+import typesNew2 from './images/badge-types-new-2.png'
+import typesNumber1 from './images/badge-types-number.png'
+import typesNumber2 from './images/badge-types-number-2.png'
+import variantsDefault from './images/badge-variants-default.png'
+import variantsLight from './images/badge-variants-light.png'
+
+<Meta title="Components/Badges/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Badge</h1>
+  <p>
+    A badge, generally appearing either inside or in close proximity to another larger component, is a visual indicator for numerical values such as tallies
+    and scores. It is used to notify users of action that has to be done or the status of an item.
+    <br/><br/>
+    Badges assist in drawing attention to vital information, such as alerts or new and unread messages. They are typically used to provide secondary or
+    supplementary information to text.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Anatomy](#anatomy)
+- [Types](#types)
+- [Sizing](#sizing)
+- [Placement](#placement)
+- [Behaviours](#behaviours)
+- [Variants](#variants)
+- [Specs](#specs)
+- [References](#references)
+
+## Usage
+- Use badges to keep track of numerical values for crucial information near the relevant object.
+- A badge informs the user that something new or updated has occurred without displaying a count, such as messages or activity notifications. Even when the count is known, it may be helpful as a less visible symbol.
+- Use badges to alert users to changes in values or status.
+
+**If you need a text or status label, use sm-tag instead**
+
+
+## Anatomy
+
+**1: Badge Container** - Primary element, color-coded to indicate statuses.
+
+**2: Counter (optional)** - Counter indicator describing the badge
+
+<img src={anatomy} alt="Anatomy" width="336px" />
+
+
+## Types
+
+### Dot badge
+
+The dot badge is used to indicate that something has changed without providing a count, letting the user know that there is an update.
+Use the size props “small” for this type of badge.
+
+<img src={typesDot1} alt="Dot badge" width="168px" />
+
+**Guideline:**
+
+- Use the red badge for urgent/important items
+- Use the green badge for new/added items
+- Use the blue badge for unread/non-urgent items
+- Dot badge is removed after the user accesses and views the feature
+
+**Best practice:**
+
+Tooltips should be included on badges as needed, to improve user understanding. A badge, for example, that is used in combination with a disabled button, may need further explanation.
+
+<img src={typesDot2} alt="Dot badge best practice" />
+
+
+### Number badge
+
+The number badge is used for the platform's countable features. Use badges in combination with another item or component or label to eliminate uncertainty about which object is being measured.
+
+<img src={typesNumber1} alt="Number badge" width="168px" />
+
+**Guideline:**
+
+1. If using a medium badge with an icon, please only use with icons 24px and larger.
+2. A number or a number with text like "10x" as a multiplier can be used as the badge content. Badge content can only have a **maximum of 3 characters**.
+3. Number badges can only have **2 digits**. The label changes to "99+" when you reach 100 or or higher.
+
+**Best practice:**
+
+- Use badges to keep track of crucial information near the relevant items.
+- Use badges to draw attention of users to changes in values with relevant items.
+
+<img src={typesNumber2} alt="Number badge best practice" />
+
+### “New” badge
+
+The new badge can be used when a new feature or service is released. This is applied only during the first release.
+
+<img src={typesNew1} alt="New badge" width="84px" />
+
+Guideline:
+
+If a new feature is released on the platform, the new badge can be used at first and is either changed into a dot, number badge or removed afterwards after the user accesses the new item/feature.
+
+**Best practice:**
+
+- Use badges to keep track of crucial information near the relevant items.
+- Use badges to draw attention of users to relevant items.
+
+****Sample use of new badge**
+
+<img src={typesNew2} alt="New badge best practice" />
+
+
+## Sizing
+
+### Small
+
+If using a small badge with an icon, use with icons 24px or lower
+
+**Badge size:**
+- Height: 12px
+- Width: 12px
+
+<img src={sizeSmall} alt="Small badge" width="168px" />
+
+### Medium
+
+If using a medium badge with an icon, use with icons 24px and larger. Designer discretion to use medium size or large size with information near the relevant items.
+
+**Badge size:**
+- Height: 20px
+- Min Width: 20px
+
+<img src={sizeMedium} alt="Medium badge" width="168px" />
+
+### Large
+
+Use of large badges should remain fairly flexible.
+
+**Badge size:**
+- Height: 24px
+- Min Width: 24px
+
+<img src={sizeLarge} alt="Large badge" width="504px" />
+
+
+## Placement
+
+### Default
+
+The default placement for badges is in the top-right corner.
+
+<img src={placementDefault} alt="Default placement" width="420px" />
+
+### Optional
+
+Other optional placement for the badge is center aligned with the components or text labels.
+
+<img src={placementOptional} alt="Optional placement" width="420px" />
+
+
+## Behaviours
+
+### When to show the badge
+
+#### When showing the badge as notifications
+
+For badges used to notify users that there are new items available, or when new notifications have arrived,  badges are shown automatically.
+
+<img src={behavior1} alt="Badge as notifications" />
+
+#### When showing the badge as indicators
+
+When there is an item to be updated, badges are shown instantly after a user performs an action.
+
+<img src={behavior2} alt="Badge as indicators" />
+
+#### When showing the badge as counters to relevant items
+
+When used to keep track of crucial information near the relevant items, badges are always shown.
+
+<img src={behavior3} alt="Badge as counters" width="336px" />
+
+#### When showing the badge as “New” badges
+
+- For existing users, the “New” badge can appear for a certain number of days ( product discretion)
+- For new users, no “New” badge should appear as for these users everything is new.
+
+<img src={behavior4} alt="New badges" width="420px" />
+
+### When to remove the badge
+
+#### As notifications and indicators
+
+The badge disappears as soon as the user uses or checks the new item or feature.
+
+#### “New” badges
+
+Still, product discretion on how many days before a badge disappears.
+
+
+## Variants
+
+### Default/Dark
+
+For the dark variant, these use the default utility colors:
+
+- $app-success
+- $app-warning
+- $app-alert
+- $app-info
+- $grey-neu-light
+
+<img src={variantsDefault} alt="Dark variants" width="252px" />
+
+### Light
+
+The default variant (dark) should be used in most cases. Only use the light variant if the badge is appearing on a background color which isn't appropriate (i.e., dark blue badge in the app-header).
+
+For the light variant, these uses the light utility colors:
+
+- $app-success-light
+- $app-warning-light
+- $app-alert-light
+- $app-info-light
+- $grey-neu-light
+
+<img src={variantsLight} alt="Light variants" width="252px" />
+
+
+## Specs
+
+### Dot Badge
+
+<img src={specsDot} alt="Dot specs" width="504px" />
+
+### Number Badge
+
+<img src={specsNumber} alt="Number specs" width="504px" />
+
+### “New” Badge
+
+<img src={specsNew} alt="New specs" width="504px" />
+
+
+## References
+
+https://uxdesign.cc/ui-cheat-sheet-in-app-notifications-fffeecf2bf38
+
+https://bootcamp.uxdesign.cc/should-the-notification-counter-disappear-once-a-user-see-the-notification-or-not-26a15f62441c
+
+https://www.nngroup.com/articles/indicators-validations-notifications/

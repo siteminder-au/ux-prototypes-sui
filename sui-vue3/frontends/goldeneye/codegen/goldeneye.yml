@@ -1,0 +1,16 @@
+overwrite: true
+generates:
+  #
+  # goldeneye-beef
+  #
+  src/services/gql/clients/goldeneye/types.ts:
+    schema: '../../components/goldeneye-beef/src/app/graphql/schema/*.graphql'
+    documents:
+      - "src/**/*.goldeneye.gql.ts"
+    plugins:
+      - add:
+          content: '/* eslint-disable */'
+      - add:
+          content: '/* Generate this file by running `npm run graphql-codegen:goldeneye` */'
+      - typescript
+      - typescript-operations

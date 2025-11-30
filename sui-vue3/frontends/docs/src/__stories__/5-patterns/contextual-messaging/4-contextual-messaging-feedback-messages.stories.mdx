@@ -1,0 +1,49 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import feedbackToast from './images/contextual-messaging-feedback-toast.png'
+
+<Meta title="Design patterns/Contextual messaging/Feedback messages" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Feedback messages</h1>
+  <p>Feedback messages, also known as validation messages or feedback notifications, are displayed to users in response to their actions or input. These messages provide feedback on the success, errors, or status of the user's interactions and help them understand the outcome of their actions.</p>
+</SuiStorybookTitle>
+
+- [Attributes of feedback messages](#attributes-of-feedback-messages)
+- [Components to use](#components-to-use)
+- [When to use](#when-to-use)
+- [Recommendations](#recommendations)
+
+
+## Attributes of feedback messages
+
+- Feedback messages are displayed promptly after the user's action or input to provide immediate feedback. . Timely feedback helps users understand the consequences of their actions and stay informed about the status of their tasks.
+- Uses clear and concise language to convey the outcome or information effectively.
+- Provide relevant information that directly relates to the user's action or input. These messages clarify the result of the specific task or interaction the user performed, helping users understand the outcome within the context of their current activity.
+- Feedback messages should be actionable whenever possible.
+- In the case of error feedback messages, provide specific and constructive guidance on how to correct the error. Avoid generic error messages and instead offer helpful suggestions or instructions that assist users in resolving the issue.
+- Feedback messages do not disrupt the user's workflow or distract them excessively.
+
+## Components to use
+
+  ### Toast
+  When your messaging needs to provide feedback based on specific events or actions, it is recommended to use a toast component. Toasts display brief, non-intrusive messages typically appearing at the top or bottom of the screen.
+
+  These messages are often used to notify users about successful actions, errors, or important updates. By choosing a toast component, you can effectively deliver event-driven feedback to users in a visually appealing and unobtrusive manner.
+  <img src={feedbackToast} alt="Toast messages used as success and error messaging" width="750" />
+
+
+## When to use
+
+- When users perform actions such as submitting a form, saving changes, or deleting an item.
+- When displaying error messages or warnings in a non-obtrusive manner
+
+## Recommendations
+
+- Be concise -- Keep the content of the toast message brief and focused. Use clear and concise language to convey the message effectively.
+- Use action-oriented language: Make the content actionable by using verbs or phrases that prompt users to take specific actions or provide them with clear instructions.
+- Ensure that the content of the toast message is relevant and useful to the user. It should communicate important updates, notifications, or alerts that require their attention.
+- Avoid technical jargon or complex language that might confuse or frustrate users.
+- Be error-specific -- If the toast message is related to an error or validation issue, provide specific details about the problem and suggestions for resolving it. This helps users understand the issue and take appropriate actions.

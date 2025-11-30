@@ -1,0 +1,108 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/sm-breadcrumbs-anatomy.png'
+import placement from './images/sm-breadcrumbs-placement.png'
+import sizing from './images/sm-breadcrumbs-sizing.png'
+import specs from './images/sm-breadcrumbs-specs-states.png'
+import variantDefault from './images/sm-breadcrumbs-types-default.png'
+import variantOverflow from './images/sm-breadcrumbs-variants-overflow.png'
+import separatorDefault from './images/sm-breadcrumbs-types-default.png'
+import separatorIcon from './images/sm-breadcrumbs-types-icons.png'
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+  `}
+</style>
+
+
+<Meta title="Components/Breadcrumbs/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Breadcrumbs</h1>
+  <p>
+    Breadcrumbs are a form of secondary navigation that allows users to understand their location in our app, the hierarchy of levels, and to quickly navigate back through them.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Specs](#specs)
+- [Variants](#variants)
+- [Separator types](#separator-types)
+- [References](#references)
+
+
+## Usage
+
+### When to use
+Breadcrumbs should be used when the user is faced with a large amount of content with two or more levels of content hierarchy. This component helps organise this hierarchy and allow the user to understand where they are within it.
+
+Do not use breadcrumbs to replace the primary navigation of a page or product. It is purely a secondary navigation feature. It must only ever be used with two or more levels of content hierarchy.
+
+Please do not use this as a form of multi-step progress indicator.
+
+
+## Formatting
+
+### Anatomy
+
+**1: Page link -** This is the label of the page name. Labels are links, indicated by an underline.
+
+**2: Separator -** Use a forward slash in text to separate the page labels. This can also be shown in icon form as a chevron/right arrow.
+
+**3: Overflow (optional, not live) -** If width or screen space is a concern, then you can use the overflow feature. This truncates the levels if there are more than 3, or if you are on a touch device where space can be an issue.
+
+**4: Current page -** The page the user is currently on. This is indicated by semi-bold/600 weight text.
+
+<img src={anatomy} className="img-padding" alt="Anatomy of  breadcrumbs." />
+
+### Placement
+Breadcrumbs should always be at the top of the page, before the sm-page-title component. There should be a margin of 24px below it.
+<img src={placement} className="img-padding" alt="Breadcrumbs placement." />
+
+### Sizing
+Breadcrumbs default sizing is `14pt`, or `para-sm`. Large sizing is `15pt/body`. The **large size ** should be used on any **touch device.**
+<img src={sizing} className="img-padding" alt="Breadcrumbs placement." width="640" />
+
+
+## Specs
+### States
+<img src={specs} className="img-padding" alt="Breadcrumbs specs." width="800" />
+
+## Variants
+
+### Default
+The default variant of sm-breadcrumbs. Everything is visible, with no hidden overflow.
+<img src={variantDefault} className="img-padding" alt="Breadcrumbs default variant." width="280" />
+
+### Overflow (not yet live)
+Also a default variant of sm-breadcrumbs. Everything is visible, with no hidden overflow.
+
+Use this variant when space is an issue or you have more than 4-5 levels of navigation hierarchy. Always use this on **mobile**.
+<img src={variantOverflow} className="img-padding" alt="Breadcrumbs overflow variant." width="240" />
+
+
+## Separator types
+
+### Default separators
+Page levels are separated with a text **'/' (forward slash)**.
+<img src={separatorDefault} className="img-padding" alt="Breadcrumbs with forward slash separator." width="320" />
+
+### Icon separators
+Page levels are separated with an **icon ('arrow-right')**.
+<img src={separatorIcon} className="img-padding" alt="Breadcrumbs with arrow-right icon separator." width="320" />
+
+
+## References
+[Breadcrumb Example](https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/examples/breadcrumb/)
+
+[Breadcrumbs - Atlassian](https://atlassian.design/components/breadcrumbs/examples)
+
+[Breadcrumb - Carbon Design System](https://carbondesignsystem.com/components/breadcrumb/usage/)

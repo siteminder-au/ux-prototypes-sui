@@ -1,0 +1,22 @@
+/**
+ * Loading image styles
+ * These are the actual CSS properties for all loading image components.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+body {
+  .sm-loading-image {
+    &.sm-loading-image {
+      border-radius: var(--sm-c-loading-image-border-radius);
+    }
+
+    & .sm-loading-image__loading {
+      background-color: var(--sm-c-loading-image-color-background);
+      background-image: var(--sm-c-loading-image-image-background);
+
+      svg g g {
+        fill: var(--sm-c-loading-image-color-foreground);
+      }
+    }
+  }
+}

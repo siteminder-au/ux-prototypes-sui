@@ -1,0 +1,155 @@
+import { Meta } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+
+<Meta title="Getting Started/Installation" />
+
+<SuiStorybookPageLabel>
+  Getting started
+</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Installation</h1>
+</SuiStorybookTitle>
+
+- [Libraries](#libraries)
+- [Usage](#usage)
+
+
+## Libraries
+
+<span className="block font-bold">sui-core</span>
+
+```bash dark
+npm i @siteminder/sui-core@23.4.0-vue3 # or latest `X.Y.Z-vue3` version
+```
+
+<span className="block font-bold">sui-icons</span>
+
+```bash dark
+npm i @siteminder/sui-icons@23.4.0-vue3 # or latest `X.Y.Z-vue3` version
+```
+
+<span className="block font-bold">sui-themes</span>
+
+```bash dark
+npm i @siteminder/sui-themes@23.4.0-vue3 # or latest `X.Y.Z-vue3` version
+```
+
+
+## Usage
+
+### Install vue-i18n
+
+See installation guide in https://vue-i18n.intlify.dev/guide/
+
+### Use sui-core
+
+There are three methods to install sui-core components:
+- Full install (not recommended)
+- Install per component with global registration (recommended)
+- Install per component with local registration
+
+#### Full install (not recommended)
+- Note that this method is not recommended as it will import all components which can lead to bigger bundle file sizes.
+```ts dark
+// In your main.app.ts file
+import { createApp } from 'vue'
+import { i18n } from '@/services/i18n'
+
+import SuiCore from '@siteminder/sui-core'
+import '@siteminder/sui-core/sui-global.css'
+
+const app = createApp({ /* ... */ })
+
+app.use(i18n)
+app.use(SuiCore, { i18n })
+```
+
+#### Install per component with global registration (recommended)
+- You can optionally import only specific components, services or directives.
+- Both JavaScript and CSS can be tree-shaken by the bundler.
+```ts dark
+// In your main.app.ts file
+import { createApp } from 'vue'
+import { i18n } from '@/services/i18n'
+
+// Import all of the global styles (recommended)
+// This contains styles like the typography, resets, utilities, CSS variables, etc.
+import '@siteminder/sui-core/sui-global.css'
+
+// Alternatively, you can import individual global styles.
+// However, this is not recommended as it can lead to missing styles which are
+// required for the components to work correctly.
+// import '@siteminder/sui-core/sui-common.css'
+// import '@siteminder/sui-core/sui-resets.css'
+// import '@siteminder/sui-core/sui-scaffolding.css'
+// import '@siteminder/sui-core/sui-typography.css'
+// import '@siteminder/sui-core/sui-utilities.css'
+
+// import only the components you need
+import { SmBanner } from '@siteminder/sui-core/components/sm-banner'
+import { SmButton } from '@siteminder/sui-core/components/sm-button'
+import { SmInput } from '@siteminder/sui-core/components/forms/sm-input'
+import { setupVeeValidate, setupVueI18n } from '@siteminder/sui-core/libs'
+
+const app = createApp({ /* ... */ })
+
+// setup vee-validate (if you are using form related components (e.g. sm-input)) and vue-i18n
+// NOTE: make sure you call setupVueI18n before setupVeeValidate!
+app.use(i18n)
+setupVueI18n(i18n)
+setupVeeValidate()
+
+// register each base component you need
+app.component('sm-banner', SmBanner)
+app.component('sm-button', SmButton)
+app.component('sm-input', SmInput)
+app.use(SuiIcons)
+```
+
+#### Install per component with local registration
+- If the component is only used in a handful of vue files, consider locally registering them in those vue files only.
+- For example, the following code below will locally register the sm-badge component in some-component.vue file
+```ts dark
+// some-component.vue
+<script setup lang="ts">
+import { SmBadge } from '@siteminder/sui-core/components/sm-badge'
+
+...
+</script>
+
+<template>
+  ...
+  <sm-badge type="info" size="medium">New</sm-badge>
+</template>
+```
+
+### Use sui-icons
+
+```ts dark
+// In your main.app.ts file
+import { createApp } from 'vue'
+
+import SuiIcons from "@siteminder/sui-icons"
+
+const app = createApp({ /* ... */ })
+
+app.use(SuiIcons)
+```
+
+And finally use the icon in your project:
+
+```html dark
+<sm-icon name="action-edit"></sm-icon>
+```
+
+#### Import services
+
+```ts dark
+// In your ts file
+import { toastService } from '@siteminder/sui-core/services'
+```
+
+### Use sui-themes
+
+Please head to [theming overview](/docs/guides-theming--overview) for more details on this.

@@ -1,0 +1,160 @@
+import { Meta } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import select from './images/select.png'
+import checkbox from './images/checkbox.png'
+
+<Meta title="Guides/Selection controls" />
+
+<SuiStorybookPageLabel>Guides</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Selection Controls</h1>
+  <p>
+    Selections controls allow a user to complete tasks that involve making choices.
+  </p>
+</SuiStorybookTitle>
+
+- [What is a selection control?](#what-is-a-selection-control?)
+- [What selection control do I use?](#what-selection-control-do-i-use?)
+- [Control types](#control-types)
+- [References](#references)
+
+## What is a selection control?
+
+In SUI, selection controls consist of the following components:
+- Checkbox
+- Radio
+- Switch
+- Select (dropdown select)
+- Multi-select (pattern coming soon)
+
+<div className="sui-storybook-highlight sui-storybook-highlight--alert">
+  This page is meant to be used as a guide to help decide what type of selection control you should be using in your UI. Always check in with your Design Manager if you are unsure, or the information outlined below does not make sense in your use case.
+</div>
+
+
+## What selection control do I use?
+
+Before deciding on what control to use for your users, please first ask yourself the following:
+
+**How many options are available in general?**
+
+For instance if it's a 'on' or 'off' situation, 2 options are available. However, if it is a list of amenities, there will be many options.
+
+**How many options are available to the user?**
+
+Again, if it is an 'on' or 'off' situation, only one option will be available to the user. A list of amenities may allow a user to select multiple options. Or perhaps there are a handful of options to choose from but only one may be selected.
+
+**How do these options correlate to each other?**
+
+Some options may be mutually exclusive, meaning they cannot occur at the same time, i.e. an 'on' or 'off' is mutually exclusive as you cannot be on and off at the same time. Some options may be independent, selecting multiple options does not change any other options, i.e. a hotel may have multiple amenities and selecting one has no bearing on selecting any other.
+
+**Once you have mapped out the options and their correlation you can choose what selection control pattern you will need to use for your users:**
+
+<table>
+  <thead>
+    <tr>
+      <th>All options available</th>
+      <th>Options available to user</th>
+      <th>Correlation</th>
+      <th>What to use?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Multiple</td>
+      <td>Multiple</td>
+      <td>Independent</td>
+      <td>Checkbox (multiple)</td>
+    </tr>
+    <tr>
+      <td>2 (on/off)</td>
+      <td>1</td>
+      <td>Mutually exclusive</td>
+      <td>Checkbox (single)</td>
+    </tr>
+    <tr>
+      <td>2 (on/off)</td>
+      <td>1</td>
+      <td>Mutually exclusive</td>
+      <td>Switch/toggle</td>
+    </tr>
+    <tr>
+      <td>2-7</td>
+      <td>1</td>
+      <td>Mutually exclusive</td>
+      <td>Radio</td>
+    </tr>
+    <tr>
+      <td>2-7</td>
+      <td>1</td>
+      <td>Independent or mutually exclusive (depends on your use case)</td>
+      <td>Select (single)</td>
+    </tr>
+    <tr>
+      <td>Multiple (7+)</td>
+      <td>Multiple</td>
+      <td>Independent</td>
+      <td>Multi-select component <br/>(sm-multiselect coming soon)</td>
+    </tr>
+  </tbody>
+</table>
+
+As you can see, depending on what your answers are, there could be at 2 different options to convey a selection to a user. In these cases it really does depend on the nature of the content and providing the best user experience. A great way to decide which pattern to use is to test both options with users or colleagues.
+
+To eliminate constant user learning and/or confusion, please read on to find out what the general rules are for each pattern in the SiteMinder suite of products.
+
+
+## Control types
+
+### Switch/toggle
+Please use this pattern for ON/OFF or ENABLED/DISABLED situations that happen **immediately**. It makes sense when using this pattern that once the switch is enabled the the effect is immediate and no saving is required.
+
+<em>If you are designing for mobile, use a toggle regardless of whether the settings are immediate or require review.</em>
+
+### Checkbox (single)
+Please use this pattern for ON/OFF or ENABLED/DISABLED situations that happen **require review or saving**. An action such as SAVE, APPLY, NEXT, etc is required before displaying results.
+
+<em>If you are designing for mobile, do not use a single checkbox in any scenario for ON/OFF situations.</em>
+
+### Radio
+Please use radio buttons when you want to **emphasise more complicated/lengthy options** that need to be selected and would like your users to read every option. Please only use radio controls if you have less than 7 options.
+
+Radio buttons are used when there is **no clear default or recommended option**.
+
+Radio buttons are used when you would like users to **easily scan through options quickly without having to click or perform extra actions**.
+
+### Dropdown (single)
+
+When there is a **clear option that you would like users default to or recommend they use**, a dropdown would be a good pattern to go for. By default, the 'recommended' option will be selected and users don't have to spend too much time thinking about the option.
+
+<img src={select} alt="Select" width="252" />
+
+Please use dropdowns when the options available require very little cognitive load to choose, i.e. choosing a view size % or choosing 'King bed' from a list of generic bed types.
+
+Please use dropdowns when the options available to users do not need comparison or a side-by-side view.
+
+Please use a dropdown when the mutually exclusive selection numbers more than 7 - this will start to clutter the UI and take up too much space.
+
+Please use a dropdown when the options available benefit from keyword filtering/search, i.e. selecting a country from a list of our total countries (our dropdowns have keyword search built in).
+
+### Checkbox (multiple)
+Please use checkboxes when there are multiple options available to the user and they are all independent from each other, i.e. selecting how many amenities are available to a hotel.
+
+If you have multiple sets of options that you'd like the user to be able to easily scan through and select from, grouped checkboxes is a good pattern to use. This also provides the user with an indeterminate selection state:
+
+<img src={checkbox} alt="Checkbox" width="168" />
+
+### Multi-select dropdown (multiple)
+This option should only be in situations where being able to easily scan all options for the user is not a priority. There will be cases where space is an issue, due to the nature of the Channel Manager product, and there simply will not be enough space to offer users checkboxes to scan, in these instances using a multi-select dropdown may be an option. This is up to each product designer to determine.
+
+
+## References
+
+https://blog.prototypr.io/7-rules-of-using-radio-buttons-vs-drop-down-menus-fddf50d312d1
+
+https://uxplanet.org/checkbox-vs-toggle-switch-7fc6e83f10b8
+
+https://blog.prototypr.io/how-to-choose-and-design-selection-controls-in-ux-ba4a68344118
+
+https://medium.com/tripaneer-techblog/improving-the-usability-of-multi-selecting-from-a-long-list-63e1a67aab35

@@ -1,0 +1,14 @@
+{
+  "booking-ref-label": "Booking reference",
+  "booking-ref-placeholder": "Enter booking reference",
+  "guest-last-name-label": "Guest last name",
+  "guest-last-name-placeholder": "Enter guest last name",
+  "select-dates-label": "Select dates",
+  "select-date-time-label": "Select date and time",
+  "select-time-label": "Select time",
+  "start-date-placeholder": "Start date",
+  "end-date-placeholder": "End date",
+  "more-filters-btn": "More filters",
+  "reset-all-btn": "Reset all filters",
+  "search-btn": "Search"
+}

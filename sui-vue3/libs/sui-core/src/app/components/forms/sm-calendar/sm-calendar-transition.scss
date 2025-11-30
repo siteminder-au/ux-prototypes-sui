@@ -1,0 +1,89 @@
+/**
+ * Visible / hidden State
+ * @see: https://vuejs.org/v2/guide/transitions.html
+ */
+.sm-calendar-popover-transition {
+  &-enter-active,
+  &-leave-active {
+    transition: opacity .3s ease;
+  }
+
+  &-enter,
+  &-leave-to {
+    opacity: 0;
+  }
+
+  &-enter-to,
+  &-leave {
+    opacity: 1;
+  }
+}
+
+/**
+ * Animate header buttons when switching between month-year and year pickers
+ */
+.sm-calendar-header-button-transition {
+  &-enter-active,
+  &-leave-active {
+    transition: opacity .3s cubic-bezier(0.1, 0, 0.6, 1);
+
+    /* Remove animation to avoid vestibular motion triggers */
+    @media (prefers-reduced-motion) {
+      transition: none;
+    }
+  }
+
+  &-leave-active {
+    /* Animate items simultaneously without affecting container's dimension */
+    position: absolute;
+    top: 0;
+  }
+
+  &-enter,
+  &-leave-to {
+    opacity: 0;
+  }
+
+  &-enter-to,
+  &-leave {
+    opacity: 1;
+  }
+}
+
+/**
+ * Animate body content when switching between month-year and year pickers
+ */
+.sm-calendar-content-transition {
+  &-enter-active,
+  &-leave-active {
+    transition: transform 0.3s cubic-bezier(0.1, 0, 0.6, 1);
+    will-change: transform;
+
+    /* Remove animation to avoid vestibular motion triggers */
+    @media (prefers-reduced-motion) {
+      transition: none;
+      will-change: unset;
+    }
+  }
+
+  &-leave-active {
+    /* Animate items simultaneously without affecting container's dimension */
+    position: absolute;
+  }
+
+  &-enter,
+  &-leave-to {
+    &.sm-calendar__options--month-year {
+      transform: translateY(100%);
+    };
+
+    &.sm-calendar__options--year {
+      transform: translateY(-100%);
+    }
+  }
+
+  &-enter-to,
+  &-leave {
+    transform: translateY(0);
+  }
+}

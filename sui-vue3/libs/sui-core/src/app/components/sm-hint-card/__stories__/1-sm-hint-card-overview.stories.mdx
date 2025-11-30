@@ -1,0 +1,101 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import overview from './images/sm-hint-card-overview.png'
+import usage from './images/sm-hint-card-usage-guideline.png'
+import anatomy from './images/sm-hint-card-anatomy.png'
+import variantDefault from './images/sm-hint-card-variants-default.png'
+import variantAction from './images/sm-hint-card-variants-action.png'
+import variantClose from './images/sm-hint-card-variants-closable.png'
+import responsive from './images/sm-hint-card-responsiveness.png'
+
+<style>
+  {`
+    .img-padding {
+      padding: 16px;
+    }
+  `}
+</style>
+
+<Meta title="Components/Hint card/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Hint card</h1>
+  <p>
+    The sm-hint-card is a dismissible, inline message component used to provide hints, tips, nudges, or optimizations to users. It helps surface contextual guidance without disrupting the workflow.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Variants](#variants)
+- [Behaviour](#behaviour)
+- [Responsiveness](#responsiveness)
+
+
+## Usage
+ <img src={overview} alt="Hint card" className="img-padding" />
+
+### When to use
+- You need to provide a subtle nudge or optimization tip.
+- You want to guide users with actionable insights.
+- You need a dismissible and non-intrusive way to surface information.
+
+### Avoid when:
+- The message is critical (use an alert instead).
+- You need persistent information (consider a help card).
+
+### Usage Guidelines
+- Use one hint card per section to avoid clutter.
+- Keep text concise and actionable.
+- Only make the card dismissible if it's optional information.
+
+ <img src={usage} alt="Hint card usage" className="img-padding" />
+
+## Formatting
+
+### Anatomy
+ **1: Border** - 4px vertical colored bar indicating context.
+
+ **2: Hint Icon** - A small lightbulb icon reinforcing the hint nature.
+
+ **3: Content**
+  - Title (Optional): Bold text summarizing the hint.
+  - Body: Detailed message.
+
+**4: CTA (Optional)** - A text link or button for further action.
+
+**5: Close Button (Optional)** - Allows users to dismiss the hint.
+
+<img src={anatomy} alt="Hint card anatmoy" className="img-padding" width={746} />
+
+### Sizing
+The height of the card will adjust depending on how many lines of text are within. The width of the card should always span the width of the page or container.
+
+## Variants
+Hint cards can be without heading, only body text which can be used for smaller hints.
+
+### Default
+Basic hint card with heading, body, and optional CTA.
+<img src={variantDefault} alt="Hint card default variant" className="img-padding" />
+
+### With action
+Includes a clickable action button or link.
+<img src={variantAction} alt="Hint card action variant" className="img-padding" />
+
+### Closable
+Includes a close (❌) button to hide the card.
+<img src={variantClose} alt="Hint card closable variant" className="img-padding" />
+
+## Behaviour
+
+### Clicking action button
+Redirects user or triggers an event.
+
+### Closing a hint card
+Card is dismissed and does not reappear, or product teams can set when the card will appear again.
+
+## Responsiveness
+The action button placement adjusts depending on how long your content is.
+<img src={responsive} alt="Hint card responsive behaviour - button adjusts below content" className="img-padding" />

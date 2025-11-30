@@ -1,0 +1,195 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/anatomy-sm-select.png'
+import variantStandard1 from './images/variant-standard-sm-select-1.png'
+import variantStandard2 from './images/variant-standard-sm-select-2.png'
+import variantGroups from './images/variant-groups-sm-select.png'
+import variantMulti1 from './images/variant-multi-sm-select-1.png'
+import variantMulti2 from './images/variant-multi-sm-select-2.png'
+import variantMulti3 from './images/variant-multi-sm-select-3.png'
+import variantMulti4 from './images/variant-multi-sm-select-4.png'
+import variantMulti5 from './images/variant-multi-sm-select-5.png'
+import behaviorStandard1 from './images/behavior-standard-sm-select.png'
+import behaviorStandard2 from './images/behavior-standard-keyword-sm-select.png'
+import behaviorStandard3 from './images/behavior-standard-keyword-not-found-sm-select.png'
+import behaviorMulti1 from './images/behavior-multi-sm-select.png'
+import behaviorMulti2 from './images/behavior-multi-sm-select-2.png'
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+    .annotation {
+      color: #FF00BB;
+      font-weight: bold;
+    }
+
+    @media only screen and (min-width: 641px) {
+      .row {
+        display: flex;
+        column-gap: 32px;
+        margin-bottom: 24px;
+      }
+
+      .column {
+        flex: 20%;
+        padding-bottom: 40px;
+      }
+    }
+  `}
+</style>
+
+<Meta title="Components/Form/Select/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Select</h1>
+  <p>
+    Select inputs offer a compact list of items that a user can make a selection from.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Variants](#variants)
+- [Behaviours](#behaviours)
+- [References](#references)
+
+
+
+## Usage
+The select component is a type of input field that allows users to make a **selection** from a compact list of items. Once the item is selected they display in the input field. This component is sometimes referred to as a select combo box.
+
+## Formatting
+
+### Anatomy
+
+  **1: Select input field -** This follows the anatomy of an input field. Turn off the input label with `labelHidden`
+
+  **2: Group header (optional) -** The header styling for grouped items. Grouping is optional, but headers must be used if you are using groups.
+
+  **3: Default list item -** Default state of the list item.
+
+  **4: Selected list item -** When an item is selected, this will be indicated by the blue line and highlight within the container of the list item. The list item text will also appear bold.
+
+  **5: Divider (optional) -** Dividers are used to visually separate list item groupings. They cannot be turned off if you are using the grouping feature
+
+  **6: Descriptive text (optional) -** Optional descriptive text can be added to give further context or information to users about the list item.
+
+  **7: Truncation (optional) -** Truncation on list items are also an optional feature that you can switch on. Please note in the Figma component, please add the ellipsis yourself. A truncation switch may be added in the future, but is low priority for now.
+
+<img src={anatomy} className="img-padding" alt="Select (combo box) anatomy" width="400"/>
+
+
+### Placement
+  Select input fields are generally used within form sets and filters and as such will follow their spacing rules and vertical rhythm.
+
+
+### Sizing
+  The width of the dropdown menu is 288px wide in Figma by default. **However it is very important that you indicate what the ideal width is in your designs and communicate it clearly to the engineers.**
+
+  The height of the dropdown does not have a max height set. If you would like to add a max height and a scrollbar to the dropdown, you can do so by editing the `contentClass` property.
+
+
+## Variants
+
+### Standard
+  By default, the select field shows the selection in text format. You may also turn on keyword search setting the `filterable` prop to `true`.
+<div className="row">
+  <div className="column">
+    <span className="annotation">Standard</span>
+    <img src={variantStandard1} className="img-padding" alt="Standard variant" width="300"/>
+  </div>
+  <div className="column">
+    <span className="annotation">Standard with keyword search</span>
+    <img src={variantStandard2} className="img-padding" alt="Standard variant with keyword search" width="300"/>
+  </div>
+</div>
+
+### Groups
+  You can group options using `showGroupSelect` which will allow you to set group labels (group header) and separate each group with a divider component.
+<img src={variantGroups} className="img-padding" alt="Group select variant" width="300"/>
+
+### Multi-select
+  If you would like the user to make more than one selection, you can use the multi-select variant. Selections are shown using a checkbox on the dropdown.
+
+<div className="row">
+  <div className="column">
+    <span className="annotation">Multi-select</span>
+    <img src={variantMulti1} className="img-padding" alt="Multi-select variant" width="300"/>
+    <span className="sui-storybook-image-caption pb-24">Input field shows tags of first item selected and a (+n) to indicate the number of other selected items.</span>
+  </div>
+  <div className="column">
+    <span className="annotation">With add option</span>
+    <img src={variantMulti2} className="img-padding" alt="Multi-select variant with add option" width="300"/>
+    <span className="sui-storybook-image-caption pb-24">If a value is not found in the predefined list, provide the dropdown with a list option to add the value. The user may be able to create a new value by pressing enter on the keyboard.</span>
+  </div>
+  <div className="column">
+    <span className="annotation">With filterable keyword search</span>
+    <img src={variantMulti3} className="img-padding" alt="Multi-select variant with filterable keyword search" width="300"/>
+  </div>
+</div>
+
+<div className="row">
+  <div className="column">
+    <span className="annotation">Multi-select: Select all</span>
+    <img src={variantMulti4} className="img-padding" alt="Multi-select variant select all state" width="300"/>
+  </div>
+  <div className="column">
+    <span className="annotation">Multi-select: Groups</span>
+    <img src={variantMulti5} className="img-padding" alt="Multi-select select all" width="300"/>
+  </div>
+  <div className="column">
+  </div>
+</div>
+
+## Behaviours
+
+### Standard Variant
+<div className="row">
+  <div className="column">
+    <span className="annotation">Standard</span>
+    <p>This variant allows the user to pick one option from a menu. When the user has picked an option and selects the field again, the picked item is in a selected state.</p>
+    <img src={behaviorStandard1} className="img-padding" alt="Standard variant behavior" width="300"/>
+  </div>
+  <div className="column">
+    <span className="annotation">With keyword search</span>
+    <p>By default, the select field shows the selection in text format. You may also turn on keyword search by setting the `filterable` prop to `true`.</p>
+    <img src={behaviorStandard2} className="img-padding" alt="Standard variant with keyword search behavior " width="300"/>
+  </div>
+  <div className="column">
+    <span className="annotation">Keyword search not found</span>
+    <p>If the user enters character combinations that are not in the list, visual feedback is supplied to show that the character combination is incorrect.</p>
+    <img src={behaviorStandard3} className="img-padding" alt="Standard variant keyword search not found behavior" width="300"/>
+  </div>
+</div>
+
+### Multi-select
+Selected items appear as tags inside the select field, by default.
+<div className="row">
+  <div className="column">
+    <span className="annotation">Multi-select: Standard tags</span>
+    <img src={behaviorMulti1} className="img-padding" alt="Multi-select behavior" width="300"/>
+  </div>
+  <div className="column">
+    <span className="annotation">Multi-select: Collapsed tags</span>
+    <img src={behaviorMulti2} className="img-padding" alt="Multi-select behavior with collapsed tag " width="300"/>
+  </div>
+  </div>
+
+
+## References
+
+[Combobox pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/)
+
+[Select-only Combobox example](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/)
+
+[Menus](https://m3.material.io/components/menus/overview#usage)
+
+[Listboxes vs. Dropdown Lists](https://www.nngroup.com/articles/listbox-dropdown/)
+
+[List box pattern](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/)

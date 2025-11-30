@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+
+
+<Meta title="Components/Form/Date Picker/Accessibility" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Date picker</h1>
+  <p>
+    Date and time pickers allow users to select a single or a range of dates and times.
+  </p>
+</SuiStorybookTitle>
+
+## Keyboard interaction
+| Key | Usage |
+| :--- | :--- |
+| Tab | Moves focus to next focusable element inside the picker. <br /><br />When focus is on the last focusable element in the dialog, moves focus to the first focusable element in the picker. |
+| Shift + Tab | Moves focus to previous focusable element inside the picker. <br /><br />When focus is on the first focusable element in the picker, moves focus to the last focusable element in the picker.|
+| Escape | Closes the picker. |
+| Enter | Triggers the selected element. |
+| Up arrow (in calendar grid) | Moves focus to the date above. |
+| Down arrow (in calendar grid) | Moves focus to the date below. |
+| Left arrow (in calendar grid) | Moves focus to the date to the left. |
+| Right arrow (in calendar grid) | Moves focus to the date to the right. |
+
+## ARIA
+See WAI-ARIA Authoring Practices
+
+[Date Picker Dialog Example](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/datepicker-dialog/)
+
+[Date Picker Best Practice](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-datepicker/)

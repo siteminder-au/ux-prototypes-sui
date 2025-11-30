@@ -1,0 +1,121 @@
+/* #region LH usages */
+/*
+ * Below are not official values used in LH. We're just mimicking some of the LH styles here.
+ *
+ * LH usages
+ * see: https://github.com/siteminder-au/lh/blob/master/frontends/property/src/styles/sui-variables.css
+ * to see the css variables that are used:
+ * - search for `sui-themes` in package.json
+ * - search for `--sm-`
+ */
+:root {
+  --lh-white: #FFFFFF;
+  --lh-black: #000000;
+
+  --lh-charcoal-mid: #555555;
+  --lh-charcoal-default: #484B4B;
+  --lh-charcoal-dark: #333333;
+
+  --lh-orange-light: #FFE2D7;
+  --lh-orange-mid: #FFE2BF;
+  --lh-orange-default: #FF6842;
+  --lh-orange-dark: #8C3200;
+
+  --lh-green-light: #E2F4EB;
+  --lh-green-mid: #9AE0BD;
+  --lh-green-default: #46774C;
+  --lh-green-dark: #0E5431;
+
+  --lh-grey-light: #FBFCFD;
+  --lh-grey-mid: #EBEFF4;
+
+  --lh-purple-mid: #F4E3F3;
+  --lh-purple-default: #B662DE;
+
+  --lh-beige-light: #FEF8F3;
+  --lh-beige-mid: #F8EFE7;
+
+  /* Colours */
+  --color-pure-white: var(--lh-white);
+  --color-black: var(--lh-black);
+  --color-focus: var(--lh-orange-default);
+
+  --color-primary-light: var(--lh-charcoal-mid);
+  --color-primary-mid: var(--lh-charcoal-default);
+  --color-primary: var(--lh-charcoal-dark);
+  --color-primary-dark: var(--lh-black);
+
+  --color-secondary-light: var(--lh-orange-light);
+  --color-secondary-mid: var(--lh-orange-mid);
+  --color-secondary: var(--lh-orange-default);
+  --color-secondary-dark: var(--lh-orange-dark);
+
+  --color-success-light: var(--lh-green-light);
+  --color-success-mid: var(--lh-green-mid);
+  --color-success: var(--lh-green-default);
+  --color-success-dark: var(--lh-green-dark);
+  --color-success-black: var(--lh-charcoal-dark);
+
+  --color-app-light: var(--lh-grey-light);
+  --color-app-mid: var(--lh-grey-mid);
+
+  /* Typography */
+  --h1-letter-spacing: -1px;
+  --h1-font-weight: 400;
+
+  --h2-letter-spacing: -1px;
+  --h2-font-weight: 400;
+
+  --h3-letter-spacing: -0.5px;
+
+  --h4-letter-spacing: -0.5px;
+
+  --h5-font-size: 15px;
+  --h5-letter-spacing: -0.5px;
+
+  /* other sui-theme variables */
+  --color-app: var(--lh-grey-light);
+  --color-warning-dark: var(--lh-orange-dark);
+  --color-disabled-dark: var(--lh-charcoal-mid);
+  --color-alert-dark: var(--lh-purple-default);
+}
+
+.sm-button {
+  /* Common */
+  --sm-c-button-padding-y: 8px;
+  --sm-c-button-padding-x: 24px;
+  --sm-c-button-border-radius: 24px;
+
+  /* Type */
+
+  /* Primary */
+  --sm-c-button-color-background-primary-hover: var(--color-black);
+}
+
+.sm-app-header {
+  /* Top bar */
+  --sm-c-app-header-top-bar-color-background: var(--color-black);
+
+  /* Menu items - hover */
+  --sm-c-app-header-menu-color-text-hover: var(--color-black);
+  --sm-c-app-header-menu-color-background-hover: var(--lh-beige-light);
+
+  --sm-c-app-header-menu-color-text-focus: var(--lh-charcoal-dark);
+  --sm-c-app-header-menu-color-background-focus: var(--lh-beige-mid);
+
+  /* Horizontal nav - common */
+  --sm-c-app-header-horizontal-nav-color-background: var(--lh-beige-light);
+
+  /* Horizontal nav item - common */
+  --sm-c-app-header-horizontal-nav-item-color-background: var(--lh-beige-light);
+
+  /* Horizontal nav item - hover state */
+  --sm-c-app-header-horizontal-nav-item-color-background-hover: var(--lh-beige-mid);
+  --sm-c-app-header-horizontal-nav-item-color-text-hover: var(--color-primary);
+
+  /* Horizontal nav item - active state */
+  --sm-c-app-header-horizontal-nav-item-color-background-active: var(--lh-beige-mid);
+  --sm-c-app-header-horizontal-nav-item-color-text-active: var(--color-primary);
+  --sm-c-app-header-horizontal-nav-item-indicator-color-active: var(--color-focus);
+}
+/* #endregion LH usages */

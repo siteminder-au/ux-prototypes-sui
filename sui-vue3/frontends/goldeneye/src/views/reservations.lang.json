@@ -1,0 +1,20 @@
+{
+  "page-title": "Reservations",
+  "not-implemented": "Not implemented",
+  "not-implemented-description": "We're unable to search for reservations at this time. Please try again later.",
+  "search-dialog": {
+    "title": "Query"
+  },
+  "table": {
+    "booking-reference": "Booking reference",
+    "guest-name": "Guest name",
+    "check-in": "Check-in",
+    "check-out": "Check-out",
+    "room": "Room",
+    "booked-on-date": "Booked on date",
+    "status": "Status",
+    "price": "Total price",
+    "footer": "Footer"
+  },
+  "hide-show-table-columns-controller-text": "Hide or show table columns"
+}

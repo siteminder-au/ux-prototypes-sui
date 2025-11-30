@@ -1,0 +1,111 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/sm-skeleton-loader-anatomy.png'
+import variantBar from './images/sm-loading-variant-bar.gif'
+import variantCardStandard from './images/sm-loading-variant-card-standard.gif'
+import variantCardStacked from './images/sm-loading-variant-card-stacked.gif'
+import variantDashboard from './images/sm-loading-variant-dashboard.gif'
+import variantForm from './images/sm-loading-variant-forms.gif'
+import variantHomeScreen from './images/sm-loading-variant-homescreen.gif'
+import variantImage from './images/sm-loading-variant-image.gif'
+import variantList from './images/sm-loading-variant-list.gif'
+import variantTables from './images/sm-loading-variant-tables.gif'
+
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+  `}
+</style>
+
+<Meta title="Components/Loading/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Loading</h1>
+  <p>
+    Loaders are static, animated previews of content that are still loading on a page. They inform users about background processes, managing their expectations and avoiding frustration or uncertainty while content is loading.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Variants](#variants)
+- [Behaviours](#behaviours)
+
+
+
+## Usage
+
+Loaders are an excellent way to load parts of a page without completely disrupting the users experience, which spinners and other explicit loading patterns do. They present the user with a low fidelity representation of the interface. They help users to perceive loading times as shorter than they actually are, and also allow parts of a page to load independently to each other.
+
+[This article](https://uxdesign.cc/what-you-should-know-about-skeleton-screens-a820c45a571a) does a great job of advocating skeleton loader use.
+
+
+## Formatting
+  ### Anatomy
+  **1: Loading bar, header** - Header bars are 32px high and signify a header that is loading.
+
+  **2: Loading bar, body** - Body bars are 16px high and signify body text that is loading.
+
+  **3: Layout design** - The rest of the skeleton loader will differ based on the variant. Cards will have some basic card styling, tables will have row styling, the dashboard cards have a variety of card styling, etc.
+
+  **4: Gradient** - Within each loading bar contains a masked animated gradient that moves back and forth in a loop.
+
+  <img src={anatomy} className="img-padding" alt="Anatomy of a  loader" width="620" />
+
+
+## Variants
+
+  ### Loading bar
+  This loader is best used in circumstances where our other variants will not work, however always try to use one of the other variants as they have been designed to suit our existing components.
+
+  `sm-loading-bar` has customisable height and width. Set the width and height yourself by following our spacing guide and choose a variable from our [list of spacing variables](https://sui-dev-v3-sui-docs.dev.siteminderlabs.com/?path=/story/foundations-spacing-overview--page). This component needs to inherit an existing variable or it will not display correctly or at all.
+
+  When adjusting the height, please follow the anatomy guide above and only use either header or body height (either 32 or 16px) for consistency.
+
+  <img src={variantBar} className="img-padding" alt="Sample of loading bar" width="320" />
+
+  ### Card: standard
+  The standard card skeleton loader is fully responsive, within its container, and each card has a max width of 348px wide. You can add as many cards to this component using the count property, i.e. count="4".
+  <img src={variantCardStandard} className="img-padding" alt="Sample of standard loading card" width="720" />
+
+  ### Card: Stacked
+  You can change the card layout to a list style layout, for pages like Room Types. These span the whole container and also accepts the count property.
+  <img src={variantCardStacked} className="img-padding" alt="Sample of stacked loading card" width="720" />
+
+  ### Dashboard
+  We have created a number of dashboard cards specifically for the dashboard loading state. These consist of  a long card, a small card and a graph card. The Dashboard standard variant combines all of these into one layout, however each card can be used individually.
+  <img src={variantDashboard} className="img-padding" alt="Sample of dashboard loading" width="720" />
+
+  ### Form
+  For any form type layouts, use the form variant.
+  <img src={variantForm} className="img-padding" alt="Sample of form loading" width="400" />
+
+  ### Home screen
+  When no part of the website has loaded but there is still a need for a loading placeholder skeleton you can use the home screen variant. This loader is responsive and will adjust to the tablet layout at sub 769px wide.
+  <img src={variantHomeScreen} className="img-padding" alt="Sample of home screen loading" />
+
+  ### Image
+  For any imagery thats part of the data set that is loading, the carousel, content slider or media gallery, use the image variant either alone or with other loaders.
+  <img src={variantImage} className="img-padding" alt="Sample of image loading" width="340" />
+
+  ### List
+  For any list like structure that needs to load, you can use the list variant. This accepts the count property so you can set as many rows as you require.
+  <img src={variantList} className="img-padding" alt="Sample of list loading" width="720" />
+
+  ### Table
+  For any table like structure that needs to load, you can use this variant.
+  <img src={variantTables} className="img-padding" alt="Sample of tables loading" width="800" />
+
+
+
+## Behaviours
+
+  ### Gradient motion
+  Within each loading bar contains a masked animated gradient that moves back and forth in a loop.

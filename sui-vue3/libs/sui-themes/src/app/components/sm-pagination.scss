@@ -1,0 +1,97 @@
+/**
+ * Pagination styles
+ * These are the actual CSS properties for the Pagination component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+
+body {
+  .sm-pagination {
+    .sm-pagination__prev {
+      margin: var(--sm-c-pagination-prev-button-margin);
+
+      &--expanded {
+        margin: var(--sm-c-pagination-prev-button-margin-expanded);
+      }
+    }
+
+    .sm-pagination__next {
+      margin: var(--sm-c-pagination-next-button-margin);
+
+      &--expanded {
+        margin: var(--sm-c-pagination-next-button-margin-expanded);
+      }
+    }
+
+    .sm-pagination__next.sm-button {
+      .sm-button__content {
+        color: var(--sm-c-pagination-next-button-color-text);
+      }
+
+      &:hover,
+      &:focus {
+        .sm-button__content {
+          color: var(--sm-c-pagination-next-button-color-text);
+        }
+      }
+    }
+
+    .sm-pagination__prev.sm-button {
+      .sm-button__content {
+        color: var(--sm-c-pagination-prev-button-color-text);
+      }
+
+      &:hover,
+      &:focus {
+        .sm-button__content {
+          color: var(--sm-c-pagination-prev-button-color-text);
+        }
+      }
+    }
+
+    .sm-pagination__go-to {
+      margin: var(--sm-c-pagination-go-to-margin);
+
+      &-label {
+        margin: var(--sm-c-pagination-go-to-label-margin);
+      }
+    }
+
+    .sm-pagination--expanded {
+      &-page-button.sm-button {
+        .sm-button__content {
+          border-radius: var(--sm-c-pagination-button-border-radius-expanded);
+          height: var(--sm-c-pagination-button-height-expanded);
+          min-width: var(--sm-c-pagination-button-min-width-expanded);
+          padding: var(--sm-c-pagination-button-padding-expanded);
+        }
+
+        &.sm-button--clicked {
+          .sm-button__content {
+            background: var(--sm-c-pagination-button-color-background-expanded-clicked);
+          }
+        }
+
+        &.sm-button--type-text.sm-button {
+          .sm-button__content {
+            color: var(--sm-c-pagination-button-color-expanded);
+          }
+        }
+      }
+    }
+
+    .sm-pagination--expanded-page-button + .sm-pagination--expanded-page-button {
+      margin: var(--sm-c-pagination-button-margin-expanded-gap);
+    }
+
+    .sm-pagination--current.sm-button {
+      .sm-button__content {
+        background: var(--sm-c-pagination-button-color-background-expanded-current);
+      }
+    }
+
+    .sm-pagination--input {
+      margin: var(--sm-c-pagination-input-margin);
+    }
+  }
+}

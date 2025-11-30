@@ -1,0 +1,166 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/sm-checkbox-anatomy.png'
+import placement from './images/sm-checkbox-placement.png'
+import orientation from './images/sm-checkbox-orientation.png'
+import overflowContent from './images/sm-checkbox-overflow-content.png'
+import typeCheckBox1 from './images/sm-checkbox-types-checkboxes-1.png'
+import typeCheckBox2 from './images/sm-checkbox-types-checkboxes-2.png'
+import typeCheckBox3 from './images/sm-checkbox-types-checkboxes-3.png'
+import typeGroupedCheckbox from './images/sm-checkbox-types-grouped-checkboxes.png'
+import typeButtonGroup from './images/sm-checkbox-types-checkbox-button-group.png'
+import specsCheckbox from './images/sm-checkbox-specs-checkbox.png'
+import specsGroupedCheckbox from './images/sm-checkbox-specs-grouped-checkbox.png'
+import specsButtonGroup from './images/sm-checkbox-specs-checkbox-button-group.png'
+import behaviorUnselected from './images/sm-checkbox-behavior-states-checkboxes-unselected.png'
+import behaviorSelected from './images/sm-checkbox-behavior-states-checkboxes-selected.png'
+import behaviorUnselectedLabel from './images/sm-checkbox-behavior-states-checkboxes-unselectedlabel.png'
+import behaviorSelectedLabel from './images/sm-checkbox-behavior-states-checkboxes-selectedlabel.png'
+import behaviorButtonGroup from './images/sm-checkbox-behavior-states-checkbox-button-group.png'
+import behaviorGroupedCheckbox from './images/sm-checkbox-behavior-states-grouped-checkboxes.png'
+import internationalisation from './images/sm-checkbox-internationalisation.png'
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+  `}
+</style>
+
+<Meta title="Components/Form/Checkbox/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Checkbox</h1>
+  <p>
+    Checkboxes enables users to execute actions that require choices, such as selecting options or turning settings on or off.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Types](#types)
+- [Specs](#specs)
+- [Behaviour](#behaviour)
+- [Internationalisation](#internationalisation)
+
+
+
+## Usage
+
+A checkbox is an input control that enables a user to choose one or more items from a list. Checkboxes can also turn an option on or off.
+
+### When to use
+
+  - If the user may select multiple options, use checkboxes. Use radio buttons if the user can only choose one option.
+  - Display a list with sub-selections.
+  - In a desktop environment, toggle an item on or off
+  - When used for ON/OFF or ENABLED/DISABLED situations that happen, require review or saving. An action such as SAVE, APPLY, NEXT, etc, is required before displaying results.
+  - When you have an indeterminate state where you may pick all, none, or some actions, use checkboxes.
+
+<div className="sui-storybook-highlight">If you are designing for mobile, do not use a single checkbox in any scenario for ON/OFF situations.</div>
+
+### Where to use
+
+  - **Forms -** Can be utilized in full-page forms, modals, or side panels.
+  - **Filters -** Filters data on a page, in a menu, or within a component.
+  - **Tables -** Checkboxes may be placed in the data table for bulk editing, selecting, etc.
+  - **T&Cs -** Users can indicate whether you agree to the conditions by checking or unchecking the checkbox entry.
+  - **Lists and sub-selections -** Checkboxes can have parent-child relationships with one another. When the main checkbox is selected, all of the sub-checkboxes are selected. When a main checkbox is cleared, all sub-checkboxes are cleared. If some, but not all of the sub-checkboxes are selected, the main checkbox becomes indeterminate/mixed.
+
+
+## Formatting
+
+  ### Anatomy
+
+  **1: Checkbox -** The selection control.
+
+  **2: Label -** Content associated with the checkbox.
+
+  <img src={anatomy} className="img-padding" alt="Checkbox anatomy" width="640"/>
+
+  ### Placement
+  The checkbox component is frequently used in forms. It may be added to a full page, a modal, card, dialog or a side panel. A checkbox can also be used to accept terms and conditions, in tables or to filter data.
+
+  For more information on spacing in forms, etc., see our [spacing guidance](https://sui-dev-v3-sui-docs.dev.siteminderlabs.com/?path=/story/foundations-spacing-overview--page).
+
+  <img src={placement} className="img-padding" alt="Checkbox placement"/>
+
+  ### Orientation
+  Checkboxes can be arranged in horizontal or vertical orientations so that users may choose from a range of related items.
+  <img src={orientation} className="img-padding" alt="Checkbox orientation"/>
+
+  ### Overflow content
+  - Allow text to wrap beneath the checkbox to keep the control and label top aligned.
+  - Do not vertically center align text with the checkbox.
+  - Consider rewording the label if space is limited.
+
+<img src={overflowContent} className="img-padding" alt="Checkbox overflow content"/>
+
+## Types
+
+  ### Checkboxes
+  Checkboxes enable the user to choose one or more items from a list. Checkboxes can be used to toggle between ON/OFF options.
+  <img src={typeCheckBox1} className="img-padding" alt="Selected, unselected, mixed/indeterminate checkboxes" width="540"/>
+  <span className="sui-storybook-image-caption pb-32">Selected, unselected, mixed/indeterminate checkboxes</span>
+
+  <img src={typeCheckBox2} className="img-padding" alt="Checkboxes used to select multiple items in a list"/>
+  <span className="sui-storybook-image-caption pb-32">Selecting multiple items in a list</span>
+
+  <img src={typeCheckBox3} className="img-padding" alt="Checkboxes used to turn an item on or off"/>
+  <span className="sui-storybook-image-caption pb-32">Turning an item on or off</span>
+
+  ### Grouped checkboxes
+  Checkboxes can have parent-child relationships with one another.
+  <img src={typeGroupedCheckbox} className="img-padding" alt="Checkboxes with parent-child relationships"/>
+
+  ### Checkbox button group
+  Checkbox button group displays several selected options at the same time. They combine sets of buttons into toolbars or split buttons. These are an alternative to checkboxes. The full benefit of the component is shown when all choices are displayed in the viewport at the same time.
+  #### When to use:
+  Use it when there are 4 - 7 selections available. For larger amounts of options,  use other components like checkbox, multi-select, or dropdown.
+  <img src={typeButtonGroup} className="img-padding" alt="Checkbox button group in forms"/>
+
+## Specs
+  ### Checkbox
+  <img src={specsCheckbox} className="img-padding" alt="Checkbox specs" width="640"/>
+
+  ### Grouped checkbox
+  <img src={specsGroupedCheckbox} className="img-padding" alt="Grouped checkbox specs" width="640"/>
+
+  ### Checkbox button group
+  <img src={specsButtonGroup} className="img-padding" alt="Button group checkbox specs" width="640"/>
+
+## Behaviour
+### States
+
+#### Checkboxes
+  <span className="sui-storybook-image-caption">Unselected</span>
+  <img src={behaviorUnselected} className="img-padding" alt="Unselected checkbox states" width="720"/>
+
+  <span className="sui-storybook-image-caption">Selected</span>
+  <img src={behaviorSelected} className="img-padding" alt="Selected checkbox states" width="720"/>
+
+  <span className="sui-storybook-image-caption">Unselected with label</span>
+  <img src={behaviorUnselectedLabel} className="img-padding" alt="Unselected checkbox with label states"/>
+
+  <span className="sui-storybook-image-caption">Selected with label</span>
+  <img src={behaviorSelectedLabel} className="img-padding" alt="Selected checkbox with label states"/>
+
+#### Grouped checkboxes
+  - When the main checkbox is selected, all of the sub-checkboxes are selected.
+  - When a main checkbox is cleared, all sub-checkboxes are cleared.
+  - If some, but not all of the sub-checkboxes are selected, the main checkbox becomes indeterminate/mixed.
+
+<img src={behaviorGroupedCheckbox} className="img-padding" alt="Grouped checkbox states"/>
+
+#### Checkbox button group
+  <img src={behaviorButtonGroup} className="img-padding" alt="Checkbox button group states" width="640"/>
+
+
+## Internationalisation
+The arrangement of the checkbox is mirrored in RTL (right-to-left) languages. The checkmark is positioned to the right of the text.
+<img src={internationalisation} className="img-padding" alt="Checkbox internationalisation" width="640"/>

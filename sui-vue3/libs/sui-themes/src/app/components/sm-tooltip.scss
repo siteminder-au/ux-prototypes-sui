@@ -1,0 +1,78 @@
+/**
+ * Tooltip styles
+ * These are the actual CSS properties for the tooltip component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+ $sm-tooltip--text-color: (
+  info: var(--sm-c-tooltip-color-text-info),
+  success: var(--sm-c-tooltip-color-text-success),
+  alert: var(--sm-c-tooltip-color-text-alert),
+  warning: var(--sm-c-tooltip-color-text-warning),
+);
+$sm-tooltip--background-color: (
+  info: var(--sm-c-tooltip-color-background-info),
+  success: var(--sm-c-tooltip-color-background-success),
+  alert: var(--sm-c-tooltip-color-background-alert),
+  warning: var(--sm-c-tooltip-color-background-warning),
+);
+$sm-tooltip--border-color: (
+  info: var(--sm-c-tooltip-color-border-info),
+  success: var(--sm-c-tooltip-color-border-success),
+  alert: var(--sm-c-tooltip-color-border-alert),
+  warning: var(--sm-c-tooltip-color-border-warning),
+);
+$sm-tooltip--box-shadow: (
+  info: var(--sm-c-tooltip-box-shadow-info),
+  success: var(--sm-c-tooltip-box-shadow-success),
+  alert: var(--sm-c-tooltip-box-shadow-alert),
+  warning: var(--sm-c-tooltip-box-shadow-warning),
+);
+
+body {
+  .sm-tooltip {
+    & .sm-tooltip__content {
+      padding: var(--sm-c-tooltip-padding);
+      border-radius: var(--sm-c-tooltip-border-radius);
+
+      /* Dark theme (default) */
+      background: var(--sm-c-tooltip-color-background-dark);
+      color: var(--sm-c-tooltip-color-text-dark);
+      border-color: var(--sm-c-tooltip-color-border-dark);
+      box-shadow: var(--sm-c-tooltip-box-shadow-dark);
+
+      .sm-tooltip__arrow::after {
+        background: var(--sm-c-tooltip-color-background-dark);
+        border-color: var(--sm-c-tooltip-color-border-dark);
+      }
+    }
+
+    /* Types */
+    @each $type in 'info', 'success', 'alert', 'warning' {
+      & .sm-tooltip__content--#{$type} {
+        color: map-get($sm-tooltip--text-color, $type);
+        background: map-get($sm-tooltip--background-color, $type);
+        border-color: map-get($sm-tooltip--border-color, $type);
+        box-shadow: map-get($sm-tooltip--box-shadow, $type);
+
+        .sm-tooltip__arrow::after {
+          background: map-get($sm-tooltip--background-color, $type);
+          border-color: map-get($sm-tooltip--border-color, $type);
+        }
+      }
+    }
+
+    /* Light theme */
+    &.sm-tooltip--theme-light .sm-tooltip__content {
+      background: var(--sm-c-tooltip-color-background-light);
+      color: var(--sm-c-tooltip-color-text-light);
+      border-color: var(--sm-c-tooltip-color-border-light);
+      box-shadow: var(--sm-c-tooltip-box-shadow-light);
+
+      .sm-tooltip__arrow::after {
+        background: var(--sm-c-tooltip-color-background-light);
+        border-color: var(--sm-c-tooltip-color-border-light);
+      }
+    }
+  }
+}

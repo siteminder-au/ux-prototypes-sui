@@ -1,0 +1,43 @@
+/**
+ * User list styles
+ * These are the actual CSS properties for the user list component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+body {
+  .sm-user-list {
+    .sm-user-list-item {
+      &::before {
+        background: var(--sm-c-user-list-indicator-color-background);
+        border-color: var(--sm-c-user-list-indicator-color-border);
+        border-radius: var(--sm-c-user-list-indicator-border-radius);
+        width: var(--sm-c-user-list-indicator-width);
+        height: var(--sm-c-user-list-indicator-height);
+        top: var(--sm-c-user-list-indicator-top);
+      }
+
+      /* Selected state */
+      &--clicked {
+        &::before {
+          background: var(--sm-c-user-list-indicator-color-background-selected);
+          border-color: var(--sm-c-user-list-indicator-color-border-selected);
+        }
+      }
+
+      &--type-warning {
+        &::before {
+          background: var(--sm-c-user-list-indicator-color-background-warning);
+          border-color: var(--sm-c-user-list-indicator-color-border-warning);
+        }
+      }
+
+      &__date {
+        color: var(--sm-c-user-list-date-color-text);
+      }
+
+      &__content {
+        padding-left: var(--sm-c-user-list-content-padding-left);
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/sm-popover-formatting-anatomy.png'
+import placement from './images/sm-popover-formatting-placement.png'
+import icon from './images/sm-popover-usage-icon.png'
+import when from './images/sm-popover-usage-when.png'
+import dynamic from './images/sm-popover-variants-dynamic.png'
+import standard from './images/sm-popover-variants-standard.png'
+import utility from './images/sm-popover-variants-utility.png'
+
+
+<Meta title="Components/Popover/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Popover</h1>
+  <p>
+    Popovers convey rich and interactive content to users in a non-disruptive format.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Variants](#variants)
+- [Behaviours](#behaviours)
+- [References](#references)
+
+
+
+## Usage
+
+Popovers are used to convey contextual information to the user. They very flexible and can contain rich content such as headings and actions. Unlike the tooltip component, users can interact with a popover.
+
+Popovers can be used in place of tooltips if you would like to provide lengthier context to the user or have them interact with an action. They are also used in place of dialogs if you don’t want to completely disrupt the users attention from the other details on the page.
+
+### How to activate popovers
+
+Popovers can be activated on click, on hover or on focus. Please consider how you want this pattern to function in your designs.
+
+### When to use
+Use popovers when you want to convey rich and/or interactive content to the user in a non-disruptive format.
+<img src={when} alt="When to use popovers" width="812" />
+
+When using a popover with a trigger element that is an icon (see below) please ensure that the icon used is the <strong>utility-information-alt</strong> icon in the colour token <strong>$grey-neu-dark</strong> (#717171).
+
+<img src={icon} alt="Which trigger icon to use" width="1050" />
+
+
+## Formatting
+
+### Anatomy
+**1: Popover arrow** - The arrow position will be located in the center of the axis – so horizontally or vertically centered to the popover.
+
+**2: Trigger element** - This is what a user must trigger or focus on to invoke the popover. Space between the trigger and popover is 3px.
+
+**3: Content** - The content within a popover generally consists of an icon, header and message. If necessary you can also place an action, such as a text button if you’d like the user to interact with the popover. It is recommended you only use text links or text buttons as an action.
+
+**4: Close icon (WIP, Not live yet)** - Although this is optional, it is recommended you always set the close button icon to <strong>true</strong> in the top right corner of the popover using the <strong>showCloseBtn</strong> property.
+
+<img src={anatomy} alt="Anatomy" width="417" />
+
+### Placement
+The popover will appear centrally next to the triggering element.
+<img src={placement} alt="Placement" width="768" />
+
+### Sizing
+There is no default size for popovers. If you don’t set a width for it, it will not wrap unless it hits either side of the viewport. It is very important that you indicate what the ideal width is in your designs and communicate this clearly to engineering.
+
+The height of the popover will be determined by what is within the content area and adjust accordingly. Please try to keep your content short and succinct.
+
+
+## Variants
+
+### Standard
+The standard popover has no top-border. Use the standard popover if you want to convey context and an action to the user without drawing too much attention away from other details on the page.
+<img src={standard} alt="Standard popover" width="344" />
+
+### Utility
+Use utility popovers if you need to draw the users focus away from other details on the page to provide additional context to the user, without completely disrupting their experience by using something like a dialog. Our most used utility popovers is the info popover (in our primary blue).
+<img src={utility} alt="Utility popover" width="1072" />
+
+### Dynamic
+The popover component contain rich, dynamic content. It is highly flexible and because of that, you must consider carefully what you design and build into a dynamic popover. It is essential that you using patterns consistently across our products. Below you can see an example of how a dynamic popover is used within our advanced filter pattern.
+<img src={dynamic} alt="Dynamic popover" width="364" />
+
+
+## Behaviours
+
+### Activating a popover
+Activate a popover using a trigger action. This action can be triggered on hover, on click or on focus. For keyboard users a popover should always activate on focus. For touch screen users it should always activate on touch or focus. For desktop users it should activate on click and focus.
+
+### Closing a popover
+Popovers can be closed by clicking on the close button or clicking outside of a popover.
+
+
+## References
+
+https://uxdesign.cc/pop-up-popover-or-popper-a-quick-look-into-ui-terms-cb4114fca2a
+
+https://cultureamp.design/components/popover/

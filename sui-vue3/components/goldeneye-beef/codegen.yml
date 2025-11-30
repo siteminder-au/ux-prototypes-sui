@@ -1,0 +1,32 @@
+overwrite: true
+schema: "./src/app/graphql/schema/*.graphql"
+documents: null
+generates:
+  src/app/graphql/schema/index.ts:
+    plugins:
+      - add:
+          content: |
+            /* eslint-disable */
+            export type DeepPartial<T> = {
+              [P in keyof T]?: T[P] extends Array<infer U>
+                ? Array<DeepPartial<U>>
+                : T[P] extends ReadonlyArray<infer U>
+                ? ReadonlyArray<DeepPartial<U>>
+                : DeepPartial<T[P]>
+            }
+      - "typescript"
+      - "typescript-resolvers"
+
+config:
+  typesPrefix: 'Gql'
+  makeResolverTypeCallable: true
+  contextType: ./context#Context
+  avoidOptionals: true
+  defaultMapper: DeepPartial<{T}>
+  # Use DeepPartial<T> as default response type because not all nested properties
+  # are returned in a given resolver, some properties could be resolved in the
+  # child resolvers.
+  # @see https://graphql-code-generator.com/docs/plugins/typescript-resolvers#usage-example-wrap-default-types-with-partial
+  maybeValue: T | null | undefined
+  scalars:
+    ID: string

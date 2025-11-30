@@ -1,0 +1,70 @@
+import { Meta } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+
+<Meta title="Guides/Page layers and z-index" />
+
+<SuiStorybookPageLabel>
+  Guides
+</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Page layers and z-index</h1>
+  <p>To ensure components are appearing in the correct page order we use z-index.</p>
+</SuiStorybookTitle>
+
+
+**Loaders and cards**
+```css dark
+$sm-loading-bar-z-index: 1;
+$sm-loading-dashboard-z-index: 1;
+$sm-card-z-index: 1;
+```
+
+**Tables**
+```css dark
+$sm-table-sticky-column: 101;
+$sm-table-sticky-row: 100;
+$sm-table-gradient: 200;
+```
+
+**Vertical navigation**
+```css dark
+$sm-aside-z-index: 1000;
+```
+
+**Horizontal nav items, dropdown, colour picker and date picker**
+```css dark
+$sm-dropdown-target-z-index: 5000;
+$sm-dropdown-content-z-index: 5000;
+$sm-horizontal-nav-z-index: 5000;
+$sm-multi-select-z-index: 5000;
+$sm-select-z-index: 5000;
+$sm-property-menu-z-index: 5000;
+$sm-user-menu-open-z-index: 5000;
+$sm-color-picker-z-index: 5001;
+$sm-date-picker-z-index: 5001;
+```
+
+**Wizard**
+```css dark
+$sm-wizard-wrapper-z-index: 9000;
+$sm-wizard-z-index: 9000;
+```
+
+**Drawer, dialog, tooltip, popover and skiplink**
+```css dark
+$sm-dialog-z-index: 10000;
+$sm-drawer-z-index: 10000;
+$sm-popover-z-index: 10000;
+$sm-tooltip-z-index: 10000;
+```
+
+**App header and toast**
+```css dark
+$sm-toast-z-index: 12000;
+$sm-nav-z-index: 12001;
+```
+
+**Intercom (external)**
+
+Intercom is set to: `2147483000` by default.

@@ -1,0 +1,46 @@
+{
+  "name": "goldeneye-beef",
+  "version": "1.0.0",
+  "description": "SUI sample project - CampMinder (Vue3) beef",
+  "main": "dist/main.js",
+  "author": "",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "audit": "npm audit --omit=dev",
+    "clean": "../../node_modules/@siteminder/overlord/shared/project/clean.sh",
+    "compile": "../../node_modules/@siteminder/overlord/shared/project/compile-component.sh -p tsconfig.build.json",
+    "dev:component": "npx nodemon -e ts --watch src/app/ --exec 'npm run compile && node dist/main.js'",
+    "dev:playpen": "npm run harness -- test/playpen/start.ts",
+    "graphql-codegen": "npx graphql-codegen",
+    "harness": "npx ts-node -r tsconfig-paths/register",
+    "test": "npm run jest || exit 2",
+    "test:one": "npx jest --watch",
+    "jest": "npm run jest:unit && npm run jest:int",
+    "jest:int": "echo '+++ :jest: jest:int' && LOG_LEVEL=fatal npx jest --passWithNoTests --runInBand '.*\\.int\\.spec\\.ts'",
+    "jest:unit": "echo '+++ :jest: jest:unit' && LOG_LEVEL=fatal npx jest --passWithNoTests '^((?!\\.int\\.spec\\.ts).)*$'",
+    "lint": "npx eslint --ignore-path ./.eslintignore --ext .ts .",
+    "package": "npm run compile && ../../node_modules/@siteminder/overlord/shared/project/package.sh"
+  },
+  "dependencies": {
+    "@siteminder/beef-bootstrap": "^14.1.0",
+    "@siteminder/config": "^2.3.1",
+    "@siteminder/logging": "^3.4.1",
+    "@siteminder/metrics": "^5.0.1"
+  },
+  "devDependencies": {
+    "@graphql-codegen/add": "^5.0.3",
+    "@graphql-codegen/cli": "^5.0.6",
+    "@graphql-codegen/typescript": "^4.1.6",
+    "@graphql-codegen/typescript-resolvers": "^4.5.1",
+    "@siteminder/base-typescript": "^0.7.1",
+    "@siteminder/eslint-config": "^5.3.0",
+    "@siteminder/testing": "^5.2.1",
+    "@types/chance": "1.1.6",
+    "@types/express": "^5.0.2",
+    "@types/lodash": "^4.17.17",
+    "@types/uuid": "^10.0.0",
+    "chance": "1.1.13",
+    "ts-node": "github:TypeStrong/ts-node#main"
+  }
+}

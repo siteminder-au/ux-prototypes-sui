@@ -1,0 +1,240 @@
+/**
+ * Checkbox styles
+ * These are the actual CSS properties for the checkbox & checkbox button component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+
+ body {
+  .sm-checkbox {
+    &.sm-checkbox label {
+      color: var(--sm-c-checkbox-label-color-text);
+    }
+
+    & .sm-checkbox__label {
+      margin-bottom: var(--sm-c-checkbox-label-margin-bottom);
+    }
+
+    & .sm-checkbox__required-asterisk {
+      color: var(--sm-c-checkbox-required-asterisk-color-text);
+    }
+
+    & .sm-checkbox__control {
+      background: var(--sm-c-checkbox-control-color-background);
+      border-color: var(--sm-c-checkbox-control-color-border);
+      border-width: var(--sm-c-checkbox-control-border-width);
+      padding: var(--sm-c-checkbox-control-padding);
+
+      span::before,
+      span::after {
+        background: var(--sm-c-checkbox-control-color-foreground);
+      }
+    }
+
+    /** Active state */
+    &.sm-checkbox--checked .sm-checkbox__control {
+      background: var(--sm-c-checkbox-control-color-background-checked);
+      border-color: var(--sm-c-checkbox-control-color-border-checked);
+
+      span::before,
+      span::after {
+        background: var(--sm-c-checkbox-control-color-foreground-checked);
+      }
+    }
+
+    /** Indeterminate state */
+    &.sm-checkbox--indeterminate .sm-checkbox__control {
+      background: var(--sm-c-checkbox-control-color-background-indeterminate);
+      border-color: var(--sm-c-checkbox-control-color-border-indeterminate);
+
+      span::before {
+        background: var(--sm-c-checkbox-control-color-foreground-indeterminate);
+      }
+    }
+
+    /** Hovered state */
+    & .sm-checkbox__control:hover {
+      background: var(--sm-c-checkbox-control-color-background-hover);
+      border-color: var(--sm-c-checkbox-control-color-border-hover);
+
+      span::before,
+      span::after {
+        background: var(--sm-c-checkbox-control-color-foreground-hover);
+      }
+    }
+
+    /** Checked & hover state */
+    &.sm-checkbox--checked .sm-checkbox__control:hover {
+      background: var(--sm-c-checkbox-control-color-background-checked-hover);
+      border-color: var(--sm-c-checkbox-control-color-border-checked-hover);
+
+      span::before,
+      span::after {
+        background: var(--sm-c-checkbox-control-color-foreground-checked-hover);
+      }
+    }
+
+    /** Indeterminate & hover state */
+    &.sm-checkbox--indeterminate .sm-checkbox__control:hover {
+      background: var(--sm-c-checkbox-control-color-background-indeterminate-hover);
+      border-color: var(--sm-c-checkbox-control-color-border-indeterminate-hover);
+
+      span::before {
+        background: var(--sm-c-checkbox-control-color-foreground-indeterminate-hover);
+      }
+    }
+
+    /** Focused state */
+    .sm-checkbox__field:focus ~ .sm-checkbox__control {
+      outline-color: var(--sm-c-checkbox-control-color-outline-focus);
+      outline-width: var(--sm-c-checkbox-control-outline-width-focus);
+    }
+
+    .sm-checkbox__field:focus:not(:focus-visible) ~ .sm-checkbox__control {
+      outline: none;
+    }
+
+    .sm-checkbox__field:focus-visible ~ .sm-checkbox__control {
+      outline-color: var(--sm-c-checkbox-control-color-outline-focus);
+      outline-width: var(--sm-c-checkbox-control-outline-width-focus);
+    }
+
+    /** Disabled state */
+    &.sm-checkbox--disabled .sm-checkbox__label {
+      color: var(--sm-c-checkbox-label-color-text-disabled);
+    }
+
+    &.sm-checkbox--disabled .sm-checkbox__control {
+      background: var(--sm-c-checkbox-control-color-background-disabled);
+      border-color: var(--sm-c-checkbox-control-color-border-disabled);
+      border-width: var(--sm-c-checkbox-control-border-width-disabled);
+      padding: var(--sm-c-checkbox-control-padding-disabled);
+
+      span::before,
+      span::after {
+        background: var(--sm-c-checkbox-control-color-foreground-disabled);
+      }
+    }
+
+    /** Disabled & checked state */
+    &.sm-checkbox--disabled.sm-checkbox--indeterminate .sm-checkbox__control,
+    &.sm-checkbox--disabled.sm-checkbox--checked .sm-checkbox__control {
+      background: var(--sm-c-checkbox-control-color-background-checked-disabled);
+      border-color: var(--sm-c-checkbox-control-color-border-checked-disabled);
+
+      span::before,
+      span::after {
+        background: var(--sm-c-checkbox-control-color-foreground-checked-disabled);
+      }
+    }
+  }
+
+  .sm-checkbox-group {
+    .sm-checkbox-button {
+      .sm-checkbox__label::after {
+        background: var(--sm-c-checkbox-button-divider-color-background);
+        border-bottom-color: var(--sm-c-checkbox-button-label-color-border);
+        border-top-color: var(--sm-c-checkbox-button-label-color-border);
+      }
+
+      .sm-checkbox--disabled .sm-checkbox__label::after {
+        border-color: var(--sm-c-checkbox-button-label-color-border-disabled);
+      }
+    }
+  }
+
+  .sm-checkbox-button {
+    .sm-checkbox {
+      &__label {
+        margin: -1px;
+        border-color: var(--sm-c-checkbox-button-label-color-border);
+        border-radius: var(--sm-c-checkbox-button-label-border-radius);
+        color: var(--sm-c-checkbox-button-label-color-text);
+        background: var(--sm-c-checkbox-button-label-color-background);
+      }
+
+      /**
+       * Checked state
+       */
+      &--checked .sm-checkbox__label {
+        background: var(--sm-c-checkbox-button-label-color-background-checked);
+        border-color: var(--sm-c-checkbox-button-label-color-border-checked);
+        color: var(--sm-c-checkbox-button-label-color-text-checked);
+      }
+
+      /**
+       * Hover state
+       */
+      &__label:hover {
+        color: var(--sm-c-checkbox-button-label-color-text-hover);
+        background: var(--sm-c-checkbox-button-label-color-background-hover);
+      }
+
+      &--checked .sm-checkbox__label:hover {
+        color: var(--sm-c-checkbox-button-label-color-text-checked-hover);
+        background: var(--sm-c-checkbox-button-label-color-background-checked-hover);
+      }
+
+      /**
+       * Focused state
+       */
+      &__field:focus ~ .sm-checkbox__label {
+        box-shadow: var(--sm-c-checkbox-button-label-box-shadow-focus);
+        color: var(--sm-c-checkbox-button-label-color-text-focus);
+        background: var(--sm-c-checkbox-button-label-color-background-focus);
+      }
+
+      &--checked .sm-checkbox__field:focus ~ .sm-checkbox__label {
+        color: var(--sm-c-checkbox-button-label-color-text-checked-focus);
+        background: var(--sm-c-checkbox-button-label-color-background-checked-focus);
+      }
+
+      &__field:focus:not(:focus-visible) ~ .sm-checkbox__label {
+        box-shadow: none;
+      }
+
+      &__field:focus-visible ~ .sm-checkbox__label {
+        box-shadow: var(--sm-c-checkbox-button-label-box-shadow-focus);
+        color: var(--sm-c-checkbox-button-label-color-text-focus);
+        background: var(--sm-c-checkbox-button-label-color-background-focus);
+      }
+
+      &--checked .sm-checkbox__field:focus-visible ~ .sm-checkbox__label {
+        color: var(--sm-c-checkbox-button-label-color-text-checked-focus);
+        background: var(--sm-c-checkbox-button-label-color-background-checked-focus);
+      }
+
+      /**
+       * Clicked state
+       */
+      &--clicked .sm-checkbox__label {
+        color: var(--sm-c-checkbox-button-label-color-text-clicked);
+        background: var(--sm-c-checkbox-button-label-color-background-clicked);
+      }
+
+      &--clicked.sm-checkbox--checked .sm-checkbox__label {
+        color: var(--sm-c-checkbox-button-label-color-text-checked-clicked);
+        background: var(--sm-c-checkbox-button-label-color-background-checked-clicked);
+      }
+
+      /**
+       * Disabled state
+       */
+      &--disabled .sm-checkbox__label {
+        border-color: var(--sm-c-checkbox-button-label-color-border-disabled) !important;
+        color: var(--sm-c-checkbox-button-label-color-text-disabled) !important;
+        background: var(--sm-c-checkbox-button-label-color-background-disabled) !important;
+
+        .sm-icon {
+          color: var(--sm-c-checkbox-button-label-color-icon-disabled);
+        }
+      }
+
+      &--disabled.sm-checkbox--checked .sm-checkbox__label {
+        background: var(--sm-c-checkbox-button-label-color-background-checked-disabled) !important;
+        color: var(--sm-c-checkbox-button-label-color-text-checked-disabled) !important;
+        box-shadow: inset 0 0 0 2px var(--sm-c-checkbox-button-label-color-border-checked-disabled);
+      }
+    }
+  }
+}

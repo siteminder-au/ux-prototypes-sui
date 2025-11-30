@@ -1,0 +1,70 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import selectingCharts from './images/selecting-charts-sample-recommendation.png'
+
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+  `}
+</style>
+
+
+<Meta title="Design patterns/Data visualisation/Selecting charts" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Data visualisation</h1>
+  <p>Data visualisation presents intricate and complex data using visuals and graphic forms. It aids in helping uncover insights, convey information effectively, and helps decision-making processes.</p>
+</SuiStorybookTitle>
+
+- [Selecting charts](#selecting-charts)
+- [Accessibility](#accessibility)
+
+## Selecting charts
+Selecting the right way to show your data can make it more powerful and useful. Here are some important things to think about when picking a way to visualize your data:
+
+- **Purpose -** What's the main thing you want to say with your visualisation?
+- **Data type -** What kind of data are you dealing with (like categories, numbers, or time data)? This affects which visualisations will work best.
+- **Data amount -** How much data do you have? If you have a lot, some types of visualisations might not work well.
+- **Audience -** Who will see your visualisation? Different people may have different preferences or levels of understanding.
+
+### Sample recommendation for selecting charts to use:
+<img src={selectingCharts} className="img-padding" alt="Decision tree for selecting charts."/>
+<span className="sui-storybook-image-caption">View decision tree <a href="https://www.figma.com/file/Au1waCRAR4SpFvIgEMASgf/sui-documentation?type=design&node-id=3196%3A4950&mode=design&t=zbgncGJAXcGpualR-1">here</a></span>
+
+  ### Other useful resources
+
+  [Chart chooser](https://extremepresentation.com/wp-content/uploads/choosing-a-good-chart-09-1.pdf)
+
+  [From data to viz](https://www.data-to-viz.com/)
+
+  [Choose the right data visualisation](https://chartio.com/blog/how-to-choose-data-visualization-ebook/)
+
+  [Choosing a chart type is harder than you think](https://www.practicalreporting.com/blog/2023/5/21/choosing-a-chart-type-is-harder-than-you-think)
+
+
+## Accessibility
+
+  ### Basic guidelines for enhancing data visualisation accessibility
+
+  **1. Descriptions and Alt Text**<br />Incorporate descriptive text or alt text to convey the content of your visuals to those who may rely on text-based descriptions.
+
+  **2. Contrast and separation/spacing**<br /> Pay attention to colour contrast and choose colours suitable for individuals with colour vision issues. Make sure that chart colours meet WCAG AA 3:1 contrast ratios when used on SUI backgrounds. <br /><br />Borders or space around elements can often be used to achieve better separation and increased contrast. Patterns and dash styles can also be used to achieve greater separation between elements.  Do not overuse these techniques as they  can be visually distracting and detrimental to the accessibility of the visualisation. Subtle patterns are generally preferred.
+
+  **3. Make sure that the colours used can be easily told apart by individuals with different types of colour blindness.**<br />  Data labels, symbols, notes, and tooltips are ways to give extra info in visuals without only using colour. You can also use accessible data tables. It's good to use colour along with these methods to make visuals clearer and often more accessible.
+
+  **4. Ensure text is readable.**<br />  Keep in mind that line spacing and word spacing can impact how easy it is to read text, so think about these factors.
+
+  **5. Keyboard Accessibility**<br />Guarantee that your visualisations can be effectively used and navigated using a keyboard.
+
+  **6. Choose simple and common visualisations rather than complex and unusual ones.**<br />It's best to use simple and familiar charts/graphs when you can. <br /><br />Complex visuals may look interesting but can be confusing for users and negate the benefits of using visuals to understand data. Complex visuals can be especially hard for users with cognitive issues, provide a text description with it.If data is too complicated, use a different chart type or divide a big chart into several smaller ones.
+
+  **7. Responsive to different screen sizes and zoom levels.**<br />Keep in mind that people with low vision often enlarge text, apply custom styles, or use browser zoom while browsing the web. This means that content should be adjusted to prevent the need for horizontal scrolling, cutting off, or elements overlapping.
+
+<div className="sui-storybook-highlight sui-storybook-highlight--alert">Highcharts has an accessibility module that adds several layers of functionality for making your charts compatible with assistive technologies, etc. View more about their accessibility module <a href="https://www.highcharts.com/docs/accessibility/accessibility-module">here</a>.</div>

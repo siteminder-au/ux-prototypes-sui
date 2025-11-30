@@ -1,0 +1,16 @@
+{
+  "page-title": "Campsite settings",
+  "select-white-label-radio-group-label": "Select white label",
+  "select-language-radio-group-label": "Select language",
+  "content-form-group-label": "Content",
+  "theme-form-group-label": "Theme",
+  "english-language-radio-option-label": "English",
+  "german-language-radio-option-label": "German",
+  "thai-language-radio-option-label": "Thai",
+  "red-theme-radio-option-label": "Red",
+  "green-theme-radio-option-label": "Green",
+  "blue-theme-radio-option-label": "Blue (SiteMinder colour)",
+  "slate-theme-radio-option-label": "Slate",
+  "select-product-theme-radio-group-label": "Select product theme (sui-themes)",
+  "select-product-sui-core-theme-radio-group-label": "Select product theme (sui-core)"
+}

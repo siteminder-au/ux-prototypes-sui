@@ -1,0 +1,14 @@
+/**
+ * Divider styles
+ * These are the actual CSS properties for the divider component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+ body {
+  .sm-divider {
+    &.sm-divider {
+      height: var(--sm-c-divider-height);
+      background-color: var(--sm-c-divider-color-background);
+    }
+  }
+}

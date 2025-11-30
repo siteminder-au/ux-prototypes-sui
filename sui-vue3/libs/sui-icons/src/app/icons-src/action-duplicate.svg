@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>sui-final/icons/24px/actions/action-duplicate</title>
+    <desc>Created with Sketch.</desc>
+    <g id="sui-final/icons/24px/actions/action-duplicate" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M6,15 L9,15 L9,18 C9,18.552 9.447,19 10,19 C10.553,19 11,18.552 11,18 L11,15 L14,15 C14.553,15 15,14.552 15,14 C15,13.448 14.553,13 14,13 L11,13 L11,10 C11,9.448 10.553,9 10,9 C9.447,9 9,9.448 9,10 L9,13 L6,13 C5.447,13 5,13.448 5,14 C5,14.552 5.447,15 6,15 L6,15 Z M21.205,0 L4.946,0 C4.395,0 3.946,0.448 3.946,1 C3.946,1.552 4.395,2 4.946,2 L21,2 C21.553,2 22,2.448 22,3 L22,19.007 C22,19.56 22.447,20.007 23,20.007 C23.553,20.007 24,19.56 24,19.007 L24,2.795 C24,1.251 22.749,0 21.205,0 L21.205,0 Z M2,22 L18,22 L18,6 L2,6 L2,22 Z M18.205,4 L1.795,4 C0.804,4 0,4.804 0,5.795 L0,22.205 C0,23.196 0.804,24 1.795,24 L18.205,24 C19.196,24 20,23.196 20,22.205 L20,5.795 C20,4.804 19.196,4 18.205,4 L18.205,4 Z" id="Fill-1" fill="#333333"></path>
+    </g>
+</svg>

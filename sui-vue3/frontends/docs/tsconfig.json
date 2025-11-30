@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "types": [ "node", "jest" ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "esModuleInterop": true,
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "node_modules/tsconfig/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

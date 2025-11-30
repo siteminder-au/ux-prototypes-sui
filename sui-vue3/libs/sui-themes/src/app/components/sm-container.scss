@@ -1,0 +1,23 @@
+/**
+ * Container styles
+ * These are the actual CSS properties for the container component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+ body {
+  .sm-container {
+    &.sm-container {
+      max-width: var(--sm-c-container-max-width);
+      padding: var(--sm-c-container-padding);
+
+      @media only screen and (min-width: 1367px) {
+        max-width: var(--sm-c-container-max-width-extra-large-desktop);
+        padding: var(--sm-c-container-padding-extra-large-desktop);
+      }
+
+      &--full-width {
+        max-width: none;
+      }
+    }
+  }
+}

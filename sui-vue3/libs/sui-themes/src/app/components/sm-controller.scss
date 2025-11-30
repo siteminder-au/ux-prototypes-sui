@@ -1,0 +1,28 @@
+/**
+ * Controller styles
+ * These are the actual CSS properties for the controller component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+body {
+  .sm-controller {
+    &.sm-controller {
+      border: var(--sm-c-controller-border);
+      border-radius: var(--sm-c-controller-border-radius);
+      box-shadow: var(--sm-c-controller-box-shadow);
+    }
+
+    & .sm-controller__content {
+      border-right: var(--sm-c-controller-content-border-right);
+      height: var(--sm-c-controller-content-height);
+
+      &:last-of-type {
+        border: 0;
+      }
+    }
+
+    & .sm-controller__body {
+      padding: var(--sm-c-controller-body-padding);
+    }
+  }
+}

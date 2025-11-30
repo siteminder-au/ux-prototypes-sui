@@ -1,0 +1,85 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import extrasNonedit from './images/patterns-editing-overview-extras-non-edit.png'
+import extrasSuccess from './images/patterns-editing-overview-extras-success.png'
+import section from './images/patterns-editing-inline-card-example.png'
+import when from './images/patterns-editing-full-page-when.png'
+import discard from './images/patterns-editing-overview-guidelines-discard.png'
+
+<Meta title="Design patterns/Editing/Overview" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Editing</h1>
+  <p>Editing is the act of updating an existing resource or set of data within out product.</p>
+</SuiStorybookTitle>
+
+- [Product context](#product-context)
+- [Editing types](#editing-types)
+- [Layout](#layout)
+- [Guidelines](#guidelines)
+
+## Product context
+
+There are several different ways to edit information on our platform and the primary purpose of this Editing pattern is to ensure all the different methods are outlined and detailed for usage, to ensure we are building a platform that is aligned and consistent.
+
+
+## Editing types
+
+### Inline card
+An inline card edit can be used during the edit action of a select few fields. This type of editing is ideal for isolating a portion of data so that users can edit in chunks, rather than having to edit an entire page of input fields, which can be overwhelming in certain situations.
+
+Users can seamlessly switch between viewing and editing with this pattern's ability to toggle between a "read-only" view and an "edit" view of information. Cancel and confirm/save CTAs should be present.
+
+
+### Drawer
+The drawer pattern slides in and sits on top of the page with an underlay underneath. It does not attempt to edit the page directly within the flow of the page, but it also does not leave the page for editing. This helps users understand exactly where they are in the app and they don’t get disoriented.
+
+Sometimes a complex edit won't fit into how the page is supposed to flow. Bringing editing inline can disrupt the user experience if the editing area is simply too big and moves content around the page.
+
+Other times, you might decide to break the flow, particularly if the information being edited is significant in and of itself. A drawer can do this job nicely.
+
+### Table
+When data is presented to the user in a table, we can also allow editing within the table cells. This prevents the user from having to navigate away to another modal or page, allowing for easy editing. Cells can be clicked on directly and text can be edited, or optionally the user might click on a select cell and be offered with a dropdown list of items to select.
+
+### Progressive
+When users have to do alot of detailed editing, such as on our Inventory Grid, progressive editing and saving is ideal for this use case. Users can make changes, and when they are ready they can then save those changes, and continue on editing if they wish.
+
+
+## Layout
+
+### Sections
+Sections provide a way of achieving a balance between visual noise and discoverability when dealing with several things on a page. Make sure to utilise card components, list components with headings when dealing with edit patterns.
+<img src={section} alt="Using different editing patterns in sections" width="960" />
+
+
+### Full-page
+A full-page edit allows users to edit all values in the same page where they are shown. This pattern enables dynamic localised editing of items. Unlike drawer editing, you would use full-page editing if it is beneficial to the user to isolate the data that needs to be edited on a new page.
+<img src={when} alt="Example of a full-page edit" width="960" />
+
+
+## Guidelines
+
+### Communicating unsaved changes
+When there are unsaved changes on the page, and a user attempts to navigate away or initiate any action that will discard unsaved data, a dialog must be launched to confirm or cancel the action. This is to assist the user with data loss prevention.
+
+Here are some key guidelines for communicating unsaved changes:
+- The dialog is a data loss prevention tool, so only prompt the user if changes have been made.
+- Ensure that if the user navigates away from or discard the unsaved data in any way, that the dialog is triggered.
+- The type and behaviour of the dialog must be consistent across our platform. Please ensure you are using the 'info' type modal.
+
+<img src={discard} alt="Ensure you use the info type dialog when communicating unsaved changes" width="960" />
+
+
+### Non-editable fields
+When there is non-editable data within a section of data that the user can edit, display the non-editable preset values in a disabled field.
+<img src={extrasNonedit} alt="Non-editable fields" width="960" />
+
+### Success Notifications
+Use a success notification to verify that the user's modifications have been saved.
+<img src={extrasSuccess} alt="Display success with toasts" width="960" />
+
+
+### Consistency
+As much as possible, use one edit pattern on a page. Consider all items to be edited first and decide which edit pattern to use. However, as you can see in the section example above, by no means should you only stick to one per page, if the use case calls for multiple types of editing, that iss fine.

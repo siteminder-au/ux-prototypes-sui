@@ -1,0 +1,5 @@
+{
+	"fileSizeExcedded": "Some images have exceeded the maximum file size of 20MB",
+	"invalidTypes": "Some files are not valid image types",
+	"multipleMessage": "Sorry, multiple files cannot be uploaded at once"
+}

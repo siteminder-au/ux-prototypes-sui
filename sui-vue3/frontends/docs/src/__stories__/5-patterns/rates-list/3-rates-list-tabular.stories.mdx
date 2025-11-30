@@ -1,0 +1,27 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import tabularBasic from './images/patterns-rate-selection-tabular.png'
+import tabularSelected from './images/patterns-rate-selection-tabular-selected.png'
+
+<Meta title="Design patterns/Rates list/Tabular" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Rates list</h1>
+  <p>Selecting from or entering values against a list of rates are common action across our products. This pattern provides a basic template with options to suit various use cases.</p>
+</SuiStorybookTitle>
+
+## Tabular
+
+Use when there are editable cells or other mandatory elements on the rate level.
+
+Note tabular view does not allow accordion functionality. This ensures the important/required fields are visible.
+
+Checkboxes are optional in Tabular mode. They will need to be included when both selecting rates and editing rate level settings are required behaviours.
+
+### Basic layout
+<img src={tabularBasic} alt="Tabular" width="846" />
+
+### Layout with checkboxes
+<img src={tabularSelected} alt="Tabular with checkboxes" width="846" />

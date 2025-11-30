@@ -1,0 +1,94 @@
+/**
+ * This file will list all global styles to be shared by all components.
+ * This file also attempts to completely replace sui-themes package and white-labelling css variables
+ */
+
+/* TODO: we can eventually deprecate all the .scss files listed in src/app/common */
+:root {
+  /* start to use native css variables and reduce dependency on scss variables */
+
+  /* colours */
+  --color-pure-white: #fff;
+  --color-black: #333;
+  --color-focus: #333;
+  --color-primary-light: #333;
+  --color-primary: #006add;
+  --color-primary-mid: #0057b5;
+  --color-primary-dark: #0c4583;
+  --color-secondary-light: #bb2bff;
+  --color-secondary: #9a1cd6;
+  --color-secondary-mid: #8313b9;
+  --color-secondary-dark: #660993;
+  --color-success-light: #e2f4eb;
+  --color-success: #1b7b3e;
+  --color-success-mid: #9ae0bd;
+  --color-success-dark: #0e5431;
+  --color-success-black: #0a3b22;
+  --color-warning-light: #fceeee;
+  --color-warning: #d11d1d;
+  --color-warning-mid: #f1bfbf;
+  --color-warning-dark: #b81919;
+  --color-warning-black: #9e1616;
+  --color-alert-light: #fff6c0;
+  --color-alert: #ffab00;
+  --color-alert-mid: #fccc0b;
+  --color-alert-dark: #dc9400;
+  --color-alert-black: #b27700;
+  --color-info-light: #e6f0ff;
+  --color-info: #006add;
+  --color-info-mid: #b0d2f8;
+  --color-info-dark: #0c4583;
+  --color-disabled-light: #f6f6f6;
+  --color-disabled: #9a9a9a;
+  --color-disabled-mid: #c1c1c1;
+  --color-disabled-dark: #717171;
+  --color-app-light: #f5f9ff;
+  --color-app: #c6ceda;
+  --color-app-mid: #e6ebf2;
+  --color-app-dark: #828ea3;
+  --color-app-xdark: #738198;
+  --color-app-black: #627189;
+  --color-extra-1: #e5e8e8;
+  --color-extra-2: #f2f3f3;
+  --color-extra-3: #f4f4f4;
+  --color-extra-4: #f5f7fa;
+  --color-extra-5: #ffccb7;
+
+  /* spacing variables */
+  --sm-4: 4px;
+  --sm-8: 8px;
+  --sm-12: 12px;
+  --sm-16: 16px;
+  --sm-20: 20px;
+  --sm-24: 24px;
+  --sm-32: 32px;
+  --sm-40: 40px;
+  --sm-48: 48px;
+  --sm-56: 56px;
+  --sm-64: 64px;
+  --sm-72: 72px;
+  --sm-80: 80px;
+  --sm-96: 96px;
+
+  /* z-index */
+  --sm-visible-on-top-z-index: 15000;
+
+  /* global styles */
+  a:focus,
+  button:focus,
+  input:focus {
+    // TODO: revisit about enabling outline for interactive elements in a future a11y initiative
+    // consider using the default outline styling from browser user agent styles
+    outline: none;
+  }
+
+  // NOTE: sm-button has its own focus styling
+  // and must explicitly exclude here as the styles
+  // in sm-button have the same specificity weight as this selector
+  a:focus:not(.sm-button),
+  button:focus:not(.sm-button)
+  {
+    // TODO: revisit about removing box-shadow and use preferred outline for interactive elements in a future a11y initiative
+    box-shadow: 0 0 0 2px var(--color-disabled-dark);
+  }
+}

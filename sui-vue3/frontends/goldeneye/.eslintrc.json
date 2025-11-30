@@ -1,0 +1,348 @@
+{
+  "root": true,
+  "rules": {
+    "@typescript-eslint/await-thenable": ["warn"],
+    "@typescript-eslint/ban-ts-comment": [
+      "error",
+      {
+        "ts-ignore": "allow-with-description",
+        "ts-nocheck": "allow-with-description"
+      }
+    ],
+    "@typescript-eslint/ban-types": ["warn"],
+    "@typescript-eslint/consistent-type-assertions": [
+      "warn",
+      {
+        "assertionStyle": "as",
+        "objectLiteralTypeAssertions": "never"
+      }
+    ],
+    "@typescript-eslint/explicit-function-return-type": ["warn", { "allowExpressions": true }],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": [
+          "objectLiteralProperty",
+          "objectLiteralMethod", // mainly for keys inside the `emits` object
+          "typeProperty"
+        ],
+        "format": null,
+        "modifiers": [
+          // match any string that requires quotes (strings that have spaces, dashes, etc)
+          // sometimes we need a key that doesn't conform to a certain format in an object (e.g. `menu-button` or `No-change`)
+          "requiresQuotes"
+        ]
+      },
+      {
+        "selector": "default",
+        "format": ["camelCase", "PascalCase", "snake_case", "UPPER_CASE"],
+        "leadingUnderscore": "allowSingleOrDouble"
+      }
+    ],
+    "@typescript-eslint/no-empty-function": ["error", { "allow": ["arrowFunctions", "methods"] }],
+    "@typescript-eslint/no-empty-interface": ["warn"],
+    "@typescript-eslint/no-explicit-any": ["warn", { "ignoreRestArgs": true }],
+    "@typescript-eslint/no-extra-non-null-assertion": ["warn"],
+    "@typescript-eslint/no-floating-promises": ["warn"],
+    "@typescript-eslint/no-inferrable-types": ["warn"],
+    "@typescript-eslint/no-misused-promises": ["warn"],
+    "@typescript-eslint/no-namespace": ["warn"],
+    "@typescript-eslint/no-non-null-asserted-optional-chain": ["warn"],
+    "@typescript-eslint/no-non-null-assertion": ["warn"],
+    "@typescript-eslint/no-unnecessary-condition": ["error"],
+    "@typescript-eslint/no-unnecessary-type-assertion": ["warn"],
+    "@typescript-eslint/no-unsafe-argument": ["warn"],
+    "@typescript-eslint/no-unsafe-assignment": ["warn"],
+    "@typescript-eslint/no-unsafe-call": ["warn"],
+    "@typescript-eslint/no-unsafe-member-access": ["warn"],
+    "@typescript-eslint/no-unsafe-return": ["warn"],
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-var-requires": ["warn"],
+    "@typescript-eslint/prefer-as-const": ["warn"],
+    "@typescript-eslint/prefer-nullish-coalescing": ["warn"],
+    "@typescript-eslint/require-await": ["warn"],
+    "@typescript-eslint/restrict-template-expressions": ["warn"],
+    "@typescript-eslint/unbound-method": ["warn"],
+    "default-param-last": ["warn"],
+    "max-len": ["off"],
+    // require a capital letter for constructors
+    "new-cap": [
+      "error",
+      {
+        "newIsCap": true,
+        "newIsCapExceptions": ["i18n"],
+        "capIsNew": false,
+        "capIsNewExceptions": ["Immutable.Map", "Immutable.Set", "Immutable.List"]
+      }
+    ],
+    "no-console": ["error", { "allow": ["info", "warn", "error"] }],
+    "no-param-reassign": ["error", { "props": false }],
+    "no-unused-expressions": ["error", { "allowShortCircuit": true }],
+    "no-restricted-imports": [
+      "error",
+      {
+        "name": "@siteminder/sui-core",
+        "importNames": ["toastService"],
+        "message": "Please use the useToastService composable from @/composables/use-toast-service instead"
+      }
+    ],
+    "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"],
+    // we want to turn off no-container because we want to run
+    // container.querySelector in certain cases to reduce the scope of searching
+    "testing-library/no-container": ["off"],
+    // we want to turn off no-node-access because there are times we need
+    // to use .querySelector as a last resort to grab the element we want
+    // but is heavily advertised as a last resort when all other VTL selectors
+    // are exhausted.
+    // e.g. for icons, use screen.getByLabelText() over .querySelector('.icon-name')
+    // by providing an aria-label
+    "testing-library/no-node-access": ["off"],
+    "unused-imports/no-unused-imports": ["error"],
+    "unused-imports/no-unused-vars": ["off", { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }],
+    // #region vue related
+    // the following rules are included
+    // in "plugin:vue/recommended" and "plugin:vue/strongly-recommended"
+    "vue/attribute-hyphenation": ["error"],
+    "vue/attributes-order": ["error"],
+    "vue/html-closing-bracket-newline": ["error"],
+    "vue/html-closing-bracket-spacing": ["error"],
+    "vue/html-indent": ["error"],
+    "vue/html-quotes": ["error"],
+    "vue/html-self-closing": ["error"],
+    "vue/max-attributes-per-line": ["error"],
+    "vue/multiline-html-element-content-newline": ["error"],
+    "vue/mustache-interpolation-spacing": ["error"],
+    "vue/no-child-content": ["warn"],
+    "vue/no-multi-spaces": ["error"],
+    "vue/no-spaces-around-equal-signs-in-attribute": ["error"],
+    "vue/no-v-html": ["error"],
+    // Having this on adds some additional whitespace which may not be desired or break some tests
+    "vue/singleline-html-element-content-newline": ["off"],
+    "vue/this-in-template": ["error"],
+    "vue/v-bind-style": ["error"],
+    "vue/v-on-style": ["error"],
+    // #endregion
+    // #region plugin-eslint-vue uncategorised rules.
+    "vue/block-lang": [
+      "error",
+      {
+        "script": { "lang": "ts" },
+        "style": { "lang": "scss" }
+      }
+    ],
+    "vue/block-tag-newline": ["error"],
+    "vue/component-api-style": ["error", ["script-setup"]],
+    "vue/component-definition-name-casing": ["error", "kebab-case"],
+    "vue/component-name-in-template-casing": ["error", "kebab-case"],
+    "vue/component-options-name-casing": ["error"],
+    "vue/custom-event-name-casing": ["error", "kebab-case"],
+    "vue/define-macros-order": ["error"],
+    "vue/html-comment-content-newline": ["error"],
+    "vue/html-comment-content-spacing": ["error"],
+    "vue/html-comment-indent": ["error"],
+    "vue/match-component-file-name": ["error", { "extensions": ["vue"] }],
+    "vue/match-component-import-name": ["error"],
+    // there are certain cases where we want a single word for a component especially for page components
+    "vue/multi-word-component-names": ["off"],
+    "vue/next-tick-style": ["error"],
+    "vue/no-bare-strings-in-template": ["error", { "allowlist": ["/", ":"] }],
+    "vue/no-duplicate-attr-inheritance": ["error"],
+    "vue/no-empty-component-block": ["error"],
+    "vue/no-multiple-objects-in-class": ["error"],
+    "vue/no-potential-component-option-typo": ["error", { "presets": ["all"] }],
+    "vue/no-restricted-component-options": [
+      "error",
+      {
+        "name": ["components", "/Sm.*/"],
+        "message": "SUI base components should be globally registered, you do not need to locally register them."
+      },
+      {
+        "name": ["components", "/Mp.*/"],
+        "message": "MP base components should be globally registered, you do not need to locally register them."
+      }
+    ],
+    "vue/no-restricted-static-attribute": [
+      "error",
+      {
+        "key": "style",
+        "message": "Using inline \"style\" is not allowed. Please use a class name instead."
+      }
+    ],
+    "vue/no-restricted-v-bind": ["error"],
+    "vue/no-this-in-before-route-enter": ["error"],
+    "vue/no-undef-components": ["error", { "ignorePatterns": ["mp-.*", "sm-.*", "Sm.*", "router-view", "router-link", "i18n"] }],
+    "vue/no-undef-properties": ["error"],
+    "vue/no-unsupported-features": ["error"],
+    "vue/no-unused-properties": ["error"],
+    "vue/no-unused-refs": ["error"],
+    "vue/no-useless-mustaches": ["error"],
+    "vue/no-useless-v-bind": ["error"],
+    "vue/no-v-text": ["error"],
+    "vue/padding-line-between-blocks": ["error"],
+    "vue/prefer-prop-type-boolean-first": ["error"],
+    "vue/prefer-true-attribute-shorthand": ["error", "never"],
+    "vue/require-direct-export": ["error"],
+    "vue/require-emit-validator": ["error"],
+    // to ensure that our eslint-plugin-mp rules work
+    // also useful for Vue DevTools to easily identify components
+    "vue/require-name-property": ["error"],
+    "vue/script-indent": ["error", 2, { "switchCase": 1 }],
+    // "vue/sort-keys": [ "off" ], // might be too noisy, there are cases where we want a certain order which is not alphabetical
+    "vue/static-class-names-order": ["error"],
+    "vue/v-for-delimiter-style": ["error"],
+    "vue/v-on-function-call": ["error"]
+    // #endregion
+  },
+  "overrides": [
+    {
+      "files": "src/composables/use-toast-service.ts",
+      "rules": {
+        "no-restricted-imports": ["off"]
+      }
+    },
+    {
+      "files": ["*.vue"],
+      "rules": {
+        // no-undef doesn't play nice with <script setup> built-in functions
+        // like withDefaults, defineProps, defineEmits
+        "no-undef": "off",
+        // unused-imports/no-unused-vars and unused-imports/no-unused-imports doesn't play nice
+        // with <script setup> where functions defined in <script setup> are used in the <template> section
+        "unused-imports/no-unused-vars": "off",
+        "unused-imports/no-unused-imports": "off",
+        // conflicts with 'vue/script-indent'
+        // see: https://eslint.vuejs.org/rules/script-indent.html
+        "indent": "off",
+        // turning these off so we are able to inline props/emits types
+        // in a neat way in a vue file using <script setup>
+        "no-spaced-func": "off",
+        "func-call-spacing": "off"
+      }
+    },
+    {
+      // prevent non-base components from using <style> block
+      "files": ["src/views/**/*.vue", "src/components/**/!(mp-)*.vue"],
+      "rules": {
+        // Disabling because we still need to write CSS to layout components and build responsive pages
+        // "vue/no-restricted-block": [
+        //   "warn",
+        //   {
+        //     "element": "style",
+        //     "message": "Please do not use <style> block in non-base components :("
+        //   }
+        // ]
+      }
+    },
+    {
+      "files": ["src/**/*.spec.ts", "src/**/*.int.spec.ts"],
+      "rules": {
+        "@typescript-eslint/ban-ts-comment": ["off"],
+        "@typescript-eslint/naming-convention": ["off"],
+        "@typescript-eslint/no-empty-function": ["off"],
+        "@typescript-eslint/no-explicit-any": ["off"],
+        "@typescript-eslint/no-unsafe-return": ["off"],
+        "no-undef": ["off"],
+        "vue/require-name-property": ["off"],
+        "vue/no-restricted-component-options": ["off"],
+        "no-restricted-imports": ["off"]
+      }
+    },
+    {
+      "files": ["src/**/*.ts"],
+      "rules": {
+        // msw.ts files need to import 'msw'
+        "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
+      }
+    },
+    {
+      "files": ["test/**/*.ts"],
+      "rules": {
+        "testing-library/await-async-query": ["off"],
+        "testing-library/await-async-utils": ["off"],
+        "testing-library/prefer-screen-queries": ["off"],
+        "@typescript-eslint/no-unsafe-return": ["off"]
+      }
+    },
+    {
+      // Needed to be able to do configureCompat
+      "files": "src/types/custom.d.ts",
+      "rules": {
+        "vue/prefer-import-from-vue": ["off"]
+      }
+    },
+    {
+      "files": ["gql.ts", "*.gql.ts"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": ["off"]
+      }
+    },
+    {
+      // allow specific components to use sm/mp components
+      "files": ["src/components/base/mp-dynamic-form/*.vue", "src/components/base/mp-table/**/*.vue"],
+      "rules": {
+        "vue/no-restricted-component-options": ["off"]
+      }
+    },
+    {
+      "files": [
+        "src/components/distribution/rate-plans/rate-plan-details/direct-booking/direct-booking-tab-config-form-dynamic-discounts.vue",
+        "src/components/distribution/rate-plans/rate-plan-details/direct-booking/direct-booking-tab-policies-form-cancellation-policy.vue",
+        "src/components/base/mp-rich-tabs.vue",
+        "src/views/health-check.vue"
+      ],
+      "rules": {
+        "vue/match-component-file-name": ["off"]
+      }
+    },
+    {
+      "files": ["test/end-to-end/cypress/*", "test/end-to-end/cypress.config.ts", "test/end-to-end/cypress/**/*", "test/end-to-end/config-settings.ts"],
+      "rules": {
+        "prefer-arrow/prefer-arrow-functions": ["off"],
+        "@typescript-eslint/no-unsafe-assignment": ["off"],
+        "@typescript-eslint/no-unsafe-member-access": ["off"],
+        "no-console": ["off"],
+        "@typescript-eslint/explicit-function-return-type": ["off"],
+        "@typescript-eslint/no-explicit-any": ["off"],
+        "@typescript-eslint/no-unnecessary-condition": ["off"],
+        "@typescript-eslint/prefer-nullish-coalescing": ["off"],
+        "@typescript-eslint/restrict-template-expressions": ["off"],
+        "@typescript-eslint/no-unsafe-call": ["off"],
+        // turning this off for now. will update all affected files on a separate PR
+        "@typescript-eslint/no-unsafe-argument": ["off"],
+        "@typescript-eslint/no-shadow": ["off"],
+        "@typescript-eslint/require-await": ["off"],
+        "@typescript-eslint/prefer-for-of": ["off"],
+        "no-prototype-builtins": ["off"],
+        "@typescript-eslint/no-var-requires": ["off"],
+        "cypress/unsafe-to-chain-command": ["off"],
+        "import/no-cycle":["off"]
+      }
+    },
+    {
+      "files": ["*cy.ts"],
+      "rules": {
+        "testing-library/await-async-query": ["off"],
+        "testing-library/prefer-screen-queries": ["off"]
+      }
+    }
+  ],
+  "extends": [
+    "@siteminder/eslint-config/vue3",
+    "plugin:jest-dom/recommended",
+    "plugin:testing-library/vue",
+    // eslint
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:@typescript-eslint/strict",
+    // cypress
+    "plugin:cypress/recommended"
+  ],
+  "plugins": ["testing-library", "jest-dom", "unused-imports", "cypress"],
+  "parser": "vue-eslint-parser",
+  // parserOptions is required for more advanced eslint rules to work
+  // i.e. @typescript-eslint/no-unsafe-return
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "extraFileExtensions": [".vue"]
+  }
+}

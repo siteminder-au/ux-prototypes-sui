@@ -1,0 +1,37 @@
+/**
+ * Field label styles
+ * These are the actual CSS properties for the field label component and used
+ * in form components like sm-input, sm-radio, sm-checkbox, etc.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+
+ body {
+  .sm-calendar,
+  .sm-checkbox-group .sm-checkbox-group__header,
+  .sm-input,
+  .sm-radio-group .sm-radio-group__header,
+  .sm-select-container, {
+    .sm-field-label {
+      color: var(--sm-c-field-label-color-text);
+      margin-bottom: var(--sm-c-field-label-margin-bottom);
+      padding-top: var(--sm-c-field-label-padding-top);
+
+      &__required-asterisk {
+        color: var(--sm-c-field-label-color-text-required-asterisk);
+      }
+
+      &--success {
+        color: var(--sm-c-field-label-color-text-success);
+      }
+
+      &--focussed {
+        color: var(--sm-c-field-label-color-text-focus);
+      }
+
+      &--invalid {
+        color: var(--sm-c-field-label-color-text-invalid);
+      }
+    }
+  }
+}

@@ -1,0 +1,104 @@
+@import "../../common/variables";
+
+/**
+  * Open / Close State
+  * @see: https://vuejs.org/v2/guide/transitions.html
+  *
+  * Increased specificity allows this transition rule to override the scoped styles provided in the component itself
+*/
+body .sm-wizard.sm-wizard-transition {
+  &-enter-active,
+  &-leave-active {
+    transition: all .3s;
+  }
+
+  &-enter,
+  &-leave-to {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  &-leave,
+  &-enter-to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/**
+ * Push animation when switching between content and overlay
+ */
+.sm-wizard-push-transition {
+  &-enter-active {
+    transition:
+      transform 0.3s ease-out,
+      opacity 0.21s ease-out 0.09ms;
+
+    @media #{$small-desktop} {
+      transition:
+        transform 0.35s ease-out,
+        opacity 0.3s ease-out 0.25ms;
+    }
+  }
+
+  &-leave-active {
+    transition:
+      transform 0.3s ease-out,
+      opacity 0.09s ease-out;
+
+    @media #{$small-desktop} {
+      transition:
+        transform 0.3s ease-out,
+        opacity 0.25s ease-out 0.2ms;
+    }
+  }
+
+  &-leave-active {
+    /* Animate items simultaneously without affecting container’s dimension */
+    position: absolute;
+    width: 100%;
+  }
+
+  /**
+    NOTE: we cannot use calc directly in certain scenarios
+    as some upstream projects are still using node-sass
+    and the css output produced by sui-core rollup
+    strips away calc() which causes the expression to be incompatible
+    and cannot be processed by node-sass.
+    see: https://sass-lang.com/documentation/values/calculations
+    As a workaround, we use string interpolation to stop
+    sass from stripping away calc().
+
+    In the future, we can slowly mention to teams to stop using node-sass
+    as it has been mentioned to be officially deprecated css preprocessor
+    and recommend to use dart sass ('sass' package) instead.
+    See: https://www.npmjs.com/package/node-sass
+
+    NOTE: this issue only occurs when we define the styles outside of an SFC file
+    and define them in standalone .scss files
+  */
+  &-enter,
+  &-leave-to {
+    &.transition-step-1 {
+      // we use capital 'M' to avoid node-sass compilation issues
+      // in downstream projects that are still using node-sass
+      // see: https://css-tricks.com/when-sass-and-new-css-features-collide
+      transform: translateX(#{"calc(Min(-100vw, 1120px))"});
+      opacity: 0.3;
+    }
+
+    &.transition-step-2 {
+      // we use capital 'M' to avoid node-sass compilation issues
+      // in downstream projects that are still using node-sass
+      // see: https://css-tricks.com/when-sass-and-new-css-features-collide
+      transform: translateX(#{"calc(Min(100vw, 1120px))"});
+      opacity: 0.3;
+    }
+  }
+
+  &-enter-to,
+  &-leave {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

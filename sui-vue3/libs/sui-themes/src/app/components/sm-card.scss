@@ -1,0 +1,202 @@
+/**
+ * Card styles
+ * These are the actual CSS properties for the card component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+
+ body {
+  :not(.sm-media-item__card).sm-card {
+    background: var(--sm-c-card-color-background);
+    border-color: var(--sm-c-card-color-border);
+    border-style: var(--sm-c-card-border-style);
+    border-width: var(--sm-c-card-border-width);
+    color: var(--sm-c-card-color-text);
+
+    /** Generic border radius */
+    &,
+    > *:first-child {
+      border-top-left-radius: var(--sm-c-card-border-radius);
+      border-top-right-radius: var(--sm-c-card-border-radius);
+    }
+
+    &,
+    > *:last-child {
+      border-bottom-left-radius: var(--sm-c-card-border-radius);
+      border-bottom-right-radius: var(--sm-c-card-border-radius);
+    }
+
+    /** Optimized border radius */
+    > .sm-card-graphic:first-child,
+    > .sm-card-brand-graphic:first-child {
+      border-top-left-radius: calc(var(--sm-c-card-border-radius) - 1px);
+      border-top-right-radius: calc(var(--sm-c-card-border-radius) - 1px);
+    }
+
+    > .sm-card-graphic:last-child,
+    > .sm-card-brand-graphic:last-child,
+    > .sm-card-footer:last-child {
+      border-bottom-left-radius: calc(var(--sm-c-card-border-radius) - 1px);
+      border-bottom-right-radius: calc(var(--sm-c-card-border-radius) - 1px);
+    }
+
+    &--topBorder {
+      border-top: var(--sm-c-card-border-top-width) var(--sm-c-card-border-top-style) var(--sm-c-card-color-border-top);
+    }
+
+    /** Hovered state */
+    &.sm-card--interactive:hover,
+    &.sm-card--interactive:focus {
+      box-shadow: var(--sm-c-card-box-shadow-hover);
+      color: var(--sm-c-card-color-text);
+
+      &.sm-card--topBorder {
+        border-top-color: var(--sm-c-card-color-border-top-hover);
+      }
+    }
+
+    &:not(.sm-card--noninteractive):hover,
+    &:not(.sm-card--noninteractive):focus {
+      color: var(--sm-c-card-color-text);
+    }
+
+    &.sm-card--theme-bright {
+      background: var(--sm-c-card-color-background-theme-bright);
+      border-color: var(--sm-c-card-color-border-theme-bright);
+      color: var(--sm-c-card-color-text-theme-bright);
+
+      &.sm-card--topBorder {
+        border-top-color: var(--sm-c-card-color-border-top-theme-bright);
+      }
+
+      &:hover,
+      &:focus {
+        color: var(--sm-c-card-color-text-theme-bright);
+
+        &.sm-card--topBorder {
+          border-top-color: var(--sm-c-card-color-border-top-theme-bright-hover);
+        }
+      }
+
+      .sm-card-footer {
+        background: var(--sm-c-card-footer-color-background-theme-bright);
+      }
+    }
+
+    &.sm-card--theme-light {
+      background: var(--sm-c-card-color-background-theme-light);
+      border-color: var(--sm-c-card-color-border-theme-light);
+      color: var(--sm-c-card-color-text-theme-light);
+
+      &.sm-card--topBorder {
+        border-top-color: var(--sm-c-card-color-border-top-theme-light);
+      }
+
+      &:hover,
+      &:focus {
+        color: var(--sm-c-card-color-text-theme-light);
+
+        &.sm-card--topBorder {
+          border-top-color: var(--sm-c-card-color-border-top-theme-light-hover);
+        }
+      }
+
+      &.sm-card .sm-card-footer {
+        background: transparent;
+        padding-top: 0;
+      }
+    }
+
+    .sm-card-brand-graphic--dark ~ .sm-card-content {
+      color: var(--sm-c-card-color-text-dark)
+    }
+
+    /** Editing state */
+    &.sm-card--editing {
+      color: var(--sm-c-card-color-text-editing);
+      background: var(--sm-c-card-color-background-editing);
+      border-color: var(--sm-c-card-color-border-editing);
+      box-shadow: var(--sm-c-card-box-shadow-hover);
+
+      &.sm-card--topBorder {
+        border-top-color: var(--sm-c-card-color-border-top-editing);
+      }
+
+      &:hover,
+      &:focus {
+        color: var(--sm-c-card-color-text-editing);
+
+        &.sm-card--topBorder {
+          border-top-color: var(--sm-c-card-color-border-top-editing-hover);
+        }
+      }
+    }
+
+    /** Selected state */
+    &.sm-card--selected {
+      background: var(--sm-c-card-color-background-selected);
+      border-color: var(--sm-c-card-color-border-selected);
+      color: var(--sm-c-card-color-text-selected);
+
+      &.sm-card--topBorder {
+        border-top-color: var(--sm-c-card-color-border-top-selected);
+      }
+
+      &:hover,
+      &:focus {
+        color: var(--sm-c-card-color-text-selected);
+
+        &.sm-card--topBorder {
+          border-top-color: var(--sm-c-card-color-border-top-selected-hover);
+        }
+      }
+    }
+
+    /** Warning type */
+    &.sm-card--type-warning {
+      background: var(--sm-c-card-color-background-warning);
+      border-color: var(--sm-c-card-color-border-warning);
+      border-top-color: var(--sm-c-card-color-border-top-warning);
+      color: var(--sm-c-card-color-text-warning);
+
+      &:hover,
+      &:focus {
+        color: var(--sm-c-card-color-text-warning);
+        border-top: var(--sm-c-card-border-top-width) var(--sm-c-card-border-top-style) var(--sm-c-card-color-border-top-warning-hover);
+
+        &.sm-card--topBorder {
+          border-top-color: var(--sm-c-card-color-border-top-warning-hover);
+        }
+      }
+    }
+
+    /** Disabled state */
+    &.sm-card--disabled {
+      background: var(--sm-c-card-color-background-disabled);
+      border-color: var(--sm-c-card-color-border-disabled);
+      color: var(--sm-c-card-color-text-disabled);
+      opacity: var(--sm-c-card-opacity-disabled);
+
+      &.sm-card--topBorder {
+        border-top-color: var(--sm-c-card-color-border-top-disabled);
+      }
+
+      &:hover,
+      &:focus {
+        color: var(--sm-c-card-color-text-disabled);
+
+        &.sm-card--topBorder {
+          border-top-color: var(--sm-c-card-color-border-top-disabled-hover);
+        }
+      }
+    }
+
+    .sm-card-brand-graphic {
+      border-radius: var(--sm-c-card-border-radius);
+
+      &--dark {
+        background-color: var(--sm-c-card-brand-graphic-color-background-dark);
+      }
+    }
+  }
+}

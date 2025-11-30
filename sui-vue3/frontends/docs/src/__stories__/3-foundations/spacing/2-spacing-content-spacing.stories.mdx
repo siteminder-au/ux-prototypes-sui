@@ -1,0 +1,68 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import contentSpacing1 from './images/content-spacing-1.png'
+import contentSpacing2 from './images/content-spacing-2.png'
+import contentSpacing3 from './images/content-spacing-3.png'
+import globalElements from './images/global-elements.png'
+import pageContentLarge from './images/page-content-large.png'
+import pageContentSmall from './images/page-content-small.png'
+
+<Meta title="Foundations/Spacing/Content spacing" />
+
+<SuiStorybookPageLabel>Foundations</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Spacing</h1>
+  <p>
+    To ensure consistency and to help our product be designed and built efficiently, we use a hybrid 4/8pt grid, with set spacing variables to use in our app.
+  </p>
+</SuiStorybookTitle>
+
+- [Visual rhythm](#visual-rhythm)
+
+
+## Visual rhythm
+
+In order to reduce cognitive load on our users, and ensure everything we design and build is clear and easy to understand, a visual rhythm (or spacing)
+rule should be established that falls within the 8px baseline grid, i.e. it should be a multiple of 8.
+
+### Global elements
+
+- The sm-container has a **max-width of 1140px** and is centre aligned, unless it is set at full-width which is only used on certain pages with very wide, data heavy tables.
+- The sm-container should have **&gt;1366 padding: 48px 56px** (48 top and bottom, 56 left and right).
+- The sm-container should have **&lt;1367 padding: 48px 32px**.
+- The margin under the page title should be **40px**.
+- If you are using filters, ensure the space below is **24px**.
+
+<img src={globalElements} alt="Global elements" />
+
+### Page content: large
+
+Spacing between stacked content should be **24px**. An example of large content would be stacked cards that are roughly 80–100px+ in height, although this may vary depending on the content.
+
+<img src={pageContentLarge} alt="Large page content sample" />
+
+### Page spacing: small
+
+Spacing between small stacked content should be **16px**. An example of small content would be stacked cards that are roughly 72px or less, in height.
+
+<img src={pageContentSmall} alt="Small page content sample" />
+
+### Content spacing
+- Spacing between sections and around content is **24px** for medium components
+- Spacing between sections and around content is **16px** for small components
+- Spacing between sections and around content is **56/48px** for large components (see wizard below). Using your own spatial judgement is necessary here as well.
+
+<img src={contentSpacing1} alt="Content spacing" />
+
+<span className="sui-storybook-image-caption">Example with spacing variables visible</span>
+
+<img src={contentSpacing2} alt="Content spacing demo with guides" className="mt-32" />
+
+<span className="sui-storybook-image-caption" alt="Content spacing demo without guides">Example with spacing variables hidden</span>
+
+<br/>
+
+More larger, complex components, such as the wizard, need bigger margins and padding due to the sheer size and space that it takes up on the screen.
+
+<img src={contentSpacing3} alt="Content spacing complex demo" />

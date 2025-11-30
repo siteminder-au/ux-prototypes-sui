@@ -1,0 +1,11 @@
+{
+  "rate-plans-title": "Rate plans",
+  "rate-plan-table-column-header": "Rate plan",
+  "rate-setup-table-column-header": "Rate setup",
+  "status-table-column-header": "Status",
+  "status-table-error": "Failed to load",
+  "status-table-tooltip": "Displays different variants of progress bar",
+  "refresh-data-button-label": "Refresh data",
+  "camping-site-description": "Camping Site",
+  "sites-and-rates": "Sites and rates"
+}

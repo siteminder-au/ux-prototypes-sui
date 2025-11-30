@@ -1,0 +1,24 @@
+import { Meta } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+
+
+<Meta title="Components/Vertical nav/Accessibility" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Vertical navigation</h1>
+  <p>
+  Vertical navigation is used to navigate within primary destinations in our app.
+  </p>
+</SuiStorybookTitle>
+
+## Keyboard navigation
+| Key | Usage |
+| :--- | :--- |
+| Space <br /> Enter | If the list item is a parent item, opens submenu and moves focus to first item in the sublist. <br /><br /> Otherwise, activates the list item. |
+| Tab | Moves focus to the next list item. <br /><br />If focus is on the last list item, moves focus to the expand/collapse button.
+| Shift + Tab| Moves focus to the previous list item. <br /><br />If focus is on the first list item, moves focus to the last list item. |
+| Escape | Closes submenu. <br /><br />Moves focus to parent list item. |
+| Home (optional) | Moves focus to the first list item. |
+| End (optional) | Moves focus to the last list item. |

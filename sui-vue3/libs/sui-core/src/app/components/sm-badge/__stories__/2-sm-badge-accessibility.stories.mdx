@@ -1,0 +1,27 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+
+<Meta title="Components/Badges/Accessibility" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Badge</h1>
+  <p>
+    A badge, generally appearing either inside or in close proximity to another larger component, is a visual indicator for numerical values such as tallies
+    and scores. It is used to notify users of action that has to be done or the status of an item.
+    <br/><br/>
+    Badges assist in drawing attention to vital information, such as alerts or new and unread messages. They are typically used to provide secondary or
+    supplementary information to text.
+  </p>
+</SuiStorybookTitle>
+
+- [Accessibility](#accessibility)
+
+## Accessibility
+
+Badges are only interpreted by assistive technology, such as screen readers, based simply on their content. They could leave the user confused if context is not provided.
+
+For **product teams**, set the badge's or parent elements **aria-label attribute** to provide context for users of screen readers.
+
+_For example, the badge should read "40 unread emails" instead of just "40"_

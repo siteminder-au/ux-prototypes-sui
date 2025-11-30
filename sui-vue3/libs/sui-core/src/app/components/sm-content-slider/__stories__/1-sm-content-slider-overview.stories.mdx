@@ -1,0 +1,93 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/sm-content-slider-formatting-anatomy.png'
+import scalingDesktop from './images/sm-content-slider-scaling-and-adaptation-desktop.png'
+import scalingTablet from './images/sm-content-slider-scaling-and-adaptation-tablet.png'
+import scalingMobile from './images/sm-content-slider-scaling-and-adaptation-mobile.png'
+import specs from './images/sm-content-slider-specs.png'
+import behaviorStates1 from './images/sm-content-slider-behavior-states-icon-button.png'
+import behaviorStates2 from './images/sm-content-slider-behavior-states-on-hover.png'
+import behaviorNavigation from './images/sm-content-slider-behavior-navigation.png'
+
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+  `}
+</style>
+
+<Meta title="Components/Content slider/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Content slider</h1>
+  <p>
+    Content sliders save screen space by displaying a series of images from a collection. Arrows or buttons indicate additional content that is not currently visible. Content Sliders allow users to browse a list of items and possibly select one. Unlike other carousels, this one does not auto-play.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Scaling and adaptation](#scaling-and-adaptation)
+- [Specs](#specs)
+- [Behaviour](#behaviour)
+
+
+
+
+
+
+## Usage
+- When there are many items to display and the user only needs to focus on a few at a time, use this option.
+- Use for related items only. Items should all have a similar theme.
+- Do not use for non-visual items like links or paragraphs.
+
+## Formatting
+### Anatomy
+**1: Navigation buttons -**  Controls for moving between slides.
+
+**2: Slide Content -** Slides can be images, videos, or other types of information.
+<img src={anatomy} className="img-padding" alt="Anatomy of a content slider" />
+
+
+## Scaling and adaptation
+- Slide width is a variable (based off the # of images displayed and the container width).
+- Slide width is auto calculated based off the width of the parent container.
+
+
+<span className="sui-storybook-image-caption">Desktop (1025 and above)</span>
+<img src={scalingDesktop} className="img-padding" alt="Scaling and adaptation of a content slider on desktop" />
+
+<span className="sui-storybook-image-caption">Tablet (641 and above)</span>
+<img src={scalingTablet} className="img-padding" alt="Scaling and adaptation of a content slider on tablet"  width="560"/>
+
+<span className="sui-storybook-image-caption">Mobile (640 and below)</span>
+<img src={scalingMobile} className="img-padding" alt="Scaling and adaptation of a content slider on mobile" width="320" />
+
+
+## Specs
+<img src={specs} className="img-padding" alt="Content slider specs" />
+
+
+## Behaviour
+### States
+Navigational elements such as arrows and close buttons can be clicked and follow the states of the **icon button component.**
+<img src={behaviorStates1} className="img-padding" alt="Arrows and close buttons can be clicked and follow the states of the icon button component" />
+
+Image content **on hover** has a **1px border**, and shows the close button (optional).
+<img src={behaviorStates2} className="img-padding" alt="Image content on hover has a 1px border, and shows the close button" />
+
+### Navigation
+Content slider items can be navigated in 3 ways:
+1. Button icons (arrows) - Buttons should disappear when there are no longer any images to scroll through.
+
+2. Swipe motion (all touch devices)
+
+3. Tab and arrow keys on the keyboard
+
+<img src={behaviorNavigation} className="img-padding" alt="Content slider navigation by arrow and swipe action" />

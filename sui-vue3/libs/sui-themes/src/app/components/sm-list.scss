@@ -1,0 +1,135 @@
+/**
+ * List styles
+ * These are the actual CSS properties for the list component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+body {
+  .sm-list {
+    &--stacked {
+      &.sm-list .sm-list__header {
+        border-radius: 0;
+        border-top: 0;
+      }
+
+      &:first-child {
+        .sm-list__header {
+          border-top-left-radius: var(--sm-c-list-border-radius);
+          border-top-right-radius: var(--sm-c-list-border-radius);
+          border-top: var(--sm-c-list-border);
+        }
+
+        .sm-list__group {
+          &:not(.sm-list__group-header) {
+            .sm-list-item:first-child {
+              > .sm-list-item__container {
+                border-top-left-radius: var(--sm-c-list-border-radius);
+                border-top-right-radius: var(--sm-c-list-border-radius);
+                border-top: var(--sm-c-list-border);
+              }
+            }
+          }
+        }
+      }
+
+      &:last-child {
+        .sm-list-item:last-child {
+          > .sm-list-item__container {
+            border-bottom-left-radius: var(--sm-c-list-border-radius);
+            border-bottom-right-radius: var(--sm-c-list-border-radius);
+          }
+        }
+
+        .sm-list__header-stacked {
+          border-bottom-left-radius: var(--sm-c-list-border-radius);
+          border-bottom-right-radius: var(--sm-c-list-border-radius);
+        }
+      }
+    }
+
+    &--not-stacked-item {
+      > .sm-list-item > .sm-list-item__container {
+        border-radius: var(--sm-c-list-border-radius);
+        border-top: var(--sm-c-list-border);
+      }
+    }
+
+    /* Nested */
+    .sm-list .sm-list__group > .sm-list-item:first-child {
+      > .sm-list-item__container {
+        margin-top: var(--sm-c-list-margin-top-nested);
+        border-top-left-radius: var(--sm-c-list-border-radius);
+        border-top-right-radius: var(--sm-c-list-border-radius);
+        border-top: var(--sm-c-list-border);
+      }
+    }
+
+    .sm-list__header {
+      background-color: var(--sm-c-list-header-color-background);
+      border: var(--sm-c-list-border);
+      border-top-left-radius: var(--sm-c-list-border-radius);
+      border-top-right-radius: var(--sm-c-list-border-radius);
+      color: var(--sm-c-list-header-color-text);
+      padding: var(--sm-c-list-header-padding);
+    }
+  }
+
+  .sm-list-item {
+    &__container {
+      background: var(--sm-c-list-item-color-background);
+      border: var(--sm-c-list-border);
+      border-top: 0;
+      color: var(--sm-c-list-item-color-text);
+      font-weight: var(--sm-c-list-item-font-weight);
+      padding: var(--sm-c-list-item-padding);
+    }
+
+    &:first-child {
+      > .sm-list-item__container {
+        border-top: var(--sm-c-list-border);
+        border-top-left-radius: var(--sm-c-list-border-radius);
+        border-top-right-radius: var(--sm-c-list-border-radius);
+      }
+    }
+
+    &:last-child {
+      > .sm-list-item__container {
+        border-bottom-left-radius: var(--sm-c-list-border-radius);
+        border-bottom-right-radius: var(--sm-c-list-border-radius);
+      }
+    }
+  }
+
+  /* Dragabble hover state */
+  .sm-list--draggable .sm-list-item {
+    .sm-list-item__container {
+      &::after {
+        border: 0;
+        width: 100%;
+        height: 100%;
+        outline: var(--sm-c-list-item-draggable-outline-hover);
+        outline-offset: var(--sm-c-list-item-draggable-outline-offset-hover)
+      }
+    }
+  }
+
+  .sm-list[handle="row"].sm-list--draggable .sm-list-item {
+    &:hover {
+      background: transparent;
+
+      .sm-list-item__container {
+        background: var(--sm-c-list-item-draggable-color-background-hover);
+        color: var(--sm-c-list-item-draggable-color-text-hover);
+      }
+    }
+  }
+
+  /* Draggable ghost element */
+  .sm-list--draggable .sm-list-item--ghost {
+    > .sm-list-item__container {
+      color: var(--sm-c-list-item-draggable-color-text-ghost) !important;
+      background: var(--sm-c-list-item-draggable-color-background-ghost) !important;
+      border-color: var(--sm-c-list-item-draggable-color-border-ghost) !important;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.sui-storybook-title {
+  background-color: #e6f0ff;
+  background-image: url('./images/overview-page-title-bg.png');
+  background-position: center;
+  border-radius: 16px;
+  margin-bottom: 40px;
+  padding: 50px;
+  word-break: break-word;
+
+  &.sui-storybook-title h1 {
+    margin: 0;
+  }
+
+   & .sui-storybook-paragraph.sm-p {
+    margin: 8px 0 0;
+  }
+}

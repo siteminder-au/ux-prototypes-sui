@@ -1,0 +1,50 @@
+{
+  "recordVersion": 1,
+  "configHash": "2fd50455fa5b369be4b3e5e3fece30e571eeb455",
+  "files": {
+    "src/app.vue": {
+      "@typescript-eslint/consistent-type-assertions": 1
+    },
+    "src/composables/use-translate.ts": {
+      "@typescript-eslint/no-unsafe-argument": 2
+    },
+    "src/main.ts": {
+      "vue/require-name-property": 1
+    },
+    "src/router/guards/afterEach/index.ts": {
+      "@typescript-eslint/no-explicit-any": 1,
+      "@typescript-eslint/no-unsafe-assignment": 1
+    },
+    "src/router/guards/beforeEach/index.ts": {
+      "@typescript-eslint/no-explicit-any": 1,
+      "@typescript-eslint/no-unsafe-assignment": 1
+    },
+    "src/router/guards/index.ts": {
+      "@typescript-eslint/no-unsafe-assignment": 2
+    },
+    "src/router/routes/authenticate.ts": {
+      "@typescript-eslint/require-await": 1
+    },
+    "src/services/i18n/currency.spec.ts": {
+      "@typescript-eslint/no-unsafe-assignment": 3
+    },
+    "src/services/i18n/currency.ts": {
+      "@typescript-eslint/explicit-function-return-type": 1,
+      "@typescript-eslint/no-explicit-any": 1,
+      "@typescript-eslint/no-namespace": 1,
+      "@typescript-eslint/no-unsafe-argument": 1,
+      "@typescript-eslint/no-unsafe-assignment": 2,
+      "@typescript-eslint/no-unsafe-return": 1
+    },
+    "src/services/i18n/index.ts": {
+      "@typescript-eslint/consistent-type-assertions": 1,
+      "@typescript-eslint/no-unnecessary-condition": 1,
+      "@typescript-eslint/no-unsafe-argument": 1,
+      "@typescript-eslint/no-unsafe-assignment": 7,
+      "@typescript-eslint/no-var-requires": 3
+    },
+    "src/services/i18n/load-language.ts": {
+      "@typescript-eslint/require-await": 1
+    }
+  }
+}

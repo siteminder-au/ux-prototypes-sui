@@ -1,0 +1,79 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/patterns-rate-selection-anatomy.png'
+import exampleChannels from './images/patterns-rate-selection-example-channelsplus.png'
+import exampleDemand from './images/patterns-rate-selection-example-demandplus.png'
+
+<Meta title="Design patterns/Rates list/Overview" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Rates list</h1>
+  <p>Selecting from or entering values against a list of rates are common action across our products. This pattern provides a basic template with options to suit various use cases.</p>
+</SuiStorybookTitle>
+
+- [Product context](#product-context)
+- [Anatomy](#anatomy)
+- [Design decisions](#design-decisions)
+- [Example use cases](#example-use-cases)
+
+## Product context
+
+This pattern presents a list of "room rates", typically referred to simply as 'rates'.
+
+It's necessary to understand the concept of a rate in relation to two other entities: "Rate plan" and "Room type".
+
+A rate plan is a container for the rates. It is best thought of as the "offer to market". It contains a number of high level settings such as:
+- Descriptive content of the offer
+- Selling rules and restrictions
+- Policies (for example the cancellation policy)
+
+A room type relates to the physical properties of the rooms on offer. As such it contains data such as:
+- standardised pricing
+- maximum occupancy
+
+Room types need to be assigned to rate plans in order to become sellable. When a room type is a assigned to a rate plan a new entity is created &mdash; the rate (or room rate).
+
+## Anatomy
+
+The pattern presents rates by showing a two level hierarchy. On the top level are the rate plans. Under each rate plan are the assigned room types. When presented in this way these are actually rates.
+
+Note there will be repetition visible where room types are repeated under different rate plans. This is necessary because a room type under one rate plan represents a different rate than under another.
+
+### Building the Rates list with SUI
+To build this pattern, please use sm-table with the expandable property, which will allow the expand and collapse of rows.
+
+<img src={anatomy} alt="Anatomy of the Rate Selection pattern" width="960" />
+
+## Design decisions
+
+### Rate centric view
+Whilst it's possible to achieve a similar result by listing rate plans underneath room types, we will almost always use a 'rate centric' model. Rate centric refers to a model where we represent rates by listing room types underneath rate plans.
+
+This decision has been made to promote a consistent model across our products. This consistency may assist comprehension of this fairly difficult concept.
+
+### Keep naming concise
+It's not necessary to combine the rate plans and room type names to present the rate. We can rely on the context and simply present the room type name. This keeps things concise and scannable, with reduced need for truncation.
+
+### Two main modes
+
+##### Accordion
+This presents the list as an accordion. It can be used with a default of "collapsed" when selecting rate plan with all their rates would be the preferred or more common behaviour. Doing so makes the list more concise and encourages users to operate on a rate plan level, without excluding individual rates.
+
+Checkboxes are required for the accordion view.
+#### Tabular
+This presents the list as an expanded hierarchy with no accordion functionality. This can be used when there are editable cells that need to be completed on the rate level.
+
+Checkboxes are optional for the tabular view. They would be used when the use case requires both rate selection and editing of rate level settings (via the editable table cells).
+
+##### Do not combine
+As we don't want to hide the editable cells the tabular view should never need to include accordion functionality.
+
+## Example use cases
+
+### Activate rates to sell via Channels Plus
+<img src={exampleChannels} alt="Anatomy of the Rate Selection pattern" />
+
+### Select rates for DB via Demand Plus
+<img src={exampleDemand} alt="Anatomy of the Rate Selection pattern" />

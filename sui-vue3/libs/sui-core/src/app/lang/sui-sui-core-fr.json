@@ -1,0 +1,279 @@
+{
+  "libs" : {
+    "vee-validate" : {
+      "vee-validate" : {
+        "alpha" : "Veuillez saisir uniquement des caractères alphabétiques.",
+        "alpha_num" : "Veuillez saisir uniquement des caractères alphanumériques.",
+        "alpha_dash" : "Veuillez saisir uniquement des caractères alphanumériques, ainsi que des tirets et des caractères de soulignement (tiret du bas).",
+        "alpha_spaces" : "Veuillez saisir uniquement des caractères alphabétiques et des espaces.",
+        "between" : "Veuillez saisir une valeur comprise entre 0:{'{min}'} et 1:{'{max}'}.",
+        "confirmed" : "La confirmation du champ ne correspond pas.",
+        "digits" : "Veuillez saisir une valeur numérique contenant précisément 0:{'{length}'} chiffres.",
+        "dimensions" : "Cette image doit être de 0:{'{width}'} par 1:{'{height}'} pixels.",
+        "email" : "Veuillez saisir une adresse e-mail valide.",
+        "not_one_of" : "Veuillez saisir une valeur valide.",
+        "ext" : "Veuillez ajouter un fichier valide.",
+        "image" : "Veuillez ajouter une image.",
+        "integer" : "Veuillez saisir un nombre entier.",
+        "length" : "Veuillez saisir une longueur de 0:{'{length}'}.",
+        "max_value" : "Veuillez saisir une valeur inférieure ou égale à 0:{'{max}'}.",
+        "max" : "Veuillez ne pas dépasser 0:{'{length}'} caractères.",
+        "mimes" : "Veuillez saisir un type de fichier valide.",
+        "min_value" : "Veuillez saisir une valeur supérieure ou égale à 0:{'{min}'}.",
+        "min" : "Veuillez saisir au moins 0:{'{length}'} caractères.",
+        "numeric" : "Veuillez saisir uniquement des caractères numériques.",
+        "one_of" : "Veuillez saisir une valeur valide.",
+        "regex" : "Veuillez utiliser un format valide.",
+        "required_if" : "Ce champ est obligatoire",
+        "required" : "Ce champ est obligatoire",
+        "size" : "Veuillez saisir une valeur inférieure à 0:{'{size}'} Ko.",
+        "url" : "Cette URL n'est pas valide.",
+        "decimal" : "Veuillez saisir une valeur numérique contenant le nombre de décimales indiqué.",
+        "is" : "Veuillez saisir une valeur correspondant à celle du champ précédent.",
+        "is_not" : "Veuillez saisir une valeur différente de celle du champ précédent.",
+        "precision" : "Veuillez saisir une valeur égale à la décimale près.",
+        "double" : "Veuillez saisir une décimale valide."
+      }
+    }
+  },
+  "components" : {
+    "sm-wizard" : {
+      "sm-wizard" : {
+        "a11y__click-to-close" : "Cliquez ici pour fermer",
+        "back-button-text" : "Retour",
+        "next-button-text" : "Suivant",
+        "confirm-button-text" : "Confirmation et enregistrement",
+        "current-steps-text" : "{currentStep} sur {totalSteps}",
+        "next-step-text" : "Étape suivante : {nextStep}"
+      }
+    },
+    "sm-vertical-nav" : {
+      "sm-vertical-nav" : {
+        "a11y__children-toggle-show" : "Cliquez ici pour ouvrir le menu",
+        "a11y__children-toggle-hide" : "Cliquez ici pour fermer le menu"
+      }
+    },
+    "sm-user-menu" : {
+      "sm-user-menu" : {
+        "a11y__children-toggle-show" : "Cliquez ici pour ouvrir",
+        "a11y__children-toggle-hide" : "Cliquez ici pour fermer"
+      }
+    },
+    "sm-toast" : {
+      "sm-toast" : {
+        "a11y__click-to-close" : "Cliquez ici pour fermer"
+      }
+    },
+    "sm-text-truncator" : {
+      "sm-text-truncator" : {
+        "read-more-button" : "En lire plus",
+        "read-less-button" : "En lire moins"
+      }
+    },
+    "sm-tag" : {
+      "sm-tag" : {
+        "a11y__click-to-remove" : "Supprimer"
+      }
+    },
+    "sm-tabs" : {
+      "sm-tabs" : {
+        "a11y__tabListContent" : "Menu regroupant la liste d'onglets"
+      }
+    },
+    "sm-table" : {
+      "sm-table" : {
+        "a11y__table-expand-button" : "Cliquez ici pour développer le tableau",
+        "a11y__table-collapse-button" : "Cliquez ici pour réduire le tableau",
+        "a11y__table-sort-ascending" : "Trier par ordre croissant",
+        "a11y__table-sort-descending" : "Trier par ordre décroissant"
+      }
+    },
+    "sm-slider" : {
+      "sm-slider" : {
+      }
+    },
+    "sm-property-menu" : {
+      "sm-property-menu" : {
+        "a11y__children-toggle-show" : "Cliquez ici pour ouvrir le menu",
+        "a11y__children-toggle-hide" : "Cliquez ici pour fermer le menu"
+      }
+    },
+    "sm-progress-bar" : {
+      "sm-progress-bar" : {
+        "a11y__lineProgressBar" : "Barre de progression linéaire",
+        "a11y__circleProgressBar" : "Barre de progression circulaire"
+      }
+    },
+    "sm-pagination" : {
+      "sm-pagination" : {
+        "of-total-pages" : "sur {totalPages}",
+        "go-to-label" : "Aller à",
+        "page-count" : "Résultats {startPage} à {endPage} sur {totalResults}",
+        "dropdown-items-per-page" : "{itemsPerPage} par page",
+        "a11y__input-field-label" : "Numéro de page",
+        "a11y__click-to-previous-button" : "Page précédente",
+        "a11y__click-to-next-button" : "Page suivante",
+        "a11y__jump-backward-button" : "Reculer de plusieurs pages",
+        "a11y__jump-forward-button" : "Avancer de plusieurs pages"
+      }
+    },
+    "sm-notification-list" : {
+      "sm-notification-list" : {
+        "a11y__mark-as-read" : "Marquer comme lues",
+        "a11y__mark-as-unread" : "Marquer comme non lues",
+        "hide-all-button" : "Tout masquer",
+        "show-all-button" : "Tout afficher",
+        "show-unread-only-label" : "Afficher uniquement les notifications non lues"
+      }
+    },
+    "sm-nav" : {
+      "sm-nav" : {
+        "a11y__click-to-close" : "Cliquez ici pour fermer la barre de navigation",
+        "a11y__go-back" : "Cliquez ici pour revenir en arrière",
+        "a11y__side-nav-items" : "Cliquez sur les éléments de navigation",
+        "a11y__children-toggle-show" : "Cliquez ici pour afficher les éléments du sous-menu"
+      }
+    },
+    "sm-media" : {
+      "sm-media" : {
+        "fileSizeExcedded" : "Certaines images dépassent la taille maximale de fichier (20 Mo).",
+        "invalidTypes" : "Certains des types d'image utilisés ne sont pas valides.",
+        "multipleMessage" : "Malheureusement, il est impossible de charger plusieurs fichiers à la fois."
+      }
+    },
+    "sm-lazy-image" : {
+      "sm-lazy-image" : {
+        "loading-image-error-text" : "Échec du chargement de l'image"
+      }
+    },
+    "sm-inline-card" : {
+      "sm-inline-card" : {
+        "a11y__click-to-close" : "Cliquez ici pour fermer"
+      }
+    },
+    "sm-horizontal-nav" : {
+      "sm-horizontal-nav" : {
+        "a11y__children-toggle-show" : "Cliquez ici pour ouvrir le menu",
+        "a11y__children-toggle-hide" : "Cliquez ici pour fermer le menu"
+      }
+    },
+    "sm-hint-card" : {
+      "sm-hint-card" : {
+        "a11y__click-to-close" : "Cliquez ici pour fermer"
+      }
+    },
+    "sm-expandable-card" : {
+      "sm-expandable-card" : {
+        "a11y__expandable-card-button" : "Cliquez ici pour développer la section",
+        "a11y__collapsable-card-button" : "Cliquez ici pour réduire la section",
+        "a11y__delete-button" : "Supprimer"
+      }
+    },
+    "sm-drawer" : {
+      "sm-drawer" : {
+        "a11y__click-to-close" : "Cliquez ici pour fermer"
+      }
+    },
+    "sm-dialog" : {
+      "sm-dialog" : {
+        "a11y__click-to-close" : "Cliquez ici pour fermer",
+        "cancelButtonText" : "Annuler",
+        "confirmButtonText" : "Confirmer"
+      }
+    },
+    "sm-content-slider" : {
+      "sm-content-slider" : {
+        "a11y__click-to-previous-button" : "Précédent",
+        "a11y__click-to-next-button" : "Suivant",
+        "a11y__click-to-delete-button" : "Supprimer"
+      }
+    },
+    "sm-color-picker" : {
+      "sm-color-picker" : {
+        "selectColorButtonText" : "Sélectionner la couleur"
+      }
+    },
+    "sm-carousel" : {
+      "sm-carousel" : {
+        "a11y__click-to-previous-button" : "Image précédente",
+        "a11y__click-to-next-button" : "Image suivante"
+      }
+    },
+    "sm-banner" : {
+      "sm-banner" : {
+        "a11y__click-to-close" : "Cliquez ici pour fermer"
+      }
+    },
+    "sm-aside" : {
+      "sm-aside" : {
+        "a11y__toggle-show-menu" : "Cliquez ici pour afficher la barre latérale",
+        "a11y__toggle-hide-menu" : "Cliquez ici pour masquer la barre latérale",
+        "toggle-tooltip-show-menu" : "Afficher la barre de navigation",
+        "toggle-tooltip-hide-menu" : "Masquer la barre de navigation"
+      }
+    },
+    "sm-app-header" : {
+      "sm-app-header" : {
+        "a11y__toggle-show-menu" : "Cliquez ici pour afficher la barre de navigation",
+        "a11y__toggle-hide-menu" : "Cliquez ici pour masquer la barre de navigation"
+      }
+    },
+    "sm-accordion" : {
+      "sm-accordion" : {
+        "a11y__accordion-expand-button" : "Cliquez ici pour développer le panneau déroulant",
+        "a11y__accordion-collapse-button" : "Cliquez ici pour réduire le panneau déroulant"
+      }
+    },
+    "loading" : {
+      "sm-loading-spinner": {
+        "sm-loading-spinner": {
+          "a11y__label" : "Chargement en cours..."
+        }
+      },
+      "sm-loading-image" : {
+        "sm-loading-image" : {
+          "loading-image-alt-text" : "Chargement de l'image en cours..."
+        }
+      },
+      "sm-loader" : {
+        "sm-loader" : {
+          "loading-text" : "Chargement en cours..."
+        }
+      }
+    },
+    "forms" : {
+      "sm-translations-input" : {
+        "sm-translations-input" : {
+          "addTranslationsButtonText" : "Ajouter des traductions",
+          "deleteButtonText" : "Supprimer"
+        }
+      },
+      "sm-select" : {
+        "sm-select" : {
+          "maximumSelections" : "Nombre maximum de sélections atteint",
+          "noResultSelections" : "{searchQuery} est introuvable.",
+          "limitText" : "+{count}",
+          "listIsEmpty" : "La liste est vide."
+        }
+      },
+      "sm-multi-select" : {
+        "sm-multi-select" : {
+          "select-all-options" : "Tout sélectionner",
+          "select-group-options" : "Sélectionner le groupe",
+          "empty-options" : "La liste est vide.",
+          "option-not-found" : "{searchQuery} est introuvable."
+        }
+      },
+      "sm-calendar" : {
+        "sm-calendar" : {
+          "a11y__choose-month-button" : "Sélection du mois",
+          "a11y__choose-year-button" : "Sélection de l'année",
+          "a11y__next-year-button" : "Année suivante",
+          "a11y__next-year-range-button" : "Plage d'années suivante",
+          "a11y__previous-year-button" : "Année précédente",
+          "a11y__previous-year-range-button" : "Plage d'années précédente"
+        }
+      }
+    }
+  }
+}

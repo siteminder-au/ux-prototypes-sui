@@ -1,0 +1,149 @@
+/**
+ * Dialog styles
+ * These are the actual CSS properties for the date-picker component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+
+body {
+  .sm-dropdown {
+    /**
+      * Menu option content
+    */
+    .sm-dropdown__content {
+      background: var(--sm-c-dropdown-menu-color-background);
+      border: var(--sm-c-dropdown-menu-border);
+      width: var(--sm-c-dropdown-menu-width);
+      border-radius: var(--sm-c-dropdown-menu-border-radius-visible);
+      border-top: 0;
+    }
+
+    /**
+      * active label
+    */
+    .sm-dropdown__active-label {
+      font-weight: var(--sm-c-dropdown-label-font-weight-active);
+      color: var(--sm-c-dropdown-label-color-text-active);
+    }
+
+    .sm-dropdown__content .sm-vertical-nav-item {
+      border-top: var(--sm-c-dropdown-menu-border);
+    }
+  }
+
+  /**
+    * Visible state
+  */
+  .sm-dropdown.sm-dropdown--menu-icon .sm-dropdown__target .sm-button .sm-button__content {
+    color: var(--sm-c-dropdown-icon-button-color-text-visible);
+    background: var(--sm-c-dropdown-icon-button-color-background-visible);
+    border: var(--sm-c-dropdown-icon-button-border-visible);
+    padding: var(--sm-c-dropdown-icon-button-padding-visible);
+    height: var(--sm-c-dropdown-icon-button-height-visible);
+  }
+
+  .sm-dropdown.sm-dropdown--menu-icon.sm-dropdown--visible .sm-dropdown__target .sm-button {
+    &:hover {
+      .sm-button__content {
+        color: var(--sm-c-dropdown-icon-button-color-text-visible-hover);
+        background: var(--sm-c-dropdown-icon-button-color-background-visible-hover);
+        border: var(--sm-c-dropdown-icon-button-border-visible-hover);
+      }
+    }
+  }
+
+  .sm-dropdown.sm-dropdown--visible .sm-dropdown__content {
+    border-radius: var(--sm-c-dropdown-menu-border-radius-visible);
+    box-shadow: var(--sm-c-dropdown-menu-shadow-visible);
+  }
+
+  .sm-dropdown.sm-dropdown--menu-icon .sm-dropdown__target {
+    width: var(--sm-c-dropdown-icon-button-width-visible);
+  }
+
+  .sm-dropdown .sm-vertical-nav-item {
+    .sm-vertical-nav-item__content {
+      color: var(--sm-c-dropdown-vertical-nav-item-color-text);
+      background: var(--sm-c-dropdown-vertical-nav-item-color-background);
+      font-size: var(--sm-c-dropdown-vertical-nav-item-font-size);
+      font-weight: var(--sm-c-dropdown-vertical-nav-item-font-weight);
+    }
+
+    /* Second level indentation */
+    .sm-vertical-nav-item__children .sm-vertical-nav-item__content {
+      /* Dot in second level list style */
+      &::before {
+        border-color: var(--sm-c-dropdown-vertical-nav-item-color-text);
+      }
+    }
+
+    .sm-vertical-nav-item__children-toggle,
+    .sm-vertical-nav-item__popover-toggle {
+      color: var(--sm-c-dropdown-vertical-nav-item-color-text);
+      background: var(--sm-c-dropdown-vertical-nav-item-color-background);
+    }
+
+    /* Open state */
+    &.sm-vertical-nav-item--children-visible .sm-vertical-nav-item__children-toggle {
+      color: var(--sm-c-dropdown-vertical-nav-item-color-text-active);
+      background: var(--sm-c-dropdown-vertical-nav-item-color-background-active);
+    }
+
+    /* Hover state */
+    .sm-vertical-nav-item__content:hover,
+    .sm-vertical-nav-item__children-toggle:hover,
+    .sm-vertical-nav-item__popover-toggle:hover {
+      color: var(--sm-c-dropdown-vertical-nav-item-color-text-hover);
+      background: var(--sm-c-dropdown-vertical-nav-item-color-background-hover);
+    }
+
+    &.sm-vertical-nav-item--exact-active > .sm-vertical-nav-item__container .sm-vertical-nav-item__children-toggle {
+      background: var(--sm-c-dropdown-vertical-nav-item-color-background-hover);
+    }
+
+    /* Focus state */
+    .sm-vertical-nav-item__link:focus .sm-vertical-nav-item__content,
+    .sm-vertical-nav-item__children-toggle:focus,
+    .sm-vertical-nav-item__popover-toggle:focus {
+      color: var(--sm-c-dropdown-vertical-nav-item-color-text-focus);
+      background: var(--sm-c-dropdown-vertical-nav-item-color-background-focus);
+    }
+
+    /* Active state */
+    &.sm-vertical-nav-item--exact-active > .sm-vertical-nav-item__container .sm-vertical-nav-item__link .sm-vertical-nav-item__content {
+      color: var(--sm-c-dropdown-vertical-nav-item-color-text-active);
+      background: var(--sm-c-dropdown-vertical-nav-item-color-background-active);
+      font-weight: var(--sm-c-dropdown-vertical-nav-item-font-weight-active);
+
+      /* Dot in second level list style */
+      &::before {
+        background: var(--sm-c-dropdown-vertical-nav-item-indicator-color-exact-active);
+        border-color: var(--sm-c-dropdown-vertical-nav-item-indicator-color-exact-active);
+      }
+    }
+
+    &.sm-vertical-nav-item--active .sm-vertical-nav-item__active-indicator {
+      background: var(--sm-c-dropdown-vertical-nav-item-indicator-color-active);
+    }
+
+    &.sm-vertical-nav-item--has-children .sm-vertical-nav-item__active-indicator {
+      background: var(--sm-c-dropdown-vertical-nav-item-indicator-color-active);
+    }
+
+    &.sm-vertical-nav-item--exact-active > .sm-vertical-nav-item__container .sm-vertical-nav-item__link .sm-vertical-nav-item__active-indicator {
+      background: var(--sm-c-dropdown-vertical-nav-item-indicator-color-exact-active);
+    }
+
+    /* Disabled state */
+    .sm-vertical-nav-item--disabled .sm-vertical-nav-item__content {
+      color: var(--sm-c-dropdown-vertical-nav-item-color-text-disabled);
+      background: var(--sm-c-dropdown-vertical-nav-item-color-background-disabled);
+    }
+
+    /* Readonly state */
+    .sm-vertical-nav-item--readonly .sm-vertical-nav-item__content {
+      color: var(--sm-c-dropdown-vertical-nav-item-color-text-disabled);
+      background: var(--sm-c-dropdown-vertical-nav-item-color-background-disabled);
+    }
+  }
+}

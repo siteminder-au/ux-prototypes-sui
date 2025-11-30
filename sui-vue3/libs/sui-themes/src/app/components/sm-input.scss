@@ -1,0 +1,318 @@
+/**
+ * Input styles
+ * These are the actual CSS properties for the input component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+
+body {
+  .sm-input {
+    /* Override fixed height from the component styles */
+    $input-height: calc(22px + (var(--sm-c-input-padding-y) * 2) + (var(--sm-c-input-border-width) * 2));
+
+    &__body {
+      background: var(--sm-c-input-color-background);
+      border-radius: var(--sm-c-input-border-radius);
+      color: var(--sm-c-input-color-text);
+      height: $input-height;
+    }
+
+    /* Native input field */
+    &__field {
+      border-color: var(--sm-c-input-color-border);
+      border-bottom-width: var(--sm-c-input-border-width);
+      border-top-width: var(--sm-c-input-border-width);
+      color: var(--sm-c-input-color-text);
+      padding-top: var(--sm-c-input-padding-y);
+      padding-bottom: var(--sm-c-input-padding-y);
+
+      &:not(.sm-input__slot-prefix):not(.sm-input__icon-prefix) {
+        border-bottom-left-radius: var(--sm-c-input-border-radius);
+        border-top-left-radius: var(--sm-c-input-border-radius);
+        border-left-width: var(--sm-c-input-border-width);
+      }
+
+      &:not(.sm-input__icon-prefix) {
+        padding-left: var(--sm-c-input-padding-x);
+      }
+
+      &:not(.sm-input__slot-suffix):not(.sm-input__icon-suffix) {
+        border-bottom-right-radius: var(--sm-c-input-border-radius);
+        border-top-right-radius: var(--sm-c-input-border-radius);
+        border-right-width: var(--sm-c-input-border-width);
+      }
+
+      &:not(.sm-input__icon-suffix) {
+        padding-right: var(--sm-c-input-padding-x);
+      }
+    }
+
+    &__number-controls {
+      width: var(--sm-c-input-number-control-width);
+      height: var(--sm-c-input-number-control-height);
+
+      &-button {
+        color: var(--sm-c-input-number-control-color-text);
+        border-color: var(--sm-c-input-number-control-color-border);
+        background-color: var(--sm-c-input-number-control-color-background);
+
+        &:hover {
+          background-color: var(--sm-c-input-number-control-color-background-hover);
+        }
+
+        .sm-icon {
+          font-size: var(--sm-c-input-number-control-icon-font-size);
+        }
+      }
+    }
+
+    &__help-text {
+      color: var(--sm-c-input-help-text-color-text);
+      padding-top: var(--sm-c-input-help-text-padding-top);
+      padding-bottom: var(--sm-c-input-help-text-padding-bottom);
+    }
+
+    &__footer {
+      min-height: var(--sm-c-input-footer-height-min);
+    }
+
+    &__counter {
+      color: var(--sm-c-input-counter-color-text);
+      margin-bottom: var(--sm-c-input-counter-margin-bottom);
+      padding-top: var(--sm-c-input-counter-padding-top);
+    }
+
+    &__action {
+      padding-top: var(--sm-c-input-action-padding-top);
+    }
+
+    /* Textarea styles */
+    &--type-textarea {
+      .sm-input__field {
+        padding: var(--sm-c-input-textarea-padding-y) var(--sm-c-input-textarea-padding-x);
+      }
+    }
+
+    /* Prefix / suffix slots and icons */
+    &__prefix-icon,
+    &__suffix-icon {
+      border-color: var(--sm-c-input-color-border);
+      border-width: var(--sm-c-input-border-width);
+      color: var(--sm-c-input-color-icon);
+    }
+
+    &__prefix-icon {
+      border-bottom-left-radius: var(--sm-c-input-border-radius);
+      border-top-left-radius: var(--sm-c-input-border-radius);
+      padding: var(--sm-c-input-padding-y) 6px var(--sm-c-input-padding-y) var(--sm-c-input-padding-x);
+    }
+
+    &__suffix-icon {
+      border-bottom-right-radius: var(--sm-c-input-border-radius);
+      border-top-right-radius: var(--sm-c-input-border-radius);
+      padding: var(--sm-c-input-padding-y) var(--sm-c-input-padding-x) var(--sm-c-input-padding-y) 6px;
+    }
+
+    &__prefix-slot,
+    &__suffix-slot {
+      .sm-button .sm-button__content {
+        align-items: center;
+      }
+
+      .sm-select {
+        .multiselect {
+          color: var(--sm-c-input-select-color-text);
+
+          &__tags {
+            background-color: var(--sm-c-input-select-color-background);
+            border-color: var(--sm-c-input-select-color-border);
+            border-width: var(--sm-c-input-select-border-width);
+            display: flex;
+            height: $input-height;
+          }
+
+          &__tags:hover,
+          span:hover ~ .multiselect__tags {
+            background-color: var(--sm-c-input-select-color-background-hover);
+            border-color: var(--sm-c-input-select-color-border-hover);
+          }
+
+          &__tags:active,
+          span:active ~ .multiselect__tags {
+            background-color: var(--sm-c-input-select-color-background-active);
+            border-color: var(--sm-c-input-select-color-border-active);
+          }
+
+          &__single {
+            margin: auto 0;
+          }
+
+          .sm-select__indicator {
+            color: var(--sm-c-input-select-color-text);
+          }
+        }
+      }
+    }
+
+    &__prefix-slot {
+      color: var(--sm-c-input-prefix-slot-color-text);
+      background: var(--sm-c-input-prefix-slot-color-background);
+      border-color: var(--sm-c-input-prefix-slot-color-border);
+      border-width: var(--sm-c-input-prefix-slot-border-width);
+      border-top-left-radius: var(--sm-c-input-border-radius);
+      border-bottom-left-radius: var(--sm-c-input-border-radius);
+      border-right: 0;
+
+      /* Mixed inputs */
+      .sm-button:not(.sm-button--type_default),
+      .sm-radio,
+      .sm-checkbox,
+      .sm-select {
+        margin-left: calc(-1 * var(--sm-c-input-prefix-slot-border-width));
+      }
+
+      .sm-select-container .sm-field-label {
+        display: none;
+      }
+
+      .sm-select {
+        margin-top: calc(-1 * var(--sm-c-input-prefix-slot-border-width));
+      }
+
+      .sm-button .sm-button__content,
+      .sm-radio .sm-radio__label,
+      .sm-checkbox .sm-checkbox__label,
+      .sm-select .multiselect__tags {
+        border-top-left-radius: var(--sm-c-input-border-radius);
+        border-bottom-left-radius: var(--sm-c-input-border-radius);
+      }
+    }
+
+    &__suffix-slot {
+      color: var(--sm-c-input-suffix-slot-color-text);
+      background: var(--sm-c-input-suffix-slot-color-background);
+      border-color: var(--sm-c-input-suffix-slot-color-border);
+      border-width: var(--sm-c-input-suffix-slot-border-width);
+      border-top-right-radius: var(--sm-c-input-border-radius);
+      border-bottom-right-radius: var(--sm-c-input-border-radius);
+      border-left: 0;
+
+      /* Mixed inputs */
+      .sm-button:not(.sm-button--type_default),
+      .sm-radio,
+      .sm-checkbox,
+      .sm-select {
+        margin-right: calc(-1 * var(--sm-c-input-suffix-slot-border-width));
+      }
+
+      .sm-select-container .sm-field-label {
+        display: none;
+      }
+
+      .sm-select {
+        margin-top: calc(-1 * var(--sm-c-input-suffix-slot-border-width));
+      }
+
+      .sm-button .sm-button__content,
+      .sm-radio .sm-radio__label,
+      .sm-checkbox .sm-checkbox__label,
+      .sm-select .multiselect__tags {
+        border-top-right-radius: var(--sm-c-input-border-radius);
+        border-bottom-right-radius: var(--sm-c-input-border-radius);
+      }
+    }
+
+    /* Focus state */
+    &--focussed .sm-input__field,
+    &--focussed .sm-input__prefix-icon,
+    &--focussed .sm-input__suffix-icon {
+      border-color: var(--sm-c-input-color-border-focus);
+      box-shadow: var(--sm-c-input-box-shadow-focus)
+    }
+
+    &--focussed .sm-input__prefix-icon,
+    &--focussed .sm-input__suffix-icon {
+      color: var(--sm-c-input-color-icon-focus);
+    }
+
+    /* Invalid state */
+    &.sm-field--invalid .sm-input__field,
+    &.sm-field--invalid .sm-input__prefix-icon,
+    &.sm-field--invalid .sm-input__suffix-icon {
+      border-color: var(--sm-c-input-color-border-invalid);
+    }
+
+    &.sm-field--invalid .sm-input__prefix-icon,
+    &.sm-field--invalid .sm-input__suffix-icon {
+      color: var(--sm-c-input-color-icon-invalid);
+    }
+
+    /* Focus and Invalid State */
+    &--focussed.sm-field--invalid .sm-input__field,
+    &--focussed.sm-field--invalid .sm-input__prefix-icon,
+    &--focussed.sm-field--invalid .sm-input__suffix-icon {
+      box-shadow: var(--sm-c-input-box-shadow-focus-invalid);
+    }
+
+    /* Disabled state */
+    &--disabled .sm-input__field,
+    &--disabled .sm-input__number-controls-button,
+    &--disabled .sm-input__prefix-icon,
+    &--disabled .sm-input__suffix-icon,
+    &__number-controls-increment--disabled,
+    &__number-controls-decrement--disabled {
+      color: var(--sm-c-input-color-text-disabled);
+      background: var(--sm-c-input-color-background-disabled);
+      border-color: var(--sm-c-input-color-border-disabled)
+    }
+
+    &--disabled .sm-input__number-controls-button,
+    &__number-controls-increment--disabled,
+    &__number-controls-decrement--disabled {
+      border-color: var(--sm-c-input-number-control-color-border-disabled)
+    }
+
+    /* Editable cell */
+    &--editable-cell {
+      /* Focus state */
+      &.sm-input--focussed .sm-input__body {
+        background-color: var(--sm-c-input-color-background-editable-cell-focus);
+        box-shadow: 0 0 0 1px var(--sm-c-input-color-border-focus);
+      }
+
+      /* Invalid state */
+      &.sm-field--invalid .sm-input__body {
+        background-color: var(--sm-c-input-color-background-editable-cell-invalid);
+        box-shadow: 0 0 0 1px var(--sm-c-input-color-border-invalid);
+      }
+    }
+
+    /* Prefix content */
+    .sm-input-prefix-content {
+      padding: var(--sm-c-input-prefix-content-padding-y) var(--sm-c-input-prefix-content-padding-x);
+    }
+
+    /* Suffix content */
+    .sm-input-suffix-content {
+      padding: var(--sm-c-input-suffix-content-padding-y) var(--sm-c-input-suffix-content-padding-x);
+    }
+  }
+
+  /**
+   * For specific components since class hierarchy is a little different
+   */
+  .sm-calendar {
+    /* Invalid state */
+    .sm-field--invalid .sm-input__field,
+    .sm-field--invalid .sm-input__prefix-icon,
+    .sm-field--invalid .sm-input__suffix-icon {
+      border-color: var(--sm-c-input-color-border-invalid);
+    }
+
+    .sm-field--invalid .sm-input__prefix-icon,
+    .sm-field--invalid .sm-input__suffix-icon {
+      color: var(--sm-c-input-color-icon-invalid);
+    }
+
+  }
+}

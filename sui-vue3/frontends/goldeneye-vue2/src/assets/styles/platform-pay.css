@@ -1,0 +1,70 @@
+/* #region PPay usages */
+/*
+ * PPay usages
+ * see: https://github.com/siteminder-au/ppay/tree/master/frontends/customer
+ * to see the css variables that are used:
+ * - search for `sui-themes` in package.json
+ * - search for `--sm-`
+ */
+:root {
+  --color-cm-brand: red;
+}
+
+:root {
+  /* platform.scss */
+  /* see: https://github.com/siteminder-au/sui/blob/master/libs/sui-themes/src/app/common/variables.scss */
+  /* ppay defines these variables themselves when context is platformEnabled. see: https://github.com/siteminder-au/ppay/blob/master/frontends/customer/src/router/index.ts */
+  /*
+    if (platformContext.platformEnabled) {
+      setDocumentElementStyle('--bold-font-weight', '600')
+      setDocumentElementStyle('--default-font-size', '15px')
+      setDocumentElementStyle('--default-font-weight', '400')
+      setDocumentElementStyle('--default-letter-spacing', '-0.2px')
+      setDocumentElementStyle('--default-line-height', '22px')
+      setDocumentElementStyle('--font-family', '\'Noto Sans\', Helvetica, sans-serif')
+      setDocumentElementStyle('--regular-font-size', '13px')
+      setDocumentElementStyle('--regular-letter-spacing', '-0.1px')
+      setDocumentElementStyle('--regular-line-height', '20px')
+    }
+   */
+  --bold-font-weight: 600; /* N/A sui-themes */
+  --default-font-size: 15px; /* N/A sui-themes */
+  --default-font-weight: 400; /* N/A sui-themes */
+  --default-letter-spacing: -0.2px; /* N/A sui-themes */
+  --default-line-height: 22px; /* N/A sui-themes */
+  --font-family: 'Noto Sans', Helvetica, sans-serif; /* in sui-themes which by default provides 'Noto Sans', Helvetica, sans-serif */
+  --regular-font-size: 13px; /* N/A sui-themes */
+  --regular-letter-spacing: -0.1px; /* N/A sui-themes */
+  --regular-line-height: 20px; /* N/A sui-themes */
+
+  /* ppay.scss */
+  /* these are NOT sui-themes css variables, likely coming from white-labelling from sputnik */
+  --primary-background: var(--color-cm-brand);
+  --secondary-background: var(--color-cm-brand);
+  --secondary-foreground: var(--color-cm-brand);
+  --app-header-background-color: var(--color-cm-brand);
+  --tertiary-foreground: var(--color-cm-brand);
+  /* this doesn't exist in sui-themes. */
+  --app-header-menu-item-color: var(--color-cm-brand);
+  /* this doesn't exist in sui-themes. they specify a fallback #007DBB */
+  --button-background-color: var(--color-cm-brand);
+  /* this doesn't exist in sui-themes. they specify a fallback #B0D2F8 */
+  --info-info-mid: #B0D2F8;
+  /* this doesn't exist in sui-themes. they specify a fallback: #E6F0FF */
+  --info-info-light: #E6F0FF;
+}
+
+.sm-button {
+  /* components css variables - directly from sui-themes */
+  --sm-c-button-padding-text-right: 6px;
+  --sm-c-button-padding-text-left: 6px;
+}
+
+.sm-popover {
+  /* components css variables - directly from sui-themes */
+  --sm-c-popover-border-radius: 4px;
+  --sm-c-popover-color-border: var(--info-info-mid);
+  --sm-c-popover-color-background: var(--info-info-light);
+  --sm-c-popover-padding: 4px 8px;
+}
+/* #endregion PPay usages */

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>sui-final/icons/24px/arrows/arrow-left</title>
+    <desc>Created with Sketch.</desc>
+    <g id="sui-final/icons/24px/arrows/arrow-left" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M22.1377017,5.77406533 C22.5637282,5.34803883 23.2544536,5.34803883 23.6804801,5.77406533 C24.1065066,6.20009183 24.1065066,6.89081726 23.6804801,7.31684376 L12.7713892,18.2259347 C12.3453627,18.6519612 11.6546373,18.6519612 11.2286108,18.2259347 L0.319519875,7.31684376 C-0.106506625,6.89081726 -0.106506625,6.20009183 0.319519875,5.77406533 C0.745546375,5.34803883 1.43627181,5.34803883 1.86229831,5.77406533 L12,15.911767 L22.1377017,5.77406533 Z" id="Arrow---left" fill="#717171" transform="translate(12.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-12.000000, -12.000000) "></path>
+    </g>
+</svg>

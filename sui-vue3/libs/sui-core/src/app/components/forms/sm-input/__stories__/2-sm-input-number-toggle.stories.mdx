@@ -1,0 +1,89 @@
+import { Meta } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/sm-number-toggle-anatomy.png'
+import placement from './images/sm-number-toggle-placement.png'
+import orientation from './images/sm-number-toggle-orientation.png'
+import behaviorStates from './images/sm-number-toggle-behavior-states.png'
+import specs from './images/sm-number-toggle-specs.png'
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+  `}
+</style>
+
+<Meta title="Components/Form/Input/Number toggle" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Number toggle (input)</h1>
+  <p>
+    Allow users to click their way through numbers with low values.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Behaviour](#behaviour)
+- [Specs](#specs)
+
+
+## Usage
+Number toggles allow users to instantly enter a value within a specified range.
+
+### When to use
+- When you want users to change small amounts of input and submit it.
+- If you expect users to seldom vary from the default selection.
+- Use an **input field or select component** instead if the user is likely to deviate from the preset amounts and the user does not need to know the number constraints or if there are large amounts to choose from.
+
+### Where to use
+- **Forms -** Can be utilized in full-page forms, modals, or side panels.
+
+
+## Formatting
+
+### Anatomy
+**1: Button toggle -** Buttons used to increase or decrease an incremental value.
+
+**2: Icon -** Icons are explicit indicators: the plus segment is commonly placed to the right of the input value, while the minus segment is usually placed to the left; these placements readily translate into conceptual metaphors like "progress is from left to right" or "more is up and less is down."
+
+**3: Input -** Number inputs are similar to text inputs.
+
+<img src={anatomy} className="img-padding" alt="Anatomy of a number toggle input" width="420" />
+
+### Placement
+The switch is frequently used in forms. It may be added to a full page, a modal, card, dialog or a side panel. A switch may also be used to change settings.
+
+For more information on spacing in forms, etc. , see our [spacing guidance](https://sui-dev-v3-sui-docs.dev.siteminderlabs.com/?path=/story/foundations-spacing-overview--page).
+
+<img src={placement} className="img-padding" alt="Placement for number toggle input" />
+
+### Orientation
+Switches are arranged in vertical orientations so that users may choose to turn on/off  specific items.
+
+<img src={orientation} className="img-padding" alt="Orientation for number toggle input" width="720" />
+
+
+## Behaviour
+
+### States
+<img src={behaviorStates} className="img-padding" alt="States for number toggle input" width="720" />
+
+#### Decrease and Increase Value
+1. You may increase the value by selecting the plus button on the right or reduce it by using the minus button on the left. When the minimum amount is selected, the minus button is disabled. When the maximum amount is reached, the plus button is disabled.
+2. To manually input a value, select the text field box.
+
+#### Considerations
+- Consider touch area when designing number toggles in a list
+- Set the most frequently selected value as a stepper default.
+- Consider a slider if the selection range is large.
+- When the increment (decrement) is expected to be minimal, use a stepper.
+
+
+## Specs
+<img src={specs} className="img-padding" alt="Number toggle specs" width="560" />

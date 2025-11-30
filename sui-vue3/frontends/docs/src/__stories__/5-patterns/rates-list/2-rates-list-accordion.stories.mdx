@@ -1,0 +1,31 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import accordionOpen from './images/patterns-rate-selection-accordion-expanded.png'
+import accordionClosed from './images/patterns-rate-selection-accordion-collapsed.png'
+
+<Meta title="Design patterns/Rates list/Accordion" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Rates list</h1>
+  <p>Selecting from or entering values against a list of rates are common action across our products. This pattern provides a basic template with options to suit various use cases.</p>
+</SuiStorybookTitle>
+
+## Accordion
+
+Use only when there are no editable cells or other mandatory elements on the rate level.
+
+Regarding collapsed/expanded: whilst there is no prescribed default, consider the following:
+- Default to "collapsed" if use case should facilitate quick selection of all rates within a rate plan.
+- Default to "expanded" if use case implies more selective "cherry-picking" on a rate level.
+
+Accordion mode will always require checkboxes.
+
+### Collapsed
+
+<img src={accordionClosed} alt="Accordion closed" width="846" />
+
+### Expanded
+
+<img src={accordionOpen} alt="Accordion open" width="846" />

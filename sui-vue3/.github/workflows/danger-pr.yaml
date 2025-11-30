@@ -1,0 +1,20 @@
+name: Danger JS for PR events
+
+on:
+  pull_request:
+    types: [ assigned, edited, opened, synchronize, reopened ]
+
+concurrency:
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Checking PR
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Danger
+      uses: danger/danger-js@9.1.6
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

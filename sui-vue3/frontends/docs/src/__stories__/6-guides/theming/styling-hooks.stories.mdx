@@ -1,0 +1,141 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+
+<Meta title="Guides/Theming/Styling hooks" />
+
+<SuiStorybookPageLabel>Guides</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Styling hooks</h1>
+</SuiStorybookTitle>
+
+- [Theme categories](#theme-categories)
+- [Naming conventions](#naming-conventions)
+
+## Theme categories
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Property</th>
+      <th>Token Prefix</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Color</th>
+      <td>
+        background <br/>
+        text <br/>
+        border <br/>
+        icon <br/>
+      </td>
+      <td>
+        <code>color-background</code><br/>
+        <code>color-text</code><br/>
+        <code>color-border</code><br/>
+        <code>color-icon</code><br/>
+      </td>
+    </tr>
+    <tr>
+      <th>Font</th>
+      <td>
+        family <br/>
+        size <br/>
+        weight <br/>
+        line-height <br/>
+        letter-spacing <br/>
+      </td>
+      <td>
+        <code>font-family</code><br/>
+        <code>font-size</code><br/>
+        <code>font-weight</code><br/>
+        <code>font-line-height</code><br/>
+        <code>font-letter-spacing</code><br/>
+      </td>
+    </tr>
+    <tr>
+      <th>Border</th>
+      <td>
+        radius <br/>
+        width <br/>
+      </td>
+      <td>
+        <code>border-radius</code><br/>
+        <code>border-width</code><br/>
+      </td>
+    </tr>
+    <tr>
+      <th>Shadow</th>
+      <td>
+        shadow <br/>
+      </td>
+      <td>
+        <code>shadow</code><br/>
+      </td>
+    </tr>
+    <tr>
+      <th>Spacing</th>
+      <td>
+        padding <br/>
+        padding-y <br/>
+        padding-x <br/>
+        margin <br/>
+        margin-y <br/>
+        margin-x <br/>
+      </td>
+      <td>
+        <code>padding</code><br/>
+        <code>margin</code><br/>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+Examples:
+```css dark
+/* Correct */
+--sm-c-button-color-background-primary: blue;
+--sm-c-button-color-background: #fff;
+--sm-c-card-footer-border-radius: 8px;
+--sm-c-card-border-radius: 8px;
+
+/* Wrong */
+--sm-c-color-background: #fff;
+--sm-c-button-hover-background: grey;
+```
+
+
+## Naming conventions
+
+Styling hooks follow a specific naming convention to promote predictability and
+consistency. All of our CSS custom properties adhere to the following convention:
+
+```bash dark
+COMPONENT_ELEMENT_CATEGORY_PROPERTY_ATTRIBUTE_STATE
+```
+
+- **Component** — [required] Name of the component
+- **Element** — [optional] Name of the element of the component
+- **Category** — [required] Indicates the category of the custom property.
+- **Property** — [optional] Semantic UI property being described.
+- **Attribute** — [optional] Semantic characteristic of a property.
+- **State** — [optional] If necessary, the state of a custom property when used
+in the context of interaction design. E.g. hover, focus, selected, active
+
+Examples
+
+```css dark
+/* Component + Category + Property + Attribute */
+button-color-background-primary
+
+/* Component + Element + Category + Property */
+accordion-header-font-size
+
+/* Component + Category + Property + Attribute */
+button-font-size-small
+
+/* Component + Category + Property + Attribute + State */
+button-color-background-primary-hover
+```

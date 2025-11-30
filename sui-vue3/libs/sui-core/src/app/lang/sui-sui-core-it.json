@@ -1,0 +1,279 @@
+{
+  "libs" : {
+    "vee-validate" : {
+      "vee-validate" : {
+        "alpha" : "Il campo può contenere solo caratteri alfabetici",
+        "alpha_num" : "Il campo può contenere solo caratteri alfanumerici",
+        "alpha_dash" : "Il campo può contenere caratteri alfanumerici, trattini e trattini bassi",
+        "alpha_spaces" : "Il campo può contenere solo caratteri alfabetici e spazi",
+        "between" : "Il campo deve contenere un valore compreso tra 0:{'{min}'} e 1:{'{max}'}",
+        "confirmed" : "Il valore di conferma del campo non corrisponde",
+        "digits" : "Il campo deve contenere esattamente 0:{'{length}'} valori solo numerici",
+        "dimensions" : "Il campo deve essere di 0:{'{width}'} x 1:{'{height}'} pixel",
+        "email" : "Il campo deve contenere un indirizzo e-mail valido",
+        "not_one_of" : "Il valore del campo non è valido",
+        "ext" : "Il file caricato nel campo non è valido",
+        "image" : "Il campo deve contenere un'immagine",
+        "integer" : "Il campo deve contenere un numero intero",
+        "length" : "Il campo deve essere lungo 0:{'{length}'}",
+        "max_value" : "Il valore massimo per il campo è 0:{'{max}'}",
+        "max" : "Il campo non può contenere più di 0:{'{length}'} caratteri",
+        "mimes" : "Il campo deve contenere un formato di file valido",
+        "min_value" : "Il valore minimo per il campo è 0:{'{min}'}",
+        "min" : "Il campo deve contenere almeno 0:{'{length}'} caratteri",
+        "numeric" : "Il campo può contenere solo caratteri numerici",
+        "one_of" : "Il valore del campo non è valido",
+        "regex" : "Il formato del campo non è valido",
+        "required_if" : "Questo campo è obbligatorio",
+        "required" : "Questo campo è obbligatorio",
+        "size" : "Le dimensioni del campo devono essere inferiori a 0:{'{size}'} KB",
+        "url" : "Il campo non ha un URL valido",
+        "decimal" : "Il campo deve contenere solo valori numerici e il numero specificato di cifre decimali",
+        "is" : "Il campo non corrisponde a quello precedente",
+        "is_not" : "Il campo non può essere identico a quello precedente",
+        "precision" : "Il campo deve corrispondere con precisione decimale",
+        "double" : "Il campo deve contenere un valore decimale valido"
+      }
+    }
+  },
+  "components" : {
+    "sm-wizard" : {
+      "sm-wizard" : {
+        "a11y__click-to-close" : "Clicca per chiudere",
+        "back-button-text" : "Indietro",
+        "next-button-text" : "Avanti",
+        "confirm-button-text" : "Controlla e salva",
+        "current-steps-text" : "{currentStep} di {totalSteps}",
+        "next-step-text" : "Passaggio successivo: {nextStep}"
+      }
+    },
+    "sm-vertical-nav" : {
+      "sm-vertical-nav" : {
+        "a11y__children-toggle-show" : "Clicca per aprire il menù",
+        "a11y__children-toggle-hide" : "Clicca per chiudere il menù"
+      }
+    },
+    "sm-user-menu" : {
+      "sm-user-menu" : {
+        "a11y__children-toggle-show" : "Clicca per aprire",
+        "a11y__children-toggle-hide" : "Clicca per chiudere"
+      }
+    },
+    "sm-toast" : {
+      "sm-toast" : {
+        "a11y__click-to-close" : "Clicca per chiudere"
+      }
+    },
+    "sm-text-truncator" : {
+      "sm-text-truncator" : {
+        "read-more-button" : "Ulteriori informazioni",
+        "read-less-button" : "Nascondi dettagli"
+      }
+    },
+    "sm-tag" : {
+      "sm-tag" : {
+        "a11y__click-to-remove" : "Elimina"
+      }
+    },
+    "sm-tabs" : {
+      "sm-tabs" : {
+        "a11y__tabListContent" : "Casella con elenco schede"
+      }
+    },
+    "sm-table" : {
+      "sm-table" : {
+        "a11y__table-expand-button" : "Clicca per espandere la tabella",
+        "a11y__table-collapse-button" : "Clicca per ridurre la tabella",
+        "a11y__table-sort-ascending" : "Mostra in ordine crescente",
+        "a11y__table-sort-descending" : "Mostra in ordine decrescente"
+      }
+    },
+    "sm-slider" : {
+      "sm-slider" : {
+      }
+    },
+    "sm-property-menu" : {
+      "sm-property-menu" : {
+        "a11y__children-toggle-show" : "Clicca per aprire il menù",
+        "a11y__children-toggle-hide" : "Clicca per chiudere il menù"
+      }
+    },
+    "sm-progress-bar" : {
+      "sm-progress-bar" : {
+        "a11y__lineProgressBar" : "Barra di avanzamento lineare",
+        "a11y__circleProgressBar" : "Barra di avanzamento circolare"
+      }
+    },
+    "sm-pagination" : {
+      "sm-pagination" : {
+        "of-total-pages" : "di {totalPages}",
+        "go-to-label" : "Vai a",
+        "page-count" : "{startPage} - {endPage} di {totalResults} risultati",
+        "dropdown-items-per-page" : "{itemsPerPage}/pagina",
+        "a11y__input-field-label" : "Numero pagina",
+        "a11y__click-to-previous-button" : "Pagina precedente",
+        "a11y__click-to-next-button" : "Pagina successiva",
+        "a11y__jump-backward-button" : "Salta alle pagine precedenti",
+        "a11y__jump-forward-button" : "Salta alle pagine successive"
+      }
+    },
+    "sm-notification-list" : {
+      "sm-notification-list" : {
+        "a11y__mark-as-read" : "Segna come letta",
+        "a11y__mark-as-unread" : "Segna come non letta",
+        "hide-all-button" : "Nascondi tutte",
+        "show-all-button" : "Mostra tutte",
+        "show-unread-only-label" : "Mostra solo le notifiche non lette"
+      }
+    },
+    "sm-nav" : {
+      "sm-nav" : {
+        "a11y__click-to-close" : "Clicca per chiudere la barra di navigazione",
+        "a11y__go-back" : "Clicca per tornare indietro",
+        "a11y__side-nav-items" : "Clicca sugli elementi di navigazione",
+        "a11y__children-toggle-show" : "Clicca per visualizzare gli elementi del sottomenù"
+      }
+    },
+    "sm-media" : {
+      "sm-media" : {
+        "fileSizeExcedded" : "Alcuni file immagine superano le dimensioni massime consentite (20 MB)",
+        "invalidTypes" : "I formati di alcuni file immagine non sono validi",
+        "multipleMessage" : "Spiacenti, non è possibile caricare più file contemporaneamente"
+      }
+    },
+    "sm-lazy-image" : {
+      "sm-lazy-image" : {
+        "loading-image-error-text" : "Impossibile caricare l'immagine"
+      }
+    },
+    "sm-inline-card" : {
+      "sm-inline-card" : {
+        "a11y__click-to-close" : "Clicca per chiudere"
+      }
+    },
+    "sm-horizontal-nav" : {
+      "sm-horizontal-nav" : {
+        "a11y__children-toggle-show" : "Clicca per aprire il menù",
+        "a11y__children-toggle-hide" : "Clicca per chiudere il menù"
+      }
+    },
+    "sm-hint-card" : {
+      "sm-hint-card" : {
+        "a11y__click-to-close" : "Fai clic per chiudere"
+      }
+    },
+    "sm-expandable-card" : {
+      "sm-expandable-card" : {
+        "a11y__expandable-card-button" : "Clicca per espandere la sezione",
+        "a11y__collapsable-card-button" : "Clicca per ridurre la sezione",
+        "a11y__delete-button" : "Elimina"
+      }
+    },
+    "sm-drawer" : {
+      "sm-drawer" : {
+        "a11y__click-to-close" : "Clicca per chiudere"
+      }
+    },
+    "sm-dialog" : {
+      "sm-dialog" : {
+        "a11y__click-to-close" : "Clicca per chiudere",
+        "cancelButtonText" : "Annulla",
+        "confirmButtonText" : "Conferma"
+      }
+    },
+    "sm-content-slider" : {
+      "sm-content-slider" : {
+        "a11y__click-to-previous-button" : "Precedente",
+        "a11y__click-to-next-button" : "Avanti",
+        "a11y__click-to-delete-button" : "Elimina"
+      }
+    },
+    "sm-color-picker" : {
+      "sm-color-picker" : {
+        "selectColorButtonText" : "Seleziona colore"
+      }
+    },
+    "sm-carousel" : {
+      "sm-carousel" : {
+        "a11y__click-to-previous-button" : "Immagine precedente",
+        "a11y__click-to-next-button" : "Immagine successiva"
+      }
+    },
+    "sm-banner" : {
+      "sm-banner" : {
+        "a11y__click-to-close" : "Clicca per chiudere"
+      }
+    },
+    "sm-aside" : {
+      "sm-aside" : {
+        "a11y__toggle-show-menu" : "Clicca per visualizzare la barra laterale",
+        "a11y__toggle-hide-menu" : "Clicca per nascondere la barra laterale",
+        "toggle-tooltip-show-menu" : "Mostra navigazione",
+        "toggle-tooltip-hide-menu" : "Nascondi navigazione"
+      }
+    },
+    "sm-app-header" : {
+      "sm-app-header" : {
+        "a11y__toggle-show-menu" : "Clicca per visualizzare la barra di navigazione",
+        "a11y__toggle-hide-menu" : "Clicca per nascondere la barra di navigazione"
+      }
+    },
+    "sm-accordion" : {
+      "sm-accordion" : {
+        "a11y__accordion-expand-button" : "Clicca per espandere il pannello",
+        "a11y__accordion-collapse-button" : "Clicca per ridurre il pannello"
+      }
+    },
+    "loading" : {
+      "sm-loading-spinner": {
+        "sm-loading-spinner": {
+          "a11y__label" : "Caricamento in corso…"
+        }
+      },
+      "sm-loading-image" : {
+        "sm-loading-image" : {
+          "loading-image-alt-text" : "Caricamento immagine in corso…"
+        }
+      },
+      "sm-loader" : {
+        "sm-loader" : {
+          "loading-text" : "Caricamento in corso…"
+        }
+      }
+    },
+    "forms" : {
+      "sm-translations-input" : {
+        "sm-translations-input" : {
+          "addTranslationsButtonText" : "Aggiungi traduzioni",
+          "deleteButtonText" : "Elimina"
+        }
+      },
+      "sm-select" : {
+        "sm-select" : {
+          "maximumSelections" : "Numero massimo di opzioni raggiunto",
+          "noResultSelections" : "Impossibile trovare {searchQuery}",
+          "limitText" : "+{count}",
+          "listIsEmpty" : "L'elenco è vuoto."
+        }
+      },
+      "sm-multi-select" : {
+        "sm-multi-select" : {
+          "select-all-options" : "Seleziona tutto",
+          "select-group-options" : "Seleziona gruppo",
+          "empty-options" : "L'elenco è vuoto",
+          "option-not-found" : "Impossibile trovare {searchQuery}"
+        }
+      },
+      "sm-calendar" : {
+        "sm-calendar" : {
+          "a11y__choose-month-button" : "Seleziona mese",
+          "a11y__choose-year-button" : "Seleziona anno",
+          "a11y__next-year-button" : "Anno successivo",
+          "a11y__next-year-range-button" : "Intervallo anni successivo",
+          "a11y__previous-year-button" : "Anno precedente",
+          "a11y__previous-year-range-button" : "Intervallo anni precedente"
+        }
+      }
+    }
+  }
+}

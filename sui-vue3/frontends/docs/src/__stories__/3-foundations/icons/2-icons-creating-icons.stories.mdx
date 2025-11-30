@@ -1,0 +1,91 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import borderRadius from './images/icons-border-radius.png'
+import figma from './images/icons-figma.png'
+import exporting from './images/icons-exporting.png'
+import strokes from './images/icons-strokes.png'
+import zoomedIn from './images/icons-zoomed-in.png'
+import zoomedOut from './images/icons-zoomed-out.png'
+
+<Meta title="Foundations/Icons/Creating icons" />
+
+<SuiStorybookPageLabel>Foundations</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Icons</h1>
+  <p>
+    Icons are a visual representation of an action, idea or object. They communicate messages at a glance and draw attention to important information.
+  </p>
+</SuiStorybookTitle>
+
+- [How to create icons](#how-to-create-icons)
+- [How to import icons into SUI](#how-to-import-icons-into-sui)
+
+
+## How to create icons
+
+### Strokes
+
+In Illustrator (or Figma if that's what you'd prefer), design your icon on an artboard/frame of 24x24 pixels. The stroke width must be **2 pixels**, this is to maintain consistent line width and to ensure when the icon reduces in size (to either 16x16 or 20x20) that the lines still display properly regardless of retina or non-retina monitors.
+
+If you are using widths of only 1 pixel the icon will not display properly on non-retina screens because they cannot display sub-pixels properly.
+
+Lines should also be styled with **round caps and round joins**.
+
+<img src={strokes} alt="Strokes" width="252" />
+
+### Border radius
+
+Nothing in SUI has hard edges. All rectangles must have a border radius applied of usually either 4 or 8 pixels, depending on the size of the asset.
+This also applies to icons - all icons must have some sort of border radius applied when drawing the icons in Illustrator, see below.
+
+<img src={borderRadius} alt="Border radius" width="336" />
+<span className="sui-storybook-image-caption">Nothing in SUI has hard edges: all rectangles must have a border radius applied.</span>
+
+### Example of properly drawn icon
+
+Below is an example of how a properly designed icon looks, zoomed with a pixel grid, and again at 100% / default size:
+
+<div className="flex items-center p-8 bg-grey-neu-light">
+  <div className="flex-1">
+    <img src={zoomedIn} alt="Zoomed in" width="336" />
+    <span className="sui-storybook-image-caption">Zoomed in with pixel grid</span>
+  </div>
+  <div className="flex-1">
+    <img src={zoomedOut} alt="Normal zoom" />
+    <span className="sui-storybook-image-caption">Zoomed out</span>
+  </div>
+</div>
+
+
+## How to import icons into SUI
+
+### Exporting from Illustrator
+Once you are happy with your icon design, make sure you outline all your strokes and then convert it into a compound path (to flatten the image).
+Please contact a SUI designer if you need any guidance using illustrator.
+
+<img src={exporting} alt="Exporting from Illustrator" width="420" />
+
+Copy the flattened shape and paste it into Figma and continue on to the steps below.
+
+### Prepping Figma
+
+**Step one:** Create a new 24x24 frame in Figma. If using illustrator, paste your flattened shape into this frame.
+
+**Step two:** Please ensure you name the icon so that it is logical and will be easily searchable in Storybook.
+
+**Step three:** Make sure the vector shape layer in Figma is named 'icon' so that it works across all our components without having to reset colours or icon types
+
+<img src={figma} alt="Prepping figma" width="252" />
+<span className="sui-storybook-image-caption">Ensure the vector is named 'icon'</span>
+
+**Step five:** If you have created the icon in Figma, ensure you flatten the vector shapes so it is one shape. If you use illustrator, this is mentioned above.
+
+**Step four:** Once your icon is ready, ensure you apply a colour style to it, so that it can be recoloured across all component symbols in the library. By default our icons are set to `$app-black` / `$grey-neu-black`
+
+### Naming and dev handoff
+Export the icon as an SVG and give it to the SUI Engineer to upload to github so that all teams can have access to the icon.
+
+When exporting please include the section name in the name of the icon. Here is an example: <em>**action-mark-as-read**</em>
+
+The “action-mark-as-read” signifies to the SUI engineer that this icon is an **action** icon, and the icon itself is the **mark as read** icon.

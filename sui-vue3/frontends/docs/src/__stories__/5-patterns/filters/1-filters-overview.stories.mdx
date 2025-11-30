@@ -1,0 +1,199 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import filterAnatomy from './images/filters-anatomy.png'
+import liveFilterDesktopRecommendation1 from './images/filters-types-live-desktop1.png'
+import liveFilterDesktopRecommendation2 from './images/filters-types-live-desktop2.png'
+import liveFilterTabletRecommendation from './images/filters-types-live-tablet.png'
+import liveFilterConsideration1 from './images/filters-types-live-considerations1.png'
+import liveFilterConsideration2 from './images/filters-types-live-considerations2.png'
+import batchFilterRecommendation from './images/filters-types-batch.png'
+import advanceFilter1 from './images/filters-types-advance-filter-1.png'
+import advanceFilter2 from './images/filters-types-advance-filter-2.png'
+import advanceFilter3 from './images/filters-types-advance-filter-3.png'
+import advanceFilter4 from './images/filters-types-advance-filter-4.png'
+import advanceFilter5 from './images/filters-types-advance-filter-5.png'
+import behaviourDisabledTags from './images/filter-behavior-disabled-tags.gif'
+import specsDesktop from './images/filter-specs-desktop.png'
+import specsTablet from './images/filter-specs-tablet.png'
+
+<style>
+  {`
+    .img-padding {
+      padding-bottom: 24px;
+      padding-top: 24px;
+    }
+  `}
+</style>
+
+<Meta title="Design patterns/Filters/Overview" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Filters</h1>
+  <p>Filtering allows data to be filtered based on a set of factors.</p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Filter Selection methods](#filter-selection-methods)
+- [Filter types](#filter-types)
+- [Behaviours](#behaviours)
+- [Specs](#specs)
+
+
+## Usage
+### When to use
+ - Filters may be used in search components, as well as in combination with other components and patterns like lists and data tables.
+ - Choosing display rules for data from a dataset.
+ - Using user-defined criteria to narrow down the results.
+
+## Formatting
+<div className="sui-storybook-highlight sui-storybook-highlight--warning"> <p>This is not a component in SUI, this is just a general guideline for consistency for filter pattern. Your team will be the one to build this using the components available in SUI.</p></div>
+
+### Anatomy and Placement
+
+**1: Filter Controls** - Filter controls should be placed above the data content to make it easier for users to find and act on records of interest.
+
+**2: Filter Tags** - Filter tags should appear below the filter field or symbol, aligned to the left. They are arranged in rows with equal spacing between them, and rows should not exceed the width of the layout container set for the corresponding filter field.
+The order in which the tags appear on the screen, from left to right, should correspond to the order in which they were selected by the user.
+
+**3: Show more/less text button** - If tags exceed the layout container in one row, add a “Show more” text button at the end of the row. Be mindful that the button does not exceed the width of your main container. When users click on the “Show more” button,  more tags are shown below in rows and the text button changes to “Show less”.
+Make sure that the succeeding rows of tags do not reach the column of the text button. If the last tag reached the button column move it to the next row.
+
+**4: Results** - The results should be shown beneath the controls and tags. This should include any records that match the filter criteria. Results can be expressed as a List, Cards, or DataTable, depending on the data types and use case.
+
+**5: Clear button** - Filters should always have a clear button to enable users to reset their chosen parameters. The clear button is placed at the end of the filter controls.
+
+<img src={filterAnatomy} className="img-padding" alt="Anatomy of a filter pattern"/>
+
+## Filter Selection methods
+The right filter selection approach will increase user efficiency and usability. Consider the data your users are looking at, their goals, and how they may naturally filter down the data.
+
+**1. Single Select** - The user can only select one attribute.
+
+**2. Multi-select** - The user can select more than one attribute.
+
+**3. Multiple filters with live updates** - As the user picks each filter, the data is automatically updated.
+
+**4. Multiple filters with batch updates** - The user can choose multiple filters and then performs an extra action to apply the filters.
+
+## Filter types
+You can allow users to filter your list by using components such as radio buttons, checkboxes, select, multi-select, selection controls, etc.
+
+User research is best  to determine the ideal approach for your filter types.
+
+### Live Filters (Independent Filters)
+Independent filters will filter the content on a page independently from each other, meaning there is no need to ‘Apply filters’ with a button. As soon as a filter is applied, there will be a short load, and the content will immediately filter based on what the user has chosen.
+
+#### When to use
+  - Filters are independent of each other
+  - 5-6 filters at most is recommended
+
+#### Recommendations
+
+##### Desktop
+  - Display the top 3 filters first and if space allows, add the other filters in desktop view. This can include components such as select or multi-select, input, etc. Use a filter icon button if space won't allow you to add your other filters.
+  - The icon button uses a  filter icon to indicate more filters are available. And a popover is used to contain the filters.
+  - Only use for up to 6 filters in the popover (see Advanced filters pattern for more than 6 filters)
+  - A badge is used as a counter on the icon button to indicate how many other filters are applied. This button is used for more filters where there are many groupings of filters that can be applied, so it should be 1 per group of filter
+  - Dismissible tags are used to show what filters are applied.
+  - Use “Filters” as section labels to the applied filters, placed above the tags.
+  - For tags under a multi-select group, the text “Group name:” (in semi-bold) is added before the actual word on the filter tag.
+  <img src={liveFilterDesktopRecommendation1}  className="img-padding"alt="Recommendation for filter pattern for desktop"/>
+
+  **Separate section labels (optional)**
+
+  You may separate the section labels based on your fields to give clear sectioning of your filters
+  <img src={liveFilterDesktopRecommendation2} className="img-padding" alt="Recommendation for filter pattern for desktop with separate section labels"/>
+
+##### Tablet
+Truncation on filters occurs
+
+  - Display the top 3 filters first and if space allows you can add other filters in tablet view. Use the filter icon button for for truncating filters for responsiveness.
+  - The icon button uses a  filter icon to indicate more filters are available.
+  - A popover is used to contain the other filters. This should include the other select/multi-select filters that were visible in desktop view.
+  <img src={liveFilterTabletRecommendation} className="img-padding" alt="Recommendation for filter pattern for tablet"/>
+
+#### Considerations Live Filters Tags
+In some cases where live filters are applied, especially when using a select component and no filter icon button is present, there is no need to add the filter tags below the fields. Consider the data your users are looking at, their goals, and how they may naturally filter down the data.
+<img src={liveFilterConsideration1} className="img-padding" alt="Sample of live filters using a select component and no filter icon button not using filter tags below the fields."/>
+
+In other cases where there's a combination of a select component and a multi-select component applied, you may want to consider adding the filter tags for multi-select under the fields.
+<img src={liveFilterConsideration2} className="img-padding" alt="Sample of live filters using a select and multi-select component applied with tags below for the multi-select fields."/>
+
+## Batch Filters (Grouped Filters )
+Grouped filters will allow the user to carefully select all the filters they'd like to apply without making any changes to the current content or data on the page. This grouping is usually accompanied by an apply button.
+
+Grouped filters work best when the user is making several filtering options across different categories that require a long time to mentally process.
+
+Group filtering is also a viable option for data-return times that are too sluggish. This eliminates the need for the user to wait for data to load after each selection.
+
+#### When to use
+  - Filters are interdependent of each other
+  - Filter query needs to be sent at once
+  - 5-6 filters at most is recommended
+
+#### Recommendations
+  - Display up top 3 filter category in desktop view, else use the filter icon button for the less important filters.
+  - Only use for up to 6 filters (see Advanced filters pattern for more than 6 filters)
+  - Use a bounding box to display that the search criteria and filters are grouped
+  - Option to use Filters as section labels or separate section labels
+
+  <img src={batchFilterRecommendation} className="img-padding" alt="Sample of batch filters in platform."/>
+
+
+## Advanced filters
+Advanced filters enable  the use of complex operators in the search criteria - such as greater than or less than particular values. Advanced filters occur inside a modal due to the advanced complexity.
+
+For designs changing to Advanced Filters due to the number of filters, the modal operates the same as Grouped Filters - where the query is sent via the click of Apply or Submit,  even if the underlying filters are independent of each other.
+
+#### When to use
+  - Complicated filter controls (operators like greater than / less than)
+  - Recommended when there are more than 5-6 filters (even if they are independent filters)
+
+#### Recommendations
+  - Flexibility to include/exclude the Save Filters function
+  - Option to use Filters as section labels or separate section labels
+
+  <img src={advanceFilter1} className="img-padding" alt="Sample of advance filters in platform in default mode."/>
+  <img src={advanceFilter2} className="img-padding" alt="Sample of advance filters in platform after clicking default mode - a modal opens up containing more filters."/>
+  <img src={advanceFilter3} className="img-padding" alt="Sample of advance filters in platform with applied filters are displayed as tags once applied."/>
+  <img src={advanceFilter4} className="img-padding" alt="Sample of advance filters in platform with a saved filters tab."/>
+  <img src={advanceFilter5} className="img-padding" alt="Sample of advance filters in platform with a saved filters tab on empty state and creating a saved filters option."/>
+
+## Behaviours
+
+### Live Filters (Independent Filters)
+  - Filters will filter content independently of each other
+  - Results are refreshed once a filter is applied
+
+### Batch Filters (Grouped Filters)
+  - Filters are located inside a bounding box
+  - Filters queries the database as a group
+  - Results are refreshed only when the 'Apply'/'Search' is pressed/clicked
+  - Filter tags appear only after the 'Apply'/'Search' is pressed/clicked
+
+### Advanced Filters
+  - All filters live inside a modal
+  - A single, simple search input can be placed on the page (which can be filtered instantly based on input)
+  - When inside the modal - the results are refreshed only when the 'Apply' or 'Submit' button is pressed/clicked
+  - Filter tags appear only after the 'Apply'/'Search' is pressed/clicked
+  - Design pattern available for saving sets of filters as favourites
+
+### Clearing and removing filters
+  - Select the Clear All option to remove all of the filter values.
+  - For tags, simply choose the Close (X) symbol on each individual filter tag provided for filter tags.
+
+### Disabled tags
+In some cases, the multi-select and its tags are automatically disabled (i.e. when saving) to prevent accidental deleting of tags while another action is taking place.
+<img src={behaviourDisabledTags} className="img-padding" alt="Sample of multi-select and its tags automatically disabled after the save button was clicked."/>
+
+## Specs
+Follow the breakpoint guidelines for your main container. Follow specs for other components (tags, select, etc.)
+
+### Desktop
+<img src={specsDesktop} className="img-padding" alt="Filter specs for desktop view"/>
+
+### Tablet
+<img src={specsTablet} className="img-padding" alt="Filter specs for tablet view" width="520"/>

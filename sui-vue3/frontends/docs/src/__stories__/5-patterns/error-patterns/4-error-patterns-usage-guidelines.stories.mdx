@@ -1,0 +1,26 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import errorUsageGuideline from './images/errors-usage-guidelines.png'
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+  `}
+</style>
+
+
+<Meta title="Design patterns/Error patterns/Usage Guidelines" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Error patterns</h1>
+  <p>Errors offer users valuable feedback within a specific context, enabling them to address failures and prevent potential issues down the line.</p>
+</SuiStorybookTitle>
+
+View figma file <a href="https://www.figma.com/file/Au1waCRAR4SpFvIgEMASgf/sui-documentation?type=design&node-id=2661-615947&mode=design&t=eGPrJeuhj3OyuQ2o-4" target="_blank">here</a>.
+<img src={errorUsageGuideline} alt="Error usage guidelines"/>

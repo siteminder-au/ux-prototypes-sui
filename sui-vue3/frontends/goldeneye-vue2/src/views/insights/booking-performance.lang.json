@@ -1,0 +1,20 @@
+{
+  "page-title": "Booking performance",
+  "page-description": "Filter channel manager bookings by rate plans, room types, channels or source market.",
+  "buttons": {
+    "download-csv": "Download csv"
+  },
+  "charts": {
+    "bookings-by-country": "Bookings by country",
+    "room-nights-by-channel": "Room nights by channel",
+    "room-revenue-by-channel": "Room revenue by channel",
+    "room-nights-by-room-type": "Room nights by room type",
+    "room-revenue-by-room-type": "Room revenue by room type"
+  },
+  "tabs": {
+    "source-market": "Source market",
+    "channel-mix": "Channel mix",
+    "room-type": "Room type",
+    "rate-plan": "Rate plan"
+  }
+}

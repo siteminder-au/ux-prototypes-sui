@@ -1,0 +1,107 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import usageDivideContent from './images/sm-divider-usage-divide-content.png'
+import usageCreateSpace from './images/sm-divider-usage-create-space.png'
+import usageCreateDistinction from './images/sm-divider-usage-create-distinction.png'
+import formattingStyle from './images/sm-divider-style.png'
+import formattingSpacing from './images/sm-divider-spacing.png'
+import formattingAlignment from './images/sm-divider-alignment.png'
+import specs from './images/sm-divider-specs.png'
+
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+    .box {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #C6CEDA;
+    border-radius: 2px;
+    margin-right: 8px;
+    vertical-align: text-top;
+    }
+
+
+  `}
+</style>
+
+<Meta title="Components/Divider/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Divider</h1>
+  <p>A divider is a thin line that divides content in layouts which helps distinguish and organize content or sections in a user interface. It serves both practical and visual functions, enhancing the overall user experience by creating clear visual divisions and structure.</p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Specs](#specs)
+- [Best practices](#best-practices)
+- [Accessibility](#accessibility)
+
+## Usage
+  ### 1. To separate or divide dense content
+  They help improve readability and scannability by creating visual breaks between content.<br />
+  They also indicate a shift in subject, content style, or anticipated action.
+  <img src={usageDivideContent} className="img-padding" alt="Divider separating dense content" width="620" />
+
+  ### 2. To create space between elements in a layout.
+  Used to separate different sections or elements on a page or screen, such as between content, forms, or navigation items in a menu. <br />
+  They are helpful for highlighting sections or lists, especially on smaller screens.
+  <img src={usageCreateSpace} className="img-padding" alt="Divider creates space between layouts" width="560" />
+
+  ### 3. Creating distinctions within related data.
+  Dividers can also be used to create a sense of hierarchy, indicating relationships between elements (e.g., grouping related items).
+  <img src={usageCreateDistinction} className="img-padding" alt="Divider creates distinction within related data" width="720" />
+
+## Formatting
+  ### Color
+  | Token | Use case | Hex |
+  | :--- | :--- | :--- |
+  | <span className="box"></span>$blue-neu-mid | Divider color | #C6CEDA |
+
+
+  ### Style
+  A solid-style is used for sm-divider.
+  <img src={formattingStyle} className="img-padding" alt="Divider style is a solid line" width="640" />
+
+
+  ### Spacing
+  Ensure that there is consistent spacing around the divider. It should be evenly spaced from adjacent content or elements to create a balanced visual effect.
+
+  A **24-32px spacing** is recommended between elements and dividers.
+
+  The **sm-divider** by default already has a **16px margin-top and bottom**, so consider these for the recommended spacing given above.
+  <img src={formattingSpacing} className="img-padding" alt="Divider spacing" width="640" />
+
+
+  ### Alignment
+  The left and right margins of the divider should align with the container of the associated content.
+  <img src={formattingAlignment} className="img-padding" alt="Divider alignment" width="560" />
+
+## Specs
+<img src={specs} className="img-padding" alt="Divider specs" width="560" />
+
+## Best practices
+- Ensure dividers are noticeable but not too prominent.
+- It's best to use them in moderation within a layout to prevent unnecessary clutter and buildup. Only resort to using dividers when open space can't group items together.
+- Use dividers for grouping elements, not for separating individual items.
+
+## Accessibility
+Dividers are decorative elements and have no minimum contrast requirements.
+
+  ### Reference
+  [ARIA: separator role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/separator_role) <br />
+  The separator role indicates the element is a divider that separates and distinguishes sections of content or groups of menu items.
+
+  ### Screenreader expectations:
+  For screen reader users, the experience should match what they see visually, indicating the start of a new "section" when a divider is shown.
+
+  ### Keep in mind
+  The divider doesn't notify a screen reader; it only briefly pauses the content being read aloud.

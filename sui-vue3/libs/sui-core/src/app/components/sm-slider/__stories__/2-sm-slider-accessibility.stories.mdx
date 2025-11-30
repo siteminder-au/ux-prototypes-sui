@@ -1,0 +1,49 @@
+import { Meta } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+    @media only screen and (min-width: 641px) {
+      .row {
+        display: flex;
+        column-gap: 24px;
+      }
+
+      .column {
+        flex: 0 auto;
+      }
+    }
+  `}
+</style>
+
+<Meta title="Components/Slider/Accessibility" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Slider</h1>
+  <p>
+    The slider allows users to make a selection from a range of values.
+  </p>
+</SuiStorybookTitle>
+
+
+## Keyboard interaction
+
+| Key | Usage |
+| :--- | :--- |
+| Right Arrow | Increase the value of the slider by one step. |
+| Up Arrow | Increase the value of the slider by one step. |
+| Left Arrow | Decrease the value of the slider by one step. |
+| Down Arrow | Decrease the value of the slider by one step. |
+| Home | Set the slider to the first allowed value in its range. |
+| End | Set the slider to the last allowed value in its range. |
+| Page Up (Optional) | Increment the slider by an amount larger than the step change made by Up Arrow. |
+| Page Down (Optional) | Decrement the slider by an amount larger than the step change made by Down Arrow. |
+| Tab | When the user Tabs into the slider, the focus is placed on the handle, hitting the Tab key again causes the focus to leave the slider. |
+| Shift + Tab | This key combination provides the same behaviour as the Tab key, but in the reverse order. |

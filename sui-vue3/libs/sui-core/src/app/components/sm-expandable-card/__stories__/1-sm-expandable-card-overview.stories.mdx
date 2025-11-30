@@ -1,0 +1,177 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/sm-expandable-card-anatomy.png'
+import placement from './images/sm-expandable-card-placement-dashboard.png'
+import dropdownAndButton from './images/sm-expandable-card-appearance-dropdown-icon.png'
+import borders from './images/sm-expandable-card-appearance-border.png'
+import variantStandard from './images/sm-expandable-card-variant-standard.png'
+import variantWithoutFixedHeader from './images/sm-expandable-card-variant-without-fixed-header.png'
+import variantCardBody from './images/sm-expandable-card-variant-body.png'
+import variantNested from './images/sm-expandable-card-variant-nested.png'
+import variantTypeTwo from './images/sm-expandable-card-variant-type-two.png'
+import variantHelpPanel from './images/sm-expandable-card-variant-help-panel.png'
+import specsStandard from './images/sm-expandable-card-specs-standard.png'
+import specsNoFixedHeader from './images/sm-expandable-card-specs-without-fixed-header.png'
+import specsBody from './images/sm-expandable-card-specs-body.png'
+import specsNested from './images/sm-expandable-card-specs-nested.png'
+import specsTypeTwo from './images/sm-expandable-card-specs-type-two.png'
+import behaviorStates from './images/sm-expandable-card-behavior-states.png'
+import behaviorInteraction from './images/sm-expandable-card-behavior-interaction.png'
+
+<Meta title="Components/Expandable card/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Expandable card</h1>
+  <p>Expandable cards are designed to support expandable/collapsible cards layout with custom header, body and add a new card button at footer.</p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Appearance](#appearance)
+- [Variants](#variants)
+- [Specs](#specs)
+- [Behaviour](#behaviour)
+
+## Usage
+Expandable cards are designed to support expandable/collapsible cards layout with custom header, body and add a new card button at footer.
+
+They function almost in the same way as accordions. By using progressive disclosure, large amounts of information can fit into a card. The header title provides a high-level summary of the information and allows the user to choose which parts to read.
+
+### When to use
+- To group together related information.
+- When it is not necessary to view material in its entirety, simplify cards and decrease scrolling.
+
+## Formatting
+
+### Anatomy
+**1: Container**  - Container size is defined by the amount of space those elements take up. The container expresses card elevation.
+
+**2: Header section (optional)** - This is a custom content area which can be static or interactive (i.e. input text fields).
+
+**3: Body** - Body is the actual expandable area.
+
+**4: Footer (optional)** - Footer can be used for custom content. An example is a CTA which can be used to add another body section.
+
+**5: Icon button** - Indicates if the card is open or closed.Standard placement is to the left. However, if used inside another container such as a drawer or modal, it can be placed on the right.
+
+**6: Divider (optional)** - Used to separate body sections. Can be turned off when using the component inside another area like a drawer or a dialog box.
+
+<img src={anatomy} alt="Expandable card anatomy" width="640" />
+
+### Sizing
+There is no default width size for the expandable cards.
+<div className="sui-storybook-highlight">It is very important that you indicate what the ideal width is in your designs and communicate this clearly to engineering.</div>
+
+### Placement
+Expandable cards are used in the dashboard for the channel status feature. This can also be used on other pages -- just remember that your placement should be relevant to the page and serve its use.
+
+**Expandable cards - dashboard**
+<img src={placement} alt="Expandable card placement on dashboard" />
+
+## Appearance
+### Dropdown button location
+Standard usage is to the left. However, if used inside another container such as a drawer or modal, it can be placed on the right
+<img src={dropdownAndButton} alt="Expandable card dropdown and button location" width="840" />
+
+### Borders
+Can be turned off when using the component inside another area like a drawer or a dialog box.
+<img src={borders} alt="Expandable card inside a drawer without borders" />
+
+## Variants
+Use the variant which you think would suit best for your use cases/scenarios.
+
+### Standard
+This is the default state of the expandable card.
+
+- An `sm-expandable-card` component is designed to support expandable/collapsible cards layout with custom header, body and add a new card button at footer.
+- Use the `header slot` to provide a custom static header.
+- Use the `default slot` to define custom content for the card.
+- Use the `footer slot` to provide a custom button or other clickable element to add expandable card `sm-expandable-card-body` using body slot.
+- Use the `body slot` to provide custom expandable card body `sm-expandable-card-body`.
+
+
+The **`sm-expandable-card-body`** component has an overflow property that will display scrollbar if height exceeds then given max-height.
+
+Use **`contentClass`** props to apply any custom class to the wrapper.
+
+Add **`sm-overflow-visible`** class to **`contentClass`** props to set overflow **`unset`** on card expand if the child component has tendency to overflow.
+
+<img src={variantStandard} alt="Standard expandable cards" />
+
+### Without fixed header
+It is possible to remove the header section and only place the footer by default.
+<img src={variantWithoutFixedHeader} alt="Expandable cards without fixed headers" width="560" />
+
+### Expandable card - body
+The body section of the card is inside the container itself.
+
+An **`sm-expandable-card-body`** component is designed to support expandable/collapsible cards with custom header and body.
+- Use the `header slot` to provide a custom button or other clickable element to expandable/collapsible the card.
+- Use the `body slot` to provide a custom expandable card body.
+
+<img src={variantCardBody} alt="Expandable cards with body section" width="560" />
+
+
+### Nested expandable card
+This is a combination of nested expandable cards.
+
+An **`sm-expandable-card-body`** component is designed to support expandable/collapsible cards with custom header and body.
+
+- Use the `header slot` to provide a custom button or other clickable element to expandable/collapsible the card.
+- Use the `body slot` to provide a custom expandable card body
+- Use the `arrowPosition` props set to right when `sm-expandable-card` component does not have default delete button on nested `sm-expandable-card-body` component.
+
+<img src={variantNested} alt="Sample of nested expandable cards" width="840" />
+
+### Expandable card type two
+Similar to an accordion, this variant has expandable/collapsible row with custom content inside a card container. An sm-expandable-card component is designed to support expandable/collapsible cards layout.
+
+- Use the `default slot` to define custom content for the card.
+- Use `sm-expandable-card-bod`y component to support expandable/collapsible cards with custom header and body.
+- Best Practices, Whenever there are multiple slots, use the `full template based syntax` for all slots including `default`.
+
+<img src={variantTypeTwo} alt="Sample of alternative expandable cards" />
+
+### Help panel
+Help panel are used in the wizard.
+
+For more information on how to use, refer to [Help pattern documentation](https://sui-dev-v3-sui-docs.dev.siteminderlabs.com/?path=/story/design-patterns-help-wizard-help-panel--page#usage").
+
+- Use `isHelpCard` props to apply help card styling to the `sm-expandable-card-body` component.
+- Apply custom styling to `sm-expandable-card-body` component body `slot`.
+
+<img src={variantHelpPanel} alt="Sample of help panel as expandable card" width="400" />
+
+## Specs
+
+### Standard
+<img src={specsStandard} alt="Standard expandable card specs" width="640" />
+
+### Without fixed header
+<img src={specsNoFixedHeader} alt="Expandable card without fixed header specs" width="640" />
+
+### Expandable card - body
+<img src={specsBody} alt="Body of expandable card specs" width="640" />
+
+### Nested Expandable card
+<img src={specsNested} alt="Nested expandable card specs" />
+
+### Expandable card type two
+<img src={specsTypeTwo} alt="Type two expandable card specs" width="540" />
+
+## Behaviour
+### States
+The expandable card has two states: collapsed and expanded.
+
+Expandable cards by default begin with a collapsed state with all content closed. This gives the user a high-level summary of the available data.
+
+Arrow icon indicates which state the card is in. Arrow down in a collapsed state and arrow up in an expanded state.
+
+<img src={behaviorStates} alt="Expandable card states" width="840" />
+
+### Interaction
+Users can change the card states by clicking on the arrow or any where in the area.
+
+<img src={behaviorInteraction} alt="Expandable card interaction" width="540" />

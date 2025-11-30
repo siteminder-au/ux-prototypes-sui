@@ -1,0 +1,119 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/sm-tooltip-anatomy.png'
+import variantStandard from './images/sm-tooltip-variants-standard.png'
+import variantCustom from './images/sm-tooltip-variants-custom.png'
+import variantUtility from './images/sm-tooltip-variants-utility.png'
+import specs from './images/sm-tooltip-specs.png'
+import behaviorActivatingTooltip from './images/sm-tooltip-behavior-activating-tooltip.gif'
+import restrictionDo from './images/sm-tooltip-restriction-do.png'
+import restrictionDoNot from './images/sm-tooltip-restriction-do-not.png'
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+  `}
+</style>
+
+<Meta title="Components/Tooltip/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Tooltip</h1>
+  <p>
+    A tooltip is a type of popup that displays information related to an element when it is triggered.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Variants](#variants)
+- [Specs](#specs)
+- [Behaviour](#behaviour)
+- [Restrictions](#restrictions)
+- [References](#references)
+
+
+
+## Usage
+A tooltip is a type of popup that displays information related to an element when it is triggered or focused. It is a pattern you should use if you would like to convey extra contextual information to a user that will assist in helping them complete their tasks.
+
+The information within a tooltip should only ever be brief descriptive text, and ideally no more than one sentence. **If you need to convey more information or the user needs to interact with the component, you should consider using a popover instead.**
+
+  ### When to use tooltips
+  Tooltips are great for giving more contextual information to a user. For instance a new button might be introduced with an uncommon icon in it, pairing it with a tooltip on hover to further explain what the button does would be a great way to boost the user experience.
+
+
+## Formatting
+  ### Anatomy
+  **1: Tooltip -** Consists of container with an arrow in SUI black (#333) and para-lg text in white.
+
+  **2: Tooltip arrow **- For left and right tooltips, this arrow will always be horizontally or vertically aligned and centered to the trigger element. However for top and bottom tooltips, the arrow may align to the left or right depending on where the trigger element is located on the viewport and how much space is around it.
+
+  **3: Trigger element -** This is what a user must trigger or focus on to invoke the tooltip. Space between the trigger and popover is 3px.
+
+<img src={anatomy} className="img-padding" alt="Anatomy of a tooltip" />
+
+  ### Placement
+  You can choose from left, right top or bottom tooltips, however if there is no space on the page in conjunction with the direction you have chosen, it will display where there is space, i.e. you've chosen a top tooltip but the user had scrolled too far down to display it above, then it will default to either the right or bottom tooltip location.
+
+  The tooltip will always trigger centrally to the trigger element
+
+  ### Sizing
+  There is no default size for the tooltip. If you don't set a width for it, it will not wrap unless it hits either side of the viewport. **It is very important that you indicate what the ideal width is in your designs and communicate this clearly to engineering.**
+
+  The height of the tooltip will be determined by how many lines of text are within and adjust accordingly. If your tooltip is too big on the screen, please consider conveying your contextual information another way.
+
+
+## Variants
+  ### Standard
+  The tooltip, by default, consists of container with an arrow in grey-neu-black / app-black and para-lg text in white.
+<img src={variantStandard} className="img-padding" alt="The standard tooltip variant by default, consists of container with an arrow with white white text." width="240" />
+
+  ### Custom
+  Custom tooltips can completely override the standard style. This is an extremely flexible variant that you should not use without consulting your Design Manager first, as moving away from the standard variant will likely cause UI inconsistencies across our app.
+<img src={variantCustom} className="img-padding" alt="The custom tooltip variant with prefix icon and text." width="320" />
+
+  ### Utility
+  **Utility tooltips are used to for validation in tables (particularly editable tables).** Editable tables have no space for validation messages, so these must be conveyed in tooltips. **Do not use utility tooltips for any other purpose.**
+<img src={variantUtility} className="img-padding" alt="Utility tooltips are used to for validation in table."/>
+
+
+## Specs
+<img src={specs} className="img-padding" alt="Tooltip specs." width="400"/>
+
+## Behaviour
+  ### Activating a tooltip
+  Activate a tooltip using a trigger element. This can be triggered on hover, on click or on focus. For **keyboard users** a tooltip should always activate on focus. For **touch screen users** it should always activate on touch or focus. For **desktop users** it should activate on click or hover and focus.
+<img src={behaviorActivatingTooltip} className="img-padding center" alt="Tooltip activated  on click, on hover and on focus using a button component." width="640" />
+
+  ### Closing a tooltip
+  If tooltips are triggered by on click or focus, it can be closed by clicking outside of the tooltip container or when moving focus to another element.If triggered by on hover, tooltips are dismissed by hovering away from the element.
+
+
+## Restrictions
+
+| Do | Don't |
+| :--- | :--- |
+| Use short, descriptive text to convey helpful information to the user. <br /><img src={restrictionDo} className="img-padding" alt="Using short, descriptive text in the tooltip." /> | Don't use tooltips to convey lengthy information to a user. <br /><img src={restrictionDoNot} className="img-padding" alt="Using lengthy information in the tooltip."/> |
+
+
+## References
+[Tooltip Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/)
+
+[Tooltips: How to create and use the mighty UI pattern for enhanced UX](https://www.appcues.com/blog/tooltips)
+
+[Tooltip Guidelines](https://www.nngroup.com/articles/tooltip-guidelines/)
+
+[Tooltips](https://m2.material.io/components/tooltips)

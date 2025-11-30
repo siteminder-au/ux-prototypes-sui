@@ -1,0 +1,278 @@
+{
+  "libs": {
+    "vee-validate": {
+      "vee-validate": {
+        "alpha": "This field may only contain alphabetic characters",
+        "alpha_num": "This field may only contain alpha-numeric characters",
+        "alpha_dash": "This field may contain alpha-numeric characters as well as dashes and underscores",
+        "alpha_spaces": "This field may only contain alphabetic characters as well as spaces",
+        "between": "This field must be between 0:{'{min}'} and 1:{'{max}'}",
+        "confirmed": "This field confirmation does not match",
+        "digits": "This field must be numeric and exactly contain 0:{'{length}'} digits",
+        "dimensions": "This field must be 0:{'{width}'} pixels by 1:{'{height}'} pixels",
+        "email": "This field must be a valid e-mail",
+        "not_one_of": "This field is not a valid value",
+        "ext": "This field is not a valid file",
+        "image": "This field must be an image",
+        "integer": "This field must be an integer",
+        "length": "This field must be 0:{'{length}'} long",
+        "max_value": "This field must be 0:{'{max}'} or less",
+        "max": "This field may not be greater than 0:{'{length}'} characters",
+        "mimes": "This field must have a valid file type",
+        "min_value": "This field must be 0:{'{min}'} or more",
+        "min": "This field must be at least 0:{'{length}'} characters",
+        "numeric": "This field may only contain numeric characters",
+        "one_of": "This field is not a valid value",
+        "regex": "This field format is invalid",
+        "required_if": "This field is required",
+        "required": "This field is required",
+        "size": "This field size must be less than 0:{'{size}'}KB",
+        "url": "This field is not a valid URL",
+        "decimal": "This field must be numeric and may contain the specified amount of decimal points",
+        "is": "This field does not match with the previous one",
+        "is_not": "This field cannot match with the previous one",
+        "precision": "This field must be equal to decimal precision",
+        "double": "This field must be a valid decimal"
+      }
+    }
+  },
+  "components": {
+    "sm-wizard": {
+      "sm-wizard": {
+        "a11y__click-to-close": "Click to close",
+        "back-button-text": "Back",
+        "next-button-text": "Next",
+        "confirm-button-text": "Review and save",
+        "current-steps-text": "{currentStep} of {totalSteps}",
+        "next-step-text": "Next: {nextStep}"
+      }
+    },
+    "sm-vertical-nav": {
+      "sm-vertical-nav": {
+        "a11y__children-toggle-show": "Click to open menu",
+        "a11y__children-toggle-hide": "Click to close menu"
+      }
+    },
+    "sm-user-menu": {
+      "sm-user-menu": {
+        "a11y__children-toggle-show": "Click to open",
+        "a11y__children-toggle-hide": "Click to close"
+      }
+    },
+    "sm-toast": {
+      "sm-toast": {
+        "a11y__click-to-close": "Click to close"
+      }
+    },
+    "sm-text-truncator": {
+      "sm-text-truncator": {
+        "read-more-button": "Read more",
+        "read-less-button": "Read less"
+      }
+    },
+    "sm-tag": {
+      "sm-tag": {
+        "a11y__click-to-remove": "Remove"
+      }
+    },
+    "sm-tabs": {
+      "sm-tabs": {
+        "a11y__tabListContent": "Tab list container"
+      }
+    },
+    "sm-table": {
+      "sm-table": {
+        "a11y__table-expand-button": "Click to expand the table",
+        "a11y__table-collapse-button": "Click to collapse the table",
+        "a11y__table-sort-ascending": "Sort by ascending order",
+        "a11y__table-sort-descending": "Sort by descending order"
+      }
+    },
+    "sm-slider": {
+      "sm-slider": {}
+    },
+    "sm-property-menu": {
+      "sm-property-menu": {
+        "a11y__children-toggle-show": "Click to open menu",
+        "a11y__children-toggle-hide": "Click to close menu"
+      }
+    },
+    "sm-progress-bar": {
+      "sm-progress-bar": {
+        "a11y__lineProgressBar": "Linear Progress Bar",
+        "a11y__circleProgressBar": "Ring Progress Bar"
+      }
+    },
+    "sm-pagination": {
+      "sm-pagination": {
+        "of-total-pages": "of {totalPages}",
+        "go-to-label": "Go to",
+        "page-count": "{startPage} - {endPage} of {totalResults} results",
+        "dropdown-items-per-page": "{itemsPerPage}/page",
+        "a11y__input-field-label": "Page number",
+        "a11y__click-to-previous-button": "Previous page",
+        "a11y__click-to-next-button": "Next page",
+        "a11y__jump-backward-button": "Jump pages backward",
+        "a11y__jump-forward-button": "Jump pages forward"
+      }
+    },
+    "sm-notification-list": {
+      "sm-notification-list": {
+        "a11y__mark-as-read": "Mark as read",
+        "a11y__mark-as-unread": "Mark as unread",
+        "hide-all-button": "Hide all",
+        "show-all-button": "Show all",
+        "show-unread-only-label": "Show unread only"
+      }
+    },
+    "sm-nav": {
+      "sm-nav": {
+        "a11y__click-to-close": "Click to close navigation bar",
+        "a11y__go-back": "Click to go back",
+        "a11y__side-nav-items": "Click on navigation items",
+        "a11y__children-toggle-show": "Click to show sub menu items"
+      }
+    },
+    "sm-media": {
+      "sm-media": {
+        "fileSizeExcedded": "Some images have exceeded the maximum file size of 20MB",
+        "invalidTypes": "Some files are not valid image types",
+        "multipleMessage": "Sorry, multiple files cannot be uploaded at once"
+      }
+    },
+    "sm-lazy-image": {
+      "sm-lazy-image": {
+        "loading-image-error-text": "Image has failed to load"
+      }
+    },
+    "sm-inline-card": {
+      "sm-inline-card": {
+        "a11y__click-to-close": "Click to close"
+      }
+    },
+    "sm-horizontal-nav": {
+      "sm-horizontal-nav": {
+        "a11y__children-toggle-show": "Click to open menu",
+        "a11y__children-toggle-hide": "Click to close menu"
+      }
+    },
+    "sm-hint-card": {
+      "sm-hint-card": {
+        "a11y__click-to-close": "Click to close"
+      }
+    },
+    "sm-expandable-card": {
+      "sm-expandable-card": {
+        "a11y__expandable-card-button": "Click to expand the section",
+        "a11y__collapsable-card-button": "Click to collapse the section",
+        "a11y__delete-button": "Delete"
+      }
+    },
+    "sm-drawer": {
+      "sm-drawer": {
+        "a11y__click-to-close": "Click to close"
+      }
+    },
+    "sm-dialog": {
+      "sm-dialog": {
+        "a11y__click-to-close": "Click to close",
+        "cancelButtonText": "Cancel",
+        "confirmButtonText": "Confirm"
+      }
+    },
+    "sm-content-slider": {
+      "sm-content-slider": {
+        "a11y__click-to-previous-button": "Previous",
+        "a11y__click-to-next-button": "Next",
+        "a11y__click-to-delete-button": "Delete"
+      }
+    },
+    "sm-color-picker": {
+      "sm-color-picker": {
+        "selectColorButtonText": "Select colour"
+      }
+    },
+    "sm-carousel": {
+      "sm-carousel": {
+        "a11y__click-to-previous-button": "Previous image",
+        "a11y__click-to-next-button": "Next image"
+      }
+    },
+    "sm-banner": {
+      "sm-banner": {
+        "a11y__click-to-close": "Click to close"
+      }
+    },
+    "sm-aside": {
+      "sm-aside": {
+        "a11y__toggle-show-menu": "Click to show the sidebar",
+        "a11y__toggle-hide-menu": "Click to hide the sidebar",
+        "toggle-tooltip-show-menu": "Show navigation",
+        "toggle-tooltip-hide-menu": "Hide navigation"
+      }
+    },
+    "sm-app-header": {
+      "sm-app-header": {
+        "a11y__toggle-show-menu": "Click to show the navigation bar",
+        "a11y__toggle-hide-menu": "Click to hide the navigation bar"
+      }
+    },
+    "sm-accordion": {
+      "sm-accordion": {
+        "a11y__accordion-expand-button": "Click to expand the panel",
+        "a11y__accordion-collapse-button": "Click to collapse the panel"
+      }
+    },
+    "loading": {
+      "sm-loading-spinner": {
+        "sm-loading-spinner": {
+          "a11y__label": "Loading ..."
+        }
+      },
+      "sm-loading-image": {
+        "sm-loading-image": {
+          "loading-image-alt-text": "Loading image..."
+        }
+      },
+      "sm-loader": {
+        "sm-loader": {
+          "loading-text": "Loading ..."
+        }
+      }
+    },
+    "forms": {
+      "sm-translations-input": {
+        "sm-translations-input": {
+          "addTranslationsButtonText": "Add translations",
+          "deleteButtonText": "Delete"
+        }
+      },
+      "sm-select": {
+        "sm-select": {
+          "maximumSelections": "Maximum selections reached",
+          "noResultSelections": "{searchQuery} cannot be found",
+          "limitText": "+{count}",
+          "listIsEmpty": "List is empty."
+        }
+      },
+      "sm-multi-select": {
+        "sm-multi-select": {
+          "select-all-options": "Select all",
+          "select-group-options": "Select group",
+          "empty-options": "List is empty",
+          "option-not-found": "{searchQuery} cannot be found"
+        }
+      },
+      "sm-calendar": {
+        "sm-calendar": {
+          "a11y__choose-month-button": "Choose month",
+          "a11y__choose-year-button": "Choose year",
+          "a11y__next-year-button": "Next year",
+          "a11y__next-year-range-button": "Next year range",
+          "a11y__previous-year-button": "Previous year",
+          "a11y__previous-year-range-button": "Previous year range"
+        }
+      }
+    }
+  }
+}

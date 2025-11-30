@@ -1,0 +1,108 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import inheritance from './images/patterns-overrides-overview-inheritance.png'
+import inputs from './images/patterns-overrides-overview-inputs.png'
+import popover from './images/patterns-overrides-overview-popover.png'
+import small from './images/patterns-overrides-overview-small.png'
+import tooltips from './images/patterns-overrides-overview-tooltips.png'
+import medium from './images/patterns-overrides-overview-medium.png'
+import actionLock from './images/action-lock.png'
+import actionUnlock from './images/action-unlock.png'
+
+<Meta title="Design patterns/Overrides/Overview" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Overrides</h1>
+  <p>Our Platform connects with an enormous amount of Channels and Property Management Systems, which means its important to distinguish between inherited and overridden data.</p>
+</SuiStorybookTitle>
+
+- [Product context](#product-context)
+- [Definitions](#definitions)
+- [Design decisions](#design-decisions)
+- [Types of overrides](#types-of-overrides)
+- [Contextual messaging](#contextual-messaging)
+
+
+## Product context
+
+One of the main features of Property Platform is that it connects our hoteliers to all their <strong>Channels</strong> and <strong>Property Management Systems (PMS).</strong> These connections can be quite complex and lengthy in detail so it is important our users understand when the default settings of these connections are inherited directly, or if they have been overridden within our product.
+
+Property Platform helps the hotelier manage all these connections in one central hub, so it is important that they know immediately when something is inherited or overridden.
+
+
+## Definitions
+
+Here is an overview of terminology that will be used in this pattern:
+- <strong>Rate plan:</strong> A type of rate that can be assigned to a room
+- <strong>Room type:</strong> A type of room that a traveller can stay at
+- <strong>Room rate:</strong> When a room type has been assigned to a rate plan, it becomes a room rate
+- <strong>Assign:</strong> the act of adding a room type to a rate plan – this creates a room rate. This term also applies to other things, such as assigning cancellation policies.
+- <strong>Override:</strong> the act of changing the default room type data at the room rate level
+- <strong>Inherit:</strong> when a room rate inherits the default room type or rate plan data
+- <strong>Map:</strong> the act of mapping a room rate to a channel
+- <strong>Channel:</strong> a type of hotel property aggregator such as Agoda, Airbnb or Booking.com
+- <strong>Property Management System (PMS):</strong> software that enables a hotel to manage things such as booking reservations, check-in/checkout, room assignment, managing room rates, billing, etc.
+
+
+## Design decisions
+
+### Icon usage
+To visually indicate where data can be overridden, we use the link and unlink icon.
+
+<table>
+  <tbody>
+    <tr>
+      <td width="48">
+        <img src={actionLock} alt="Lock icon" width="24" />
+      </td>
+      <td>
+        <strong>‘action-lock’</strong>: The locked padlock means that the current data state is inherited, therefore triggering the action will break away and override the data.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src={actionUnlock} alt="Unlock icon" width="24" />
+      </td>
+      <td>
+        <strong>‘action-unlock’</strong>: The unlocked padlock means that the current data state has been overridden or edited, therefore triggering the action with reset it’s value back to the inherited state.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Representing inheritance visually
+Inherited data is represented in components via the disabled state. There will always be an action to trigger overriding the data via an icon button that uses the link/unlink icons mentioned above.
+
+However, there may be times when you cannot allow the user to override inherited data immediately but the inherited data will still need to be represented visually in some way.
+
+Below is an example of how inherited data can be displayed: in this case in a card with the disabled state active, however there is also an action button to override this data in a separate centralised area within PP.
+<img src={inheritance} alt="Inherited or imported state" />
+
+
+## Types of overrides
+
+### Input fields
+To override data in an input field, use the mixed input component in conjunction with the link/unlink icons.
+<img src={inputs} alt="Overriding input fields" width="760" />
+
+### Override action button
+To override data that is not in an input field, use the icon button, alongside the component that contains the data that the user will override. Below you will find examples, however this is not limited to just the components that are shown here.
+
+#### Example with smaller components
+For small components, we use the text style button, as it is borderless takes up less space, visually.
+<img src={small} alt="Overriding small components" width="760" />
+
+#### Example with medium components
+<img src={medium} alt="Overriding medium components" width="860" />
+
+## Contextual messaging
+
+### Informing the user of inheritance
+It’s important that the user has as much context as possible about what is inherited and what is overridden. To help with that, we should be using contextual messaging touchpoints where appropriate.
+<img src={tooltips} alt="Use tooltips to convey inherited state" width="460" />
+
+### Informing the user of override removal
+When an override has been made, and the user would like to reset it back to it’s default inherited state, then we should prompt the user to ensure they are aware of what action they are taking, ass this will result in the loss of data.
+<img src={popover} alt="Use popovers to convey override removal" width="500" />

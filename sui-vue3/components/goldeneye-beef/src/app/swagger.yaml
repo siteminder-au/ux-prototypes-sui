@@ -1,0 +1,14 @@
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: sui-goldeneye-beef
+  description: sui-goldeneye-beef
+servers:
+  - url: http://localhost:3000/
+paths:
+  /healthcheck:
+    get:
+      operationId: healthCheck
+      responses:
+        "200":
+          description: ok

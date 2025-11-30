@@ -1,0 +1,103 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import accessibilityDo1 from './images/accessibility-do-1.png'
+import accessibilityDo2 from './images/accessibility-do-2.png'
+import accessibilityDont1 from './images/accessibility-dont-1.png'
+import accessibilityDont2 from './images/accessibility-dont-2.png'
+import styleDo1 from './images/style-do-1.png'
+import styleDo2 from './images/style-do-2.png'
+import styleDont1 from './images/style-dont-1.png'
+import styleDont2 from './images/style-dont-2.png'
+
+<Meta title="Foundations/Typography/Best practices" />
+
+<SuiStorybookPageLabel>Foundations</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Typography</h1>
+  <p>
+    When creating distinct visual patterns, typography aids in the formation of hierarchy and the communication of important content.
+  </p>
+</SuiStorybookTitle>
+
+
+- [Accessibility](#accessibility)
+- [Style](#style)
+
+
+## Accessibility
+
+<table>
+  <thead>
+    <tr>
+      <th>Do's</th>
+      <th>Don'ts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        ✅ For the majority of use cases, especially long-form, utilize a font size of 15px or higher. For less critical information, smaller fonts are acceptable,
+        but they should only be used occasionally. This guarantees that all of our users, including those with low vision, can access the material.
+        <br/><br/>
+        <img src={accessibilityDo1} alt="Typography do sample" width="406" />
+      </td>
+      <td>
+        ❌ Don't use font size below 15px for body copy and UI, unless the content is brief or secondary.
+        <br/><br/>
+        <img src={accessibilityDont1} alt="Typography don't sample" width="406" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        ✅ Maintain a logical hierarchy by selecting headings in numerical order rather than font size.
+        This improves the accessibility of our contents for screen readers.
+        <br/><br/>
+        <img src={accessibilityDo2} alt="Hierarchy do sample" width="406" />
+      </td>
+      <td>
+        ❌ Use headings in an illogical order, since this will confuse screen readers.
+        <br/><br/>
+        <img src={accessibilityDont2} alt="Hierarchy don't sample" width="406" />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+## Style
+
+<table>
+  <thead>
+    <tr>
+      <th>Do's</th>
+      <th>Don'ts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        ✅ Text should be aligned, spaced, and styled to make it simple to read and understand what to do.
+        <br/><br/>
+        <img src={styleDo1} alt="Style do sample with normal alignment" width="406" />
+      </td>
+      <td>
+        ❌ Use of unreadable colors, tight leading, underlined text that can be misinterpreted for a link, and center alignment of content.
+        <br/><br/>
+        <img src={styleDont1} alt="Style don't sample with center alignment" width="406" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        ✅ On titles, headers, and subheadings, use sentence case.
+        <br/><br/>
+        <img src={styleDo2} alt="Style do sample with normal casing" width="406" />
+      </td>
+      <td>
+        ❌ Use all caps on titles, headers, and subheading.
+        <br/><br/>
+        <img src={styleDont2} alt="Style don't sample with capitalized casing" width="406" />
+      </td>
+    </tr>
+  </tbody>
+</table>

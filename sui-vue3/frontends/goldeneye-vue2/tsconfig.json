@@ -1,0 +1,32 @@
+{
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    // Needed for code coverage to be calculated correctly
+    "sourceMap": true,
+    // Unit tests fail without this e.g. mock issues https://github.com/kulshekhar/ts-jest/issues/120
+    "esModuleInterop": true,
+    // Volar & vue-tsc bug https://github.com/johnsoncodehk/volar/issues/1153
+    "jsx": "preserve"
+  },
+  // adding this vueCompilerOptions to fix a random error about JSX appearing for template & bare html elements. See: https://github.com/nuxt/typescript/issues/537#issuecomment-1061595875
+  "vueCompilerOptions": {
+    "experimentalCompatMode": 2, // delete after migrating to vue3 (or nuxt3)
+    "experimentalTemplateCompilerOptions": {
+      "compatConfig": {
+        "MODE": 2
+      } // delete after migrating to vue3 (or nuxt3)
+    },
+    "target": 2.7 // required for volar compatibility
+  },
+  "exclude": [
+    "node_modules",
+    "**/*.stories.ts",
+    "src/cct-shim.d.ts",
+    "src/**/*.cy.ts",
+    "cypress-component-testing/**/*.ts"
+  ],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue"
+    ]
+}

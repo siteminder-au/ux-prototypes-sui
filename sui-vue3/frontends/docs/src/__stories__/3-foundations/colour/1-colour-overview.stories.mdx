@@ -1,0 +1,594 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import useOfColor from './images/use-of-color.png'
+
+<Meta title="Foundations/Colour/Overview" />
+
+<style>
+  {`
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 336px;
+    }
+
+    .swatch-grid--small {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .swatch-cell::before {
+      content: "";
+      display: block;
+      height: 0;
+      width: 0;
+      padding-bottom: 100%;
+    }
+
+    .swatch-list {
+      max-width: 504px;
+    }
+
+    .swatch-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 16px;
+      min-height: 52px;
+    }
+
+    .swatch-item--bordered {
+      border: 1px solid #c6ceda;
+    }
+
+    .swatch-item span {
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+    .swatch-item__value span {
+      display: block;
+      text-align: right;
+    }
+  `}
+</style>
+
+<SuiStorybookPageLabel>Foundations</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Colour</h1>
+  <p>Colour helps maintain visual consistency and distinguish branding across our products.  Our colour palette is a collection of colours that help to ensure that we use colours consistently in our products.</p>
+</SuiStorybookTitle>
+
+- [Colour anatomy](#colour-anatomy)
+- [Baseline colours](#baseline-colours)
+- [Typography colours](#typography-colours)
+- [Extended palette](#extended-palette)
+- [Use of colour](#use-of-colour)
+
+## Colour anatomy
+
+The colour palette of Siteminder is used to create SUI's default themes. The neutral blue gray family is the default, with subtle shifts in value used to organize content into distinct zones.
+
+All Siteminder products and experiences use the primary blue family as the primary action colour. Additional colours are used sparingly and on purpose.
+
+<div className="swatch-grid">
+  <div className="swatch-cell bg-blue-neu-light"></div>
+  <div className="swatch-cell bg-blue-neu-med"></div>
+  <div className="swatch-cell bg-blue-neu-mid"></div>
+  <div className="swatch-cell bg-blue-neu-dark"></div>
+  <div className="swatch-cell bg-primary-blue-highlight"></div>
+  <div className="swatch-cell bg-primary-blue"></div>
+  <div className="swatch-cell bg-primary-blue-dark"></div>
+  <div className="swatch-cell bg-primary-blue-midnight"></div>
+</div>
+
+<strong className="mt-32 mb-16 block">Alert Colours</strong>
+
+<div className="swatch-grid swatch-grid--small">
+  <div className="swatch-cell bg-app-info-light"></div>
+  <div className="swatch-cell bg-app-info-mid"></div>
+  <div className="swatch-cell bg-app-info"></div>
+  <div className="swatch-cell"></div>
+  <div className="swatch-cell"></div>
+
+  <div className="swatch-cell bg-app-success-light"></div>
+  <div className="swatch-cell bg-app-success-mid"></div>
+  <div className="swatch-cell bg-app-success"></div>
+  <div className="swatch-cell bg-app-success-dark"></div>
+  <div className="swatch-cell bg-app-success-black"></div>
+
+  <div className="swatch-cell bg-app-alert-light"></div>
+  <div className="swatch-cell bg-app-alert-mid"></div>
+  <div className="swatch-cell bg-app-alert"></div>
+  <div className="swatch-cell bg-app-alert-dark"></div>
+  <div className="swatch-cell bg-app-alert-black"></div>
+
+  <div className="swatch-cell bg-app-warning-light"></div>
+  <div className="swatch-cell bg-app-warning-mid"></div>
+  <div className="swatch-cell bg-app-warning"></div>
+  <div className="swatch-cell bg-app-warning-dark"></div>
+  <div className="swatch-cell bg-app-warning-black"></div>
+</div>
+
+
+## Baseline colours
+
+Our baseline palette contributes to product consistency. The base palette is made up of our primary and neutral colours, which allows the Siteminder content to stand out while still providing enough colour contrast.
+
+<div className="swatch-list">
+  <div className="swatch-item bg-primary-blue text-true-white">
+    <span>primary</span>
+    <div className="swatch-item__value">
+      <span>#006ADD</span>
+      <span>$primary-blue</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-grey-neu-black text-true-white">
+    <span>app-black</span>
+    <div className="swatch-item__value">
+      <span>#333333</span>
+      <span>$grey-neu-black</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-blue-neu-mid">
+    <span>app</span>
+    <div className="swatch-item__value">
+      <span>#C6CEDA</span>
+      <span>$blue-neu-mid</span>
+    </div>
+  </div>
+  <div className="swatch-item swatch-item--bordered bg-true-white">
+    <span>app-pure-white</span>
+    <div className="swatch-item__value">
+      <span>#FFFFFF</span>
+      <span>$true-white</span>
+    </div>
+  </div>
+</div>
+
+
+## Typography colours
+
+Colours in typography are used on text elements such as headings and body.
+
+> Note: the $grey-neu-dark colour token is used for our disabled colour. But this is could also be used for some typography text to create better typographic hierarchy.
+
+<div className="swatch-list">
+  <div className="swatch-item bg-grey-neu-dark text-true-white">
+    <span></span>
+    <div className="swatch-item__value">
+      <span>#717171</span>
+      <span>$grey-neu-dark</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-grey-neu-black text-true-white">
+    <span>app-black</span>
+    <div className="swatch-item__value">
+      <span>#333333</span>
+      <span>$grey-neu-black</span>
+    </div>
+  </div>
+</div>
+
+## Extended palette
+
+### Primary
+
+A primary colour is the colour that appears frequently across screens and components and is used to emphasize actions. It is used for prominent action items such as buttons, text links, and other critical functional use cases.
+
+Our primary colour related tokens are:
+- **$primary-blue-highlight:** This is the hover state for the primary colour in the app-header only.
+- **$primary-blue:** The primary colour is used to indicate interactions and primary actions on a page.
+- **$primary-blue-dark:** This is the hover state for the primary colour.
+- **$primary-blue-midnight:** This is the pressed state for the primary colour.
+
+<div className="swatch-list">
+  <div className="swatch-item bg-primary-blue-highlight text-true-white">
+    <span>primary-light</span>
+    <div className="swatch-item__value">
+      <span>#0D7AF0</span>
+      <span>$primary-blue-highlight</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-primary-blue text-true-white">
+    <span>primary</span>
+    <div className="swatch-item__value">
+      <span>#006ADD</span>
+      <span>$primary-blue</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-primary-blue-dark text-true-white">
+    <span>primary-mid</span>
+    <div className="swatch-item__value">
+      <span>#0057B5</span>
+      <span>$primary-blue-dark</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-primary-blue-midnight text-true-white">
+    <span>primary-dark</span>
+    <div className="swatch-item__value">
+      <span>#0C4583</span>
+      <span>$primary-blue-midnight</span>
+    </div>
+  </div>
+</div>
+<br/>
+
+### Neutrals
+
+The grey colour palette is used to create user interfaces, structure layouts, and convey hierarchy. Having a variety of options allows for complex layering of backgrounds, panels, cards, and so on.
+
+Our neutral colour related tokens are:
+- **$true-white:** This colour is used as a background colour in components (like cards) and also as the font colour in buttons with a darker fill (like the primary button).$grey-neu-black: SUI's version of 'black', this is used primarily as the colour of our font; also used in all focus rings to indicate what the user is focusing on when they tab target. For accessibility purposes only.
+- **$grey-neu-light:** A legacy colour that is used in some components. Please avoid using this.$app-extra-4: This is the hover colour for table rows. It has been chosen to fall in with the app colours however it also needs to work on both a white background as well as app-light.
+- **$blue-neu-light:** Used as an accent across our app, but primarily as the background colour in the wizard content area and vertical navigation.$blue-neu-med: This colour is used as a stroke to help visually define certain elements, such as cards, the tertiary button, dividers, etc.
+- **$blue-neu-mid:** Used as the hover state in many of our components with a white background, such as the text button, tertiary button, many icon buttons, etc.
+- **$blue-neu-dark:** Used primary to help accentuate the UI and also an alternative text colour to signify a count, i.e. Room Rates (5)
+
+<div className="grid grid-cols-1 tablet:grid-cols-2 gap-24">
+  <div className="swatch-list">
+    <div className="swatch-item swatch-item--bordered bg-true-white">
+      <span>app-pure-white</span>
+      <div className="swatch-item__value">
+        <span>#FFFFFF</span>
+        <span>$true-white</span>
+      </div>
+    </div>
+    <div className="swatch-item bg-grey-neu-light">
+      <span>extra-3</span>
+      <div className="swatch-item__value">
+        <span>#EAEAEA</span>
+        <span>$grey-neu-light</span>
+      </div>
+    </div>
+    <div className="swatch-item bg-app-extra-4">
+      <span>extra-4</span>
+      <div className="swatch-item__value">
+        <span>#F5F7FA</span>
+        <span>$app-extra-4</span>
+      </div>
+    </div>
+    <div className="swatch-item bg-grey-neu-black text-true-white">
+      <span>app-black</span>
+      <div className="swatch-item__value">
+        <span>#333333</span>
+        <span>$grey-neu-black</span>
+      </div>
+    </div>
+  </div>
+
+  <div className="swatch-list">
+    <div className="swatch-item bg-blue-neu-light">
+      <span>app-light</span>
+      <div className="swatch-item__value">
+        <span>#F5F9FF</span>
+        <span>$blue-neu-light</span>
+      </div>
+    </div>
+    <div className="swatch-item bg-blue-neu-med">
+      <span>app-mid</span>
+      <div className="swatch-item__value">
+        <span>#E6EBF2</span>
+        <span>$blue-neu-med</span>
+      </div>
+    </div>
+    <div className="swatch-item bg-blue-neu-mid">
+      <span>app</span>
+      <div className="swatch-item__value">
+        <span>#C6CEDA</span>
+        <span>$blue-neu-mid</span>
+      </div>
+    </div>
+    <div className="swatch-item bg-blue-neu-dark text-true-white">
+      <span>app-dark</span>
+      <div className="swatch-item__value">
+        <span>#828EA3</span>
+        <span>$blue-neu-dark</span>
+      </div>
+    </div>
+  </div>
+</div>
+<br/>
+
+### Functional colours
+
+These colours are only used in situations where functional colour coding is required, such as error or success, positive or negative.
+
+#### Success
+
+Colour related tokens are:
+- **$app-success-light:** This colour is used to indicate a success state on components and communications and is used as a background colour in components that have a success state.
+- **$app-success-mid:** This colour is used to indicate a success state on components and communications and is used as a stroke colour in components that have a success state.
+- **$app-success:** This colour is used to indicate success and used in components that have a success state.
+- **$app-success-dark:** This colour is used to indicate success and used as a hover colour for our success button.
+- **$app-success-black:** This colour is used to indicate success and used as a pressed colour for our success button.
+
+<div className="swatch-list">
+  <div className="swatch-item bg-app-success-light">
+    <span>success-light</span>
+    <div className="swatch-item__value">
+      <span>#E2F4EB</span>
+      <span>$app-success-light</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-app-success-mid">
+    <span>success-mid</span>
+    <div className="swatch-item__value">
+      <span>#9AE0BD</span>
+      <span>$app-success-mid</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-app-success text-true-white">
+    <span>success</span>
+    <div className="swatch-item__value">
+      <span>#1B7B3E</span>
+      <span>$app-success</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-app-success-dark text-true-white">
+    <span>success-dark</span>
+    <div className="swatch-item__value">
+      <span>#0E5431</span>
+      <span>$app-success-dark</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-app-success-black text-true-white">
+    <span>success-black</span>
+    <div className="swatch-item__value">
+      <span>#0A3B22</span>
+      <span>$app-success-black</span>
+    </div>
+  </div>
+</div>
+
+#### Warning
+
+Colour related tokens are:
+- **$app-warning-light:** This colour is used to indicate a warning state on components and communications and is used as a background colour in components that have a warning state.
+- **$app-warning-mid:** This colour is used to indicate a warning state on components and communications and is used as a stroke colour in components that have a warning state.
+- **$app-warning:** This colour is used to indicate errors and used in components that have an error state or error messaging.
+- **$app-warning-dark:** This colour is used to indicate warnings and used as a pressed colour for our warning button.
+- **$app-warning-black:** This colour is used to indicate warnings and used as a hover colour for our warning button.
+
+<div className="swatch-list">
+  <div className="swatch-item bg-app-warning-light">
+    <span>warning-light</span>
+    <div className="swatch-item__value">
+      <span>#FCEEEE</span>
+      <span>$app-warning-light</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-app-warning-mid">
+    <span>warning-mid</span>
+    <div className="swatch-item__value">
+      <span>#F1BFBF</span>
+      <span>$app-warning-mid</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-app-warning text-true-white">
+    <span>warning</span>
+    <div className="swatch-item__value">
+      <span>#D11D1D</span>
+      <span>$app-warning</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-app-warning-dark text-true-white">
+    <span>warning-dark</span>
+    <div className="swatch-item__value">
+      <span>#B81919</span>
+      <span>$app-warning-dark</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-app-warning-black text-true-white">
+    <span>warning-black</span>
+    <div className="swatch-item__value">
+      <span>#9E1616</span>
+      <span>$app-warning-black</span>
+    </div>
+  </div>
+</div>
+
+#### Alert
+
+Colour related tokens are:
+- **$app-alert-light:** This colour is used to indicate an alert status on components and is used as a background colour in components that have an alert state.
+- **$app-alert-mid:** This colour is used to indicate an alert state on components and communications and is used as a stroke colour in components that have an alert state.
+- **$app-alert:** This colour is used to indicate alerts and used in components that have alert states.
+- **$app-alert-dark:** This colour is used to indicate alerts and used as a hover colour for our alert button.
+- **$app-alert-black:** This colour is used to indicate alerts and used as a pressed colour for our alert button.
+
+<div className="swatch-list">
+  <div className="swatch-item bg-app-alert-light">
+    <span>alert-light</span>
+    <div className="swatch-item__value">
+      <span>#FFF6C0</span>
+      <span>$app-alert-light</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-app-alert-mid">
+    <span>alert-mid</span>
+    <div className="swatch-item__value">
+      <span>#FCCC0B</span>
+      <span>$app-alert-mid</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-app-alert">
+    <span>alert</span>
+    <div className="swatch-item__value">
+      <span>#FFAB00</span>
+      <span>$app-alert</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-app-alert-dark">
+    <span>alert-dark</span>
+    <div className="swatch-item__value">
+      <span>#DC9400</span>
+      <span>$app-alert-dark</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-app-alert-black text-true-white">
+    <span>alert-black</span>
+    <div className="swatch-item__value">
+      <span>#B27700</span>
+      <span>$app-alert-black</span>
+    </div>
+  </div>
+</div>
+
+#### Info
+
+Colour related tokens are:
+- **$app-info-light:** This colour is used as the default for utility states. Use the default info state to draw the users attention to information or data on the page that is not success, warning or alert type. This is used as a light colour.
+- **$app-info-mid:** This colour is used as the default for utility states. Use the default info state to draw the users attention to information or data on the page that is not success, warning or alert type. This is used as a stroke colour.
+- **$app-info:** This colour is used as the default for utility states. Use the default info state to draw the users attention to information or data on the page that is not success, warning or alert type.
+
+<div className="swatch-list">
+  <div className="swatch-item bg-app-info-light">
+    <span>info-light</span>
+    <div className="swatch-item__value">
+      <span>#E6F0FF</span>
+      <span>$app-info-light</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-app-info-mid">
+    <span>info-mid</span>
+    <div className="swatch-item__value">
+      <span>#B0D2F8</span>
+      <span>$app-info-mid</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-app-info text-true-white">
+    <span>info</span>
+    <div className="swatch-item__value">
+      <span>#006ADD</span>
+      <span>$app-info</span>
+    </div>
+  </div>
+</div>
+
+#### Disabled
+
+Colour related tokens are:
+- **$grey-neu-white:** This colour is used to indicate a disabled state on components and is used as a background colour in components that have a disabled state. The lightness of this colour is meant to meet contrast criteria when used with disabled-dark.
+- **$grey-neu-med:** This colour is used to indicate a disabled state on components and is used as a stroke colour in components that have a disabled state.
+- **$grey-neu-mid:** This colour is used to indicate disabled states used in our components. Do not use this colour with anything needs to meet a 4:5.1 contrast criteria against a white background, as it will fail.
+- **$grey-neu-dark:** This colour is used to indicate a disabled state on components and is used as the text or icon colour in components that have a disabled state. The darkness of this colour is meant to meet contrast criteria when used with disabled-light.
+
+<div className="swatch-list">
+  <div className="swatch-item bg-grey-neu-white">
+    <span>disabled-light</span>
+    <div className="swatch-item__value">
+      <span>#F6F6F6</span>
+      <span>$grey-neu-white</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-grey-neu-med">
+    <span>disabled-mid</span>
+    <div className="swatch-item__value">
+      <span>#C1C1C1</span>
+      <span>$grey-neu-med</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-grey-neu-mid">
+    <span>disabled</span>
+    <div className="swatch-item__value">
+      <span>#9A9A9A</span>
+      <span>$grey-neu-mid</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-grey-neu-dark text-true-white">
+    <span>disabled-dark</span>
+    <div className="swatch-item__value">
+      <span>#717171</span>
+      <span>$grey-neu-dark</span>
+    </div>
+  </div>
+</div>
+
+#### Illustration colours
+
+SUI primarily uses $primary-blue in illustrations. The extended blue and grey colour palettes are used in the illustrations to add depth and variety.
+
+Colour related tokens are:
+- **$illu-primary-light:** Primary light tone colour for illustrations.
+- **$illu-primary-mid:** Primary mid tone colour for illustrations.
+- **$illu-primary:** Primary colour for illustrations.
+- **$illu-secondary-light:** Secondary light tone colour for illustrations.
+- **$illu-secondary-mid:** Secondary mid tone  colour for illustrations..
+- **$illu-secondary:** Secondary colour for illustrations.
+
+<div className="grid grid-cols-1 tablet:grid-cols-2 gap-24">
+  <div className="swatch-list">
+    <div className="swatch-item bg-illu-primary-light">
+      <span>$illu-primary-light</span>
+      <div className="swatch-item__value">
+        <span>#F5F9FF</span>
+      </div>
+    </div>
+    <div className="swatch-item bg-illu-primary-mid">
+      <span>$illu-primary-mid</span>
+      <div className="swatch-item__value">
+        <span>#B0D2F8</span>
+      </div>
+    </div>
+    <div className="swatch-item bg-illu-primary text-true-white">
+      <span>$illu-primary</span>
+      <div className="swatch-item__value">
+        <span>#006ADD</span>
+      </div>
+    </div>
+  </div>
+
+  <div className="swatch-list">
+    <div className="swatch-item bg-illu-secondary-light">
+      <span>$illu-secondary-light</span>
+      <div className="swatch-item__value">
+        <span>#E6EBF2</span>
+      </div>
+    </div>
+    <div className="swatch-item bg-illu-secondary-mid">
+      <span>$illu-secondary-mid</span>
+      <div className="swatch-item__value">
+        <span>#C6CEDA</span>
+      </div>
+    </div>
+    <div className="swatch-item bg-illu-secondary text-true-white">
+      <span>$illu-secondary</span>
+      <div className="swatch-item__value">
+        <span>#828EA3</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+#### Brand colours
+
+A selection of branding colours. Please avoid using these as they will be used selectively throughout the design system.
+
+Colour related tokens are:
+- **$brand-2**
+- **$brand-1**
+
+<div className="swatch-list">
+  <div className="swatch-item bg-brand-1 text-true-white">
+    <span>$brand-1</span>
+    <div className="swatch-item__value">
+      <span>#00033B</span>
+    </div>
+  </div>
+  <div className="swatch-item bg-brand-2 text-true-white">
+    <span>$brand-2</span>
+    <div className="swatch-item__value">
+      <span>#006DFF</span>
+    </div>
+  </div>
+</div>
+
+
+## Use of Colour
+
+https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html
+
+It is essential not to rely solely on colour to convey information, indicate an action, elicit a response, or distinguish a visual element.
+
+<img src={useOfColor} width="588" alt="Use of colour" />

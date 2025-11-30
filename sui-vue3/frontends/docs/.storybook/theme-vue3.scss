@@ -1,0 +1,75 @@
+@import '../libs/sui-core/src/app/common/variables.scss';
+
+/**
+ * Vue3 Storybook specific styles
+ *
+ * Storybook overrides for the main content
+ * Some can be themed via frontends/docs/.storybook/theme.cjs
+ */
+.sbdocs {
+  &.sbdocs-wrapper {
+    padding-top: $sm-40;
+  }
+
+  .sbdocs-a {
+    word-break: break-word;
+  }
+
+  .sbdocs-title {
+    margin-bottom: $sm-20;
+    font-size: 36px;
+    font-weight: 600;
+  }
+
+  .sbdocs-img {
+    display: block;
+  }
+
+  .sbdocs-h2 {
+    border: 0;
+    border-top: 1px solid $light-blue-grey;
+
+    &:first-of-type {
+      padding-top: $sm-40;
+    }
+  }
+
+  .sbdocs-hr {
+    border-color: $light-blue-grey;
+    margin: $sm-40 0;
+  }
+}
+
+/**
+ * Custom, reusable styles
+ * Need to bump specificity here with `.sbdocs` because the new Storybook version
+ * has a lot of built-in classes with no discernible class names
+ */
+.sbdocs .sui-storybook {
+  &-highlight {
+    background-color: $app-info-light;
+    padding: $sm-16 $sm-32;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.2px;
+    text-align: left;
+    margin: $sm-16 0;
+
+    &--warning {
+      background-color: $app-warning-light;
+    }
+
+    &--alert {
+      background-color: $app-alert-light;
+    }
+  }
+
+  &-image-caption {
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 4px;
+    display: block;
+  }
+}

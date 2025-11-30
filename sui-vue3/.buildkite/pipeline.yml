@@ -1,0 +1,75 @@
+steps:
+
+  - label: 'check for outdated images'
+    command: './node_modules/\@siteminder/overlord/shared/ci-scripts/check-for-outdated-images.sh'
+    soft_fail:
+      - exit_status: 3
+
+  - label: 'create git diff for calculating incremental build'
+    command: './node_modules/\@siteminder/overlord/shared/buildkite/create-git-diff.sh'
+    key: 'create-git-diff'
+
+  - label: generate steps
+    command: generate-pipeline.sh ./node_modules/\@siteminder/overlord .
+    depends_on:
+      - step: create-git-diff
+        allow_failure: true
+    plugins:
+      - siteminder-au/pipeline-utilities#5c87228a6612da6ce3818adb5c07bfa5619fe4dc
+
+  - wait
+
+  # this step is for deploying these frontends components: docs, assets, goldeneye-vue2 to 'sui-dev' env in 'dev' realm
+  # we exclude goldeneye vue3 sample project since that will be deployed in vue3 branch
+  # we use --include instead of exclude since doing `--exclude "goldeneye"` is a regex match on BOTH sample projects
+  - label: 'define dev deployment steps - docs, assets, goldeneye (vue2) - sui-dev'
+    command: './node_modules/\@siteminder/overlord/shared/buildkite/deployments.sh -r dev -e sui-dev --include "docs|assets|goldeneye-vue2"'
+    branches: 'master'
+
+  # this step is for deploying the goldeneye frontends component to 'sui-dev' env in 'dev' realm
+  # only for the `vue3` branch
+  # we use --exclude instead of include since doing `--include "goldeneye"` is a regex match on BOTH sample projects
+  - label: 'define dev deployment steps - goldeneye (vue3) - sui-dev'
+    command: './node_modules/\@siteminder/overlord/shared/buildkite/deployments.sh -r dev -e sui-dev --exclude "docs|assets|goldeneye-vue2|goldeneye-beef"'
+    branches: 'vue3'
+
+  # this step is for deploying these frontends components: docs to 'sui-dev-v3' env in 'dev' realm
+  # only for the `vue3` branch
+  # we exclude:
+  # - frontends/goldeneye since that will be deployed in 'sui-dev' env in 'dev' realm
+  # - frontends/assets since they will remain the same between vue2 and vue3, we only deploy the assets in 'sui-dev' env
+  - label: 'define dev deployment steps - docs, assets (vue3) - sui-dev-v3'
+    command: './node_modules/\@siteminder/overlord/shared/buildkite/deployments.sh -r dev -e sui-dev-v3 --exclude "assets|goldeneye"'
+    branches: 'vue3'
+
+  # this step is a safety prompt to remind the release manager
+  # that they need to merge the sui-config-pciprod to the master branch first
+  # this step should only appear when frontends/docs or frontends/assets is tagged
+  # see: https://buildkite.com/docs/pipelines/conditionals#variable-and-syntax-reference
+  - block: 'confirm version change in config'
+    prompt: 'Has a PR setting the version to ${BUILDKITE_TAG} been merged in sui-config-pciprod?'
+    if: build.branch =~ /^(v|assets\.v)[0-9]+\.[0-9]+\.[0-9]+$$/
+
+  # comment out for now just in case
+  # this step is for deploying frontends/docs to 'prod' env in 'pciprod' realm
+  # - label: 'define prod frontends/docs deployment steps'
+  #   command: './node_modules/\@siteminder/overlord/shared/buildkite/deployments.sh -r pciprod -e prod --include "docs"'
+  #   branches: 'v*.*.*'
+
+  # this step is for deploying frontends/assets to 'prod' env in 'pciprod' realm
+  # - label: 'define prod frontends/assets deployment steps'
+  #   command: './node_modules/\@siteminder/overlord/shared/buildkite/deployments.sh -r pciprod -e prod --include "assets" --deploy-version none'
+  #   branches: 'assets.v*.*.*'
+
+  - wait
+
+  - label: 'save git sha for incremental build later'
+    command: './node_modules/\@siteminder/overlord/shared/buildkite/save-git-sha.sh'
+
+  - label: ':cypress: kicking cypress tests on Sample app'
+    branches: 'vue3'
+    command:
+      - ./ci-scripts/test-cypress.sh
+
+    env:
+      USE_NODE: true

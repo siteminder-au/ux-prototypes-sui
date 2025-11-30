@@ -1,0 +1,126 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/sm-toast-anatomy.png'
+import placement from './images/sm-toast-placement.png'
+import specs from './images/sm-toast-specs.png'
+import beforeYouBegin from './images/sm-toast-variants-before-you-begin.png'
+import variantStandard from './images/sm-toast-variants-standard.png'
+import variantMini from './images/sm-toast-variants-mini.png'
+import variantStandardWithAction from './images/sm-toast-variants-standard-with-action.png'
+import variantStandardWithTitle from './images/sm-toast-variants-standard-with-title.png'
+import typeDefault from './images/sm-toast-types-default.png'
+import typeWarning from './images/sm-toast-types-warning.png'
+import typeSuccess from './images/sm-toast-types-success.png'
+import typeAlert from './images/sm-toast-types-alert.png'
+import behaviorAnimation from './images/sm-toast-behavior-animation.gif'
+
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+  `}
+</style>
+
+<Meta title="Components/Toast/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Toast</h1>
+  <p>
+    A toast is a communication component that is used for confirmations and acknowledgments that require minimal user interaction.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Specs](#specs)
+- [Variants](#variants)
+- [Types](#types)
+- [Behaviour](#behaviour)
+
+
+
+## Usage
+
+  ### When should I use a toast?
+  You should use this component if:
+
+  - You'd like to give users confirmation of updates or changes they have made to their data. Communicating with users and providing immediate feedback are important for building trust.
+  - Please ensure your messages are relevant, timely and informative.
+
+## Formatting
+
+  ### Anatomy
+  **1: Title (Optional, off by default)** - If you need a more prominent toast, you may use the title option which is styled with a H5. Please do not put your message into this section.
+
+  **2: Message -** This is where the message must be entered. Please ensure it is relevant, informative and consistent with the rest of the platform.
+
+  **3: Action (optional, off by default) -** You may use actions in the form of text anchors. These are not buttons.
+
+  **4: Close icon button (Optional, on by default)** - The showClose property is optional, either set it to true or false. It is on by default.
+
+  **5: Icon - **The icon will always appear unless you are using the Mini toast variant in which case it will be removed.
+
+  <img src={anatomy} className="img-padding" alt="Toast anatomy" width="720"/>
+
+  ### Placement
+  By default, the toast will appear in the **top** location. See below for a location of where you can set a toast to appear in.
+  <img src={placement} className="img-padding" alt="Toast placements"/>
+
+
+## Specs
+<img src={specs} className="img-padding" alt="Toast specs"/>
+
+## Variants
+
+  ### Standard toast
+  These are standard toasts. These are the default toast style, and should be used in the majority of most cases.
+  <img src={variantStandard} className="img-padding" alt="Standard toast variant" width="960"/>
+
+  ### Mini toast
+  Mini toasts do not have any iconography and should only be used basic confirmation of actions, where a regular toast might be too intrusive and heavy. **Warning toasts for instance would be better served using a standard toast (above) as the iconography is an extra visual aid, incase the user is colour blind**.
+
+  Actions in mini toasts are inline with the text and need to be manually put in using our primary colour.
+  <img src={variantMini} className="img-padding" alt="Mini toast variant" width="960"/>
+
+  ### Standard with Action
+  The action in toasts are not buttons, but rather text anchors or links.
+  <img src={variantStandardWithAction} className="img-padding" alt="Standard with action toast variant" width="960"/>
+
+  ### Standard with Title
+  Only use titles when your toast needs more prominence. Never put the message in the title area.
+  <img src={variantStandardWithTitle} className="img-padding" alt="Standard with title toast variant" width="960"/>
+
+## Types
+
+  ### Default
+  The default toast is our most widely used type. Use this in most cases where the users action needs to be confirmed.
+  <img src={typeDefault} className="img-padding" alt="Default toast" width="960"/>
+
+  ### Warning
+  Use warning toasts when something has gone wrong, when user access has been denied or when an action could not be completed. This colour reinforce the severity of the message.
+  <img src={typeWarning} className="img-padding" alt="Warning toast" width="960"/>
+
+  ### Success
+  These are used to provide positive confirmations of a successful user action.
+  <img src={typeSuccess} className="img-padding" alt="Success toast" width="960"/>
+
+  ### Alert
+  Use this toast to help the user avoid a warning or error situation. Communicate the types of potential warning situations so that the user can avoid them. A recommended action should be provided to the user, along with an action if applicable.
+  <img src={typeAlert} className="img-padding" alt="Alert toast" width="960"/>
+
+## Behaviour
+
+  ### Closing or dismissing a toast
+  By default, toasts will not be dismissible, so please set the prop `showClose` to `True` if you'd like the user to manually dismiss the toast.
+
+  If you would like your toast to automatically close after a certain amount of time, then set `isTimeout` to `True`. By default, when the timeout option is set, the default timeout is 5 seconds, however you can change this depending on how much copy is within the toast message.
+
+  ### Animation
+  The toast eases in with a 0.3ms slide animation.
+  <img src={behaviorAnimation} className="img-padding" alt="Toast animation ease in" width="960"/>

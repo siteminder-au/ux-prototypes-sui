@@ -1,0 +1,130 @@
+/**
+ * Viewports
+*/
+$viewport--small-mobile: 320px;
+$viewport--mobile: 640px;
+$viewport--tablet: 768px;
+$viewport--small-desktop: 1024px;
+$viewport--large-desktop: 1366px;
+$viewport--extra-large-desktop: 1367px; // To Infinity
+
+/**
+ * Media queries
+ */
+
+/* ==========  Mobile First Method  ========== */
+
+/* Mobile */
+$mobile: "only screen and (min-width: #{$viewport--mobile + 1})" !default;
+
+/* Small desktop */
+$small-desktop: "only screen and (min-width: #{$viewport--tablet + 1})" !default;
+
+/* Large desktop */
+$large-desktop: "only screen and (min-width: #{$viewport--small-desktop + 1})" !default;
+
+/* Extra large desktop */
+$extra-large-desktop: "only screen and (min-width: #{$viewport--large-desktop + 1})" !default;
+
+/* Touch enabled devices */
+$touch-devices: "only screen and (hover: none)" !default;
+
+/**
+ * Colours
+ */
+$light-blue-grey: #c6d0e0 !default; // not mapped to a color token
+$primary-blue: #006add !default;
+$primary-blue-dark: #0057b5 !default;
+$primary-blue-midnight: #0c4583 !default;
+$primary-blue-highlight: #0d7af0 !default; // not mapped to a color token
+$true-white: #fff !default;
+$blue-neu-light: #f5f9ff !default;
+$blue-neu-med: #e6ebf2 !default;
+$blue-neu-mid: #c6ceda !default;
+$blue-neu-dark: #828ea3 !default;
+$blue-neu-xdark: #738198 !default;
+$blue-neu-black: #627189 !default;
+$grey-neu-white: #f6f6f6 !default;
+$grey-neu-light: #eaeaea !default;
+$grey-neu-med: #c1c1c1 !default;
+$grey-neu-mid: #9a9a9a !default;
+$grey-neu-dark: #717171 !default;
+$grey-neu-black: #333 !default;
+$app-warning: #d11d1d !default;
+$app-warning-mid: #f1bfbf !default;
+$app-warning-light: #fceeee !default;
+$app-warning-dark: #b81919 !default;
+$app-warning-black: #9e1616 !default;
+$app-alert-light: #fff6c0 !default;
+$app-alert-mid: #fccc0b !default;
+$app-alert: #ffab00 !default;
+$app-alert-dark: #dc9400 !default;
+$app-alert-black: #b27700 !default;
+$app-success: #1b7b3e !default;
+$app-success-light: #e2f4eb !default;
+$app-success-mid: #9ae0bd !default;
+$app-success-dark: #0e5431 !default;
+$app-success-black: #0a3b22 !default;
+$app-info: $primary-blue !default;
+$app-info-mid: #b0d2f8 !default;
+$app-info-light: #e6f0ff !default;
+$app-info-dark: $primary-blue-midnight !default;
+$app-extra-4: #f5f7fa !default;
+$illu-secondary-light: #E6EBF2 !default;
+$illu-secondary-mid: #C6CEDA !default;
+$illu-secondary: #828EA3 !default;
+$illu-primary-light: #F5F9FF !default;
+$illu-primary-mid: #B0D2F8 !default;
+$illu-primary: #006ADD !default;
+$brand-1: #00033b !default;
+$brand-2: #006dff !default;
+
+/**
+ * z-index
+ */
+
+$sm-loading-bar-z-index: 1;
+$sm-loading-dashboard-z-index: 1;
+$sm-card-z-index: 1;
+$sm-table-sticky-column: 101;
+$sm-table-sticky-row: 100;
+$sm-table-gradient: 200;
+$sm-aside-z-index: 1000;
+$sm-dropdown-target-z-index: 5000;
+$sm-dropdown-content-z-index: 5000;
+$sm-horizontal-nav-z-index: 5000;
+$sm-select-z-index: 5000;
+$sm-multi-select-z-index: 5000;
+$sm-property-menu-z-index: 5000;
+$sm-user-menu-open-z-index: 5000;
+$sm-color-picker-z-index: 5001;
+$sm-date-picker-z-index: 5001;
+$sm-wizard-wrapper-z-index: 9000;
+$sm-wizard-z-index: 9000;
+$sm-dialog-z-index: 10000;
+$sm-drawer-z-index: 10000;
+$sm-popover-z-index: 10000;
+$sm-tooltip-z-index: 10000;
+$sm-slider-tooltip-z-index: 10000;
+$sm-toast-z-index: 12000;
+$sm-nav-z-index: 12001;
+$sm-visible-on-top-z-index: 15000;
+
+/**
+ * Variables
+ */
+
+$sm-4: 4px;
+$sm-8: 8px;
+$sm-12: 12px;
+$sm-16: 16px;
+$sm-20: 20px;
+$sm-24: 24px;
+$sm-32: 32px;
+$sm-40: 40px;
+$sm-48: 48px;
+$sm-56: 56px;
+$sm-64: 64px;
+$sm-72: 72px;
+$sm-80: 80px;
+$sm-96: 96px;

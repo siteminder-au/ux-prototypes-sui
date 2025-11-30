@@ -1,0 +1,70 @@
+  - group: 'goldeneye'
+
+    steps:
+
+      - label: 'goldeneye npm cache'
+        key: npm-cache-goldeneye
+        command: "./node_modules/@siteminder/overlord/shared/ci-scripts/npm-cache.sh frontends/goldeneye/docker-compose.yaml"
+        agents:
+          queue: "${BUILDKITE_AGENT_META_DATA_QUEUE}"
+        timeout_in_minutes: 30
+        soft_fail:
+          - exit_status: 2
+
+      - label: 'goldeneye audit'
+        command: "./node_modules/@siteminder/overlord/shared/ci-scripts/audit.sh frontends/goldeneye/docker-compose.yaml"
+        agents:
+          queue: "${BUILDKITE_AGENT_META_DATA_QUEUE}"
+        timeout_in_minutes: 30
+        soft_fail:
+          - exit_status: 3
+
+      - label: 'goldeneye lint'
+        depends_on:
+          - step: npm-cache-goldeneye
+            allow_failure: true
+        command: "./node_modules/@siteminder/overlord/shared/ci-scripts/lint.sh frontends/goldeneye/docker-compose.yaml"
+        agents:
+          queue: "${BUILDKITE_AGENT_META_DATA_QUEUE}"
+        timeout_in_minutes: 30
+
+      - label: 'goldeneye test'
+        key: test-goldeneye
+        depends_on:
+          - step: npm-cache-goldeneye
+            allow_failure: true
+        command: "./node_modules/@siteminder/overlord/shared/ci-scripts/test.sh frontends/goldeneye/docker-compose.yaml"
+        agents:
+          queue: "${BUILDKITE_AGENT_META_DATA_QUEUE}"
+        timeout_in_minutes: 30
+        artifact_paths:
+          - "frontends/goldeneye/test/logs/*.log"
+          - "frontends/goldeneye/test/logs/*.tar.gz"
+        retry:
+          automatic:
+          - exit_status: -1 # Agent was lost
+            limit: 1
+          - exit_status: 1  # Test failure
+            limit: 1
+          # No other exit codes supported, e.g. exit code 2 is used for non-recoverable errors e.g. compile failures
+
+      - label: 'goldeneye package'
+        depends_on:
+          - step: npm-cache-goldeneye
+            allow_failure: true
+        key: package-goldeneye
+        command: "./node_modules/@siteminder/overlord/shared/ci-scripts/package.sh frontends/goldeneye/docker-compose.yaml"
+        agents:
+          queue: "${BUILDKITE_AGENT_META_DATA_QUEUE}"
+        timeout_in_minutes: 30
+        artifact_paths:
+          - "frontends/goldeneye/build/*.zip"
+          - "frontends/goldeneye/build/*.jar"
+
+      - label: 'goldeneye upload package'
+        key: upload-package-goldeneye
+        depends_on: package-goldeneye
+        command: './node_modules/@siteminder/overlord/shared/ci-scripts/s3-upload.sh frontends/goldeneye/docker-compose.yaml'
+        agents:
+          queue: "${BUILDKITE_AGENT_META_DATA_QUEUE}"
+        timeout_in_minutes: 30

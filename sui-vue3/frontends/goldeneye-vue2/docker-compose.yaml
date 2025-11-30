@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  goldeneye-vue2:
+    image: 278521702583.dkr.ecr.us-west-2.amazonaws.com/arch/node-v18-chrome:v2.2.1
+    working_dir: /app/frontends/$MODULE
+    volumes:
+      - $HOME/.npmrc:/root/.npmrc
+      - $PROJECT_ROOT:/app
+    ports:
+      - "8080:8080"
+    environment:
+      - BUILDKITE=1
+      - MODULE=$MODULE
+      - CONFIG_LOGIN_URL=https://nxs-dev-authx-login.dev.siteminderlabs.com/login
+      - CONFIG_LOGOUT_URL=https://nxs-dev-authx-login.dev.siteminderlabs.com/logout

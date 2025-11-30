@@ -1,0 +1,60 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import formattingImage from './images/404-page-formatting.png'
+import specsDesktopImage from './images/404-page-specs-desktop.png'
+import specsTabletImage from './images/404-page-specs-tablet.png'
+import specsMobileImage from './images/404-page-specs-mobile.png'
+import variantsStandardImage from './images/404-page-variants-standard.png'
+import variantsInAppImage from './images/404-page-variants-in-app.png'
+
+<Meta title="Components/404 page/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>404 page</h1>
+  <p>
+    A 404/error page informs users that a requested page doesn't exist and should offer the user their next best course of action.
+  </p>
+</SuiStorybookTitle>
+
+- [Formatting](#formatting)
+- [Specs](#specs)
+- [Variants](#variants)
+
+
+## Formatting
+
+### Anatomy
+
+**1: Image** - This SVG should have a max-width set of 1366px, to keep the height from increasing too much on larger screens.
+
+**2: Header** - The header used here should be H3.
+
+**3: Copy** - Please use default body styling for this: para-lg.
+
+**4: Actions** (optional) - Actions can consist of a primary or secondary button. This is optional, however to reduce user frustration, please try to offer an action to assist in resolving the issue.
+
+<img src={formattingImage} alt="Anatomy" />
+
+### Sizing
+
+Full page error pages should not display anything but the error design. The image size should hit a max-width of 1366px.
+
+## Specs
+
+<img src={specsDesktopImage} alt="Desktop specs" />
+<img src={specsTabletImage} alt="Tablet specs" width="588px" />
+<img src={specsMobileImage} alt="Mobile specs" width="504px" />
+
+## Variants
+
+### Standard
+The standard variant takes up 100% of the view port. There are no other elements on the page (such as our header).
+
+<img src={variantsStandardImage} alt="Variants" />
+
+### In app
+This variant is used for full page errors in our app, that also require our navigation to be present/is in our app.
+
+<img src={variantsInAppImage} alt="In-app" />

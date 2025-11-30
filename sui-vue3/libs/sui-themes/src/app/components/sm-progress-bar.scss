@@ -1,0 +1,92 @@
+/**
+ * Progress bar styles
+ * These are the actual CSS properties for the progress bar component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+
+$sm-progress-bar--inside--text-color: (
+  info: var(--sm-c-progress-bar-color-text-inside-info),
+  success: var(--sm-c-progress-bar-color-text-inside-success),
+  alert: var(--sm-c-progress-bar-color-text-inside-alert),
+  warning: var(--sm-c-progress-bar-color-text-inside-warning),
+);
+$sm-progress-bar--outside--text-color: (
+  info: var(--sm-c-progress-bar-color-text-outside-info),
+  success: var(--sm-c-progress-bar-color-text-outside-success),
+  alert: var(--sm-c-progress-bar-color-text-outside-alert),
+  warning: var(--sm-c-progress-bar-color-text-outside-warning),
+);
+$sm-progress-bar--empty--text-color: (
+  info: var(--sm-c-progress-bar-color-text-inside-empty-info),
+  success: var(--sm-c-progress-bar-color-text-inside-empty-success),
+  alert: var(--sm-c-progress-bar-color-text-inside-empty-alert),
+  warning: var(--sm-c-progress-bar-color-text-inside-empty-warning),
+);
+$sm-progress-bar--track--background-color: (
+  info: var(--sm-c-progress-bar-track-color-background-info),
+  success: var(--sm-c-progress-bar-track-color-background-success),
+  alert: var(--sm-c-progress-bar-track-color-background-alert),
+  warning: var(--sm-c-progress-bar-track-color-background-warning),
+);
+$sm-progress-bar--progress--background-color: (
+  info: var(--sm-c-progress-bar-progress-color-background-info),
+  success: var(--sm-c-progress-bar-progress-color-background-success),
+  alert: var(--sm-c-progress-bar-progress-color-background-alert),
+  warning: var(--sm-c-progress-bar-progress-color-background-warning),
+);
+
+body {
+  .sm-progress-bar {
+    &--type-line {
+      .sm-progress-bar__line {
+        border-radius: var(--sm-c-progress-bar-track-border-radius);
+      }
+    }
+
+    /* Status */
+    @each $status in 'info', 'success', 'alert', 'warning' {
+      &--status-#{$status} {
+        .sm-progress-bar__line {
+          background-color: map-get($sm-progress-bar--track--background-color, $status);
+
+          .sm-progress-bar__stroke {
+            background-color: map-get($sm-progress-bar--progress--background-color, $status);
+          }
+
+          .sm-progress-bar__text-inside {
+            color: map-get($sm-progress-bar--inside--text-color, $status);
+          }
+        }
+
+        .sm-progress-bar__text-outside {
+          color: map-get($sm-progress-bar--outside--text-color, $status);
+        }
+
+        .sm-progress-bar__stroke-empty {
+          .sm-progress-bar__text-inside {
+            color: map-get($sm-progress-bar--empty--text-color, $status);
+          }
+        }
+      }
+    }
+
+    &__stroke {
+      border-radius: var(--sm-c-progress-bar-progress-border-radius);
+    }
+
+    &__circle {
+      background: var(--sm-c-progress-bar-circle-color-background);
+
+      @each $status in 'info', 'success', 'alert', 'warning' {
+        &-track--status-#{$status} {
+          stroke: map-get($sm-progress-bar--track--background-color, $status);
+        }
+
+        &-path--status-#{$status} {
+          stroke: map-get($sm-progress-bar--progress--background-color, $status);
+        }
+      }
+    }
+  }
+}

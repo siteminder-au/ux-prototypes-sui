@@ -1,0 +1,29 @@
+{
+  "name": "sui",
+  "version": "8.2.0",
+  "description": "",
+  "scripts": {
+    "create-component:sui-core": "cd ./bin/create-sui-core-component && npm i && npx ts-node index.ts; cd -",
+    "release:assets": "./bin/release-assets.sh",
+    "release:docs": "./bin/release-docs.sh",
+    "release:lib": "./bin/release-lib.sh",
+    "release:sui": "ts-node release-sui.ts",
+    "start:dev": "cd ./frontends/docs/ && npm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@siteminder/overlord": "^17.5.4",
+    "@types/node": "^18.16.18",
+    "danger": "^11.2.3",
+    "dotenv": "^16.3.1",
+    "ini": "^4.1.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
+  },
+  "engines": {
+    "node": ">=18.17.1",
+    "npm": ">=9.6.7"
+  }
+}

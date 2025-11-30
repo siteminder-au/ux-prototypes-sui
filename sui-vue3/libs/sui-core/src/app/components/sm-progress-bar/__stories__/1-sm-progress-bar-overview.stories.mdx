@@ -1,0 +1,211 @@
+import { Meta } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/sm-progress-bar-formatting-anatomy.png'
+import placementCircular from './images/sm-progress-bar-formatting-placement-circular.png'
+import placementContainer from './images/sm-progress-bar-formatting-placement-container.png'
+import placementCircularMob from './images/sm-progress-bar-formatting-placement-curcular-mob.png'
+import placementFile from './images/sm-progress-bar-formatting-placement-file.png'
+import placementTable from './images/sm-progress-bar-formatting-placement-table.png'
+import placementWizard from './images/sm-progress-bar-formatting-placement-wizard.png'
+import i18nCircular from './images/sm-progress-bar-i18n-circular.png'
+import i18nLinear from './images/sm-progress-bar-i18n-linear.png'
+import specsCircular from './images/sm-progress-bar-specs-circular.png'
+import specsLinear from './images/sm-progress-bar-specs-linear.png'
+import statesAlert from './images/sm-progress-bar-states-alert.png'
+import statesDefault from './images/sm-progress-bar-states-default.png'
+import statesWarning from './images/sm-progress-bar-states-warning.png'
+import statesSuccess from './images/sm-progress-bar-states-success.png'
+import types from './images/sm-progress-bar-types.png'
+import variantLinearBlank from './images/sm-progress-bar-variants-linear-blank.png'
+import variantLinearCustom from './images/sm-progress-bar-variants-linear-custom.png'
+import variantLinearExternal from './images/sm-progress-bar-variants-linear-external.png'
+import variantLinearInternal from './images/sm-progress-bar-variants-linear-internal.png'
+import variantLinearTrunc from './images/sm-progress-bar-variants-linear-truncation.png'
+
+
+
+<style>
+  {`
+    .img-padding {
+      padding-bottom: 24px;
+    }
+
+  `}
+</style>
+
+<Meta title="Components/Progress bar/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Progress bar</h1>
+  <p>
+    A progress bar component informs the user about the status of a specific process.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Types](#types)
+- [Formatting](#formatting)
+- [Variants](#variants)
+- [States](#states)
+- [Specs](#specs)
+- [Behaviours](#behaviours)
+- [References](#references)
+
+
+## Usage
+
+  A progress bar shows that the program has received the user's request and is working toward completing the desired action. Users may utilize progress bars to see the status of ongoing processes, anticipate how long a procedure will take, or see if a request is being processed.
+
+### When to use
+  1. For a process that might take a long time or be unpredictable
+  2. When a process can be defined with numerical data, such as a percentage,
+  3. To visually depict the progression of a function, (i.e., downloading, uploading, loading data, completing a form, or storing changes).
+  4. To indicate that data is being sought, transmitted, or processed.
+
+### Considerations
+  1. For longer processes that take 10 seconds or more, percent-done progress indicators should be used.
+  2. A percent-done indicator causes users to form an expectation about how quickly the activity will be completed. As a result, changes in speed will be noticeable, affecting user satisfaction.
+  3. When it is expected that the load time will display extended information, use skeleton loaders instead.
+  4. When manual user actions are required to advance (i.e. wizard) , use a stepper instead.
+  5. Use a spinner to mark progress that cannot be defined with a percentage, time, or step.
+
+
+## Types
+### Linear and circular
+SUI progress indicators are percent-done indicators. A percent-done indicator is a fixed progress that ranges from 0% to 100%.
+<img src={types} alt="Linear and circular progress bar types" width="864" />
+
+
+## Formatting
+
+  ### Anatomy
+  **1: Track** - The track is a fixed-width rule with defined bounds for the indicator to follow.
+
+  **2: Indicator** - To signify progress, the indicator moves along the track.
+
+  **3: Progress value (optional)** - Shares a completion percentage or remaining time to quantify progress. For extended task sequences, a progress value can be used to describe where a user is in the sequence: "3/12"
+
+  **4: Label (optional)** - Describes the process in action.
+
+  <img src={anatomy} alt="Progress bar anatomy" width="864" />
+
+
+
+### Sizing
+
+  #### Linear
+  The width of a progress bar can be adjusted to fit its context.
+
+  #### Circular
+  The default size of the circular progress indicator is 80px x 80px. You can specify the size of the progress indicator by adjusting the width props.
+
+
+### Placement
+
+  #### Linear
+  Always match progress bars to their appropriate context, such as the feature, function, or task they represent. Don’t put a progress bar at the top or bottom of a page, or outside of its related content.
+
+  Use progress bars to indicate progress in a number of situations, such as:
+
+  - File upload/download
+  - Progress bars attached to a container, such as a card or popover might indicate that the procedure is applicable to that specific item.
+  - In a table - to convey the status of processes or tasks inside it
+  - In a wizard - To track specific progress within a step. Don’t use progress bars to indicate the progress of the wizard steps; the wizard's progress steps on the sidebar already provide this information.
+
+
+  **File upload/download**
+  <img src={placementFile} alt="Using a progress bar to indicate a file upload" className="img-padding"/>
+
+  **Progress bars attached to a container, such as a card or popover**
+  <img src={placementContainer} alt="Using a progress bar within a container" className="img-padding"/>
+
+  **Progress bars in a table - to convey the status of processes or tasks contained inside it**
+  <img src={placementTable} alt="Using a progress bar within a table" className="img-padding"/>
+
+  **Progress bars in a wizard - To track specific progress within a step**
+  <img src={placementWizard} alt="Using a progress bar within a wizard" className="img-padding"/>
+
+  #### Circular
+  Circular progress indicators work the same way as the linear progress bar. They can also be used on the wizard as a replacement for the stepper when on tablet and mobile view.
+  <img src={placementCircular} alt="Using a circular progress bar to indicate file uploading" className="img-padding"/>
+  <img src={placementCircularMob} alt="Using a circular progress bar on Tablet" width="768" className="img-padding"/>
+
+
+
+## Variants
+
+  ### Linear: Blank
+  This variant shows the current progress, not accompanied by the progress value.
+  <img src={variantLinearBlank} alt="Blank linear progress bar" width="204" className="img-padding"/>
+
+  ### Linear: External percentage
+  This variant shows the current progress, accompanied by a progress value (text) that sits outside the track of the bar.
+
+  Set the **textInside** props to **‘false’**  to place the percentage outside the track. This only works when **type** property is set to **'line'**.
+  <img src={variantLinearExternal} alt="External percentage linear progress bar" width="240" className="img-padding"/>
+
+  ### Linear: Internal percentage
+  In addition to the bar, you may display the current progress as text.
+
+  Set the **textInside** props to **‘true’**  to place the percentage inside the indicator. This only works when **type** property is set to **'line'**.
+  <img src={variantLinearInternal} alt="Internal percentage linear progress bar" width="220" className="img-padding"/>
+
+  ### Linear: Custom message
+  This variant has the same behavior as the internal percentage variant.
+
+  Be mindful of your custom messages; the text will be truncated if the length of the text exceeds the available space on the indicator. Clicking/hovering the progress indicator in this case, brings up a tooltip with the entire content.
+
+  Set the **textInside** props to **‘true’**  to place the percentage inside the progress bar. This only works when **type** property is set to **'line'**.
+  <img src={variantLinearCustom} alt="Custom message linear progress bar" width="204" className="img-padding"/>
+
+  <img src={variantLinearTrunc} alt="Truncated progress bar" width="766" className="img-padding"/>
+
+
+## States
+
+  ### Default
+  A process that is presently in progress is represented by a default progress bar. A progress bar can be accompanied by a success-alt icon or a text (i.e., 100%) to indicate that the process was finished.
+  <img src={statesDefault} alt="Default state of the progress bar" className="img-padding"/>
+
+  ### Warning
+  A warning progress bar indicates that a procedure has failed. A failed progress bar can be accompanied by a warning icon to indicate that an error has occurred.
+  <img src={statesWarning} alt="Warning state of the progress bar" className="img-padding"/>
+
+  ### Alert
+  If validation discovers a small error, the alert status is applied. Users can continue working, although they may encounter an error later on. An alert progress bar can be accompanied by an alert icon to indicate that a small error may have occurred.
+  <img src={statesAlert} alt="Alert state of the progress bar" className="img-padding"/>
+
+  ### Success
+  A success progress indicator indicates that a procedure has been completed successfully. A complete progress bar should be accompanied by a success-alt icon to show that the procedure was completed without mistakes.
+  <img src={statesSuccess} alt="Success state of the progress bar" className="img-padding"/>
+
+
+## Specs
+
+  ### Linear
+  <img src={specsLinear} alt="Linear progress bar specs" className="img-padding"/>
+
+  ### Circular
+  <img src={specsCircular} alt="Circular progress bar specs" width="500" className="img-padding"/>
+
+
+## Behaviours
+
+Progress bars/indicators show progress by animating an indicator along a track. The indicator's behavior is determined by whether or not the progress of a procedure is known.
+
+The progress value reflects the percentage of progress in real-time.
+
+Truncation will be applied if the progress value is too long.
+
+
+## References
+
+[Progress Indicators Make a Slow System Less Insufferable](https://www.nngroup.com/articles/progress-indicators/)
+
+[w3.org on Progress Bar Accessibility](https://www.w3.org/TR/wai-aria-1.1/#progressbar)
+
+[est Practices For Animated Progress Indicators](https://www.smashingmagazine.com/2016/12/best-practices-for-animated-progress-indicators/)
+
+[UX Best Practices For Bi-Directional Languages](https://www.linkedin.com/pulse/ux-best-practices-bi-directional-languages-gilad-almosnino/)

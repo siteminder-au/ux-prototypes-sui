@@ -1,0 +1,224 @@
+/**
+ * Slider styles
+ * These are the actual CSS properties for the slider component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+
+$sm-slider-bar--thumb-border-color: (
+  info: var(--sm-c-slider-bar-handle-color-border-info),
+  success: var(--sm-c-slider-bar-handle-color-border-success),
+  warning: var(--sm-c-slider-bar-handle-color-border-warning),
+);
+$sm-slider-bar--thumb-border-color-hover: (
+  info: var(--sm-c-slider-bar-handle-color-border-info-hover),
+  success: var(--sm-c-slider-bar-handle-color-border-success-hover),
+  warning: var(--sm-c-slider-bar-handle-color-border-warning-hover),
+);
+$sm-slider-bar--thumb-border-color-active: (
+  info: var(--sm-c-slider-bar-handle-color-border-info-active),
+  success: var(--sm-c-slider-bar-handle-color-border-success-active),
+  warning: var(--sm-c-slider-bar-handle-color-border-warning-active),
+);
+$sm-slider-bar--thumb-background-color: (
+  info: var(--sm-c-slider-bar-handle-color-background-info),
+  success: var(--sm-c-slider-bar-handle-color-background-success),
+  warning: var(--sm-c-slider-bar-handle-color-background-warning),
+);
+$sm-slider-bar--thumb-background-color-hover: (
+  info: var(--sm-c-slider-bar-handle-color-background-info-hover),
+  success: var(--sm-c-slider-bar-handle-color-background-success-hover),
+  warning: var(--sm-c-slider-bar-handle-color-background-warning-hover),
+);
+$sm-slider-bar--thumb-background-color-active: (
+  info: var(--sm-c-slider-bar-handle-color-background-info-active),
+  success: var(--sm-c-slider-bar-handle-color-background-success-active),
+  warning: var(--sm-c-slider-bar-handle-color-background-warning-active),
+);
+
+body {
+  .sm-slider {
+    .sm-slider__label {
+      color: var(--sm-c-slider-label-color-text);
+      font-size: var(--sm-c-slider-label-font-size);
+      padding-bottom: var(--sm-c-slider-label-padding-bottom);
+    }
+  }
+
+  .sm-slider-bar {
+    /**
+     * The following variables are directly used in sm-slider-bar.vue:
+     *  --sm-c-slider-bar-inactive-color-background
+     *  --sm-c-slider-bar-inactive-color-background-disabled
+     *
+     *  --sm-c-slider-bar-active-color-background-info
+     *  --sm-c-slider-bar-active-color-background-success
+     *  --sm-c-slider-bar-active-color-background-warning
+     *  --sm-c-slider-bar-active-color-background-disabled
+     */
+    .sm-slider-bar__input {
+      border-radius: var(--sm-c-slider-bar-border-radius);
+      height: var(--sm-c-slider-bar-height);
+
+      &::-webkit-slider-thumb {
+        width: var(--sm-c-slider-bar-handle-width);
+        height: var(--sm-c-slider-bar-handle-height);
+        border-radius: var(--sm-c-slider-bar-handle-border-radius);
+        box-shadow: var(--sm-c-slider-bar-handle-box-shadow);
+      }
+
+      &::-moz-range-thumb {
+        width: var(--sm-c-slider-bar-handle-width);
+        height: var(--sm-c-slider-bar-handle-height);
+        border-radius: var(--sm-c-slider-bar-handle-border-radius);
+        box-shadow: var(--sm-c-slider-bar-handle-box-shadow);
+      }
+
+      &::-ms-thumb {
+        width: var(--sm-c-slider-bar-handle-width);
+        height: var(--sm-c-slider-bar-handle-height);
+        border-radius: var(--sm-c-slider-bar-handle-border-radius);
+        box-shadow: var(--sm-c-slider-bar-handle-box-shadow);
+      }
+    }
+
+    .sm-slider-bar__track {
+      border-radius: var(--sm-c-slider-bar-border-radius);
+      height: var(--sm-c-slider-bar-height);
+    }
+
+    /* Types */
+    @each $type in "info", "success", "warning" {
+      & .sm-slider-bar--type-#{$type} {
+        &::-webkit-slider-thumb {
+          background: map-get($sm-slider-bar--thumb-background-color, $type);
+          border: var(--sm-c-slider-bar-handle-border-width) solid map-get($sm-slider-bar--thumb-border-color, $type);
+        }
+
+        &::-moz-range-thumb {
+          background: map-get($sm-slider-bar--thumb-background-color, $type);
+          border: var(--sm-c-slider-bar-handle-border-width) solid map-get($sm-slider-bar--thumb-border-color, $type);
+        }
+
+        &::-ms-thumb {
+          background: map-get($sm-slider-bar--thumb-background-color, $type);
+          border: var(--sm-c-slider-bar-handle-border-width) solid map-get($sm-slider-bar--thumb-border-color, $type);
+        }
+
+        &:hover {
+          &::-webkit-slider-thumb {
+            background: map-get($sm-slider-bar--thumb-background-color-hover, $type);
+            border-color: map-get($sm-slider-bar--thumb-border-color-hover, $type);
+            box-shadow: var(--sm-c-slider-bar-handle-box-shadow-hover);
+            transform: scale(var(--sm-c-slider-bar-handle-scale-hover));
+          }
+
+          &::-moz-range-thumb {
+            background: map-get($sm-slider-bar--thumb-background-color-hover, $type);
+            border-color: map-get($sm-slider-bar--thumb-border-color-hover, $type);
+            box-shadow: var(--sm-c-slider-bar-handle-box-shadow-hover);
+            transform: scale(var(--sm-c-slider-bar-handle-scale-hover));
+          }
+
+          &::-ms-thumb {
+            background: map-get($sm-slider-bar--thumb-background-color-hover, $type);
+            border-color: map-get($sm-slider-bar--thumb-border-color-hover, $type);
+            box-shadow: var(--sm-c-slider-bar-handle-box-shadow-hover);
+            transform: scale(var(--sm-c-slider-bar-handle-scale-hover));
+          }
+        }
+      }
+
+      & .sm-slider-bar--type-#{$type}.sm-slider-bar--mousedown {
+        &::-webkit-slider-thumb {
+          background: map-get($sm-slider-bar--thumb-background-color-active, $type);
+          border-color: map-get($sm-slider-bar--thumb-border-color-active, $type);
+          box-shadow: var(--sm-c-slider-bar-handle-box-shadow-active);
+          transform: scale(var(--sm-c-slider-bar-handle-scale-hover));
+        }
+
+        &::-moz-range-thumb {
+          background: map-get($sm-slider-bar--thumb-background-color-active, $type);
+          border-color: map-get($sm-slider-bar--thumb-border-color-active, $type);
+          box-shadow: var(--sm-c-slider-bar-handle-box-shadow-active);
+          transform: scale(var(--sm-c-slider-bar-handle-scale-hover));
+        }
+
+        &::-ms-thumb {
+          background: map-get($sm-slider-bar--thumb-background-color-active, $type);
+          border-color: map-get($sm-slider-bar--thumb-border-color-active, $type);
+          box-shadow: var(--sm-c-slider-bar-handle-box-shadow-active);
+          transform: scale(var(--sm-c-slider-bar-handle-scale-hover));
+        }
+      }
+    }
+
+    /* Disabled state */
+    .sm-slider-bar--disabled {
+      &::-webkit-slider-thumb {
+        background: var(--sm-c-slider-bar-handle-color-background-disabled);
+        border-color: var(--sm-c-slider-bar-handle-color-border-disabled);
+      }
+
+      &::-moz-range-thumb {
+        background: var(--sm-c-slider-bar-handle-color-background-disabled);
+        border-color: var(--sm-c-slider-bar-handle-color-border-disabled);
+      }
+
+      &::-ms-thumb {
+        background: var(--sm-c-slider-bar-handle-color-background-disabled);
+        border-color: var(--sm-c-slider-bar-handle-color-border-disabled);
+      }
+    }
+
+    .sm-slider-bar__datalist-option {
+      background-color: var(--sm-c-slider-bar-steps-color-background);
+      border-radius: var(--sm-c-slider-bar-steps-border-radius);
+      height: var(--sm-c-slider-bar-steps-height);
+      min-height: var(--sm-c-slider-bar-steps-height);
+      opacity: var(--sm-c-slider-bar-steps-opacity);
+      width: var(--sm-c-slider-bar-steps-width);
+    }
+
+    .sm-slider-bar--datalist-range {
+      bottom: var(--sm-c-slider-bar-steps-range-bottom);
+    }
+  }
+
+  .sm-slider-tooltip {
+    .sm-slider-tooltip__arrow {
+      &::after {
+        background: var(--sm-c-slider-tooltip-color-background);
+        border-color: var(--sm-c-slider-tooltip-color-background);
+        bottom: calc((var(--sm-c-slider-tooltip-arrow-height) + 2px) * -1);
+        width: var(--sm-c-slider-tooltip-arrow-width);
+        height: var(--sm-c-slider-tooltip-arrow-height);
+      }
+    }
+
+    .sm-slider-tooltip__content {
+      background: var(--sm-c-slider-tooltip-color-background);
+      border-radius: var(--sm-c-slider-tooltip-content-border-radius);
+      padding: var(--sm-c-slider-tooltip-content-padding);
+      height: auto;
+    }
+
+    .sm-slider-tooltip__text {
+      color: var(--sm-c-slider-tooltip-color-text);
+      font-size: var(--sm-c-slider-tooltip-font-size);
+      font-weight: var(--sm-c-slider-tooltip-font-weight);
+      line-height: var(--sm-c-slider-tooltip-line-height);
+      letter-spacing: var(--sm-c-slider-tooltip-letter-spacing);
+    }
+
+    .sm-slider-tooltip__tooltip-stops {
+      bottom: var(--sm-c-slider-tooltip-stops-bottom);
+    }
+
+    &--tooltip-range {
+      .sm-slider-tooltip__tooltip-stops {
+        top: var(--sm-c-slider-tooltip-stops-range-top);
+      }
+    }
+  }
+}

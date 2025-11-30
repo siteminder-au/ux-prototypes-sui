@@ -1,0 +1,124 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import helpCardTask from './images/contextual-messaging-help-help-card-task.png'
+import helpCardSystem from './images/contextual-messaging-help-help-card-system.png'
+import helpPanel from './images/contextual-messaging-help-panel.png'
+import helpIcons from './images/contextual-messaging-help-icons.png'
+import helpTooltips from './images/contextual-messaging-help-tooltips.png'
+import helpPopover from './images/contextual-messaging-help-popovers.png'
+
+<style>
+  {`
+    .img-padding {
+      padding-bottom: 16px;
+    }
+  `}
+</style>
+
+<Meta title="Design patterns/Contextual messaging/Contextual help" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Contextual Help / Info Messages</h1>
+  <p>Contextual help messages are a form of user assistance that provides direct and relevant guidance or information within the context of a user task or interface. These messages aim to provide timely and targeted assistance, enhancing the user experience and reducing the need for external support or documentation.</p>
+</SuiStorybookTitle>
+
+- [Attributes of contextual help messages](#attributes-of-contextual-help-messages)
+- [Components to use](#components-to-use)
+- [When to use](#when-to-use)
+- [Recommendations](#recommendations)
+
+
+## Attributes of contextual help messages
+
+- The messages are contextually relevant to the user's current task or interaction. They address specific challenges or provide information directly related to the user's immediate needs.
+- The messages are designed to be clear, concise, and easily understandable. They should communicate information effectively, avoiding jargon or technical terms that may confuse the user.
+- Non-intrusive: Contextual help should not disrupt the user's workflow or interfere with their primary tasks.
+- Contextual messages may include actionable steps or suggestions that guide users on how to proceed or resolve an issue.
+
+
+## Components to use
+
+  ### Help card
+  Our help cards are used inline to convey important information to the user, providing extra context and immediate feedback.
+
+  #### Task initiated help card
+  This type is initiated in response to a user action during a specific task. They give users direct, immediate feedback. They should be placed in the region of the page the user is working on and be related to the user's action.
+  <img src={helpCardTask} className="img-padding" alt="Help card as contextual help messaging on task related level in Services page" />
+
+  #### System initiated help card
+  This type is initiated by the application or system, independent of user action. They provide updates on background system status or out-of-context events that have finished.
+  <img src={helpCardSystem} className="img-padding" alt="Help card as contextual help messaging on system level in Services page" />
+
+  ### Help panel
+  Help panels can be expandable or collapsible sections only applied to the wizard that provide additional information or assistance related to the current task. Users can open or close these panels as needed to access relevant help content.
+  <img src={helpPanel} className="img-padding" alt="Help panel used in a wizard" />
+
+  ### Help Icons
+  Usually represented by an "i" symbol, can be placed near relevant UI elements. When users click on or interact with the help icon, a <strong>popover or tooltip </strong> may appear to provide contextual information or further guidance.
+  <img src={helpIcons} className="img-padding" alt="Help icons supplemented by tooltip used in a performance dashboard" />
+
+  ### Tooltips
+  Small overlays or pop-up boxes that appear when users hover over or interact with specific UI elements. They often contain brief contextual information, explanations, or instructions related to the element being hovered over.
+  <img src={helpTooltips} className="img-padding" alt="Tooltips used as info message in an inventory grid" />
+
+  ### Popovers
+  Popovers are used to convey contextual information to the user. They are very flexible and can contain rich content such as headings and actions. Unlike the tooltip component, users can interact with a popover.
+  <img src={helpPopover} alt="Popover with action button used as help or information message on a disabled navigation link" width="850" />
+
+## When to use
+
+### Help card
+
+#### Task initiated usage
+When a message is used in response to a user action during a specific task. They give users direct, immediate feedback. They should be placed in the region of the page the user is working on and be related to the user's action.
+
+<strong>Examples of task initiated usage</strong>
+
+  - Explaining why an interaction or information is not available on a page.
+  - Explaining what steps need to be completed first before an interaction becomes available on a page.
+  - Adding in important contextual information during a task.
+
+#### System initiated usage
+When a message is initiated by the application or system, independent of user action. They provide updates on background system status or out-of-context events that have finished.
+
+  <strong>Examples of system initiated usage</strong>
+
+  - Informing the user when they are behind a paywall.
+  - Alerting the user if a login session is about to expire.
+
+### Help Panel
+
+- When essential information is needed or critical to help users complete the wizard.
+- When presenting small previews of information to provide context in relation to the content of the wizard. By hiding most of the content, users can spend their time more efficiently focused on the wizard's content.
+- If presenting content that is not critical to help the user complete the wizard, the help panel allows the user to collapse the content and move it out of the way, improving their experience.
+- If you think collapsing the content to gain more screen space will help the user complete the wizard.
+
+### Help Icons
+
+- When you have complex features or functions in your design, help icons can provide contextual messaging to explain their purpose, usage, or any potential challenges users might face.
+- Onboarding process for new users. By placing them strategically next to unfamiliar terms, actions, or concepts, you can provide quick explanations or definitions to guide users and enhance their understanding.
+- When communicating statuses but space is limited.
+
+### Tooltips
+
+- Often used together with help icons
+- When displaying complex data visualizations
+- When providing additional information or explanations about user interface elements such as buttons, icons, or menu options.
+- When enhancing the interactivity of your interface by providing explanations or previews of the outcome when users interact with certain elements. For example, hovering over a button might display a tooltip showing the result of clicking that button.
+- When there is no action or additional elements/components required for the message.
+
+### Popovers
+
+- When providing lengthier context to the user or having them interact with an action.
+- Used in place of dialogs if you don't want to completely disrupt the users attention from the other details on the page.
+
+
+## Recommendations
+
+- Understand the common challenges or areas where users may require assistance within your application or interface.
+- Contextual triggers: Define the specific events, actions, or user input that should trigger the display of contextual help messages. For example, a message may appear when users hover over a particular UI element, make an error, or reach a critical step in a process. Ensure that the triggers are aligned with the user's context and needs.
+- Contextual help messages should be brief and to the point.
+- Write the messages in plain language that is easily understandable to users. Avoid technical jargon or complicated terms.
+- Ensure a consistent style, design, and placement for your contextual help messages across your application or interface. Consistency helps users recognize and understand the messages more easily, creating a cohesive user experience.

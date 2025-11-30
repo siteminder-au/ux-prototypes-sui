@@ -1,0 +1,153 @@
+import { Canvas, Meta } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import design from './images/image-design.png'
+import develop from './images/image-develop.png'
+import theme from './images/image-theme.png'
+import unify from './images/image-unify.png'
+import title from './images/title.png'
+
+<Meta title="Welcome" />
+
+<style>
+  {`
+    .welcome__hero {
+      margin-bottom: 48px;
+    }
+
+    .welcome__hero img {
+      display: block;
+      margin-bottom: 0 !important;
+    }
+
+    .welcome__intro {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .welcome__intro .welcome__intro__title {
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 42px;
+      letter-spacing: -0.4px;
+      text-align: center;
+      margin-bottom: 16px !important;
+    }
+
+    .welcome__intro .welcome__intro__description {
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: -0.1px;
+      text-align: center;
+      margin: 0 auto;
+      max-width: 840px;
+    }
+
+    .welcome__subtitle {
+      border: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .welcome__divider {
+      margin-bottom: 24px !important;
+      margin-top: 16px !important;
+    }
+
+    .welcome__grid {
+      display: grid;
+      grid-gap: 24px;
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .welcome__grid__item {
+      text-align: center;
+      max-width: 252px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .welcome__grid .welcome__grid__item-image {
+      display: block;
+      margin-bottom: 0;
+    }
+
+    .welcome__grid .welcome__grid__item-title {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 22px;
+      letter-spacing: -0.2px;
+      text-align: center;
+      margin: 16px 0 8px;
+    }
+
+    .welcome__grid .welcome__grid__item-description {
+      font-size: 13px;
+      line-height: 20px;
+      letter-spacing: -0.1px;
+      text-align: center;
+      margin: 0;
+    }
+
+    @media only screen and (min-width: 769px) {
+      .welcome__hero {
+        margin-bottom: 64px;
+      }
+
+      .welcome__intro {
+        margin-bottom: 64px;
+      }
+
+      .welcome__grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .welcome__grid__item-title {
+        letter-spacing: -0.2px;
+        font-size: 15px;
+        line-height: 22px;
+      }
+    }
+  `}
+</style>
+
+<div className="welcome__hero">
+  <img src={title} alt="SUI" />
+</div>
+
+<div className="welcome__intro">
+  <h1 className="welcome__intro__title">Welcome</h1>
+  <p className="welcome__intro__description">
+    Our design system helps us work collaboratively, uniting both design and engineering across the company, to help build amazing experiences for our Hoteliers. The SiteMinder Design System is both a library of interconnected design patterns as well as a collection of shared practices and principles that help consistently shape our suite of SiteMinder products.
+  </p>
+</div>
+
+<h2 className="welcome__subtitle sm-h3">SUI goals</h2>
+
+<hr className="welcome__divider" />
+
+<div className="welcome__grid">
+  <div className="welcome__grid__item">
+    <img className="welcome__grid__item-image" src={design} alt="" />
+    <h3 className="welcome__grid__item-title">Design quickly</h3>
+    <p className="welcome__grid__item-description">We want to enable our product designers to design pages quickly and easily.</p>
+  </div>
+
+  <div className="welcome__grid__item">
+    <img className="welcome__grid__item-image" src={develop} alt="" />
+    <h3 className="welcome__grid__item-title">Develop quickly</h3>
+    <p className="welcome__grid__item-description">By building well defined styles and offering our users flexibility when building their product.</p>
+  </div>
+
+  <div className="welcome__grid__item">
+    <img className="welcome__grid__item-image" src={unify} alt="" />
+    <h3 className="welcome__grid__item-title">Unify our visual language</h3>
+    <p className="welcome__grid__item-description">All of our products are using a single living library, ensuring consistency.</p>
+  </div>
+
+  <div className="welcome__grid__item">
+    <img className="welcome__grid__item-image" src={theme} alt="" />
+    <h3 className="welcome__grid__item-title">Theme</h3>
+    <p className="welcome__grid__item-description">We want to empower all products within SiteMinder to use SUI and apply their own unique style.</p>
+  </div>
+</div>

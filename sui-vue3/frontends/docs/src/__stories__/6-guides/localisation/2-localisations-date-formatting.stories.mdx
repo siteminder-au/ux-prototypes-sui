@@ -1,0 +1,88 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import datePicker1 from './images/date-picker-1.png'
+import datePicker2 from './images/date-picker-2.png'
+import datePicker3 from './images/date-picker-3.png'
+import datePicker4 from './images/date-picker-4.png'
+import calendar1 from './images/sm-calendar-1.png'
+import calendar2 from './images/sm-calendar-2.png'
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+  `}
+</style>
+
+<Meta title="Guides/Localisation and internationalisation/Date formatting" />
+
+<SuiStorybookPageLabel>Guides</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Localisation and internationalisation</h1>
+  <p>
+    We want to ensure hoteliers are able to use our products no matter where they are located around the world, by building an experience that works globally.
+  </p>
+</SuiStorybookTitle>
+
+<div className="sui-storybook-highlight">For best practices, please visit <a href="https://siteminder.atlassian.net/wiki/spaces/SMD/pages/2150958165/Content+and+Internationalisation#Internationalisation-%26-Localisation-Guide">this page</a> by the EXD team.</div>
+
+## Date pickers
+Our two date pickers are `sm-date-picker` and `sm-calendar`.
+
+**sm-date-picker allows a user to pick:**
+- Single date
+- Date and time
+- Time
+- Date range
+
+**sm-calendar allows a user to pick:**
+- Month and year
+- Month and year range
+
+## sm-date-picker
+By default, the formatting of the picker's month and week names, and the date string in the input field is **based on the user's location.** For example, in the United States, the standard format is MM/DD/YYYY, whereas in Australia and most European countries the standard format is DD/MM/YYYY.
+<img src={datePicker1} className="img-padding" alt="Date-picker in San Francisco (USA) where the date is in MM/DD/YYYY format" />
+<span className="sui-storybook-image-caption">Date-picker in San Francisco (USA) where the date is in MM/DD/YYYY format</span>
+<br /><br />
+<img src={datePicker2} className="img-padding" alt="Date-picker in London (UK) where the date is in DD/MM/YYYY format" />
+<span className="sui-storybook-image-caption">Date-picker in London (UK) where the date is in DD/MM/YYYY format</span>
+<br /><br />
+<img src={datePicker3} className="img-padding" alt="Date-picker in Berlin (Germany) where month and week names are localised" />
+<span className="sui-storybook-image-caption">Date-picker in Berlin (Germany) where month and week names are localised</span>
+<br /><br />
+<img src={datePicker4} className="img-padding" alt="Date-picker in Tokyo (Japan) where month and week names are localised" />
+<span className="sui-storybook-image-caption">Date-picker in Tokyo (Japan) where month and week names are localised</span>
+
+### Overrides
+This automatic date formatting behaviour can be overridden:
+
+- The date-picker can accept a specific `locale `to use rather than the user's location. This behaviour can be observed in the <a href="http://localhost:6006/?path=/story/components-form-date-picker--locale-i-18-n">locale demo</a> where it is set to `locale="de"`.
+- The input field's date format can be updated. This can be observed in the <a href="https://sui-dev-v3-sui-docs.dev.siteminderlabs.com/?path=/story/components-form-date-picker--masks">masks demo</a> where it is set to `{ input: 'DD MMM YYYY' }`.
+
+More information on the sm-date-picker i18n is available in [i18n | V-Calendar](https://vcalendar.io/i18n/locales.html) which is the third-party plugin we use for this component.
+
+## Calendar
+Like the sm-date-picker, the month names are automatically localised in sm-calendar **based on the user's location**. However, the input field's month and year string is always displayed as YYYY-MM.
+
+<img src={calendar1} className="img-padding" alt="Month and year picker in Tokyo (Japan)" width="720"/>
+<span className="sui-storybook-image-caption">Month and year picker in Tokyo (Japan)</span>
+
+<img src={calendar2} className="img-padding" alt="Month and year picker in San Francisco (USA)" width="720"/>
+<span className="sui-storybook-image-caption">Month and year picker in San Francisco (USA)</span>
+
+### Overrides
+The component only offers the input field's month and year to be masked at this point.
+
+## Locales
+Both `sm-date-picker` and `sm-calendar` use [Internationalization API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) to derive month and weekday names and formatting.
+
+The list of locales supported by the Internationalization API is based on the Unicode Common Locale Data Repository (CLDR) and includes most of the world’s major languages and regions. The exact list of supported locales may vary depending on the browser you are using.
+
+To read more about this, please see `Intl docs ` in [Intl - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument).
+
+## Testing
+The location-specific screenshots above were emulated using Chrome’s sensors. Please see relevant docs in [Sensors: Emulate device sensors - Chrome Developers](https://developer.chrome.com/docs/devtools/sensors/#geolocation) if you need to test the pickers in Storybook.

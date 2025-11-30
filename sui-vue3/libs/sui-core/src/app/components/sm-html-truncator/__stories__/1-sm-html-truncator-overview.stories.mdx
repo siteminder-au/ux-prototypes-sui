@@ -1,0 +1,62 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/sm-truncator-html-anatomy.png'
+import specs from './images/sm-truncator-html-specs.png'
+
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+  `}
+</style>
+
+<Meta title="Components/HTML truncator/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>HTML truncator</h1>
+  <p>
+    The HTML truncator can expand and collapse rich content to help manage overflow.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Specs](#specs)
+
+
+
+## Usage
+
+### What is the HTML truncator?
+This component will expand and collapse content within container. This will help manage overflow of text that exceeds your ideal container height.
+
+### How does it work?
+The HTML truncator works with all types of content, including tables, images, small components, etc. If you want to truncate lines of text, please use the text truncator.
+
+You can set the height of the visible container on load with the height property. Clicking on the expand/collapse button will expand the truncator to reveal all the content or if there is a maxHeight set, the container will reveal content up to the max-height.
+
+### When to use
+You should use this component if:
+
+- You have limited space and need to communicate information to the user. Ensure the visible lines contain the most important information.
+- Internationalisation or translating into certain languages is causing an issue with how pages are displaying (i.e. the UI might break once translation occurs do to space). This can be used on paragraphs to ensure the number of lines of text don’t exceed a certain amount, as long as it’s appropriate to have the ‘Read more’ button below.
+- You have dynamic or rich content you need to truncate.
+
+## Formatting
+
+### Anatomy
+**1: Content -** This is the content that displays within sm-html-truncator.
+
+**2: Expand/collapse button - **This text button will expand and collapse the text. You can edit the text within this button.
+
+<img src={anatomy} className="img-padding" alt="HTML truncator anatomy."/>
+
+## Specs
+
+<img src={specs} className="img-padding" alt="HTML truncator specs."/>

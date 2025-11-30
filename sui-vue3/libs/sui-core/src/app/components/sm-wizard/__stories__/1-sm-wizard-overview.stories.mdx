@@ -1,0 +1,238 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/sm-wizard-anatomy.png'
+import placementDesktop from './images/sm-wizard-placement.png'
+import placementTablet from './images/sm-wizard-placement-tablet.png'
+import specsDesktop from './images/sm-wizard-specs.png'
+import specsTablet from './images/sm-wizard-specs-tablet.png'
+import specsReviewPage from './images/sm-wizard-specs-review-page.png'
+import variantStandard from './images/sm-wizard-variants-standard.png'
+import variantDesktopTwoCol from './images/sm-wizard-variants-two-column.png'
+import variantTabletTwoCol from './images/sm-wizard-variants-two-column-tablet.png'
+import behaviourEditing from './images/sm-wizard-behavior-edit-info-previous-steps.png'
+import behaviourOverlay from './images/sm-wizard-behavior-overlay-desktop-tablet.gif'
+import behaviourOverlayMobile from './images/sm-wizard-behavior-overlay-mobile.gif'
+
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+  `}
+</style>
+
+<Meta title="Components/Wizard/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Wizard</h1>
+  <p>
+    A wizard is a component that takes the user through a step-by-step process, allowing them to input information in a predetermined order.
+    <br /><br />The SiteMinder wizard is generally used in the creation of data, like room rates, room types, etc.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Specs](#specs)
+- [Variants](#variants)
+- [Behaviours](#behaviours)
+- [References](#references)
+
+
+
+## Usage
+Wizards should at least have 2 steps.  The maximum recommended steps is 7.  In case your wizard exceeds 10 steps, consider combining similar steps.
+
+### When to use wizards
+- When your form has multiple steps, use a wizard. By validating inputs as the user progresses, this makes the experience more manageable for the user and helps to eliminate mistakes.
+- If there is a known task sequence, these steps can be split down into well defined categories/sections that are represented by labels on the steps.
+- If a basic form is insufficient to assist a user in accomplishing a task.
+
+## Formatting
+
+### Anatomy
+**1: Title container -** The wizard title should always be sticky on top when the body container starts to scroll vertically.
+
+**2: Title -** Title should be concise and describe the overall workflow.
+
+**3: Close button -** Affordance to provide users a way to dismiss the wizard. Completing all of the steps or selecting the close button should dismiss the wizard.
+
+**4: Progress steps panel -** The progress steps panel is anchored to the left side of the wizard with a fixed width of 248px. This is where the progress steps are placed.
+
+**5: Progress steps (vertical) -** Gives the user an indication of where they are in the form. This is done by indicating the total number of steps and the user’s current position.
+
+Current step is indicated by a green outline on the circle. Completed steps are indicated by a solid green circle with a checkmark.
+
+On screens 1024 wide and below, this changes into a circle type progress bar and is placed below the header.
+
+**6: Content area -** This may have different contents, in the form of text, form or both. Provide a clear description of the information that users should concentrate on.
+
+The recommended max-width for the content area is 600px. This can go at a max-width of 1000px only if your content does not fit the maximum recommended width. Content can scroll horizontally if it does not fit the 1000px content area.
+
+**7: Content Header -** The content header sits inside the content area. The Content header is consist of:
+
+- **Label** indicates the step number. This should be section-sm and indicate the step number (STEP ONE, STEP TWO, STEP THREE), placed on top of H2. Spell the number out.
+- **H2** should be in sentence case. This is unique to each step and should emphasise the result of that step. This may be more descriptive or match the current step stated in the progress steps.
+
+**8: Footer - ** This houses the buttons on whether the user proceeds to the next step or goes back their progress. Footer is sticky at the bottom of the wizard.
+
+Buttons control the wizard flow. "Next" and "Back" are the default buttons. Other actions, such as "Skip this and do it later," are optional. In the footer, there should only be one primary action, and that should be the action on the right side of the back button.
+
+Please note that the intercom button sits at the bottom right hand side of the screen, and if the wizard is on a smaller screen, then it will sit inside the footer.
+
+<img src={anatomy} className="img-padding" alt="Anatomy of a wizard" />
+
+
+### Placement
+On desktop, the wizard should appear as a modal for screen sizes 1025 and up. Progress steps always appear to the left of content.
+<img src={placementDesktop} className="img-padding" alt="Placement of wizard on desktop" />
+
+On screens 1024 wide and below, the wizard appears takes 100% of the viewport.
+
+The header and progress step information appears above the content area.
+<img src={placementTablet} className="img-padding" alt="Placement of wizard on tablet and mobile" width="640" />
+
+
+### Sizing
+Use the default size for the wizard which has a **max-height of 968px** and **max-width of 1367px** on desktop.
+
+On screens 1024 wide and below, the wizard appears as full screen with a **100% width**.
+
+
+## Specs
+### Desktop
+The recommended maximum width for the content container is 600px.
+<img src={specsDesktop} className="img-padding" alt="Wizard specs on desktop" />
+
+### Tablet
+On screens 1024 wide and below, wizard spans full width on tablet. The recommended maximum width for the content container is 600px.
+Progress steps changes into a circle type progress bar and is placed below the header.
+<img src={specsTablet} className="img-padding" alt="Wizard specs on tablet" width="800" />
+
+### Review page - text styling specs
+Please ensure you are using the typography styling/tokens available in the SUI on the typography page.
+
+Below you will find an example of the review page. Please ensure your 'Review' pages adhere to the below:
+
+- **Heading sections:** H3; **Color:** Primary text black - Please make sure that your H3 naming corresponds to the step in the wizard if you have H5 for supporting details.
+- **Sub headings:** H5; **Color:** Primary text black
+- **Labels:** paragraph/large; **Color:** primary/text/dark
+- **Copy:** paragraph/large; **Color:** primary/text/black
+- **Help card:** use the help card if you need to highlight within the content.
+
+<img src={specsReviewPage} className="img-padding" alt="Wizard review page specs" />
+
+
+## Variants
+### Standard
+The standard wizard consists of the header, side panel, close button and content area only.
+
+In the content area if help or other information can be provided in an accordion, use a standard wizard. When additional information is needed for the form or content of the wizard, try considering a two-column format.
+<img src={variantStandard} className="img-padding" alt="Wizard standard variant" />
+
+### Two-column
+The two-column wizard consists of the same elements as the standard wizard.
+
+On **desktop**, when help or other information is provided as a help panel, the content area should be in 2 columns and the help panel sits on the right side of the content.
+<img src={variantDesktopTwoCol} className="img-padding" alt="Wizard two column variant" />
+
+On **tablet and mobile**, place the help guidance above or below the content. See document on [Help patterns](https://sui-dev-v3-sui-docs.dev.siteminderlabs.com/?path=/story/design-patterns-help-wizard-help-panel--page).
+<img src={variantTabletTwoCol} className="img-padding" alt="Wizard two column variant on tablet" width="640" />
+
+
+## Behaviours
+### Activating a wizard
+Activate a wizard using a trigger action. This action can be triggered on click. For keyboard users a wizard should activate when a user clicks on enter when the trigger is on focus. For touch screen users it should always activate on touch or focus. For desktop users it should activate on click.
+
+### Dismissing a wizard
+Wizards can be closed by clicking on the close button, clicking outside of a wizard or pressing escape on the keyboard.
+
+When dismissing the wizard it should:
+- Provide a user confirmation that they want to cancel
+- Provide options with clear choices (Ex: Keep editing or Discard changes)
+- The primary button should be used to confirm cancellation and the secondary button should give the user the option to continue completing the wizard.
+
+### Buttons
+#### Back button
+In every first step, “Back” button is hidden. In all other steps, “Back” button becomes enabled.
+
+When clicking the “Back” button, users should be directed to the previous step in the wizard's sequence. If a user returns to a prior step after making changes, those changes should be saved.
+
+#### Next button
+The “Next” button is used for moving to the next step in the wizard. In every step, the “Next” button is disabled if the user has not completed the required information and becomes enabled once the user has filled up all required information.
+
+On the final step of the wizard, which is summarising what the user have accomplished, the “Next” button changes to “Review and Save”
+
+<div className="sui-storybook-highlight sui-storybook-highlight">
+<strong>NOTE:</strong> <br /><br />
+The user should be capable of using the browser's back button normally in a wizard. After pressing the browser's back button, the user should end up in the step that was before the page. After pressing the browser's forward button, the user should end up in the step that is after the current step in the wizard's sequence. <br /> <br /> Reference: <a href="https://baymard.com/blog/back-button-expectations">https://baymard.com/blog/back-button-expectations</a></div>
+
+### Summarising in the wizard
+The last step on the wizard should always summarise what the user has accomplished/configured. This is the last step prior to the form submission. The user must click the "Review and Save" button on the screen in order to complete the wizard.
+
+Completing all the steps should dismiss the wizard and a success toast will appear on the page with the new item that you've created.
+
+### Progress steps
+On **desktop**, progress steps are placed on the left side of the content container. On screens 1024 wide and below, this changes into a circle type progress bar.
+#### Types
+- **Standard -** The standard progress steps allows user to go back or forward in the wizard steps. If a user returns to a prior step after making changes on the current page, those changes should be saved.
+- **Intercepting changes -** This progress step does not allow users to go back the previous step. A notification banner will appear to indicate that the user cannot go back.
+- **Disable Nav Steps -** Progress stepper is not clickable. Only the “Next” and “Back” buttons can be used to navigate the wizard steps.
+
+### Editing information on previous steps
+
+<div className="sui-storybook-highlight sui-storybook-highlight--warning">
+<strong>NOTE:</strong> This behavior is not yet built in the sm-wizard component and is in the SUI backlog.</div>
+
+Users should be able to go back the wizard steps to edit information by clicking on the progress steps. All previously completed steps should always be indicated by a solid green circle with a checkmark and the current step to be edited is indicated by a green outline on the circle.
+<img src={behaviourEditing} className="img-padding" alt="Wizard behavior when editing previous steps - All previously completed steps are indicated by a solid green circle with a checkmark and the current step to be edited is indicated by a green outline on the circle." />
+
+### Wizard overlay
+In cases when you need to open a new window or another modal (i.e. help panel has an action button to link to more information), use the wizard overlay.
+
+The wizard overlay slides in from the left side of the main container and has a back affordance that enables users to go back to the main step screen of the wizard.
+
+The wizard overlay uses a  **shared x-axis pattern (material design motion)**.  This pattern reinforces the link between elements by using a common transformation on the x axis. It is usually used as transitions between UI components with a spatial or navigational relationship.
+
+A shared x-axis transition is used to reinforce the horizontal layout of a wizard component.
+
+#### Desktop and Tablet
+| Position - X | Fade |
+| :--- | :--- |
+| **Incoming frame** <li>Delay: 0ms</li><li>Duration: 350ms</li><li>Easing: Ease out</li> |**Incoming frame** <li>Delay: 250ms</li><li>Duration: 300ms</li><li>Easing: Ease out</li> |
+| **Outgoing frame**<br />Exit transitions may be shorter since they need less attention than the user's next task.<br /><br /> <li>Delay: 0ms</li><li>Duration: 300ms</li><li>Easing: Ease out</li> | **Outgoing frame**Exit transitions may be shorter since they need less attention than the user's next task.<br /><br /> <li>Delay: 200ms</li><li>Duration: 250ms</li><li>Easing: Ease out</li> |
+
+Outgoing and incoming elements share the same horizontal (x-axis, with fade through sequences the outgoing and incoming elements.)
+<img src={behaviourOverlay} className="img-padding" alt="Wizard overlay behaviour on desktop"/>
+
+#### Mobile
+| Position - X | Fade |
+| :--- | :--- |
+| **Incoming frame** <li>Delay: 0ms</li><li>Duration: 300ms</li><li>Easing: Ease out</li> |**Incoming frame** <li>Delay: 90ms</li><li>Duration: 210ms</li><li>Easing: Ease out</li> |
+| **Outgoing frame**<br />Exit transitions may be shorter since they need less attention than the user's next task.<br /><br /> <li>Delay: 0ms</li><li>Duration: 300ms</li><li>Easing: Ease out</li> | **Outgoing frame**Exit transitions may be shorter since they need less attention than the user's next task.<br /><br /> <li>Delay: 0ms</li><li>Duration: 90ms</li><li>Easing: Ease out</li> |
+
+Outgoing and incoming elements share the same horizontal (x-axis, with fade through sequences the outgoing and incoming elements.)
+<img src={behaviourOverlayMobile} className="img-padding" alt="Wizard overlay behaviour on mobile"/>
+
+
+## References
+[Wizard Design Pattern](https://uxplanet.org/wizard-design-pattern-8c86e14f2a38)
+
+[Wizards: Definition and Design Recommendations](https://www.nngroup.com/articles/wizards/)
+
+[Multi-page Forms](https://www.w3.org/WAI/tutorials/forms/multi-page/)
+
+[Buttons on the web: placement and order](https://uxdesign.cc/buttons-placement-and-order-bb1c4abadfcb)
+
+[Primary & Secondary Actions in Web Forms](https://www.lukew.com/ff/entry.asp?571)
+
+[Understanding SC 2.4.3: Focus Order](https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html)
+
+[Digital A11Y - Understanding SC 2.4.3 Focus Order](https://www.digitala11y.com/focus-order-understanding-sc-2-4-3/)
+
+[How to document the screen reader user experience](https://bbc.github.io/accessibility-news-and-you/guides/screen-reader-ux.html)

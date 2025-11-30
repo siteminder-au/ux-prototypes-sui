@@ -1,0 +1,102 @@
+/**
+ * Toast styles
+ * These are the actual CSS properties for the toast component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+
+$sm-toast--text-color: (
+  info: var(--sm-c-toast-color-text-info),
+  success: var(--sm-c-toast-color-text-success),
+  alert: var(--sm-c-toast-color-text-alert),
+  warning: var(--sm-c-toast-color-text-warning),
+);
+$sm-toast--background-color: (
+  info: var(--sm-c-toast-color-background-info),
+  success: var(--sm-c-toast-color-background-success),
+  alert: var(--sm-c-toast-color-background-alert),
+  warning: var(--sm-c-toast-color-background-warning),
+);
+$sm-toast--border-color: (
+  info: var(--sm-c-toast-color-border-info),
+  success: var(--sm-c-toast-color-border-success),
+  alert: var(--sm-c-toast-color-border-alert),
+  warning: var(--sm-c-toast-color-border-warning),
+);
+$sm-toast--border-top-color: (
+  info: var(--sm-c-toast-color-border-top-info),
+  success: var(--sm-c-toast-color-border-top-success),
+  alert: var(--sm-c-toast-color-border-top-alert),
+  warning: var(--sm-c-toast-color-border-top-warning),
+);
+$sm-toast--icon-color: (
+  info: var(--sm-c-toast-icon-color-text-info),
+  success: var(--sm-c-toast-icon-color-text-success),
+  alert: var(--sm-c-toast-icon-color-text-alert),
+  warning: var(--sm-c-toast-icon-color-text-warning),
+);
+$sm-toast--icon-background-color: (
+  info: var(--sm-c-toast-icon-color-background-info),
+  success: var(--sm-c-toast-icon-color-background-success),
+  alert: var(--sm-c-toast-icon-color-background-alert),
+  warning: var(--sm-c-toast-icon-color-background-warning),
+);
+
+body {
+  .sm-toast {
+    border-radius: var(--sm-c-toast-border-radius);
+    border-style: var(--sm-c-toast-border-style);
+    border-width: var(--sm-c-toast-border-width);
+    border-top-width: var(--sm-c-toast-border-top-width);
+    padding: var(--sm-c-toast-padding);
+    margin-bottom: var(--sm-c-toast-margin-bottom);
+
+    &__icon {
+      border-radius: var(--sm-c-toast-icon-border-radius);
+      line-height: var(--sm-c-toast-icon-line-height);
+      margin-top: var(--sm-c-toast-icon-margin-top);
+      width: var(--sm-c-toast-icon-width);
+      height: var(--sm-c-toast-icon-height);
+
+      .sm-icon {
+        font-size: var(--sm-c-toast-icon-size);
+      }
+    }
+
+    &__content {
+      padding: var(--sm-c-toast-content-padding);
+    }
+
+    &__title {
+      margin-bottom: var(--sm-c-toast-title-margin-bottom);
+    }
+
+    &__close .sm-button .sm-button__content {
+      color: var(--sm-c-toast-close-icon-color);
+      margin-top: var(--sm-c-toast-close-margin-top);
+      margin-bottom: var(--sm-c-toast-close-margin-bottom);
+      margin-right: var(--sm-c-toast-close-margin-right);
+    }
+
+    /* Types */
+    @each $type in 'info', 'success', 'alert', 'warning' {
+
+      &--type-#{$type} {
+        color: map-get($sm-toast--text-color, $type);
+        background: map-get($sm-toast--background-color, $type);
+        border-color: map-get($sm-toast--border-color, $type);
+        border-top-color: map-get($sm-toast--border-top-color, $type);
+      }
+
+      &--type-#{$type} .sm-toast__icon {
+        color: map-get($sm-toast--icon-color, $type);
+        background: map-get($sm-toast--icon-background-color, $type);
+      }
+
+    }
+
+    &:not(.sm-toast--placement-static) {
+      box-shadow: var(--sm-c-toast-box-shadow);
+    }
+  }
+}

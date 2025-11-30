@@ -1,0 +1,11 @@
+@import "./variables";
+
+.scroll-locked,
+[class*="scroll-locked-id-"] {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sm-visible-on-top {
+  z-index: $sm-visible-on-top-z-index !important;
+}

@@ -1,0 +1,749 @@
+{
+  "views": {
+    "settings": {
+      "page-title": "การตั้งค่าที่ตั้งแคมป์",
+      "select-white-label-radio-group-label": "เลือกแบรนด์ขาว",
+      "select-language-radio-group-label": "เลือกภาษา",
+      "content-form-group-label": "เนื้อหา",
+      "theme-form-group-label": "ธีม",
+      "english-language-radio-option-label": "อังกฤษ",
+      "german-language-radio-option-label": "เยอรมัน",
+      "thai-language-radio-option-label": "ไทย",
+      "red-theme-radio-option-label": "แดง",
+      "green-theme-radio-option-label": "เขียว",
+      "blue-theme-radio-option-label": "น้ำเงิน (สี SiteMinder)",
+      "slate-theme-radio-option-label": "น้ำเงินเขียว",
+      "select-product-theme-radio-group-label": "เลือกธีมสินค้า"
+    },
+    "sandbox": {
+      "404-page": {
+        "component-name": "sm-404-page",
+        "description": "ขออภัย ไม่พบหน้าเว็บที่คุณกำลังมองหา ลองใช้ปุ่มย้อนกลับบนเบราว์เซอร์ของคุณ",
+        "primary-action": "ไปที่หน้าแรก",
+        "secondary-action": "ไปที่หน้าก่อนหน้านี้",
+        "title": "ไม่พบหน้าเว็บ"
+      },
+      "badge": {
+        "component-name": "sm-badge",
+        "new": "ใหม่"
+      },
+      "banner": {
+        "component-name": "sm-banner",
+        "alert": "ข้อความแจ้งเตือนที่นี่",
+        "button": "ปุ่ม",
+        "info": "ข้อความข้อมูลที่นี่",
+        "success": "ข้อความสำเร็จที่นี่",
+        "warning": "ข้อความเตือนที่นี่"
+      },
+      "button": {
+        "component-name": "sm-button",
+        "close-button-aria-label": "ปิด",
+        "edit-button-aria-label": "แก้ไข",
+        "save-button-aria-label": "บันทึก",
+        "alert": "แจ้งเตือน",
+        "default": "ค่าเริ่มต้น",
+        "disabled": "ปิดการใช้งาน",
+        "large-default": "ใหญ่/ค่าเริ่มต้น",
+        "medium": "ปานกลาง",
+        "mini": "เล็ก",
+        "primary": "หลัก",
+        "secondary-success": "รอง (สำเร็จ)",
+        "secondary-warning": "รอง (คำเตือน)",
+        "secondary": "รอง",
+        "small": "เล็ก",
+        "success": "สำเร็จ",
+        "tertiary": "เสริม",
+        "text-success": "ตัวอักษร (สำเร็จ)",
+        "text-warning": "ตัวอักษร (คำเตือน)",
+        "text": "ตัวอักษร",
+        "warning": "คำเตือน"
+      },
+      "divider": {
+        "component-name": "sm-divider"
+      },
+      "expandable-card": {
+        "component-name": "sm-expandable-card/sm-expandable-card-body",
+        "add-card-button": "เพิ่มการกระทำการ์ด",
+        "body": "ร่างกายการ์ด",
+        "header-level-one": "หัวข้อการ์ดระดับหนึ่ง",
+        "header-level-two": "หัวข้อการ์ดระดับสอง",
+        "header": "ส่วนหัวการ์ด"
+      },
+      "help-card": {
+        "component-name": "sm-help-card",
+        "body-only": "เนื้อหาเท่านั้น",
+        "body": "คัดลอกที่นี่",
+        "header": "ส่วนหัว"
+      },
+      "icon": {
+        "component-name": "sm-icon"
+      },
+      "input": {
+        "component-name": "sm-input",
+        "email-label": "อีเมล",
+        "email-help-text": "ช่วงเวลาการตรวจสอบ",
+        "email-placeholder": "ใส่อีเมล",
+        "name-label": "ชื่อ",
+        "name-placeholder": "ใส่ชื่อ",
+        "number-with-controls-label": "ตัวเลข",
+        "text-area-label": "ข้อความ"
+      },
+      "loader": {
+        "component-name": "sm-loader"
+      },
+      "pagination": {
+        "component-name": "sm-pagination"
+      },
+      "label": {
+        "custom-margin": "ระยะขอบเขต",
+        "disabled": "ปิดการใช้งาน",
+        "expanded": "ขยาย",
+        "large": "ใหญ่",
+        "light": "สว่าง",
+        "medium": "กลาง",
+        "nested": "ซ้อน",
+        "shapes": "รูปร่าง",
+        "sizes": "ขนาด",
+        "small": "เล็ก",
+        "standard": "มาตรฐาน",
+        "text-alignment": "การจัดแนวข้อความ",
+        "types": "ประเภท",
+        "with-icon": "มีไอคอน",
+        "without-icon": "ไม่มีไอคอน"
+      },
+      "multi-select": {
+        "component-name": "sm-multi-select",
+        "label-standard": "การเลือกหลายรายการมาตรฐาน",
+        "label-grouped": "การเลือกหลายรายการที่แบ่งกลุ่ม",
+        "placeholder": "ค้นหาคำสำคัญ...",
+        "footer-action": "การดำเนินการ"
+      },
+      "page-title": "ทรายนาม",
+      "page-description": "ห้องครัวซิงค์ซึ่งให้ภาพรวมของส่วนประกอบ SUI"
+    },
+    "reservations": {
+      "page-title": "การจอง",
+      "not-implemented": "ยังไม่ได้ดำเนินการ",
+      "not-implemented-description": "เราไม่สามารถค้นหาการจองได้ในเวลานี้ โปรดลองอีกครั้งในภายหลัง",
+      "search-dialog": {
+        "title": "ค้นหา"
+      },
+      "table": {
+        "booking-reference": "หมายเลขการจอง",
+        "guest-name": "ชื่อผู้จอง",
+        "check-in": "เช็คอิน",
+        "check-out": "เช็คเอาท์",
+        "room": "ห้อง",
+        "booked-on-date": "จองเมื่อ",
+        "status": "สถานะ",
+        "price": "ราคารวม",
+        "footer": "ฟุตเตอร์"
+      },
+      "hide-show-table-columns-controller-text": "ซ่อน แสดงคอลัมน์"
+    },
+    "payments": {
+      "payments-title": "การชำระเงิน"
+    },
+    "health-check": {
+      "customer-arrival-toast-text": "วันนี้จะมีลูกค้า {0} คนมาถึง",
+      "customer-booking-toast-text": "ได้รับการจองใหม่ {0} รายการวันนี้",
+      "customer-staying-toast-text": "มีคนพักอยู่ที่ที่นอน {0} คน",
+      "customer-checkout-toast-text": "วันนี้จะมีลูกค้า {0} คนเช็คเอาท์"
+    },
+    "error": {
+      "page-title": "ไม่พบหน้านี้",
+      "page-description": "เราไม่พบหน้าที่คุณกำลังค้นหา ลองใช้ปุ่มย้อนกลับของเบราว์เซอร์ของคุณหรือไปที่หน้าหลักของเรา",
+      "go-to-previous-page-button": "ไปยังหน้าก่อนหน้า",
+      "go-to-homepage-button": "ไปยังหน้าหลัก"
+    },
+    "distribution": {
+      "distribution-heading-text": "การกระจาย",
+      "inventory-tab-label": "สินค้าคงคลัง",
+      "channels-tab-label": "ช่องทาง",
+      "yield-rules-tab-label": "กฎการผลิต",
+      "connectivities-tab-label": "ความเชื่อมต่อ",
+      "inventory-tab-heading-text": "สินค้าคงคลัง",
+      "channels-tab-heading-text": "ช่องทาง",
+      "yield-rules-tab-heading-text": "กฎการผลิต",
+      "connectivities-tab-heading-text": "การเชื่อมต่อ",
+      "currently-not-available-tab-popover-title": "ขณะนี้ไม่มี",
+      "view-channels-tab-button-text": "ดูช่องทาง",
+      "view-inventory-tab-button-text": "ดูสินค้าคงคลัง",
+      "add-channel-button-text": "เพิ่มช่องทาง",
+      "add-inventory-button-text": "เพิ่มการจัดการสินค้า",
+      "remove-channel-button-text": "ลบช่องทาง",
+      "yield-rule-discard-changes-dialog-body-text": "คุณแน่ใจหรือไม่ว่าต้องการยกเลิกการเปลี่ยนแปลง?",
+      "unsaved-yield-rule-changes-dialog-title": "กฎการผลิตที่ยังไม่ได้บันทึก",
+      "yield-rule-input-label": "กฎการผลิต",
+      "yield-rule-input-placeholder-text": "เพิ่มกฎการผลิต...",
+      "enable-connectivities-tab-switch-label": "เปิดใช้งานแท็บการเชื่อมต่อ",
+      "hide-connectivities-tab-switch-label": "ซ่อนแท็บการเชื่อมต่อ",
+      "browse-by-campsite-type-label": "เรียกดูตามประเภทบริเวณรีสอร์ท"
+    },
+    "direct-booking": {
+      "added-status-text": "เพิ่มแล้ว",
+      "direct-booking-rates-heading-text": "อัตราการจองโดยตรง",
+      "direct-booking-rates-table-header-text": "อัตราการจองโดยตรง",
+      "status-table-header-text": "สถานะ",
+      "extras-table-header-text": "พิเศษ",
+      "summary-popover-heading": "สรุป",
+      "availability-popover-heading": "ความพร้อมใช้งาน",
+      "success-tooltip-text": "สำเร็จ",
+      "suspend-direct-booking-rate-dialog-body-text": "คุณกำลังจะระงับอัตราการจองโดยตรงนี้ แน่ใจหรือไม่?",
+      "suspend-direct-booking-rate-dialog-title": "ระงับอัตราการจองโดยตรง",
+      "cancel-suspend-dialog-button-text": "ยกเลิก",
+      "suspend-dialog-button-text": "ระงับ",
+      "filter-by-site-type-label": "กรองตามประเภทของเว็บไซต์",
+      "select-site-type-placeholder-text": "เลือกประเภทเว็บไซต์...",
+      "site-rate-suspended-successfully-toast-text": "อัตราการจองของคุณถูกระงับเรียบร้อยแล้ว",
+      "media-library-heading-text": "คลังภาพ",
+      "edit-rate-dialog-title": "แก้ไขอัตราการจอง",
+      "edit-rate-dialog-body-text": "คุณกำลังจะแก้ไขอัตราการจองนี้ กรุณากรอกข้อมูลในแบบฟอร์มด้านล่าง",
+      "edit-rate-dialog-button-text": "แก้ไขอัตราการจอง",
+      "copy-tool-dialog-title": "คัดลอกเครื่องมือ",
+      "copy-tool-dialog-body-text": "คุณกำลังจะคัดลอกอัตราการจองนี้ คลิกยืนยันเพื่อดำเนินการต่อ",
+      "upload-images-empty-state-header": "คุณมีความสวยงาม ความสวยงามของคุณต้องการภาพที่สวยงาม",
+      "import-site-types-heading-text": "นำเข้าประเภทของสถานที่",
+      "successfully-uploaded-site-types-toast-text": "อัปโหลดประเภทไซต์สำเร็จแล้ว",
+      "upload-csv-empty-state-header": "ดาวน์โหลดไฟล์ประเภทสถานที่และอัปโหลดไฟล์ที่นี่เพื่อเริ่มต้น",
+      "upload-csv-description-text": "เฉพาะไฟล์ CSV เท่านั้นที่สามารถอัปโหลดได้",
+      "upload-csv-button-text": "อัปโหลดประเภทสถานที่"
+    },
+    "dashboard": {
+      "page-title": "แดชบอร์ด CampMinder",
+      "channel-status-card-title": "สถานะช่องถ่ายทอด",
+      "channel-status-card-active-subtitle": "ช่องถ่ายทอดที่ใช้งานอยู่",
+      "channel-status-delay-description": "ประสบปัญหาในการดำเนินการช้า",
+      "channel-status-awaiting-setup-description": "รอการติดตั้ง",
+      "channel-status-rate-disabled-description": "อัตราค่าตอบแทนของช่องถ่ายทอดถูกปิดใช้งาน",
+      "channel-status-connection-interrupted-description": "การเชื่อมต่อของช่องถ่ายทอดถูกขัดจังหวะ",
+      "channel-status-less-channels-button": "ลดช่อง",
+      "channel-status-more-channels-button": "เพิ่มช่อง",
+      "reservations-card": {
+        "title": "การจองวันนี้",
+        "action": "แก้ไขการ์ด",
+        "arrivals": "ผู้มาเข้าพัก",
+        "departures": "ผู้ออกจากแคมป์",
+        "new-bookings": "การจองใหม่",
+        "stays": "ผู้เข้าพัก",
+        "cancellations": "การยกเลิก"
+      },
+      "notifications-card": {
+        "title": "การแจ้งเตือน",
+        "action": "แก้ไขการ์ด",
+        "small": "เล็ก",
+        "medium": "กลาง",
+        "large": "ใหญ่",
+        "default": "ค่าเริ่มต้น",
+        "success": "สำเร็จ",
+        "warning": "คำเตือน",
+        "alert": "แจ้งเตือน",
+        "disabled": "ปิดการใช้งาน",
+        "sm-loading-image": "sm-loading-image"
+      },
+      "camp-status-card": {
+        "title": "สถานะแคมป์",
+        "action": "แก้ไขการ์ด",
+        "sm-loader": "sm-loader",
+        "sm-loading-card": "sm-loading-card"
+      },
+      "smart-guide-card": {
+        "title": "แนะนำสมาร์ท",
+        "action": "แก้ไขการ์ด",
+        "sm-loading-form": "sm-loading-form",
+        "sm-loading-home-screen": "sm-loading-home-screen"
+      },
+      "upsell-card": {
+        "hotel-app-store": {
+          "title": "ร้านค้าแอปพลิเคชันโรงแรม SiteMinder",
+          "content": "แอปพลิเคชันและการรวมระบบเพื่อปรับปรุงธุรกิจของคุณ",
+          "learn-more-action": "เรียนรู้เพิ่มเติม"
+        }
+      },
+      "inline-card": {
+        "general-info-inline-card-header-text": "ข้อมูลทั่วไป",
+        "reservations": {
+          "title": "การจองวันนี้",
+          "message": "กําหนดการ",
+          "body": "การเช็คอินสําหรับค่ายจะเริ่มในตอนเช้าสําหรับวันแรก ค่ายจะเริ่มต้นด้วยการบรรยายปฐมนิเทศกลุ่มอย่างเป็นทางการ การเช็คเอาท์จะเสร็จสิ้นพิธีมอบรางวัล",
+          "more-info-button-text": "ข้อมูลเพิ่มเติม"
+        },
+        "notifications": {
+          "title": "การฝึกอบรม",
+          "message": "การแจ้งเตือน",
+          "body": "ฝึกซ้อมสามครั้งต่อวัน (เช้า บ่าย และเย็น). เล่นเกมที่มีเจ้าหน้าที่จํานวนมาก บางทีทีมของคุณอาจเป็นแชมป์ของกลุ่มอายุของคุณ. เด็กไม่จําเป็นต้องเข้าร่วมภาคค่ํา แต่ขอแนะนําเป็นอย่างยิ่ง. ผู้เล่นฝึกฝนและเล่นในกลุ่มอายุของตนเอง.",
+          "more-info-button-text": "ข้อมูลเพิ่มเติม",
+          "content": "แอปและการบูรณาการเพื่อเพิ่มประสิทธิภาพธุรกิจของคุณ."
+        },
+        "warning": {
+          "warning-info": "คําเตือน",
+          "title": "คําเตือนความเสี่ยงกิจกรรม",
+          "message": "สถานะไซต์แคมป์",
+          "body": "แคมป์เปอร์อาจทํากิจกรรมภายใต้การดูแลในค่ายซึ่งอาจทําให้เกิดการบาดเจ็บได้.",
+          "more-info-button-text": "ข้อมูลเพิ่มเติม"
+        }
+      }
+    },
+    "users": {
+        "manage": {
+          "page-title": "จัดการผู้ใช้",
+          "add-user-button": "เพิ่มผู้ใช้",
+          "empty-state-title": "ยังไม่มีผู้ใช้ที่ถูกเพิ่ม",
+          "empty-state-description": "เพิ่มผู้ใช้ในบัญชีของคุณเพื่อจัดการที่นี่",
+          "tag-admin-role": "ผู้ดูแลระบบ",
+          "tag-general-role": "ทั่วไป",
+          "dropdown-label": "การกระทำเพิ่มเติม",
+          "dropdown-active-label": "ใช้งาน",
+          "dropdown-edit-user-label": "แก้ไขผู้ใช้นี้",
+          "dropdown-delete-user-label": "ลบผู้ใช้นี้"
+        },
+        "add": {
+          "page-title": "เพิ่มผู้ใช้",
+          "cancel-button": "ยกเลิก",
+          "create-user-button": "สร้างผู้ใช้",
+          "email-address-label": "ที่อยู่อีเมล",
+          "user-details-group-legend": "รายละเอียดผู้ใช้",
+          "first-name-label": "ชื่อ",
+          "last-name-label": "นามสกุล",
+          "preferred-language-label": "ภาษาที่ต้องการ",
+          "preferred-language-placeholder": "เลือกภาษา",
+          "phone-number-label": "หมายเลขโทรศัพท์",
+          "platform-permissions-group-legend": "สิทธิ์การใช้งานแพลตฟอร์ม",
+          "user-role-label": "บทบาทผู้ใช้",
+          "user-role-placeholder": "เลือกบทบาท"
+        }
+    },
+    "sites-and-rates": {
+      "translations": {
+        "page-title": "การแปล",
+        "cancel-button": "ยกเลิก",
+        "save-button": "บันทึก",
+        "campsite-name-translation-label": "ชื่อแคมป์ไซต์",
+        "campsite-name-translation-placeholder": "กรอกชื่อแคมป์ไซต์ของคุณ",
+        "campsite-description-translation-label": "คำอธิบายแคมป์ไซต์",
+        "campsite-description-translation-placeholder": "กรอกคำอธิบายแคมป์ไซต์ของคุณ"
+      },
+      "rate-plans": {
+        "rate-plans-title": "แผนราคา",
+        "rate-plan-table-column-header": "แผนอัตรา",
+        "rate-setup-table-column-header": "การตั้งค่าอัตรา",
+        "status-table-column-header": "สถานะ",
+        "status-table-error": "โหลดไม่สำเร็จ",
+        "status-table-tooltip": "แสดงตัวแปรต่าง ๆ ของแถบความคืบหน้า",
+        "refresh-data-button-label": "รีเฟรชข้อมูล",
+        "camping-site-description": "บริเวณตั้งแคมป์",
+        "sites-and-rates": "ที่ตั้งและราคา"
+      },
+      "promotions": {
+        "page-title": "โปรโมชั่น",
+        "edit-promotion-button": "แก้ไขโปรโมชั่น",
+        "promo-one": {
+          "title": "กำลังมองหาที่พักสุดสัปดาห์?",
+          "description": "จองที่พัก 3 คืน และได้รับคืนที่ 4 ฟรี",
+          "action": "ค้นหาที่พัก"
+        }
+      },
+      "enquiry-form": {
+        "page-title": "แบบฟอร์มสอบถาม",
+        "checkbox": {
+          "label": "คุณรู้จักเราได้อย่างไร",
+          "errorOne": "โปรดเลือกอย่างน้อยหนึ่งตัวเลือก",
+          "errorTwo": "จำเป็น",
+          "options": {
+            "google": "กูเกิล",
+            "facebook": "เฟสบุ๊ค",
+            "newspaper": "หนังสือพิมพ์",
+            "social-media": "โซเชียลมีเดีย",
+            "tv": "ทีวี",
+            "radio": "วิทยุ",
+            "word-of-mouth": "ปากต่อปาก",
+            "other": "อื่นๆ"
+          },
+          "terms": "ฉันยอมรับ",
+          "terms-and-conditions": "ข้อกำหนดและเงื่อนไข",
+          "cancel": "ยกเลิก",
+          "submit": "ส่ง"
+        },
+        "formOne": {
+          "personal-details-legend": "รายละเอียดส่วนตัว",
+          "booking-details-legend": "รายละเอียดการจอง",
+          "name": "ชื่อ-นามสกุล",
+          "address": "ที่อยู่ปัจจุบัน",
+          "email": "อีเมล",
+          "phone": "หมายเลขโทรศัพท์",
+          "date-of-birth": "วันเกิด",
+          "date-of-birth-help-text": "เราจะใช้ข้อมูลนี้เพื่อให้คุณได้รับส่วนลด",
+          "controls": "จำนวนผู้เข้าพัก",
+          "controls-error": "จำนวนแขกต้องน้อยกว่า 100 คน",
+          "facility": "กรุณาเลือกสิ่งอำนวยความสะดวกที่ต้องการจอง",
+          "facilityOne": "สิ่งอำนวยความสะดวกสำหรับการแคมปิ้ง",
+          "facilityTwo": "สิ่งอำนวยความสะดวกสำหรับการประชุม",
+          "duration": "ระยะเวลา",
+          "duration-tooltip": "ระยะเวลาการเข้าพักชั่วคราว เราจะติดต่อคุณเพื่อยืนยันการจองของคุณ",
+          "check-in-placeholder": "วันเข้าพัก",
+          "check-out-placeholder": "วันออกจากที่พัก",
+          "cancel": "ยกเลิก",
+          "submit": "ส่ง",
+          "switch": "รายการอาหาร",
+          "breakfast": "อาหารเช้า",
+          "lunch": "อาหารกลางวัน",
+          "dinner": "อาหารเย็น",
+          "contact-options": "เวลาที่เหมาะสมที่สุดในการติดต่อคุณ?",
+          "morning": "เช้า",
+          "afternoon": "บ่าย",
+          "evening": "เย็น",
+          "anytime": "ตลอดเวลา",
+          "services": "บริการ",
+          "services-placeholder": "ค้นหาคำสำคัญ...",
+          "add": "เพิ่ม",
+          "meal": "ข้อกำหนดทางอาหารพิเศษ",
+          "meal-placeholder": "เลือกตัวเลือก",
+          "amenities": "สิ่งอำนวยความสะดวกและบริการพิเศษ",
+          "amenities-placeholder": "ค้นหาคำสำคัญ..."
+        },
+        "services": {
+          "guided-tours": "ทัวร์นำเที่ยว",
+          "fishing-gear": "อุปกรณ์ตกปลา",
+          "kayak-rental": "เช่าเรือคายัค",
+          "campfire-setup": "ตั้งแคมป์ไฟ",
+          "wi-fi": "ไวไฟ",
+          "laundry-service": "บริการซักรีด",
+          "equipment-rental": "เช่าอุปกรณ์"
+        },
+        "amenities": {
+          "amenities": {
+            "title": "สิ่งอำนวยความสะดวก",
+            "swimming-pool": "สระว่ายน้ำ",
+            "gym": "ยิม",
+            "spa": "สปา",
+            "parking": "ที่จอดรถ",
+            "shuttle-service": "บริการรถรับส่ง"
+          },
+          "special-requests": {
+            "title": "คำขอพิเศษ",
+            "extra-pillows": "หมอนเสริม",
+            "late-check-out": "เช็คเอาท์ล่าช้า",
+            "early-check-in": "เช็คอินก่อนเวลา",
+            "baby-crib": "เตียงเด็ก",
+            "allergy-free-room": "ห้องปลอดสารก่อภูมิแพ้",
+            "quiet-room": "ห้องเงียบ"
+          },
+          "events": {
+            "title": "กิจกรรม",
+            "yoga-class": "คลาสโยคะ",
+            "wine-tasting": "ชิมไวน์",
+            "cooking-workshop": "เวิร์คช็อปทำอาหาร",
+            "live-music": "ดนตรีสด",
+            "kids-activities": "กิจกรรมสำหรับเด็ก",
+            "guided-hikes": "ไกด์นำทางการเดินป่า"
+          },
+          "attractions": {
+            "title": "สถานที่ท่องเที่ยว",
+            "museum-tour": "ทัวร์พิพิธภัณฑ์",
+            "historical-sites": "แหล่งประวัติศาสตร์",
+            "theme-park": "สวนสนุก",
+            "nature-trails": "เส้นทางธรรมชาติ",
+            "shopping-district": "ย่านช้อปปิ้ง",
+            "local-markets": "ตลาดท้องถิ่น"
+          }
+        },
+        "meal": {
+          "vegetarian": {
+            "title": "มังสวิรัติ",
+            "oriental-label": "มังสวิรัติแบบจีน",
+            "oriental-description": "อาหารมังสวิรัติที่ปรุงแบบจีน",
+            "hindu-label": "มังสวิรัติแบบฮินดู",
+            "hindu-description": "อาหารมังสวิรัติแบบเผ็ดที่ใช้ผลิตภัณฑ์จากนมอย่างจำกัด",
+            "lacto-ovo-label": "มังสวิรัติแลคโต-โอโว",
+            "lacto-ovo-description": "อาหารมังสวิรัติที่ไม่เข้มงวดซึ่งไม่รวมเนื้อสัตว์ แต่สามารถมีไข่และผลิตภัณฑ์จากนมได้",
+            "vegan-label": "มังสวิรัติแบบวีแกน",
+            "vegan-description": "อาหารมังสวิรัติแบบเข้มงวดที่ไม่มีผลิตภัณฑ์จากสัตว์ใด ๆ"
+          },
+          "religious": {
+            "title": "ศาสนา",
+            "moslem-label": "อาหารมุสลิม",
+            "moslem-description": "อาหารที่ปรุงและเสิร์ฟตามกฎหมายและขนบธรรมเนียมทางอาหารของมุสลิม",
+            "kosher-label": "อาหารโคเชอร์",
+            "kosher-description": "อาหารบรรจุและปิดผนึกที่เลือก ปรุงและเสิร์ฟตามกฎหมายและขนบธรรมเนียมการกินของชาวยิว",
+            "hindu-label": "อาหารฮินดู",
+            "hindu-description": "อาหารฮินดูที่ไม่ใช่มังสวิรัติที่ปรุงตามขนบธรรมเนียมและวิธีปฏิบัติทางอาหารของฮินดู",
+            "jain-label": "อาหารเชน",
+            "jain-description": "อาหารที่ปรุงตามขนบธรรมเนียมของเชนและเคารพแนวปฏิบัติทางอาหารและความเชื่อของเชน"
+          },
+          "dietary": {
+            "title": "อาหารตามข้อจำกัดทางสุขภาพ",
+            "low-salt-label": "อาหารลดเกลือ",
+            "low-salt-description": "อาหารที่ปรุงด้วยการละเว้นหรือจำกัดการใช้เกลือ",
+            "gluten-intolerant-label": "อาหารสำหรับผู้ไม่ทนต่อกลูเตน",
+            "gluten-intolerant-description": "อาหารสำหรับผู้ที่ไม่ทนต่อกลูเตน ไม่เหมาะสำหรับผู้ที่แพ้กลูเตน",
+            "low-lactose-label": "อาหารลดแลคโตส",
+            "low-lactose-description": "อาหารสำหรับผู้ที่ไม่ทนต่อแลคโตส ไม่เหมาะสำหรับผู้ที่แพ้นมวัว",
+            "low-calorie-label": "อาหารแคลอรี่ต่ำ",
+            "low-calorie-description": "อาหารสำหรับผู้ที่มีข้อจำกัดทางอาหารในเรื่องไขมัน อาจมีเนื้อไม่ติดมัน ผลไม้และผัก ผลิตภัณฑ์นมไขมันต่ำ ขนมปังและธัญพืชที่มีเส้นใยสูง",
+            "low-fat-label": "อาหารไขมันต่ำ",
+            "low-fat-description": "อาหารสำหรับผู้ที่มีข้อจำกัดทางอาหารในเรื่องไขมัน อาจมีเนื้อไม่ติดมัน เนื้อไก่ ผลไม้และผัก ซอสที่ไม่มีครีมหรือไขมัน และผลิตภัณฑ์นมไขมันต่ำ",
+            "diabetic-label": "อาหารเบาหวาน",
+            "diabetic-description": "อาหารสำหรับผู้ที่เป็นเบาหวาน",
+            "bland-label": "อาหารอ่อน",
+            "bland-description": "อาหารที่ย่อยง่ายสำหรับผู้ที่มีอาการไม่สบายท้อง",
+            "fruit-platter-label": "ผลไม้รวม",
+            "fruit-platter-description": "ประกอบด้วยผลไม้ที่ไม่มีสารกันบูดและผลไม้แห้งที่ไม่มีซัลไฟต์"
+          },
+          "child": {
+            "title": "เด็ก",
+            "baby-label": "อาหารทารก",
+            "baby-description": "อาหารบดในขวดที่แนะนำสำหรับทารกอายุต่ำกว่า 2 ปี",
+            "child-label": "อาหารเด็ก",
+            "child-description": "อาหารที่นุ่มและเคี้ยวง่ายสำหรับเด็กอายุ 2-11 ปี"
+          },
+          "others": {
+            "title": "อื่นๆ",
+            "pre-cut-label": "อาหารตัดล่วงหน้า",
+            "pre-cut-description": "อาหารทั้งปกติและพิเศษจะถูกตัดเป็นชิ้นพอดีคำ"
+          }
+        },
+        "camp-type-select": "เลือกประเภทค่าย",
+        "check-in-time-label": "เวลาเช็คอิน",
+        "placeholder-text-time-picker": "เวลาเช็คอิน",
+        "check-out-time-label": "เวลาเช็คเอาท์",
+        "camp-pet-select": "เลือกสัตว์เลี้ยง"
+      },
+      "campsites": {
+        "page-title": "Campsites",
+        "amenities": "สิ่งอำนวยความสะดวก",
+        "collapse-all": "ย่อทั้งหมด",
+        "expand-all": "ขยายทั้งหมด",
+        "sites-and-rates": "ที่ตั้งและราคา",
+        "accordion": {
+          "description-label": "คำอธิบาย",
+          "accommodations-label": "ที่พัก",
+          "smoking-policy-label": "นโยบายสูบบุหรี่",
+          "non-smoking": "สูบบุหรี่",
+          "smoking": "ไม่สูบบุหรี่",
+          "allow-pets-label": "อนุญาตให้มีสัตว์เลี้ยง",
+          "booking-controls-label": "การควบคุมการจอง",
+          "no-description": "ไม่มีคำอธิบาย",
+          "no-accommodations": "ไม่มีที่พักที่เลือก",
+          "yes": "ใช่",
+          "no": "ไม่",
+          "read-more": "อ่านเพิ่มเติม",
+          "read-less": "อ่านน้อยลง"
+        },
+        "discard-changes-dialog-title": "ละทิ้งการเปลี่ยนแปลง?",
+        "discard-changes-dialog-message": "คุณมีการเปลี่ยนแปลงที่ยังไม่ได้บันทึก คุณแน่ใจหรือไม่ที่ต้องการละทิ้งการเปลี่ยนแปลงนี้?",
+        "discard-changes-dialog-cancel-button": "ทำการแก้ไขต่อ",
+        "discard-changes-dialog-confirm-button": "ละทิ้งการเปลี่ยนแปลง",
+        "drawer": {
+          "title": "แก้ไขที่พัก",
+          "form": {
+            "general-information": "ข้อมูลทั่วไป",
+            "campsite-name-label": "ชื่อที่พัก",
+            "campsite-description-label": "คำอธิบายที่พัก",
+            "features": "คุณสมบัติ",
+            "accommodations-label": "ที่พัก",
+            "accommodations-placeholder": "เลือกที่พัก",
+            "booking-controls": "การควบคุมการจอง",
+            "maximum-advance-booking-dates-label": "วันที่จองล่วงหน้าสูงสุด",
+            "dynamic-discounts-label": "ส่วนลดที่เปลี่ยนไป",
+            "restrict-to-mobile-label": "จำกัดอัตราค่าบริการที่อุปกรณ์เคลื่อนที่",
+            "restrict-to-mobile-tooltip": "อธิบายเหตุผลที่ฟิลด์นี้ถูกปิดใช้งาน",
+            "smoking-policy-label": "นโยบายสูบบุหรี่",
+            "non-smoking-label": "ไม่สูบบุหรี่",
+            "smoking-label": "สูบบุหรี่",
+            "allow-pets-label": "อนุญาตให้นำสัตว์เลี้ยงเข้าพัก",
+            "yes-label": "ใช่",
+            "no-label": "ไม่ใช่"
+          },
+          "cancel-button": "ยกเลิก",
+          "save-button": "บันทึก"
+        },
+        "dropdown": {
+          "aria-label": "การดำเนินการเพิ่มเติม",
+          "edit": "แก้ไขที่พัก"
+        },
+        "save-campsite-details-failed-toast-title": "รายละเอียดของสวนหมู่ป่าไม่สามารถบันทึกได้",
+        "save-campsite-details-failed-toast-message": "โปรดตรวจสอบแบบฟอร์มเพื่อค้นหาข้อผิดพลาดและลองอีกครั้ง",
+        "save-campsite-details-success-toast-title": "บันทึกรายละเอียดที่พักสำเร็จแล้ว!",
+        "save-campsite-details-success-toast-message": "คุณควรเห็นการเปลี่ยนแปลงที่แสดงในรายการด้านล่าง อย่างไรก็ตามโปรดทราบว่าเราไม่ได้บันทึกการเปลี่ยนแปลงลงในฐานข้อมูลและการเปลี่ยนแปลงจะหายไปเมื่อคุณรีเฟรชหน้า",
+        "list": {
+          "title": "รายการ",
+          "description": "ลากและวางกิจกรรมด้านล่างเพื่อสร้างกำหนดการที่กำหนดเองสำหรับที่พักค่ายของคุณ",
+          "dayOne": {
+            "title": "วันที่ 1",
+            "activityOne": "ปีนหน้าผา",
+            "activityTwo": "พายเรือแคนู",
+            "activityThree": "สกีน้ำ"
+          },
+          "dayTwo": {
+            "title": "วันที่ 2",
+            "activityOne": "เดินเท้า",
+            "activityTwo": "ขี่จักรยาน",
+            "activityThree": "การสำรวจถ้ำ"
+          }
+        },
+        "color-picker-theme-title": "เลือกธีมสี",
+        "color-picker-theme-description": "เลือกธีมสีที่ต้องการ",
+        "applicable-start-date-calendar-label": "วันที่เริ่มต้นที่สามารถจองได้",
+        "applicable-start-date-calendar-help-text": "วันที่เริ่มต้นสำหรับการจองคุณภาพที่สามารถจองได้",
+        "advertised-date-range-calendar-label": "ช่วงวันที่ประชาสัมพันธ์",
+        "advertised-date-range-calendar-start-date-placeholder-text": "เริ่ม",
+        "advertised-date-range-calendar-end-date-placeholder-text": "สิ้นสุด"
+      }
+    },
+    "insights": {
+      "booking-performance": {
+        "page-title": "ผลดำเนินการด้านการจอง",
+        "page-description": "กรองการจองผ่านผู้จัดการช่องทางตามแผนราคา ประเภทห้องพัก ช่องทาง หรือตลาดต้นทาง",
+        "buttons": {
+          "download-csv": "ดาวน์โหลด CSV"
+        },
+        "charts": {
+          "bookings-by-country": "การจองตามประเทศ",
+          "room-nights-by-channel": "จำนวนคืนที่จองตามช่องทาง",
+          "room-revenue-by-channel": "รายได้ห้องพักตามช่องทาง",
+          "room-nights-by-room-type": "จำนวนคืนที่จองตามประเภทห้องพัก",
+          "room-revenue-by-room-type": "รายได้จากห้องพักตามประเภทห้องพัก"
+        },
+        "tabs": {
+          "source-market": "ตลาดต้นทาง",
+          "channel-mix": "ช่องทางแบบผสม",
+          "room-type": "ประเภทห้องพัก",
+          "rate-plan": "แผนราคา"
+        }
+      },
+      "booking-performance-filters": {
+        "booking-price-slider-label": "ราคาการจอง",
+        "booking-days-slider-label": "วันที่จอง",
+        "number-of-over-booking-slider-label": "จำนวนการจองเกิน",
+        "number-of-booking-channels-slider-label": "จำนวนช่องทางการจอง"
+      }
+    }
+  },
+  "composables": {
+    "relative-time": {
+      "relative-time-few-minutes": "ไม่กี่นาทีที่แล้ว",
+      "relative-time-half-hour": "ประมาณครึ่งชั่วโมงที่แล้ว",
+      "relative-time-hour": "ประมาณหนึ่งชั่วโมงที่แล้ว",
+      "relative-time-hours": "{hours} ชั่วโมงที่แล้ว",
+      "relative-time-yesterday": "เมื่อวาน",
+      "relative-time-days": "{days} วันที่แล้ว",
+      "relative-time-last-week": "สัปดาห์ที่แล้ว",
+      "relative-time-date": "เมื่อวันที่ {date}"
+    }
+  },
+  "components": {
+    "the-app-sidebar": {
+      "sidebar-aria-label": "การนำทางแถบด้านข้าง"
+    },
+    "the-app-header": {
+      "nav-item": {
+        "dashboard": "แดชบอร์ด",
+        "sites-and-rates": "เว็บไซต์และอัตรา",
+        "distribution": "การกระจาย",
+        "direct-booking": "การจองโดยตรง",
+        "reservations": "การจอง",
+        "insights": "การเข้าใจ",
+        "payments": "การชำระเงิน",
+        "health-check": "การตรวจสุขภาพ",
+        "sandbox": {
+          "title": "ทราย",
+          "components": "ส่วนประกอบ",
+          "storybook": "หนังสือนิทานซุย"
+        },
+        "direct-booking-rates": "อัตราการจองโดยตรง",
+        "extras": "เพิ่มเติม",
+        "configuration": "การกำหนดค่า",
+        "widgets": "วิดเจ็ต",
+        "branding": "แบรนด์"
+      },
+      "help": {
+        "go-to-support": "ไปที่ฝ่ายสนับสนุน"
+      },
+      "notifications-clear-all-button": "ลบทั้งหมด",
+      "notifications-display-name": "การแจ้งเตือน",
+      "property-menu": {
+        "title": "แคมป์ออสเตรเลีย",
+        "campsites": "ที่ตั้งแคมป์",
+        "campsite-settings": "การตั้งค่าที่ตั้งแคมป์",
+        "user-management": "การจัดการผู้ใช้"
+      },
+      "all-data-on-this-site-is-mocked-banner-title": "หมายเหตุ: ข้อมูลทั้งหมดบนเว็บไซต์นี้ถูกเลียนแบบ",
+      "direct-booking-rates-not-available": "ค่าเช่าโดยตรงไม่พร้อมใช้งานในปัจจุบัน",
+      "visit-dashboard-user-menu-link": "เข้าชมแดชบอร์ด",
+      "visit-land-on-multi-land-user-menu-link": "เยี่ยมชมที่ดินบน Multi-Land",
+      "logout-user-menu-link": "ออกจากระบบ"
+    },
+    "app-sidebar-vertical-nav": {
+      "configuration-section-label": "การกำหนดค่า",
+      "rate-plans-label": "แผนราคา",
+      "campsites-label": "ที่ตั้งแคมป์",
+      "promotions-label": "โปรโมชั่น",
+      "other-section-label": "อื่น",
+      "enquiry-form-label": "แบบฟอร์มสอบถาม",
+      "admin-section-label": "การบริหาร",
+      "property-settings-label": "การตั้งค่าคุณสมบัติ",
+      "translations-label": "การแปล",
+      "new-badge-label": "ใหม่"
+    },
+    "app-sidebar-vertical-nav-footer": {
+      "my-account-label": "บัญชีของฉัน"
+    },
+    "reservations": {
+      "reservations-list-filters": {
+        "booking-ref-label": "รหัสการจอง",
+        "booking-ref-placeholder": "กรอกรหัสการจอง",
+        "guest-last-name-label": "นามสกุลผู้จอง",
+        "guest-last-name-placeholder": "กรอกนามสกุลผู้จอง",
+        "select-dates-label": "เลือกวันที่",
+        "select-date-time-label": "เลือกวันที่และเวลา",
+        "select-time-label": "เลือกเวลา",
+        "start-date-placeholder": "วันที่เริ่มต้น",
+        "end-date-placeholder": "วันที่สิ้นสุด",
+        "more-filters-btn": "ตัวกรองเพิ่มเติม",
+        "reset-all-btn": "ตั้งค่าใหม่ทั้งหมด",
+        "search-btn": "ค้นหา"
+      }
+    },
+    "distribution": {
+      "new-inventory-wizard": {
+        "title": "เพิ่มสินค้าใหม่",
+        "steps": {
+          "inventory-name": {
+            "title": "ขั้นตอนที่ 1: กรอกชื่อสินค้า",
+            "label": "ขั้นตอนที่หนึ่ง"
+          },
+          "inventory-type": {
+            "title": "ขั้นตอนที่ 2: เลือกประเภทสินค้า",
+            "label": "ขั้นตอนที่สอง"
+          },
+          "inventory-review": {
+            "title": "ขั้นตอนที่ 3: ตรวจสอบและบันทึก",
+            "label": "ตรวจสอบ"
+          }
+        }
+      }
+    },
+    "direct-booking": {
+      "direct-booking-dropdown-site-rate-actions": {
+        "cancel-dialog-button-text": "ยกเลิก",
+        "delete-dialog-button-text": "ลบอัตราการจองโดยตรง",
+        "delete-direct-booking-rate-dialog-body-text": "การลบอัตราการจองโดยตรงจะทำให้มีการลบออกจากเครื่องมือการจองโดยตรงของคุณ",
+        "delete-direct-booking-rate-dialog-title": "ลบอัตราการจองโดยตรง",
+        "site-rate-deleted-successfully-toast-text": "อัตราของคุณถูกลบออกแล้ว",
+        "edit-dropdown-action-text": "แก้ไข",
+        "copy-tool-dropdown-action-text": "เครื่องมือสำเนา",
+        "suspend-dropdown-action-text": "ระงับ",
+        "delete-direct-booking-rate-dropdown-action-text": "ลบอัตราการจองโดยตรง",
+        "filter-by-site-type-label": "กรองตามประเภทเว็บไซต์",
+        "select-site-type-placeholder-text": "เลือกประเภทเว็บไซต์...",
+        "site-rate-suspended-successfully-toast-text": "การประเมินของคุณถูกระงับเรียบร้อยแล้ว"
+      }
+    },
+    "campsite-type-slider": {
+      "campsite-type-slider": {
+        "with-delete-label": "พร้อมลบ",
+        "without-delete-label": "ไม่รวมลบ"
+      }
+    }
+  }
+}

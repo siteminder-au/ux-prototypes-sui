@@ -1,0 +1,115 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import typeLoadingIndicator from './images/type-loading-indicator.png'
+import typeSkeletonLoaders from './images/type-skeleton.png'
+import techniqueProgressiveLoading from './images/technique-progressive-loading.png'
+import techniqueLazyLoading from './images/technique-lazy-loading.png'
+
+<Meta title="Design patterns/Loading/Overview" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Loading</h1>
+  <p>Loading patterns are used when it takes a considerable time for information or data to be processed and displayed on the screen. These patterns show that the system is actively retrieving and preparing the content, and that the user may need to wait for it to be fully loaded before they can interact with it.</p>
+</SuiStorybookTitle>
+
+- [Product context](#product-context)
+- [Importance of loading patterns](#importance-of-loading-patterns)
+- [Types of loading](#types-of-loading)
+- [Loading techniques](#loading-techniques)
+- [Guidelines and recommendations](#guidelines-and-recommendations)
+- [Accessibility](#accessibility)
+
+
+## Product context
+
+There are different ways of showing loading on our platform and the primary purpose of this pattern is to ensure all the different methods are outlined and detailed for usage, to ensure we are building a platform that is aligned and consistent.
+
+
+## Importance of loading patterns
+
+- Loading patterns visually inform users about background processes, managing their expectations and avoiding frustration or uncertainty while content is loading.
+- Loading patterns help to maintain user engagement throughout the loading process. Instead of presenting a static or empty screen, loading patterns offer visual cues that indicate that there is progress and activity on the platform. This keeps users involved and connected to the interface, resulting in lower bounce rates and increased user satisfaction.
+- Users can see that their request is being worked on and comprehend the need to wait for the outcome. They may perceive the loading time to be faster, even if the actual processing time remains the same. This positive perception contributes to a more satisfying user experience.
+- Loading patterns establish brand consistency. By implementing loading patterns across different parts of the platform, we provide a cohesive visual language and a unified experience for users.
+
+<div className="sui-storybook-highlight"> <p>"A user's wait time begins the moment when she initiates an action, whether by tapping the screen, clicking a mouse button, pressing a key, or speaking a voice command. Immediately, the system should give some visual feedback to communicate that it has received the request.</p><p> For example, a button may change to state to look "pressed", or the page may begin to refresh. Without any visual change from the system, most users will assume the action was not registered and they will try again." </p><p> <a href="https://www.nngroup.com/articles/progress-indicators/"> NNGroup</a></p></div>
+
+## Types of loading
+
+### Loading indicators
+Loading indicators are visual elements used to communicate to users that a process is ongoing and that they need to wait for it to complete. They are commonly used in situations where data or content is being retrieved, processed or authenticated.
+
+Unlike progress indicators, they only show that loading is happening without showing progress. If a process will take more than a short moment to finish, it's better to use a progress indicator instead.
+<img src={typeLoadingIndicator} alt="Loading indicators on full-page screens" />
+
+### Skeleton loaders
+Skeleton states are simplified versions of components that provide a visual representation of the expected content before it is fully loaded or rendered. They are often used to  mitigate the perception of delay or empty space during loading time.
+
+They enhance the user experience by reducing perceived loading time and providing a more seamless transition from the loading state to the fully loaded state.
+
+Skeleton loaders  are commonly used in scenarios where the content is dynamic, such as listings, cards, tables and forms.
+<img src={typeSkeletonLoaders} alt="Sample of skeleton loaders" />
+
+## Loading techniques
+
+### Progressive loading
+Progressive loading happens when elements on a page become visible as they are loaded, rather than displaying everything at once.
+
+Transitioning from placeholder shapes to loaded content in a top-to-bottom order on mobile devices is crucial because shifting can disrupt users' ability to consume or interact with partially loaded content.
+<img src={techniqueProgressiveLoading} alt="Sample of progressive loading on dashboard" width="720" />
+
+### Lazy loading
+Lazy loading is frequently employed to enhance performance by loading a specific amount of data at a time and subsequently loading additional data as required.
+
+As an example, consider a list featuring various room types and their respective pictures. Instead of making users wait for the entire list to load at once, they are initially presented with the first ten room types. When users scroll to the bottom of the list, the next ten room types are dynamically shown.
+
+Skeleton loaders act as visual representations that indicate the upcoming content that will be loaded, with the actual content appearing once it becomes available.
+
+Lazy loading ensures a seamless display of content with minimal content shifting. The content is loaded in a top-to-bottom order, and each available section progressively replaces the next.
+<img src={techniqueLazyLoading} alt="Sample of lazy loading on list" width="720" />
+
+## Guidelines and recommendations
+
+- <strong>Show immediate feedback: </strong> Provide visual feedback to users as soon as they initiate an action or request.
+- Use loading patterns for any action that takes longer than about 1.0 seconds.
+- Do not use loading patterns for actions that takes less then 1.0 second.Using a repeated animation for anything that loads in less than 1 second can be distracting. Users may struggle to follow what happened and might feel anxious about the fleeting content on the screen.
+
+### Guide for Time of Response
+
+<table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>UI Recommendation</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>less than 1 second</td>
+      <td>Feedback/loading pattern not required </td>
+      <td>Users should perceive instant loading of results without any loading indicators, even for items that load in less than 1 second. The use of loading patterns can cause anxiety as users might not be able to process the transition from a visual indicator to the actual content. </td>
+    </tr>
+    <tr>
+      <td>greater than 1 second</td>
+      <td>
+        Spinner<br/>
+        Skeleton loaders
+        </td>
+        <td>Nielsen-Norman explicitly suggests the use of loading patterns as a recommended approach to reduce perceived wait times and provide users with a sense of progress.
+        <br/><br/><strong>Note:</strong> The spinner is only to be used for authentication purposes.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div className="sui-storybook-highlight sui-storybook-highlight--alert"><strong>Note:</strong> for less than 1 second load time, ensure that there is a fallback feedback type and show when there is a delay above one second.  In this cases, a spinner is recommended.</div>
+
+
+## Accessibility
+
+- A screen reader should always inform users when an application is loading, busy, unresponsive, or when a process fails.
+- Screen readers should convey “loading” when a spinning icon appears on the screen.
+- Use Accessible Rich Internet Applications (ARIA) roles and attributes to enhance the accessibility of skeleton loaders. Apply ARIA attributes like "aria-busy" or "aria-live" to indicate the loading status and provide relevant information to assistive technologies.

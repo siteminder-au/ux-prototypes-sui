@@ -1,0 +1,48 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import when from './images/patterns-editing-inline-card-when.png'
+import recs from './images/patterns-editing-inline-card-recs.png'
+import example from './images/patterns-editing-inline-card-example.png'
+
+<Meta title="Design patterns/Editing/Inline Card" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Editing</h1>
+  <p>Editing is the act of updating an existing resource or set of data within out product.</p>
+</SuiStorybookTitle>
+
+- [Inline card](#inline-card)
+- [Example in use](#example-in-use)
+- [Recommendations](#recommendations)
+- [How to build](#how-to-build)
+
+## Inline card editing
+
+### When to use inline cards
+An inline card edit can be used during the edit action of a select few fields which can be sectioned or grouped together.
+
+This type of edit is applied to all the data in an isolated section can be modified collectively. The entire group is made editable because the fields in the section depend on one another.
+<img src={when} alt="When to use" width="360" />
+
+## Example in use
+Below you can see an example layout using inline editable cards along with other editable elements.
+<img src={example} alt="Example layout using inline cards" />
+
+## Recommendations
+When using an inline card editing pattern, keep the following recommendations in mind:
+
+- To maintain consistency, use the same layout structure for the edit and read-only views. Users can quickly recognize the fields after switching views because of the identical layout for both views.
+
+- Make sure the "edit" view can be seen in the viewport so that users can see the full range of what is being edited.
+
+- Consider only displaying saved data in a section's "read-only" view, hiding the "empty" fields, depending on how long the form is. While all fields are available in the "edit" mode, only the ones that contain data are shown in the "read-only" view, which helps to maximize screen real estate and encourages user focus.
+
+- Apply to a section as a whole if every piece of information is modified as a single unit under the same section
+
+<img src={recs} alt="recommendations" width="752" />
+
+
+## How to build
+This pattern is built using the sm-card component, where the editing state is switched on using the editing boolean property.

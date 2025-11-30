@@ -1,0 +1,172 @@
+import { Meta } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomyBasic from './images/sm-pagination-anatomy-basic.png'
+import anatomyExpanded from './images/sm-pagination-anatomy-expanded.png'
+import variantBasic from './images/sm-pagination-variation-basic.png'
+import variantExpanded from './images/sm-pagination-variation-expanded.png'
+import appearanceLabel from './images/sm-pagination-appearance-label.png'
+import appearancePageDisplay from './images/sm-pagination-appearance-page-display.png'
+import appearanceNumber from './images/sm-pagination-appearance-number.png'
+import scalingDesktop from './images/sm-pagination-scaling-desktop.png'
+import scalingTablet from './images/sm-pagination-scaling-tablet.png'
+import scalingMobile from './images/sm-pagination-scaling-mobile.png'
+import specsBasic from './images/sm-pagination-specs-basic.png'
+import specsExpanded from './images/sm-pagination-specs-expanded.png'
+import statesBasic from './images/sm-pagination-states-basic.png'
+import statesExpanded from './images/sm-pagination-states-expanded.png'
+import behaviorTruncation from './images/sm-pagination-behavior-truncation.png'
+import behaviorPageDisplay from './images/sm-pagination-behavior-page display.png'
+import behaviorButtons from './images/sm-pagination-behavior-buttons.png'
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+  `}
+</style>
+
+<Meta title="Components/Pagination/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Pagination</h1>
+  <p>
+    Pagination allows users to split large amounts of data over several pages, with access to controls to help navigate through the data. Pagination is a great pattern to use when the user is searching for something particular, rather than scanning.
+    <br /><br />
+    Users have a sense of control over their content and this pattern allows them to take a mental note of where things are in the order of data.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Anatomy](#anatomy)
+- [Variants](#variants)
+- [Appearance](#appearance)
+- [Scaling and adaptation](#scaling-and-adaptation)
+- [Specs](#specs)
+- [States](#states)
+- [Behaviour](#behaviour)
+- [References](#references)
+
+
+
+## Usage
+
+- Pagination is most commonly used with search results.
+- Pagination helps split larger collections of similar information onto several pages, which can help with browsability and scannability. Articles relating to a category or tag, content archives, and history or activity are all examples of multi-page collections.
+
+## Anatomy
+  ### Standard
+  **1: Previous page button** - Enables users to go back to the previous page.
+
+  **2: Page Jumper** - Consists of an input field to help users go directly to a page, and a text content indicating the total number of pages available.
+
+  **3: Next page button** - Enables users to go to the next page.
+
+  **4: Results indicator** - The total number of items/results.
+
+  **5: Item page display (optional)** - The dropdown list of user-selected items to show per page.
+  <img src={anatomyBasic} className="img-padding" alt="Standard pagination anatomy"/>
+
+
+  ### Expanded
+  **1: Previous page button** - Enables users to go back to the previous page.
+
+  **2: Current page** - Indicates the current page number where the user is at.
+
+  **3: Truncation** - Ellipsis are used to indicate the presence of additional pages. When users are in the middle of a page sequence with many pages, both next and previous, double truncation happens.
+
+  **4: Next page button** - Enables users to go to the next page
+
+  **5: Page Jumper** - Consists of an input field to help users go directly to a page, and a text content indicating the total number of pages available.
+
+  **6: Item page display** - The dropdown list of user-selected items to show per page.
+
+  **7: Results indicator** - The total number of items/results.
+  <img src={anatomyExpanded} className="img-padding" alt="Expanded pagination anatomy"/>
+
+
+## Variants
+  ### Standard
+  Standard pagination enables users to go back and forth between previous pages using the previous and next page buttons as well as allow users to enter a specific page they want to access immediately. Page and results indicator updates in real-time.
+  <img src={variantBasic} className="img-padding" alt="Standard pagination variant"/>
+
+  ### Expanded
+  Expanded pagination enables users to jump to any page by selecting a page number button. We use an ellipsis to show that more pages exist.
+  <img src={variantExpanded} className="img-padding" alt="Expanded pagination variant"/>
+
+## Appearance
+  ### Label
+  For context, further labeling can be applied. If results equals only 1 page, the page display option can be omitted.
+  <img src={appearanceLabel} className="img-padding" alt="Label appearance on pagination"/>
+
+  ### Page display
+  Additional features, such as allowing the user to choose how many entries to display or jumping to a certain page, can be added.
+  <img src={appearancePageDisplay} className="img-padding" alt="Page display appearance on pagination"/>
+
+  ### Number counts longer than 2 digits
+  For number count longer than 2 digits, please leave the height intact; only the width changes to match the amount of numbers.
+  <img src={appearanceNumber} className="img-padding" alt="Number counts longer than 2 digits appearance on pagination"/>
+
+## Scaling and adaptation
+Follow the guidelines for paddings and spacings in the breakpoints documentation
+<img src={scalingDesktop} className="img-padding" alt="Scaling and adaptation of pagination on desktop"/>
+
+<img src={scalingTablet} className="img-padding" alt="Scaling and adaptation of pagination on tablet" width="688"/>
+
+Pagination should be kept at least **32px away** from the screen's leading and trailing edges. On tiny displays, it scales vertically.
+
+<img src={scalingMobile} className="img-padding" alt="Scaling and adaptation of pagination on mobile" width="688"/>
+
+## Specs
+  ### Standard
+  <img src={specsBasic} className="img-padding" alt="Standard pagination specs"/>
+
+  ### Expanded
+  <img src={specsExpanded} className="img-padding" alt="Expanded pagination specs"/>
+
+## States
+### Standard
+Standard pagination follows the behaviours of the following:
+- Icon buttons
+- Input field
+- Dropdown
+
+<img src={statesBasic} className="img-padding" alt="Standard pagination states"/>
+
+
+### Expanded
+Expanded pagination follows the behaviours of the following:
+- Icon buttons - for previous and next button
+- Input field - for page jumper
+- Dropdown - for page display
+
+<img src={statesExpanded} className="img-padding" alt="Expanded pagination states"/>
+
+
+## Behaviour
+### Truncation
+When there are more than 5 to 10 pages, truncation is used. An ellipsis is used to indicate the presence of more pages. When users are in the middle of a page sequence with numerous pages, both next and previous, double truncation happens.
+<img src={behaviorTruncation} className="img-padding" alt="Truncation on pagination"/>
+
+### Page display
+The page display uses a select field to enable users to select the number of items to show on a page.
+<img src={behaviorPageDisplay} className="img-padding" alt="Page display behavior on pagination"/>
+
+### Previous and Next buttons
+When the user is on/has selected the first page in the pagination range, the next page button advance the user to the next page in the sequence when selected. The previous page button is disabled in this use case and vice versa
+<img src={behaviorButtons} className="img-padding" alt="Next and previous button behavior on pagination"/>
+
+
+## References
+
+[Split the Contents of a Website with the Pagination Design Pattern](https://www.interaction-design.org/literature/article/split-the-contents-of-a-website-with-the-pagination-design-pattern)
+
+[UX: Infinite Scrolling vs. Pagination](https://uxplanet.org/ux-infinite-scrolling-vs-pagination-1030d29376f1)
+
+[Pagination - Examples And Good Practices](https://www.smashingmagazine.com/2007/11/pagination-gallery-examples-and-good-practices/)
+
+[Pagination vs. infinite scrolling vs. load more: Best practices on Oracle Help Center](https://blogs.oracle.com/oracle-help-center/post/pagination-vs-infinite-scrolling-vs-load-more-bp-oracle-help-center)

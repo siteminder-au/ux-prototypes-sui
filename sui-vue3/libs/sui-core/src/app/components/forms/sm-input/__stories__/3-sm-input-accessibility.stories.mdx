@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+
+<Meta title="Components/Form/Input/Accessibility" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Inputs</h1>
+  <p>
+    Inputs allow the user to interact with and enter data and content. This component is appropriate for both long and short form entries.
+  </p>
+</SuiStorybookTitle>
+
+- [Input](#input)
+- [Number toggle](#number-toggle)
+
+## Input
+
+### Keyboard interaction
+
+| Key | Usage |
+| :--- | :--- |
+| Tab | Tabbing into a text field selects the existing text. |
+
+
+### WCAG rules that are applicable
+- [1.3.5 Identify Input Purpose AA](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose)
+- [1.3.1 Info and Relationships](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)
+- [3.3.2 Labels or Instructions A](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions)
+- [2.4.6 Headings and Labels](https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels.html)
+- [4.1.2 Name, Role, Value A](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value)
+
+
+### Considerations
+- Clear and straightforward labelling and instructions should be provided.
+- Give instructions on how to fill out the field. Passwords, for example, must have at least 8 characters and/or digits.
+- To distinguish between mistakes and alerts, don't rely just on color. Use icons or words that say "Error" or "Alert" instead. -- If both icons and visible text are used to distinguish between mistakes and alerts, the icons are redundant, and screen readers should not be provided with alternate text.
+- When an input is focused, labels must be visible.
+- On focus, labels must be announced to the screen reader.
+
+
+## Number Toggle
+[https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/#keyboard-interaction-18](https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/#keyboard-interaction-18)
+
+### Keyboard interaction
+
+| Key | Usage |
+| :--- | :--- |
+| Tab | Moves keyboard focus to the number input field. (+/- buttons are ignored) |
+| Shift + Tab | Moves focus to the previous object. |
+| Up Arrow | Increases the value. |
+| Down Arrow | Decreases the value. |
+| Home | If the number toggle has a minimum value, sets the value to its minimum. |
+| End | If the number toggle has a maximum value, sets the value to its maximum. |
+| Page Up (optional) | Increases the value by a larger step than Up Arrow. |
+| Page Down (Optional) | Decreases the value by a larger step than Down Arrow. |

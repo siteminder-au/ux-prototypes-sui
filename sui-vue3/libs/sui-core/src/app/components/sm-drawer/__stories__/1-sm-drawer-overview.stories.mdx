@@ -1,0 +1,139 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/sm-drawer-formatting-anatomy.png'
+import specs from './images/sm-drawer-specs.png'
+import desktop from './images/sm-drawer-variants-desktop.png'
+import header from './images/sm-drawer-variants-header.png'
+import hooks from './images/sm-drawer-variants-hooks.png'
+import mobile from './images/sm-drawer-variants-mobile.png'
+import tablet from './images/sm-drawer-variants-tablet.png'
+
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+    @media only screen and (min-width: 641px) {
+      .row {
+        display: flex;
+        column-gap: 24px;
+      }
+
+      .column {
+        flex: 0 auto;
+      }
+    }
+  `}
+</style>
+
+<Meta title="Components/Drawer/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Drawer</h1>
+  <p>
+    The drawer allows our users to update or make changes to their existing information or data.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Variants](#variants)
+- [Specs](#specs)
+- [Behaviour](#behaviour)
+- [References](#references)
+
+
+
+## Usage
+  The drawer is a component that is used for editing existing content in the main body of the page. It is not appropriate to use the drawer pattern in conjunction with any global header or navigation actions.
+
+  ### When to use a drawer
+  Use a drawer when a user is able to edit existing data on a page that is already quite cluttered with information. A good example of this would be Room Types, Room Rates, and any cluttered list-type or table-type UI with a lot of information to display.
+
+  If you are editing information that isn’t cluttered a better pattern to use would be editable cards.
+
+  <div className="sui-storybook-highlight sui-storybook-highlight--alert">
+  <strong>Drawer vs. Side Panel</strong>
+
+  Use a Side Panel when you want to enable your users to only view their data. Clicking on the list item or table item will open a Side Panel (i.e, a drawer-type component without the overlay, pushing the content in and allowing users to focus on the page and the drawer).
+  </div>
+
+
+## Formatting
+
+  ### Anatomy
+  **1: Header** - The header container contains the title in H3. Optionally you can add actions if your drawer is a the form variant.
+
+  **2: Content area** - This content area is up to the product teams to own. There is padding 56px either side.
+
+  **3: Close button** - The close button is outside of the drawer so that the actions and title can fit inside the header. This is an icon button (sm-button) with the black and circular props applied.
+
+  **4: Underlay** - As with any modal, the drawer will appear with an underlay so that users can focus on their editing their information.
+
+  <img src={anatomy} alt="Anatomy of a drawer" />
+
+  ### Placement
+  The drawer slides in and anchors to the right hand side of the viewport, floating over the page with an underlay between the drawer and the page content.
+
+  ### Sizing
+  The width of the drawer on all breakpoints 640px and up will be 576px wide. On 640 and under, the drawer will take up 100% of the viewport.
+
+  The height of the drawer will always be 100% of the viewport, unless the height is set to below-header in which the drawer will appear below the header.
+
+
+## Variants
+
+  All variants are interchangeable and you can use them together. For instance, you can use actions with a below-header drawer and open/close hooks if you wish.
+
+  ### Standard
+  The default drawer consists of the header without actions, a close button and the content area.
+
+  ### Standard with actions (for forms)
+  This variant is exactly the same as the standard one except there are action buttons in the header. This enables the user to save the edits they've made to their form data.
+
+  ### Below header
+  If you want the drawer to open up below the header, you can use this variant.
+  <img src={header} alt="Below the header drawer positioning" />
+
+  ### With close and open hooks
+  This variant allows a dialog to pop up and prevent a user from closing the drawer using the <strong>beforeClose</strong> prop. If you want to ensure a user understands they are closing the drawer without saving their information, use this.
+  <img src={hooks} alt="Using the drawer with hooks" />
+
+  ### Responsive width
+  This variant allows your engineer to control the width at each breakpoint. if you are customising your width, please check in with your design manager. The mobile breakpoints should still inherit the default mobile behaviour of taking up 100% of the viewport.
+  <img src={desktop} alt="Desktop drawer width" />
+
+  <img src={tablet} alt="Desktop tablet width" width="600"/>
+
+  <img src={mobile} alt="Desktop mobile width"  />
+
+
+
+## Specs
+
+  <img src={specs} alt="Drawer specifications" width="803"/>
+
+
+
+## Behaviour
+
+  ### Motion
+  The drawer slides into and anchors to the right hand side of the viewport at a speed of 0.3 ms using an ease transition.
+
+  ### Responsive breakpoint behaviour
+  By default the drawer will stay the same width of 576px wide until it hits the 640 breakpoint in which case it will take 100% of the viewport. If you want to control the responsive behaviour at each breakpoint, please use the Responsive width variant.
+
+
+## References
+  [Modality Is the One UX Concept That Most Designers Don’t Fully Understand](https://uxplanet.org/modality-the-one-ux-concept-you-need-to-understand-when-designing-intuitive-user-interfaces-e5e941c7acb1)
+
+  [Oracle UI](https://www.oracle.com/webfolder/ux/middleware/alta/patterns/Drawers.html)
+
+  [Google Material: Sheets](https://m2.material.io/components/sheets-side)
+
+  [Carbon Design System: Right panel shell](https://carbondesignsystem.com/components/UI-shell-right-panel/usage/)

@@ -1,0 +1,24 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import loadingUsageGuidelines from './images/usage-guidelines.png'
+
+<style>
+  {`
+    .img-padding {
+      padding-bottom: 16px;
+    }
+  `}
+</style>
+
+<Meta title="Design patterns/Loading/Usage guidelines" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Usage guidelines</h1>
+  <p>This is a diagram to guide and help you determine what components can be used for loading.</p>
+</SuiStorybookTitle>
+
+## Determining what type of loader to use
+View figma file <a href="https://www.figma.com/file/Au1waCRAR4SpFvIgEMASgf/sui-documentation?type=design&node-id=2443-592573&mode=design&t=57NF22IbgLwiC1Do-4" target="_blank">here</a>.
+<img src={loadingUsageGuidelines} className="img-padding"  alt="Usage guidelines for loading components"/>

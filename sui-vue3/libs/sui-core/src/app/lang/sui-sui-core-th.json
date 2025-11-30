@@ -1,0 +1,279 @@
+{
+  "libs" : {
+    "vee-validate" : {
+      "vee-validate" : {
+        "alpha" : "ช่องนี้มีได้แค่ตัวอักษรเท่านั้น",
+        "alpha_num" : "ช่องนี้มีได้แค่ตัวอักษรและตัวเลขเท่านั้น",
+        "alpha_dash" : "ช่องนี้มีได้ทั้งตัวอักษรและตัวเลข รวมทั้งยัติภาคและอันเดอร์สกอร์",
+        "alpha_spaces" : "ช่องนี้ใส่ได้แค่ตัวอักษรและช่องว่างเท่านั้น",
+        "between" : "ข้อมูลในช่องนี้ต้องมีค่าระหว่าง 0:{'{min}'} และ 1:{'{max}'}",
+        "confirmed" : "การยืนยันช่องนี้ไม่ตรงกัน",
+        "digits" : "ช่องนี้ต้องเป็นตัวเลข และประกอบด้วยเลข 0:{'{length}'} หลัก",
+        "dimensions" : "ช่องนี้ต้องมีขนาด 0:{'{width}'} พิกเซลคูณ 1:{'{height}'} พิกเซล",
+        "email" : "ต้องกรอกอีเมลที่ถูกต้องในช่องนี้",
+        "not_one_of" : "ค่าในช่องนี้ไม่ถูกต้อง",
+        "ext" : "ไฟล์ในช่องนี้ไม่ถูกต้อง",
+        "image" : "ช่องนี้ต้องเป็นภาพ",
+        "integer" : "ช่องนี้ต้องเป็นเลขจำนวนเต็ม",
+        "length" : "ช่องนี้ต้องยาว 0:{'{length}'}",
+        "max_value" : "ช่องนี้ต้องเท่ากับ 0:{'{max}'} หรือน้อยกว่า",
+        "max" : "ช่องนี้ต้องมีอักขระไม่เกิน 0:{'{length}'} ตัว",
+        "mimes" : "ช่องนี้ต้องมีประเภทไฟล์ที่ถูกต้อง",
+        "min_value" : "ช่องนี้ต้องเท่ากับ 0:{'{min}'} หรือมากกว่า",
+        "min" : "ช่องนี้ต้องมีอักขระอย่างน้อย 0:{'{length}'} ตัว",
+        "numeric" : "ช่องนี้มีได้แค่ตัวเลขเท่านั้น",
+        "one_of" : "ค่าในช่องนี้ไม่ถูกต้อง",
+        "regex" : "รูปแบบช่องไม่ถูกต้อง",
+        "required_if" : "ต้องกรอกช่องนี้",
+        "required" : "ต้องกรอกช่องนี้",
+        "size" : "ขนาดของช่องนี้ต้องน้อยกว่า 0:{'{size}'} กิโลไบต์",
+        "url" : "ช่องนี้ไม่ใช่ยูอาร์แอลที่ถูกต้อง",
+        "decimal" : "ช่องนี้ต้องใส่เป็นตัวเลขและอาจมีจุดทศนิยมตามจำนวนที่ระบุได้",
+        "is" : "ช่องนี้ไม่ตรงกับช่องก่อนหน้า",
+        "is_not" : "ช่องนี้จะตรงกับช่องก่อนหน้าไม่ได้",
+        "precision" : "ช่องนี้ต้องมีทศนิยมอย่างเที่ยงตรง",
+        "double" : "ช่องนี้ต้องเป็นทศนิยมที่ถูกต้อง"
+      }
+    }
+  },
+  "components" : {
+    "sm-wizard" : {
+      "sm-wizard" : {
+        "a11y__click-to-close" : "คลิกเพื่อปิด",
+        "back-button-text" : "ย้อนกลับ",
+        "next-button-text" : "ถัดไป",
+        "confirm-button-text" : "ตรวจสอบและบันทึก",
+        "current-steps-text" : "{currentStep} จาก {totalSteps} ",
+        "next-step-text" : "ถัดไป: {nextStep}"
+      }
+    },
+    "sm-vertical-nav" : {
+      "sm-vertical-nav" : {
+        "a11y__children-toggle-show" : "คลิกเพื่อเปิดเมนู",
+        "a11y__children-toggle-hide" : "คลิกเพื่อปิดเมนู"
+      }
+    },
+    "sm-user-menu" : {
+      "sm-user-menu" : {
+        "a11y__children-toggle-show" : "คลิกเพื่อเปิด",
+        "a11y__children-toggle-hide" : "คลิกเพื่อปิด"
+      }
+    },
+    "sm-toast" : {
+      "sm-toast" : {
+        "a11y__click-to-close" : "คลิกเพื่อปิด"
+      }
+    },
+    "sm-text-truncator" : {
+      "sm-text-truncator" : {
+        "read-more-button" : "อ่านเพิ่มเติม",
+        "read-less-button" : "ย่อ"
+      }
+    },
+    "sm-tag" : {
+      "sm-tag" : {
+        "a11y__click-to-remove" : "ลบออก"
+      }
+    },
+    "sm-tabs" : {
+      "sm-tabs" : {
+        "a11y__tabListContent" : "บริเวณสำหรับกรอกรายการแท็บ"
+      }
+    },
+    "sm-table" : {
+      "sm-table" : {
+        "a11y__table-expand-button" : "คลิกเพื่อขยายตาราง",
+        "a11y__table-collapse-button" : "คลิกเพื่อยุบตาราง",
+        "a11y__table-sort-ascending" : "เรียงจากบนลงล่าง",
+        "a11y__table-sort-descending" : "เรียงจากล่างขึ้นบน"
+      }
+    },
+    "sm-slider" : {
+      "sm-slider" : {
+      }
+    },
+    "sm-property-menu" : {
+      "sm-property-menu" : {
+        "a11y__children-toggle-show" : "คลิกเพื่อเปิดเมนู",
+        "a11y__children-toggle-hide" : "คลิกเพื่อปิดเมนู"
+      }
+    },
+    "sm-progress-bar" : {
+      "sm-progress-bar" : {
+        "a11y__lineProgressBar" : "แถบความคืบหน้าเชิงเส้น",
+        "a11y__circleProgressBar" : "แถบความคืบหน้าแบบวงแหวน"
+      }
+    },
+    "sm-pagination" : {
+      "sm-pagination" : {
+        "of-total-pages" : "จาก {totalPages}",
+        "go-to-label" : "ไปที่",
+        "page-count" : "{startPage} - {endPage} จาก {totalResults} ผลลัพธ์",
+        "dropdown-items-per-page" : "{itemsPerPage}/หน้า",
+        "a11y__input-field-label" : "เลขหน้า",
+        "a11y__click-to-previous-button" : "หน้าที่แล้ว",
+        "a11y__click-to-next-button" : "หน้าถัดไป",
+        "a11y__jump-backward-button" : "ข้ามหน้าย้อนกลับ",
+        "a11y__jump-forward-button" : "ข้ามหน้าไปข้างหน้า"
+      }
+    },
+    "sm-notification-list" : {
+      "sm-notification-list" : {
+        "a11y__mark-as-read" : "ทำเครื่องหมายว่าอ่านแล้ว",
+        "a11y__mark-as-unread" : "ทำเครื่องหมายว่ายังไม่ได้อ่าน",
+        "hide-all-button" : "ซ่อนทั้งหมด",
+        "show-all-button" : "แสดงทั้งหมด",
+        "show-unread-only-label" : "แสดงเฉพาะที่ยังไม่ได้อ่านเท่านั้น"
+      }
+    },
+    "sm-nav" : {
+      "sm-nav" : {
+        "a11y__click-to-close" : "คลิกเพื่อปิดแถบนำทาง",
+        "a11y__go-back" : "คลิกเพื่อย้อนกลับ",
+        "a11y__side-nav-items" : "คลิกที่รายการนำทาง",
+        "a11y__children-toggle-show" : "คลิกเพื่อแสดงรายการเมนูย่อย"
+      }
+    },
+    "sm-media" : {
+      "sm-media" : {
+        "fileSizeExcedded" : "บางภาพมีขนาดไฟล์เกินขนาดสูงสุด 20MB",
+        "invalidTypes" : "บางไฟล์ไม่ใช่ประเภทรูปภาพที่ถูกต้อง",
+        "multipleMessage" : "ขออภัย ไม่สามารถอัปโหลดหลายไฟล์พร้อมกันได้"
+      }
+    },
+    "sm-lazy-image" : {
+      "sm-lazy-image" : {
+        "loading-image-error-text" : "ไม่สามารถโหลดรูปภาพได้"
+      }
+    },
+    "sm-inline-card" : {
+      "sm-inline-card" : {
+        "a11y__click-to-close" : "คลิกเพื่อปิด"
+      }
+    },
+    "sm-horizontal-nav" : {
+      "sm-horizontal-nav" : {
+        "a11y__children-toggle-show" : "คลิกเพื่อเปิดเมนู",
+        "a11y__children-toggle-hide" : "คลิกเพื่อปิดเมนู"
+      }
+    },
+    "sm-hint-card" : {
+      "sm-hint-card" : {
+        "a11y__click-to-close" : "คลิกเพื่อปิด"
+      }
+    },
+    "sm-expandable-card" : {
+      "sm-expandable-card" : {
+        "a11y__expandable-card-button" : "คลิกเพื่อขยายส่วน",
+        "a11y__collapsable-card-button" : "คลิกเพื่อยุบส่วน",
+        "a11y__delete-button" : "ลบ"
+      }
+    },
+    "sm-drawer" : {
+      "sm-drawer" : {
+        "a11y__click-to-close" : "คลิกเพื่อปิด"
+      }
+    },
+    "sm-dialog" : {
+      "sm-dialog" : {
+        "a11y__click-to-close" : "คลิกเพื่อปิด",
+        "cancelButtonText" : "ยกเลิก",
+        "confirmButtonText" : "ยืนยัน"
+      }
+    },
+    "sm-content-slider" : {
+      "sm-content-slider" : {
+        "a11y__click-to-previous-button" : "ก่อนหน้า",
+        "a11y__click-to-next-button" : "ถัดไป",
+        "a11y__click-to-delete-button" : "ลบ"
+      }
+    },
+    "sm-color-picker" : {
+      "sm-color-picker" : {
+        "selectColorButtonText" : "เลือกสี"
+      }
+    },
+    "sm-carousel" : {
+      "sm-carousel" : {
+        "a11y__click-to-previous-button" : "รูปภาพก่อนหน้า",
+        "a11y__click-to-next-button" : "รูปภาพถัดไป"
+      }
+    },
+    "sm-banner" : {
+      "sm-banner" : {
+        "a11y__click-to-close" : "คลิกเพื่อปิด"
+      }
+    },
+    "sm-aside" : {
+      "sm-aside" : {
+        "a11y__toggle-show-menu" : "คลิกเพื่อแสดงแถบด้านข้าง",
+        "a11y__toggle-hide-menu" : "คลิกเพื่อซ่อนแถบด้านข้าง",
+        "toggle-tooltip-show-menu" : "แสดงการนำทาง",
+        "toggle-tooltip-hide-menu" : "ซ่อนการนำทาง"
+      }
+    },
+    "sm-app-header" : {
+      "sm-app-header" : {
+        "a11y__toggle-show-menu" : "คลิกเพื่อแสดงแถบนำทาง",
+        "a11y__toggle-hide-menu" : "คลิกเพื่อซ่อนแถบนำทาง"
+      }
+    },
+    "sm-accordion" : {
+      "sm-accordion" : {
+        "a11y__accordion-expand-button" : "คลิกเพื่อขยายแผง",
+        "a11y__accordion-collapse-button" : "คลิกเพื่อยุบแผง"
+      }
+    },
+    "loading" : {
+      "sm-loading-spinner": {
+        "sm-loading-spinner": {
+          "a11y__label" : "กำลังโหลด…"
+        }
+      },
+      "sm-loading-image" : {
+        "sm-loading-image" : {
+          "loading-image-alt-text" : "กำลังโหลดภาพ..."
+        }
+      },
+      "sm-loader" : {
+        "sm-loader" : {
+          "loading-text" : "กำลังโหลด…"
+        }
+      }
+    },
+    "forms" : {
+      "sm-translations-input" : {
+        "sm-translations-input" : {
+          "addTranslationsButtonText" : "เพิ่มคำแปล",
+          "deleteButtonText" : "ลบ"
+        }
+      },
+      "sm-select" : {
+        "sm-select" : {
+          "maximumSelections" : "ถึงจำนวนสูงสุดที่เลือกได้",
+          "noResultSelections" : "ไม่พบ {searchQuery}",
+          "limitText" : "+{count}",
+          "listIsEmpty" : "ไม่มีข้อมูลในรายการ"
+        }
+      },
+      "sm-multi-select" : {
+        "sm-multi-select" : {
+          "select-all-options" : "เลือกทั้งหมด",
+          "select-group-options" : "เลือกกลุ่ม",
+          "empty-options" : "ไม่มีข้อมูลในรายการ",
+          "option-not-found" : "ไม่พบ {searchQuery}"
+        }
+      },
+      "sm-calendar" : {
+        "sm-calendar" : {
+          "a11y__choose-month-button" : "เลือกเดือน",
+          "a11y__choose-year-button" : "เลือกปี",
+          "a11y__next-year-button" : "ปีถัดไป",
+          "a11y__next-year-range-button" : "ช่วงปีถัดไป",
+          "a11y__previous-year-button" : "ปีก่อนหน้า",
+          "a11y__previous-year-range-button" : "ช่วงปีก่อนหน้า"
+        }
+      }
+    }
+  }
+}

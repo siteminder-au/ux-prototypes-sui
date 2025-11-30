@@ -1,0 +1,22 @@
+{
+  "demand-plus-label": "Demand Plus",
+  "demand-plus-reconciliation-reminder-body": "You have 7 days remaining to reconcile your Demand+ transactions. Reconciliation ensures your booking records match your financial reports and helps you avoid any delays in payouts or reporting errors. By completing this step, you maintain financial accuracy, support compliance, and ensure transparency with your business partners. Please log in to your account and review any pending or unmatched transactions before the deadline.",
+  "demand-plus-reconciliation-reminder-title": "Demand Plus Reconciliation Reminder",
+  "dynamic-revenue-plus-label": "Dynamic Revenue Plus",
+  "dynamic-revenue-plus-recommendation-body-1": "Your queen room is selling 20% below your competitor set.",
+  "dynamic-revenue-plus-recommendation-body-2": "A new sporting event has been announced in your area.",
+  "dynamic-revenue-plus-recommendation-title": "Dynamic Revenue Plus - new high impact recommendation",
+  "guest-engagement-label": "Guest Engagement",
+  "guest-message-body": "You have received a new message from Pete Jones via WhatsApp. Pete Jones via WhatsApp: ‘What time is the checkin?‘",
+  "guest-message-title": "New message from guest",
+  "new-reservations-body": "Aishah Suarez booked the Queen Room for 2 nights on December 3 via Booking.com.",
+  "new-reservations-title": "New reservation created",
+  "notifications-footer": "That's all your notifications for the last 90 days",
+  "payment-failed-auto-pay-body": "Scheduled payment for Pete Jones failed to process.",
+  "payment-failed-auto-pay-title": "Failed auto-pay payment processing",
+  "payments-label": "Payments",
+  "urgent-notification-body": "This is your final reminder that your Demand+ reconciliation deadline is approaching in less than 24 hours. Immediate action is required to ensure your transactions are properly accounted for and to prevent any potential issues with future processing.",
+  "urgent-notification-title": "Urgent Notification: Critical Demand Plus Reconciliation Deadline Approaching - Immediate Action Required to Prevent Potential Account Disruptions and Ensure Seamless Transaction Processing",
+  "show-more-button": "Show more",
+  "show-less-button": "Show less"
+}

@@ -1,0 +1,24 @@
+type Camp {
+  id: ID!
+  name: String!
+  campsites: [Campsite]!
+  accommodations: [Accommodation]!
+}
+
+type Campsite {
+  id: ID!
+  name: String!
+  description: String
+  accommodations: [String]!
+  maximumAdvanceBookingDays: Boolean!
+  dynamicDiscounts: Boolean!
+  restrictToMobile: Boolean!
+  smokingPolicy: String!
+  allowPets: Boolean!
+  thumbnailImageSrc: String
+}
+
+type Accommodation {
+  code: ID!
+  label: String!
+}

@@ -1,0 +1,82 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import colorAccessibility from './images/color-accessibility.png'
+import colorBlind1 from './images/color-blind-1.png'
+import colorBlind2 from './images/color-blind-2.png'
+import colorBlind3 from './images/color-blind-3.png'
+import colorBlind4 from './images/color-blind-4.png'
+import colorBlind5 from './images/color-blind-5.png'
+
+<Meta title="Foundations/Colour/Accessibility" />
+
+<SuiStorybookPageLabel>Foundations</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Colour</h1>
+  <p>Colour helps maintain visual consistency and distinguish branding across our products.  Our colour palette is a collection of colours that help to ensure that we use colours consistently in our products.</p>
+</SuiStorybookTitle>
+
+- [Accessibility](#accessibility)
+
+
+
+## Accessibility
+
+Please keep accessibility in mind when choosing colours, as it is our responsibility to deliver a product that's inclusive to everyone.
+
+The Web Content Accessibility Guidelines (WCAG) specify specific ratios that achieve the minimum required contrast for legibility.
+
+- Small text is any size **below 24px** and requires a **4.5:1 contrast ratio**.
+- Large text is anything **above 24px** and requires a **3:1 contrast ratio**.
+- Graphical elements, such as data visualizations, also require a **3:1 contrast ratio**.
+
+<img src={colorAccessibility} alt="Accessibility" width="846" />
+
+It is recommended to avoid pure black text on white that has a 21:1 contrast. For some people, such high contrast creates visual stress. The symptoms are perceptual distortion such as blurring, duplication, a flickering of the visual stimulus—known as Irlen syndrome.
+
+
+## Colourblind Accessibility
+
+It's a good idea to put your colour scheme to the test with a colourblind simulation app like Color Oracle.It's a good idea to put your colour scheme to the test with a colourblind simulation app like Color Oracle.
+
+https://www.colourblindawareness.org/colour-blindness/types-of-colour-blindness/
+
+<img src={colorBlind1} alt="Color blindness" width="846" />
+
+### Protanopia (Rare)
+
+People with protanopia are unable to perceive any 'red' light. Affects about 2.5% of all males. Protanopes are more likely to confuse:
+- Black with many shades of red
+- Dark brown with dark green, dark orange, dark red, dark blue/purple and black
+- Some blues with some reds, purples and dark pinks
+- Mid-greens with some oranges
+
+<img src={colorBlind2} alt="Protanopia" width="846" />
+
+### Deuteranopia (Common)
+
+Deuteranomaly is the most common type of red-green colour blindness. It makes green look more red. Affects about 5% of all males.
+
+Deuteranopes are more likely to confuse:
+- Mid-reds with mid-greens
+- Blue-greens with grey and mid-pinks; Bright greens with yellows
+- Pale pinks with light grey/white ; Mid-reds with mid-brown
+- Light blues with lilac
+
+<img src={colorBlind3} alt="Deuteranomaly" width="846" />
+
+
+### Tritanopia (Very Rare)
+
+People with tritanopia make you unable to tell the difference between blue and green, purple and red, and yellow and pink. It also makes colours look less bright.
+Affect about 0.5% of all males.The most common colour confusions for tritanopes are light blues with greys, dark purples with black,
+mid-greens with blues and oranges with reds.
+
+<img src={colorBlind4} alt="Tritanopia" width="846" />
+
+### Monochromacy / Achromatopsia (Extremely rare)
+
+People with monochromatic vision can see no colour at all and their world consists of different shades of grey ranging from black to white,
+rather like seeing the world on an old black and white television set. Achromatopsia is a specific eye condition in which people see in greyscale.
+
+<img src={colorBlind5} alt="Achromatopsia" width="846" />

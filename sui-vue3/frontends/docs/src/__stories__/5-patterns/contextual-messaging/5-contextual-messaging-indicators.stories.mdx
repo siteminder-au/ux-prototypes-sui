@@ -1,0 +1,79 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import indicatorIcons from './images/contextual-messaging-indicators-icons.png'
+import indicatorTooltips from './images/contextual-messaging-indicators-icons-tooltips.png'
+import indicatorPopover from './images/contextual-messaging-indicators-icons-popovers.png'
+import indicatorDialog from './images/contextual-messaging-indicators-icons-dialog.png'
+
+<style>
+   {`
+    .img-padding {
+      padding-bottom: 16px;
+    }
+  `}
+</style>
+
+<Meta title="Design patterns/Contextual messaging/Indicators" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Indicators</h1>
+  <p>An indicator is a visual cue that highlights a specific element on a page, whether it's content or part of the user interface, to notify the user that it has something noteworthy or requires their attention. </p>
+  <p>Typically, indicators signify changes to the represented item and are designed to attract users' attention to dynamic content or UI elements. However, it's important to note that an indicator should not be mistaken for a static element.</p>
+</SuiStorybookTitle>
+
+- [Attributes of indicators](#attributes-of-indicators)
+- [Components to use](#components-to-use)
+- [When to use](#when-to-use)
+- [Supplementing indicators with contextual help elements](#supplementing-indicators-with-contextual-help-elements)
+- [Recommendations](#recommendations)
+
+
+## Attributes of indicators
+
+- Indicators are context-specific and linked to a UI element or content, appearing nearby.
+- They are conditional, meaning they appear or change based on specific conditions.
+- Indicators are passive, serving as communication tools to alert the user to important information without requiring any action on their part.
+
+## Components to use
+
+  ### Icons
+  Indicators are often represented as <strong>icon components,</strong> although not always. Icons that are easily recognizable can effectively convey messages. They are often supplemented by <strong>tooltips or popovers</strong> to further explain to users the context.
+  <img src={indicatorIcons} className="img-padding" alt="Icons used as contextual message supplemented by tooltips" />
+
+  <div className="sui-storybook-highlight"> <strong>Note:</strong> A <strong>dialog</strong> can be used if further information is needed about the item associated with the indicator.</div>
+
+
+## When to use
+
+- When indicating the status of an item or process. For instance, a checkmark icon can represent a completed task, a warning triangle can indicate an error or warning.
+- Used alongside text labels to indicate additional information or tooltips. For example, the 'i' icon can signify that further explanation or help is available when hovered or clicked.
+
+## Supplementing indicators with contextual help elements
+
+
+  ### Tooltip
+  When dealing with <strong>short, concise text alone </strong>, utilise a tooltip.
+  <img src={indicatorTooltips} className="img-padding" alt="Tooltips supplementing icons for contextual messaging" width="650" />
+
+  ### Popover
+  For <strong>rich or complex content </strong> such as headings, actions, links or data or when dealing with contextual content, utilise a popover.
+  <img src={indicatorPopover} className="img-padding" alt="Icons used as contextual message supplemented by popover" width="650" />
+
+  ### Dialog
+  In cases where there is a temporary change in context or when you need to present the user with an action that needs to be made in order to complete the user journey utilize a dialog.
+
+  For forms or images, consider using a dialog.
+  <img src={indicatorDialog} alt="Icons used as contextual message supplemented by dialog" />
+
+
+## Recommendations
+
+Take the following factors into account when determining the suitability of an indicator:
+
+- What is the significance of the information to the user? Is it valuable enough to occupy page space and convey it to the user?
+- How frequently is the information utilized?
+- Does the user anticipate encountering this information?
+- Would the absence of the information be noticeable and have an impact?
+- How crucial is it for the application that the user becomes aware of this information?

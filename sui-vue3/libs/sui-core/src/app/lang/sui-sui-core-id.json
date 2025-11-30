@@ -1,0 +1,279 @@
+{
+  "libs" : {
+    "vee-validate" : {
+      "vee-validate" : {
+        "alpha" : "Kolom ini hanya boleh berisi alfabet",
+        "alpha_num" : "Kolom ini hanya boleh berisi alfanumerik",
+        "alpha_dash" : "Kolom ini dapat berisi karakter alfanumerik, tanda hubung dan garis bawah",
+        "alpha_spaces" : "Kolom ini hanya boleh berisi alfabet dan spasi",
+        "between" : "Bidang ini harus berisi di antara 0: {'{min}'} dan 1: {'{max}'}",
+        "confirmed" : "Kolom konfirmasi ini tidak cocok",
+        "digits" : "Bidang ini harus numerik dan berisi 0: {'{length}'} digit",
+        "dimensions" : "Bidang ini harus berukuran 0: {'{width}'} piksel x 1: {'{height}'} piksel",
+        "email" : "Kolom ini harus berisi email yang valid",
+        "not_one_of" : "Nilai di kolom ini tidak valid",
+        "ext" : "File di kolom ini tidak valid",
+        "image" : "Kolom ini harus berisi gambar",
+        "integer" : "Kolom ini harus berisi bilangan bulat",
+        "length" : "Bidang ini harus memiliki panjang 0: {'{length}'}",
+        "max_value" : "Bidang ini harus berisi 0: {'{max}'} atau kurang",
+        "max" : "Bidang ini tidak boleh lebih dari 0: {'{length}'} karakter",
+        "mimes" : "Kolom ini harus memiliki tipe file yang valid",
+        "min_value" : "Bidang ini harus berisi 0: {'{min}'} atau lebih",
+        "min" : "Bidang ini harus berisi minimal 0: {'{length}'} karakter",
+        "numeric" : "Kolom ini hanya boleh berisi angka",
+        "one_of" : "Nilai di kolom ini tidak valid",
+        "regex" : "Format kolom ini tidak valid",
+        "required_if" : "Bidang ini wajib diisi",
+        "required" : "Bidang ini wajib diisi",
+        "size" : "Ukuran bidang ini harus kurang dari 0: {'{size}'} KB",
+        "url" : "Bidang ini bukan URL yang valid",
+        "decimal" : "Kolom ini harus berisi angka dan mungkin berisi angka desimal tertentu",
+        "is" : "Kolom ini tidak cocok dengan kolom sebelumnya",
+        "is_not" : "Kolom ini tidak cocok dengan kolom sebelumnya",
+        "precision" : "Kolom ini harus sama hingga jumlah desimal",
+        "double" : "Kolom ini harus berisi angka desimal yang valid"
+      }
+    }
+  },
+  "components" : {
+    "sm-wizard" : {
+      "sm-wizard" : {
+        "a11y__click-to-close" : "Klik untuk keluar",
+        "back-button-text" : "Kembali",
+        "next-button-text" : "Selanjutnya",
+        "confirm-button-text" : "Tinjau dan simpan",
+        "current-steps-text" : "{currentStep} dari {totalSteps}",
+        "next-step-text" : "Selanjutnya: {nextStep}"
+      }
+    },
+    "sm-vertical-nav" : {
+      "sm-vertical-nav" : {
+        "a11y__children-toggle-show" : "Klik untuk membuka menu",
+        "a11y__children-toggle-hide" : "Klik untuk menutup menu"
+      }
+    },
+    "sm-user-menu" : {
+      "sm-user-menu" : {
+        "a11y__children-toggle-show" : "Klik untuk membuka",
+        "a11y__children-toggle-hide" : "Klik untuk keluar"
+      }
+    },
+    "sm-toast" : {
+      "sm-toast" : {
+        "a11y__click-to-close" : "Klik untuk keluar"
+      }
+    },
+    "sm-text-truncator" : {
+      "sm-text-truncator" : {
+        "read-more-button" : "Selengkapnya",
+        "read-less-button" : "Sembunyikan"
+      }
+    },
+    "sm-tag" : {
+      "sm-tag" : {
+        "a11y__click-to-remove" : "Hapus"
+      }
+    },
+    "sm-tabs" : {
+      "sm-tabs" : {
+        "a11y__tabListContent" : "Kontainer daftar tab"
+      }
+    },
+    "sm-table" : {
+      "sm-table" : {
+        "a11y__table-expand-button" : "Klik untuk memperluas tabel",
+        "a11y__table-collapse-button" : "Klik untuk menyembunyikan tabel",
+        "a11y__table-sort-ascending" : "Urutkan naik",
+        "a11y__table-sort-descending" : "Urutkan menurun"
+      }
+    },
+    "sm-slider" : {
+      "sm-slider" : {
+      }
+    },
+    "sm-property-menu" : {
+      "sm-property-menu" : {
+        "a11y__children-toggle-show" : "Klik untuk membuka menu",
+        "a11y__children-toggle-hide" : "Klik untuk menutup menu"
+      }
+    },
+    "sm-progress-bar" : {
+      "sm-progress-bar" : {
+        "a11y__lineProgressBar" : "Bilah Progres Linier",
+        "a11y__circleProgressBar" : "Cincin Bilah Progres"
+      }
+    },
+    "sm-pagination" : {
+      "sm-pagination" : {
+        "of-total-pages" : "dari {totalPages}",
+        "go-to-label" : "Buka",
+        "page-count" : "{startPage} - {endPage} dari {totalResults} hasil",
+        "dropdown-items-per-page" : "{itemsPerPage}/halaman",
+        "a11y__input-field-label" : "Nomor halaman",
+        "a11y__click-to-previous-button" : "Halaman sebelumnya",
+        "a11y__click-to-next-button" : "Halaman berikutnya",
+        "a11y__jump-backward-button" : "Lompati halaman ke belakang",
+        "a11y__jump-forward-button" : "Lompati halaman ke depan"
+      }
+    },
+    "sm-notification-list" : {
+      "sm-notification-list" : {
+        "a11y__mark-as-read" : "Tandai sudah dibaca",
+        "a11y__mark-as-unread" : "Tandai belum dibaca",
+        "hide-all-button" : "Sembunyikan semua",
+        "show-all-button" : "Tampilkan semua",
+        "show-unread-only-label" : "Tampilkan yang belum dibaca saja"
+      }
+    },
+    "sm-nav" : {
+      "sm-nav" : {
+        "a11y__click-to-close" : "Klik untuk menutup bilah navigasi",
+        "a11y__go-back" : "Klik untuk kembali",
+        "a11y__side-nav-items" : "Klik pada item navigasi",
+        "a11y__children-toggle-show" : "Klik untuk menampilkan item sub menu"
+      }
+    },
+    "sm-media" : {
+      "sm-media" : {
+        "fileSizeExcedded" : "Beberapa gambar melebihi ukuran file maksimum 20MB",
+        "invalidTypes" : "Beberapa file bukan tipe gambar yang valid",
+        "multipleMessage" : "Maaf, beberapa file tidak dapat diunggah sekaligus."
+      }
+    },
+    "sm-lazy-image" : {
+      "sm-lazy-image" : {
+        "loading-image-error-text" : "Gambar gagal dimuat"
+      }
+    },
+    "sm-inline-card" : {
+      "sm-inline-card" : {
+        "a11y__click-to-close" : "Klik untuk keluar"
+      }
+    },
+    "sm-horizontal-nav" : {
+      "sm-horizontal-nav" : {
+        "a11y__children-toggle-show" : "Klik untuk membuka menu",
+        "a11y__children-toggle-hide" : "Klik untuk menutup menu"
+      }
+    },
+    "sm-hint-card" : {
+      "sm-hint-card" : {
+        "a11y__click-to-close" : "Klik untuk keluar"
+      }
+    },
+    "sm-expandable-card" : {
+      "sm-expandable-card" : {
+        "a11y__expandable-card-button" : "Klik untuk memperluas bagian",
+        "a11y__collapsable-card-button" : "Klik untuk menyembunyikan bagian",
+        "a11y__delete-button" : "Hapus"
+      }
+    },
+    "sm-drawer" : {
+      "sm-drawer" : {
+        "a11y__click-to-close" : "Klik untuk keluar"
+      }
+    },
+    "sm-dialog" : {
+      "sm-dialog" : {
+        "a11y__click-to-close" : "Klik untuk keluar",
+        "cancelButtonText" : "Batal",
+        "confirmButtonText" : "Konfirmasi"
+      }
+    },
+    "sm-content-slider" : {
+      "sm-content-slider" : {
+        "a11y__click-to-previous-button" : "Sebelumnya",
+        "a11y__click-to-next-button" : "Selanjutnya",
+        "a11y__click-to-delete-button" : "Hapus"
+      }
+    },
+    "sm-color-picker" : {
+      "sm-color-picker" : {
+        "selectColorButtonText" : "Pilih warna"
+      }
+    },
+    "sm-carousel" : {
+      "sm-carousel" : {
+        "a11y__click-to-previous-button" : "Gambar sebelumnya",
+        "a11y__click-to-next-button" : "Gambar berikutnya"
+      }
+    },
+    "sm-banner" : {
+      "sm-banner" : {
+        "a11y__click-to-close" : "Klik untuk menutup"
+      }
+    },
+    "sm-aside" : {
+      "sm-aside" : {
+        "a11y__toggle-show-menu" : "Klik untuk menampilkan bilah sisi",
+        "a11y__toggle-hide-menu" : "Klik untuk menyembunyikan bilah sisi",
+        "toggle-tooltip-show-menu" : "Tampilkan navigasi",
+        "toggle-tooltip-hide-menu" : "Sembunyikan navigasi"
+      }
+    },
+    "sm-app-header" : {
+      "sm-app-header" : {
+        "a11y__toggle-show-menu" : "Klik untuk menampilkan bilah navigasi",
+        "a11y__toggle-hide-menu" : "Klik untuk menyembunyikan bilah navigasi"
+      }
+    },
+    "sm-accordion" : {
+      "sm-accordion" : {
+        "a11y__accordion-expand-button" : "Klik untuk memperluas panel",
+        "a11y__accordion-collapse-button" : "Klik untuk menyembunyikan panel"
+      }
+    },
+    "loading" : {
+      "sm-loading-spinner": {
+        "sm-loading-spinner": {
+          "a11y__label" : "Memuat..."
+        }
+      },
+      "sm-loading-image" : {
+        "sm-loading-image" : {
+          "loading-image-alt-text" : "Memuat gambar..."
+        }
+      },
+      "sm-loader" : {
+        "sm-loader" : {
+          "loading-text" : "Memuat..."
+        }
+      }
+    },
+    "forms" : {
+      "sm-translations-input" : {
+        "sm-translations-input" : {
+          "addTranslationsButtonText" : "Tambahkan terjemahan",
+          "deleteButtonText" : "Hapus"
+        }
+      },
+      "sm-select" : {
+        "sm-select" : {
+          "maximumSelections" : "Pilihan maksimum tercapai",
+          "noResultSelections" : "{searchQuery} tidak dapat ditemukan",
+          "limitText" : "+{count}",
+          "listIsEmpty" : "Daftar kosong."
+        }
+      },
+      "sm-multi-select" : {
+        "sm-multi-select" : {
+          "select-all-options" : "Pilih semua",
+          "select-group-options" : "Pilih grup",
+          "empty-options" : "Daftar kosong",
+          "option-not-found" : "{searchQuery} tidak ditemukan"
+        }
+      },
+      "sm-calendar" : {
+        "sm-calendar" : {
+          "a11y__choose-month-button" : "Pilih bulan",
+          "a11y__choose-year-button" : "Pilih tahun",
+          "a11y__next-year-button" : "Tahun berikutnya",
+          "a11y__next-year-range-button" : "Rentang tahun berikutnya",
+          "a11y__previous-year-button" : "Tahun sebelumnya",
+          "a11y__previous-year-range-button" : "Rentang tahun sebelumnya"
+        }
+      }
+    }
+  }
+}

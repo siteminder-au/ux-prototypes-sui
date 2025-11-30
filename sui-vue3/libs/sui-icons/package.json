@@ -1,0 +1,78 @@
+{
+  "name": "@siteminder/sui-icons",
+  "version": "23.4.0-vue3",
+  "type": "module",
+  "description": "",
+  "main": "sui-icons.esm.js",
+  "browser": "sui-icons.esm.js",
+  "types": "index.d.ts",
+  "license": "UNLICENSED",
+  "scripts": {
+    "audit": "npm audit --omit=dev",
+    "clean": "../../node_modules/@siteminder/overlord/shared/project/clean.sh",
+    "compile": "vite build",
+    "create-index": "ts-node -r tsconfig-paths/register scripts/generate-index.ts",
+    "generate-icons": "vsvg -s ./src/app/icons-src -t ./src/app/icons-out --tpl ./src/app/icon.template --ext ts && npm run create-index",
+    "jest": "jest --coverage",
+    "jest-fast": "jest --watch --maxWorkers=25%",
+    "lint:css:fix": "npx stylelint 'src/**/*.{vue,scss}' --fix",
+    "lint:css": "npx stylelint 'src/**/*.{vue,scss}'",
+    "lint:eslint:fix": "eslint ./src/ --ext .ts,.vue --fix",
+    "lint:eslint": "eslint ./src/ --ext .ts,.vue",
+    "lint:fix": "npm run lint:eslint:fix && npm run lint:css:fix",
+    "lint": "npm run lint:eslint && npm run lint:css",
+    "smpublish": "../../node_modules/@siteminder/overlord/shared/project/publish.sh",
+    "test": "npm run jest",
+    "test:single": "jest --coverage --config --watch --maxWorkers=25%"
+  },
+  "peerDependencies": {
+    "vue": "~3.4.38"
+  },
+  "devDependencies": {
+    "@siteminder/eslint-config": "^5.1.0",
+    "@stylistic/eslint-plugin": "^1.8.1",
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@testing-library/vue": "8.1.0",
+    "@types/glob": "^8.1.0",
+    "@types/jest": "^29.5.13",
+    "@types/lodash": "^4.14.195",
+    "@types/node": "^18.16.18",
+    "@vitejs/plugin-vue": "5.0.3",
+    "@vue/compiler-sfc": "3.4.38",
+    "@vue/vue3-jest": "^29.2.6",
+    "babel-jest": "^29.7.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-jest-dom": "^5.4.0",
+    "eslint-plugin-testing-library": "^6.3.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "glob": "^7.2.3",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "sass": "^1.63.6",
+    "stylelint": "^15.10.0",
+    "stylelint-config-recommended-scss": "^12.0.0",
+    "stylelint-config-standard": "^33.0.0",
+    "stylelint-config-standard-scss": "^10.0.0",
+    "stylelint-config-standard-vue": "^1.0.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "5.0.4",
+    "vite": "5.0.11",
+    "vite-plugin-css-injected-by-js": "3.3.1",
+    "vue": "3.4.38",
+    "vue-svgicon": "^3.3.2"
+  },
+  "overrides": {
+    "vue-svgicon": {
+      "vue": "$vue"
+    }
+  },
+  "engines": {
+    "node": ">14.0.0",
+    "npm": ">=6.0.0"
+  }
+}

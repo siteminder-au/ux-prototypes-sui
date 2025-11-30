@@ -1,0 +1,463 @@
+/**
+ * CampMinder theming styles using the co-located tokens from sui-core
+ *
+ * If applying globally, attach the class to the body or top-most element.
+ * This should also work with `:root`
+ *
+ * To scope the theme to a specific page, section, element, etc. you can also
+ * attach the class to that parent element but the component being themed has
+ * to be a descendant of the element.
+ */
+.campminder-theme {
+  /**
+    * First tier: brand definitions
+    * 1) These variables define the brand. We're looking for
+    *    generic declarations like "brand-blue", "brand-purple", and
+    *    so on. They should not imply usage.
+    */
+  --color-brand-light: #8D9A9D;
+  --color-brand: #5A6B6F;
+  --color-brand-dark: #3B444B;
+  --color-brand-black: #202529;
+
+  --color-accent-light: #D1CFC4;
+  --color-accent: #C2B59B;
+  --color-accent-dark: #B0B0B0;
+
+  --color-accent-2: #FFD700;
+
+  /**
+    * Second tier: high-level application variables
+    * 1) At this tier you can define global values, such as "primary
+    *    color, secondary color, primary text color, action color,
+    *    default spacing values, and so on. These values help map the
+    *    brand variable definitions to actual utility. That said, these
+    *    values should not include component-specific values like
+    *    button-color-background. Those will be handled at the individual
+    *    component level.
+    */
+  --color-info: #4A6A8E;
+  --color-info-mid: #b7cbd1;
+  --color-info-light: #D0E1E6;
+
+  --color-alert: #F4A261;
+  --color-alert-light: #F8E3D6;
+
+  --color-warning: #E76F51;
+  --color-warning-light: #FBE8D3;
+
+  --color-success: #2A9D8F;
+  --color-success-light: #B9E1D8;
+
+  /** ---------------------------------------------------------------------------
+    * Components styles: component-specific variables
+    * 1) Here we map the theme's second-tier global variables to the
+    *    specific components.
+    * 2) Worth noting in a production environment the :root variables
+    *    would be updated rather than a theme-specific body class.
+    */
+  --color-primary-light: var(--color-brand-light);
+  --color-primary: var(--color-brand);
+  --color-primary-dark: var(--color-brand-dark);
+  --color-black: #171e25;
+  --color-white: #ffffff;
+
+  /* ----------------------------------------- */
+  /* sm-app-header & subcomponents */
+  --sm-c-app-header-color-border: var(--color-primary-light);
+  --sm-c-app-header-border-width: 1px;
+  --sm-c-app-header-top-bar-color-background: var(--color-primary-dark);
+  --sm-c-app-header-top-bar-min-height: 32px;
+  --sm-c-app-header-top-bar-padding-y: 2px;
+  --sm-c-app-header-top-bar-padding-x: 14px;
+
+  --sm-c-app-header-logo-margin: auto 0;
+  --sm-c-app-header-logo-padding: 10px;
+
+  --sm-c-app-header-toggle-icon-size: 26px;
+  --sm-c-app-header-toggle-margin: auto 4px auto 0;
+  --sm-c-app-header-toggle-padding: 10px;
+
+  /* --sm-c-app-header-page-title-color-text: var(--color-pure-white); */
+  --sm-c-app-header-page-title-font-size: 16px;
+  --sm-c-app-header-page-title-line-height: 20px;
+  --sm-c-app-header-page-title-letter-spacing: -0.8px;
+  --sm-c-app-header-page-title-padding-left: 4px;
+
+  --sm-c-app-header-page-subtitle-font-size: 14px;
+  --sm-c-app-header-page-subtitle-line-height: 18px;
+  --sm-c-app-header-page-subtitle-letter-spacing: -0.3px;
+  --sm-c-app-header-page-subtitle-padding-left: 6px;
+  --sm-c-app-header-page-subtitle-margin-left: 6px;
+  --sm-c-app-header-page-subtitle-color-text: var(--color-info-light);
+  --sm-c-app-header-page-subtitle-color-border-left: var(--color-info-light);
+  /* --sm-c-app-header-page-subtitle-border-left-width: 2px; */
+
+  /* common */
+  /* --sm-c-app-header-menu-padding: 4px 0; */
+  /* --sm-c-app-header-menu-color-background: var(--color-brand-light); */
+  /* --sm-c-app-header-menu-color-border: var(--color-primary-light); */
+  --sm-c-app-header-menu-color-text: var(--color-info-light);
+  /* --sm-c-app-header-menu-icon-size: 32px; */
+  --sm-c-app-header-menu-border-radius: 2px;
+
+  --sm-c-app-header-menu-color-text-hover: var(--color-accent-2);
+  --sm-c-app-header-menu-color-background-hover: var(--color-brand);
+
+  --sm-c-app-header-menu-color-text-focus: var(--color-brand-black);
+  --sm-c-app-header-menu-color-background-focus: var(--color-brand-light);
+  --sm-c-app-header-menu-color-outline-focus: var(--color-alert);
+  --sm-c-app-header-menu-color-outline-width-focus: 3px;
+
+  /* sm-app-header-link */
+  --sm-c-app-header-link-margin: auto 0;
+  --sm-c-app-header-link-smart-guide-color-background: var(--color-brand);
+  --sm-c-app-header-link-smart-guide-color-text: var(--color-white);
+  --sm-c-app-header-link-smart-guide-color-border: transparent;
+  --sm-c-app-header-link-smart-guide-border-radius: 2px;
+  --sm-c-app-header-link-smart-guide-font-size: 13px;
+  --sm-c-app-header-link-smart-guide-icon-size: 14px;
+  --sm-c-app-header-link-smart-guide-margin-right: 8px;
+  --sm-c-app-header-link-smart-guide-color-background-hover: var(--color-info-light);
+  --sm-c-app-header-link-smart-guide-color-text-hover: var(--color-black);
+  --sm-c-app-header-link-smart-guide-color-background-focus: var(--color-accent-light);
+  --sm-c-app-header-link-smart-guide-color-text-focus: var(--color-black);
+  --sm-c-app-header-link-smart-guide-color-background-clicked: #bad3da;
+  --sm-c-app-header-link-smart-guide-color-text-clicked: var(--color-brand);
+
+  /* User menu - common */
+  --sm-c-app-header-user-menu-display-name-color-text: var(--color-black);
+  --sm-c-app-header-user-menu-display-name-font-size: 13px;
+  --sm-c-app-header-user-menu-display-name-font-weight: 600;
+  --sm-c-app-header-user-menu-items-top: 100%;
+
+  /* Property menu - common */
+  --sm-c-app-header-property-menu-font-size: 15px;
+  --sm-c-app-header-property-menu-icon-size: 16px;
+  --sm-c-app-header-property-menu-letter-spacing: -0.2px;
+  --sm-c-app-header-property-menu-top: 0;
+  --sm-c-app-header-property-menu-items-top: 100%;
+  --sm-c-app-header-property-menu-indicator-margin-left: 1em;
+
+  /* sm-horizontal-nav */
+  --sm-c-app-header-horizontal-nav-color-background: var(--color-brand);
+  --sm-c-app-header-horizontal-nav-item-color-background: transparent;
+  --sm-c-app-header-horizontal-nav-item-color-text: var(--color-white);
+  --sm-c-app-header-horizontal-nav-item-font-weight: 400;
+  --sm-c-app-header-horizontal-nav-item-font-size: 14px;
+  --sm-c-app-header-horizontal-nav-item-color-background-hover: #3b444b6b;
+  --sm-c-app-header-horizontal-nav-item-color-text-hover: var(--color-white);
+  --sm-c-app-header-horizontal-nav-item-color-background-active: var(--color-primary-light);
+  /* Use high-level application variables here */
+  /* --sm-c-app-header-horizontal-nav-item-color-text-active: var(--color-black); */
+  /* --sm-c-app-header-horizontal-nav-item-font-weight-active: 400; */
+  --sm-c-app-header-horizontal-nav-item-indicator-color-active: var(--color-accent-2);
+  --sm-c-app-header-horizontal-nav-item-indicator-color-exact-active: var(--color-accent-2);;
+  --sm-c-app-header-horizontal-nav-item-color-background-open: #3b444b88;
+  --sm-c-app-header-horizontal-nav-item-color-text-open: var(--color-white);
+
+  /* sm-user-list - Notification */
+  /* Common */
+  --sm-c-app-header-notification-color-background: transparent;
+  --sm-c-app-header-notification-color-border: #c6d0e0;
+  --sm-c-app-header-notification-indicator-color-background: transparent;
+  --sm-c-app-header-notification-indicator-color-border: #c6d0e0;
+  --sm-c-app-header-notification-indicator-border-radius: 50%;
+  --sm-c-app-header-notification-indicator-height: var(--sm-8);
+  --sm-c-app-header-notification-indicator-width: var(--sm-8);
+  --sm-c-app-header-notification-indicator-top: 25px;
+
+  /* Hover */
+  --sm-c-app-header-notification-color-background-hover: var(--color-app-mid);
+
+  /* Selected */
+  --sm-c-app-header-notification-background-color-selected: var(--color-app-light);
+  --sm-c-app-header-notification-indicator-color-background-selected: var(--color-primary);
+  --sm-c-app-header-notification-indicator-color-border-selected: var(--color-primary);
+
+  /* Warning */
+  --sm-c-app-header-notification-indicator-color-background-warning: var(--color-warning);
+  --sm-c-app-header-notification-indicator-color-border-warning: var(--color-warning);
+
+  /* sm-vertical-nav - container */
+  --sm-c-app-header-vertical-nav-color-background: var(--color-info-light);
+  --sm-c-app-header-vertical-nav-color-border: var(--color-info-mid);
+  --sm-c-app-header-vertical-nav-border-radius: 2px;
+
+  /* sm-vertical-nav - button */
+  --sm-c-app-header-vertical-nav-button-color-border-open: var(--color-info-mid);
+  --sm-c-app-header-vertical-nav-button-color-background-open: var(--color-info-light);
+  --sm-c-app-header-vertical-nav-button-color-text-open: var(--color-brand-black);
+
+  /* sm-vertical-nav-item - common */
+  --sm-c-app-header-vertical-nav-item-color-text: var(--color-black);
+  --sm-c-app-header-vertical-nav-item-color-background: var(--color-info-light);
+  --sm-c-app-header-vertical-nav-item-color-border: var(--color-info-light);
+  --sm-c-app-header-vertical-nav-item-font-weight: 400;
+  --sm-c-app-header-vertical-nav-item-font-size: 14px;
+
+  /* sm-vertical-nav-item - hover state */
+  --sm-c-app-header-vertical-nav-item-color-background-hover: var(--color-brand-light);
+  --sm-c-app-header-vertical-nav-item-color-text-hover: var(--color-white);
+
+  /* sm-vertical-nav-item - focus state */
+  --sm-c-app-header-vertical-nav-item-color-background-focus: var(--color-brand);
+  --sm-c-app-header-vertical-nav-item-color-text-focus: var(--color-white);
+
+  /* sm-vertical-nav-item - disabled state */
+  --sm-c-app-header-vertical-nav-item-color-text-disabled: var(--color-brand-light);
+  --sm-c-app-header-vertical-nav-item-color-background-disabled: var(--color-info-light);
+
+  /* sm-vertical-nav-item - active state */
+  --sm-c-app-header-vertical-nav-item-color-text-active: var(--color-brand-black);
+  --sm-c-app-header-vertical-nav-item-font-weight-active: 600;
+  --sm-c-app-header-vertical-nav-item-color-background-active: var(--color-info-mid);
+  --sm-c-app-header-vertical-nav-item-indicator-color-active: var(--color-accent);
+  /* --sm-c-app-header-vertical-nav-item-indicator-color-exact-active: var(--color-accent); */
+
+  /* sm-vertical-nav-* - tablet navigation */
+  /* See https://sui-dev-v3-sui-docs.dev.siteminderlabs.com/?path=/story/components-app-header--tablet-navigation-vertical-nav-items */
+  /* --sm-c-app-header-tablet-vertical-nav-padding-top: 32px; */
+  --sm-c-app-header-tablet-vertical-nav-item-active-indicator-color: var(--color-warning);
+  --sm-c-app-header-tablet-vertical-nav-item-color-background-active: var(--color-accent-light);
+  --sm-c-app-header-tablet-vertical-nav-item-color-text-active: var(--color-brand-black);
+  --sm-c-app-header-tablet-vertical-nav-item-color-background-hover: var(--color-accent);
+  --sm-c-app-header-tablet-vertical-nav-item-color-text-hover: var(--color-brand-black);
+  /* --sm-c-app-header-tablet-vertical-nav-item-padding: 13px 24px; */
+  /* --sm-c-app-header-tablet-vertical-nav-item-toggle-button-right: 12px; */
+  /* --sm-c-app-header-tablet-vertical-nav-item-toggle-button-top: 12px; */
+  --sm-c-app-header-tablet-vertical-nav-item-toggle-button-color-background-active: var(--color-accent-light);
+  --sm-c-app-header-tablet-vertical-nav-item-toggle-button-color-text: var(--color-brand-black);
+  --sm-c-app-header-tablet-vertical-nav-item-toggle-button-color-background-hover: var(--color-accent);
+
+  /* sm-nav-* - tablet navigation */
+  /* common */
+  --sm-c-app-header-tablet-nav-underlay-color-background: rgba(113, 113, 113, 0.3);
+  --sm-c-app-header-tablet-nav-box-shadow: 0 3px 17px -8px rgb(24 58 108 / 0.43), 0 22px 7px -21px rgb(24 58 108 / 0.14), 0 15px 38px -11px rgb(24 58 108 / 0.15);
+  --sm-c-app-header-tablet-nav-list-color-background: var(--color-app-light);
+  --sm-c-app-header-tablet-nav-list-color-text: var(--color-black);
+  --sm-c-app-header-tablet-nav-header-color-background: var(--color-pure-white);
+  --sm-c-app-header-tablet-nav-header-border-bottom: 1px solid #d9dee7;
+  --sm-c-app-header-tablet-nav-header-padding: 12px 18px 12px 20px;
+  --sm-c-app-header-tablet-nav-header-height: 56px;
+  --sm-c-app-header-tablet-nav-header-title-color-text: var(--color-black);
+  --sm-c-app-header-tablet-nav-close-button-color-text: var(--color-black);
+  --sm-c-app-header-tablet-nav-close-button-color-background: var(--color-pure-white);
+  --sm-c-app-header-tablet-nav-subheader-color-background: var(--color-pure-white);
+  --sm-c-app-header-tablet-nav-subheader-border-bottom: 1px solid var(--color-app);
+  --sm-c-app-header-tablet-nav-footer-color-background: var(--color-pure-white);
+  --sm-c-app-header-tablet-nav-footer-border-top: 1px solid var(--color-app-mid);
+
+  /* nav-items */
+  --sm-c-app-header-tablet-nav-item-color-text-disabled: var(--color-disabled);
+  --sm-c-app-header-tablet-nav-item-color-background: var(--color-app-light);
+  --sm-c-app-header-tablet-nav-item-active-indicator-color: var(--color-primary);
+  --sm-c-app-header-tablet-nav-item-color-background-active: var(--color-app-mid);
+  --sm-c-app-header-tablet-nav-item-color-background-hover: var(--color-app-mid);
+  --sm-c-app-header-tablet-nav-sub-menu-heading-padding: 16px 18px 16px 18px;
+  --sm-c-app-header-tablet-nav-sub-menu-heading-color-background: var(--color-pure-white);
+  --sm-c-app-header-tablet-nav-sub-menu-heading-color-text: var(--color-black);
+  --sm-c-app-header-tablet-nav-sub-menu-heading-border-bottom: 1px solid #d9dee7;
+  --sm-c-app-header-tablet-nav-sub-menu-heading-height: 56px;
+  --sm-c-app-header-tablet-nav-sub-menu-heading-title-width: 368px;
+  --sm-c-app-header-tablet-nav-sub-menu-heading-left-button-color-background: transparent;
+  --sm-c-app-header-tablet-nav-sub-menu-heading-left-button-color-text: var(--color-black);
+
+  /* ----------------------------------------- */
+  /* sm-horizontal-nav - standalone */
+  --sm-c-horizontal-nav-color-background: rgb(253, 196, 196);
+  --sm-c-horizontal-nav-item-color-background: transparent;
+  --sm-c-horizontal-nav-item-color-text: darkblue;
+  --sm-c-horizontal-nav-item-font-size: 16px;
+  --sm-c-horizontal-nav-item-font-weight: bold;
+  --sm-c-horizontal-nav-item-color-text-hover: yellow;
+  --sm-c-horizontal-nav-item-color-background-hover: black;
+  --sm-c-horizontal-nav-item-color-text-active: orange;
+  --sm-c-horizontal-nav-item-font-weight-active: normal;
+  --sm-c-horizontal-nav-item-color-background-active: darkblue;
+  --sm-c-horizontal-nav-item-indicator-color-active: hotpink;
+  --sm-c-horizontal-nav-item-indicator-color-exact-active: hotpink;
+  --sm-c-horizontal-nav-item-color-text-open: purple;
+  --sm-c-horizontal-nav-item-color-background-open: violet;
+
+  /* ----------------------------------------- */
+  /* sm-user-list - standalone */
+  /* Indicator */
+  --sm-c-user-list-indicator-border-radius: 50%;
+  --sm-c-user-list-indicator-color-background: transparent;
+  --sm-c-user-list-indicator-color-border: #c6d0e0;
+  --sm-c-user-list-indicator-height: var(--sm-8);
+  --sm-c-user-list-indicator-width: var(--sm-8);
+  --sm-c-user-list-indicator-top: 6px;
+
+  /* Selected */
+  --sm-c-user-list-indicator-color-background-selected: var(--color-info);
+  --sm-c-user-list-indicator-color-border-selected: var(--color-info);
+
+  /* Type - warning */
+  --sm-c-user-list-indicator-color-background-warning: var(--color-warning);
+  --sm-c-user-list-indicator-color-border-warning: var(--color-warning);
+
+  /* Content */
+  --sm-c-user-list-content-padding-left: 1.25em;
+
+  /* Date */
+  --sm-c-user-list-date-color-text: var(--color-disabled-dark);
+
+  /* ----------------------------------------- */
+  /* sm-dialog */
+  /* Common content */
+  --sm-c-dialog-min-height: 100px;
+  --sm-c-dialog-max-width: 600px;
+  --sm-c-dialog-padding: 32px;
+  --sm-c-dialog-color-background: var(--color-pure-white);
+  /*
+  --sm-c-dialog-color-text: var(--color-black);
+  --sm-c-dialog-border-width: 2px;
+  --sm-c-dialog-color-border: var(--color-primary);
+  */
+  --sm-c-dialog-shadow: 0 3px 17px -8px rgba(24, 58, 108, 0.43), 0 22px 7px -21px rgba(24, 58, 108, 0.14), 0 15px 38px -11px rgba(24, 58, 108, 0.15);
+  --sm-c-dialog-footer-margin: 24px 0px 0px 0px;
+
+  /* Underlay */
+  --sm-c-dialog-underlay-color-background: 0, 0, 0;
+
+  /* Alert */
+  --sm-c-dialog-color-border-alert: var(--color-alert);
+  --sm-c-dialog-color-icon-alert: var(--color-alert);
+  --sm-c-dialog-icon-font-size-alert: 22px;
+
+  /* Warning */
+  --sm-c-dialog-color-border-warning: var(--color-warning);
+  --sm-c-dialog-color-icon-warning: var(--color-warning);
+  --sm-c-dialog-icon-font-size-warning: 22px;
+
+
+  /* fullscreen */
+  --sm-c-dialog-color-background-fullscreen: var(--color-pure-white);
+  --sm-c-dialog-color-text-fullscreen: var(--color-black);
+  --sm-c-dialog-color-border-fullscreen: var(--color-pure-white);
+  --sm-c-dialog-border-width-fullscreen: 1px;
+
+  /* --sm-c-dialog-margin-fullscreen: 32px;
+  --sm-c-dialog-max-width-fullscreen: calc(100% - 72px);
+  --sm-c-dialog-max-height-fullscreen: calc(100% - 72px); */
+
+  /* fullscreen footer */
+  --sm-c-dialog-footer-color-background-fullscreen: var(--color-info-light);
+  --sm-c-dialog-footer-color-text-fullscreen: var(--color-disabled-dark);
+  --sm-c-dialog-footer-padding-fullscreen: 30px 24px 30px 24px;
+  --sm-c-dialog-footer-height-fullscreen: auto;
+  /* --sm-c-dialog-footer-shadow-fullscreen: 0 -1px 1px -1px rgba(24, 58, 108, 0.14), 0 -3px 4px -2px rgba(24, 58, 108, 0.1),
+    0 -3px 9px -2px rgba(24, 58, 108, 0.1); */
+  --sm-c-dialog-footer-color-border-top-fullscreen: var(--color-info-light);
+
+  /* fullscreen title */
+  --sm-c-dialog-title-padding-fullscreen: 40px 40px 10px 40px;
+
+  /* fullscreen body */
+  --sm-c-dialog-body-padding-fullscreen: 0px 32px 40px 40px;
+  --sm-c-dialog-body-max-height-fullscreen: calc(100% - 200px);
+
+
+  /* ----------------------------------------- */
+  /* sm-help-card */
+  /* Types - info (default) - use high-level application variables */
+  /* --sm-c-help-card-color-icon-info: #0055CC;
+  --sm-c-help-card-color-background-info: #F7F8F9;
+  --sm-c-help-card-color-border-info: #1D7AFC;
+  --sm-c-help-card-color-border-left-info: #0055CC; */
+
+  /* Types - warning */
+  --sm-c-help-card-color-icon-warning: #AE2A19;
+  --sm-c-help-card-color-background-warning: #F7F8F9;
+  --sm-c-help-card-color-border-warning: #E34935;
+  --sm-c-help-card-color-border-left-warning: #AE2A19;
+
+  /* Types - alert */
+  --sm-c-help-card-color-icon-alert: #F18D13;
+  --sm-c-help-card-color-background-alert: #F7F8F9;
+  --sm-c-help-card-color-border-alert: #FAA53D;
+  --sm-c-help-card-color-border-left-alert: #F18D13;
+
+  /* Types - success */
+  --sm-c-help-card-color-icon-success: #216E4E;
+  --sm-c-help-card-color-background-success: #F7F8F9;
+  --sm-c-help-card-color-border-success: #22A06B;
+  --sm-c-help-card-color-border-left-success: #216E4E;
+
+
+  /* ----------------------------------------- */
+  /* sm-loading-bar and others */
+  --sm-c-loading-color-background: #2697b114;
+  --sm-c-loading-image-background: linear-gradient(to right, rgba(9, 30, 66, 0.06), rgba(9, 30, 66, 0.03) 50%, rgba(9, 30, 66, 0.06));
+
+
+  /* ----------------------------------------- */
+  /* sm-badge */
+  /* Common */
+  --sm-c-badge-text-transform: uppercase;
+
+  /* Size - small (default) */
+  --sm-c-badge-border-radius-small: var(--border-radius-xlg);
+  --sm-c-badge-font-size-small: var(--p-xs-font-size);
+  --sm-c-badge-width-small: 12px;
+  --sm-c-badge-height-small: 12px;
+  --sm-c-badge-line-height-small: 1;
+
+  /* Size - medium */
+  --sm-c-badge-border-radius-medium: 10px;
+  --sm-c-badge-font-size-medium: 12px;
+  --sm-c-badge-height-medium: 19px;
+  --sm-c-badge-min-width-medium: 19px;
+  --sm-c-badge-padding-medium: 0 6px;
+  --sm-c-badge-line-height-medium: 1;
+
+  /* Size - large */
+  --sm-c-badge-border-radius-large: 12px;
+  --sm-c-badge-font-size-large: 14px;
+  --sm-c-badge-height-large: 24px;
+  --sm-c-badge-min-width-large: 24px;
+  --sm-c-badge-padding-large: 0 6px;
+  --sm-c-badge-line-height-large: 1.43;
+
+  /* Type - warning (default) */
+  --sm-c-badge-color-background-warning: var(--color-warning);
+  --sm-c-badge-color-text-warning: var(--color-disabled-light);
+
+  /* Type - success */
+  --sm-c-badge-color-background-success: var(--color-success);
+  --sm-c-badge-color-text-success: var(--color-disabled-light);
+
+  /* Type - info */
+  /* --sm-c-badge-color-background-info: var(--color-primary); */
+  --sm-c-badge-color-text-info: var(--color-disabled-light);
+
+  /* Type - alert */
+  --sm-c-badge-color-background-alert: var(--color-alert);
+  --sm-c-badge-color-text-alert: var(--color-black);
+
+  /* Light theme type - success */
+  --sm-c-badge-color-background-light-success: var(--color-success-light);
+  --sm-c-badge-color-text-light-success: var(--color-success);
+
+  /* Light theme type - info */
+  --sm-c-badge-color-background-light-info: var(--color-info-light);
+  --sm-c-badge-color-text-light-info: var(--color-black);
+
+  /* Light theme type - warning */
+  --sm-c-badge-color-background-light-warning: var(--color-warning-light);
+  --sm-c-badge-color-text-light-warning: var(--color-warning);
+
+  /* Light theme type - alert */
+  --sm-c-badge-color-background-light-alert: var(--color-alert-light);
+  --sm-c-badge-color-text-light-alert: var(--color-black);
+
+  /* Disabled */
+  --sm-c-badge-color-background-disabled: var(--color-disabled-mid);
+  --sm-c-badge-color-text-disabled: var(--color-black);
+
+  /* Light theme type - disabled */
+  --sm-c-badge-color-background-light-disabled: #eaeaea;
+  --sm-c-badge-color-text-light-disabled: var(--color-black);
+}

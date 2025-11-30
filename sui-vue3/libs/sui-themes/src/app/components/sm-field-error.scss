@@ -1,0 +1,29 @@
+/**
+ * Field error styles
+ * These are the actual CSS properties for the field error component and used
+ * in form components like sm-input, sm-radio, sm-checkbox, etc.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+
+ body {
+  .sm-calendar,
+  .sm-checkbox,
+  .sm-checkbox-group,
+  .sm-input,
+  .sm-radio,
+  .sm-radio-group,
+  .sm-select-container,
+  .sm-switch {
+    .sm-field-error {
+      color: var(--sm-c-field-error-color-text);
+      padding-top: var(--sm-c-field-error-padding-top);
+      padding-bottom: var(--sm-c-field-error-padding-bottom);
+      max-height: var(--sm-c-field-error-height-max);
+
+      &--error {
+        max-height: var(--sm-c-field-error-height-max-error);
+      }
+    }
+  }
+}

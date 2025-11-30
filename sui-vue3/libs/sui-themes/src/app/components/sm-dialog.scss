@@ -1,0 +1,100 @@
+/**
+ * Dialog styles
+ * These are the actual CSS properties for the date-picker component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+
+body {
+  /**
+   * alert
+   */
+  .sm-dialog.sm-dialog--type-alert .sm-dialog__content {
+    border-color: var(--sm-c-dialog-color-border-alert);
+  }
+
+  /**
+   * warning
+   */
+  .sm-dialog.sm-dialog--type-warning .sm-dialog__content {
+    border-color: var(--sm-c-dialog-color-border-warning);
+  }
+
+  /**
+   * Default style
+   */
+  .sm-dialog {
+    .sm-dialog--type-alert-icon {
+      color: var(--sm-c-dialog-color-icon-alert);
+
+      .sm-icon {
+        font-size: var(--sm-c-dialog-icon-font-size-alert);
+      }
+    }
+
+    .sm-dialog--type-warning-icon {
+      color: var(--sm-c-dialog-color-icon-warning);
+
+      .sm-icon {
+        font-size: var(--sm-c-dialog-icon-font-size-warning);
+      }
+    }
+
+    .sm-dialog__content {
+      min-height: var(--sm-c-dialog-max-height);
+      max-width: var(--sm-c-dialog-max-width);
+      padding: var(--sm-c-dialog-padding);
+      background: var(--sm-c-dialog-color-background);
+      color: var(--sm-c-dialog-color-text);
+      border-top: var(--sm-c-dialog-border-width) solid var(--sm-c-dialog-color-border);
+      box-shadow: var(--sm-c-dialog-shadow) !important; // Important used to override global focus styling
+    }
+
+    .sm-dialog__underlay {
+      background: rgba(var(--sm-c-dialog-underlay-color-background), 0.3);
+    }
+
+    .sm-dialog__footer {
+      margin: var(--sm-c-dialog-footer-margin);
+    }
+  }
+
+  /**
+   * fullscreen
+   */
+  .sm-dialog.sm-dialog--fullscreen .sm-dialog__content {
+    margin: var(--sm-c-dialog-margin-fullscreen);
+    max-width: var(--sm-c-dialog-max-width-fullscreen);
+    max-height: var(--sm-c-dialog-max-height-fullscreen);
+    background: var(--sm-c-dialog-color-background-fullscreen);
+    color: var(--sm-c-dialog-color-text-fullscreen);
+    border-top: var(--sm-c-dialog-border-width) solid var(--sm-c-dialog-color-border-fullscreen);
+  }
+
+  /**
+   * Sticky footer with fullscreen
+   */
+  .sm-dialog.sm-dialog--fullscreen .sm-dialog__stickyfooter {
+    background: var(--sm-c-dialog-footer-color-background-fullscreen);
+    color: var(--sm-c-dialog-footer-color-text-fullscreen);
+    padding: var(--sm-c-dialog-footer-padding-fullscreen);
+    height: var(--sm-c-dialog-footer-height-fullscreen);
+    box-shadow: var(--sm-c-dialog-footer-shadow-fullscreen);
+    border-top: solid var(--sm-c-dialog-border-width-fullscreen) var(--sm-c-dialog-footer-color-border-top-fullscreen);
+  }
+
+  /**
+   * fullscreen title
+   */
+  .sm-dialog.sm-dialog--fullscreen .sm-dialog__title {
+    padding: var(--sm-c-dialog-title-padding-fullscreen);
+  }
+
+  /**
+   * fullscreen body
+   */
+  .sm-dialog.sm-dialog--fullscreen .sm-dialog__body {
+    padding: var(--sm-c-dialog-body-padding-fullscreen);
+    max-height: var(--sm-c-dialog-body-max-height-fullscreen);
+  }
+}

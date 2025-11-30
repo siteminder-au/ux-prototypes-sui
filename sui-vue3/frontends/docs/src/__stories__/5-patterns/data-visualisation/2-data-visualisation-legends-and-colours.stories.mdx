@@ -1,0 +1,203 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import legendsUsage from './images/legends-usage.png'
+import colourSingle1 from './images/colours-single-1.png'
+import colourSingle2 from './images/colours-single-2.png'
+import colourSequential1 from './images/colours-sequential-1.png'
+import colourSequential2 from './images/colours-sequential-2.png'
+import colourCategorical1 from './images/colours-categorical-1.png'
+import colourCategorical2 from './images/colours-categorical-2.png'
+import colourBlindPalette from './images/colours-colour-blind-friendly-palette.png'
+import colourAccessibilityDo1 from './images/chart-colour-accessibility-do-1.png'
+import colourAccessibilityDoNot1 from './images/chart-colour-accessibility-do-not-1.png'
+import colourAccessibilityDo2 from './images/chart-colour-accessibility-do-2.png'
+import colourAccessibilityDoNot2 from './images/chart-colour-accessibility-do-not-2.png'
+import colourAccessibilityDo3 from './images/chart-colour-accessibility-do-3.png'
+import colourAccessibilityDoNot3 from './images/chart-colour-accessibility-do-not-3.png'
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+  `}
+</style>
+
+
+<Meta title="Design patterns/Data visualisation/Legends and colours" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Data visualisation</h1>
+  <p>Data visualisation presents intricate and complex data using visuals and graphic forms. It aids in helping uncover insights, convey information effectively, and helps decision-making processes.</p>
+</SuiStorybookTitle>
+
+- [Legends](#legends)
+  - [Usage](#usage)
+  - [Positions](#positions)
+  - [Interaction](#interaction)
+- [Colours](#colours)
+  - [Types](#types)
+  - [Best practices](#best-practices)
+  - [Chart colour accessibility](#chart-colour-accessibility)
+
+
+## Legends
+Legends in data visualisation act as guides, explaining the significance of colours, symbols, or other visuals in a chart or graph. They are crucial for helping viewers understand and interpret the visual data, making it more meaningful and accessible.
+
+### Usage
+  #### Clarification
+  Legends assist viewers in comprehending the meaning of various components in the visualisation, like data sets, categories, or data points.
+
+  #### Identification
+  Legends help recognize and differentiate various parts of the chart, like distinguishing between different lines in a line chart or categories in a bar chart.
+
+  #### Context
+  Legends give context by linking visual cues (like colours or patterns) with their related data or categories, making the chart easier to understand.
+
+  <img src={legendsUsage} className="img-padding" alt="Pie chart with legends giving context by visual cues like colours." width="560"/>
+
+  #### Recommendations
+  - If your chart shows only one data category, you don't need a legend. Only use a legend if there's not enough space for labels directly on the chart and you can't assume it will fit.
+  - In legends, titles, and axis labels, use simple language and avoid using abbreviations or acronyms.
+  - Chart legends typically use colour to differentiate data sets and values by default. To ensure accessibility for users with visual impairment, you can also use texture instead of or alongside colour.
+
+### Positions
+Legend placement is important in data visualisations as it greatly affects how clear and user-friendly the chart or graph is. Legends are usually put in particular spots within the visualisation to make them work best.
+<div className="sui-storybook-highlight">The legends in <a href="https://www.highcharts.com/docs/index"> Highcharts </a> are positioned at the <code>bottom</code> of the chart by default. <br /><br /> Depending on the page's setup and context, you can decide where to put the legends: on <code>top</code>, <code>bottom</code>, to the <code>left</code>, or to the <code>right</code> of the chart within the chart area. For more information see the Highcharts <a href="https://api.highcharts.com/highcharts/legend"> API reference </a> for legend options.</div>
+
+  #### Bottom (default) and top
+  Place the legend at the top or bottom of a chart when there's limited space, like on a dashboard.Top position allows for a clean and unobstructed view of the data. While bottom position is useful when you want to provide context without taking up space at the top of the chart.
+
+  #### Left
+  For vertical charts, legends on the left side can also work well, especially if you want to save space on the right side for additional data or annotations and when better alignment is needed.
+
+  #### Right
+  This arrangement allows viewers to associate data series with their respective labels more easily.
+
+  #### Floating
+  Some interactive visualisations employ floating or drifting legends that follow the cursor as the user interacts with the chart. This dynamic approach keeps the legend within view while exploring the data.
+
+  #### Overlay
+  In some cases, legends can overlay a portion of the chart while still providing a clear view of the data. This approach is often used when space is limited, and legibility is not compromised such as spatial charts.
+  <div className="sui-storybook-highlight">On mobile, the legend could revert to a stack.</div>
+
+### Interaction
+
+  #### Highlight on hover
+  This is a native behavior in Highcharts, when hovering over one category in the legend, the opacity of all other categories is reduced. More details can be found in [Highcharts documentation](https://www.highcharts.com/docs/index).
+
+  #### Click to hide
+  Use the native behavior in Highcharts where, when clicking on a category in the legend, the clicked category is hidden from the chart and the selected category's opacity in the legend is reduced. See more about [SeriesLegendItemClickCallbackFunction](https://api.highcharts.com/class-reference/Highcharts#.SeriesLegendItemClickCallbackFunction).
+
+  #### Legend overflow
+  In Highcharts, when legends exceed 30 percent of the chart, use the legend.navigation from the [API reference](https://api.highcharts.com/highcharts/legend.navigation).
+
+
+## Colours
+Colour can aid in the understanding of charts and other forms of data visualisations.
+<div className="sui-storybook-highlight">To ensure accessibility for users with visual impairment, you can also use <strong>texture</strong> instead of or <strong>alongside colour</strong>.<br /> When creating a colour palette for you charts, make sure to utilize <strong><a href="https://sui-dev-v3-sui-docs.dev.siteminderlabs.com/?path=/story/foundations-colour-overview--page">SUI colours</a></strong> first before using other colours.</div>
+
+### Types
+  When picking colours for charts and graphs, think about your data type. Data usually falls into two main groups: categories or sequences.
+
+#### Single-colour
+  - Only one colour is used to represent all the data points or categories. In a monochromatic chart, variations in data are typically expressed through different shades or intensities of the same colour.
+  - Works well when the main focus is on the data values themselves and their relationships or trends. However, it's essential to ensure that the chosen colour provides enough contrast with the background and that variations in intensity are clear enough for viewers to interpret the data accurately.
+
+
+##### Example
+  Using primary blue to represent percentage of reservations for current period
+  <img src={colourSingle1} className="img-padding" alt="Using the color blue to represent percentage of reservations for current period on a bar chart" width="560"/>
+
+  To emphasize a specific data point within a dataset, opt for a contrasting colour while employing a neutral colour scheme for less critical information. This will enable crucial data to catch the viewer's attention.
+  <img src={colourSingle2} className="img-padding" alt="Using the colour blue as a contrasting colour while employing a neutral grey colour for less critical information" width="560"/>
+
+  <div className="sui-storybook-highlight">When creating data visualisations that call for a single colour, make <strong>$primary-blue</strong> your default choice. This guarantees that all data visualisations align with our brand's visual identity.</div>
+  <br />
+
+#### Sequential Colours
+  - Used when you want to show a progression or a range within your data.
+  - Create a visual hierarchy, often using a single colour that varies in intensity or shade.
+  - Helpful for representing numerical data, such as temperature or population density.
+
+##### Example
+  Using shades of blue to represent bookings by country
+  <img src={colourSequential1} className="img-padding" alt="Using shades of blue to represent bookings by country on a choropleth map"/>
+
+  Using primary blue and a lighter shade of blue to represent percentage of reservations for current period.
+  <img src={colourSequential2} className="img-padding" alt="Using shades of blue to represent percentage of reservations for current period on a bar chart" width="560"/>
+
+#### Categorical Colours
+  - Represents distinct categories or groups within your data.
+  - Are non-sequential and typically do not convey any specific order or progression.
+  - Each category is assigned a different colour to make them visually distinct.
+
+##### Example
+  Using different colours to represent different types of rooms in a column chart.
+  <img src={colourCategorical1} className="img-padding" alt="Using different colours to represent different types of rooms in a column chart." width="560"/>
+
+  Using different colours to represent different channel performance in bar chart.
+  <img src={colourCategorical2} className="img-padding" alt="Using different colours to represent different channel performance in bar chart." width="560"/>
+
+### Best practices
+  Effective use of colours in data visualisation is important for showing information clearly and making your visuals more interesting.
+
+  #### Selecting a colour palette
+  Select a colour palette that aligns with the message and purpose of your visualisation. For categorical data, choose distinct colours; for sequential data, use a gradient or sequential palette.
+
+  <div className="sui-storybook-highlight"><strong>Aim to create a colour blind-friendly palette</strong> <br /><br /> Choosing colours is crucial, but for accessibility, there's more to think about than just colour theory and design. <br /><br /><li> <strong>Avoid combining red and green</strong> (green is the number one among the colours to avoid for the colour blind.)</li><li> Use only two basic hues: <strong>blue and red</strong> (orange and yellow will also fit). </li><li> The other colours should be made out of these two hues</li><li> All the variations can be made by using different saturation or lightness of the basic colour.</li> <br />If you want to check your colours, <a href="https://colororacle.org/">Colour Oracle</a> is a free application colour blindness simulator.</div>
+  <br /><br />
+
+##### Sample of colour blind friendly palette
+  <img src={colourBlindPalette} className="img-padding" alt="Sample of color blind friendly palette using hues of blue and red."/>
+
+  <br /><br />
+  See reference for more details and some examples of colour blind friendly palettes:
+
+  [The best charts for colour blind viewers](https://www.datylon.com/blog/data-visualization-for-colorblind-readers#color-blind-palette)
+
+  [Colour blind Safe Colour Schemes](https://www.nceas.ucsb.edu/sites/default/files/2022-06/Colorblind%20Safe%20Color%20Schemes.pdf)
+
+  [How to Use Colour Blind Friendly Palettes to Make Your Charts Accessible](https://venngage.com/blog/color-blind-friendly-palette/#3)
+
+  [A Total Guide to Accessible Colours](https://venngage.com/blog/accessible-colors/)
+  <br /><br />
+
+
+#### Maintain Colour Consistency
+  Use consistent colours throughout your visualisation. If you represent a specific category with a colour, maintain that association consistently across charts and graphs.
+
+#### Mind Colour Contrast
+  Ensure that text and labels are legible against the background colour. Use high contrast between text and the background for better readability.
+
+#### Use Colour with Other Visual Cues
+  Combine colour with other visual cues like size, shape, or texture to enhance data differentiation and make your visualisation more informative and accessible.
+
+### Chart colour accessibility
+Your chart colours should meet **WCAG AA 3:1 contrast ratio** against it's background. **(<a href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html">WCAG 1.4.11</a>)** This section offers additional information/instructions to assist you in enhancing accessibility further:
+
+#### Applying a border or space between adjacent colours
+  Although the colours you picked work well with the background (3:1 contrast ratio), they might not contrast enough with each other. To fix this, add some space or a border to separate the data elements visually.
+
+  | Do | Don't |
+  | :--- | :--- |
+  | Add a border to visually separate the colours in the chart. <br /><img src={colourAccessibilityDo1} className="img-padding" alt="Pie chart with borders to visually separate the colours in the chart." width="400"/> | Avoid putting chart colours right next to each other. <br /><img src={colourAccessibilityDoNot1} className="img-padding" alt="Pie chart without borders  do not visually separate the colours in the chart." width="400"/> |
+
+
+  #### Avoid putting text directly onto coloured areas of the chart
+  The colours you've selected might not work well with text that requires a 4:5:1 contrast ratio for accessibility. Position the text beside the chart element instead.
+
+  | Do | Don't |
+  | :--- | :--- |
+  | Put your text outside of the coloured areas of your chart. <br /><img src={colourAccessibilityDo2} className="img-padding" alt="Bar chart with text outside of the coloured areas of your chart." width="400"/> | Avoid putting text inside your chart colours. <br /><img src={colourAccessibilityDoNot2} className="img-padding" alt="Bar chart with text inside of the coloured areas of your chart." width="400"/> |
+
+  #### Provide Alternative Means of Differentiation
+  Don't rely solely on colour to convey information. Use other visual cues like patterns, textures, labels, or different shapes to distinguish data points or categories.
+
+  | Do | Don't |
+  | :--- | :--- |
+  | Add visual cues like patterns, textures, labels, or different shapes to distinguish data points or categories. <br /><img src={colourAccessibilityDo3} className="img-padding" alt="Line chart with visual cues like dashed line to distinguish data points or categories." width="500"/> | Avoid putting text inside your chart colours. <br /><img src={colourAccessibilityDoNot3} className="img-padding" alt="Line chart with all data points as solid lines." width="500"/> |

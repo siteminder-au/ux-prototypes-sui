@@ -1,0 +1,42 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import tooltipsWhenToUse from './images/help-tooltips-when-to-use.png'
+import popoversWhenToUse1 from './images/help-popovers-when-to-use1.png'
+import popoversWhenToUse2 from './images/help-popovers-when-to-use2.png'
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 24px;
+    }
+  `}
+</style>
+
+<Meta title="Design patterns/Help/Tooltips and Popovers" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Help</h1>
+  <p>Here you will find various help patterns that are used throughout our app.</p>
+</SuiStorybookTitle>
+
+- [Tooltips](#tooltips)
+- [Popovers](#popovers)
+
+
+## Tooltips
+### When to use
+Tooltips are great for giving more contextual information to a user. For instance a new button might be introduced with an uncommon icon in it, pairing it with a tooltip on hover to further explain what the button does would be a great way to boost the user experience.
+
+<img src={tooltipsWhenToUse} className="img-padding" alt="A tooltip is used here to inform the user what an icon button does when clicked" width="720"/>
+<span className="sui-storybook-image-caption">A tooltip is used here to inform the user what an icon button does when clicked</span>
+
+## Popovers
+### When to use
+Use popovers when you want to convey rich and/or interactive content to the user in a non-disruptive format.
+<img src={popoversWhenToUse1} className="img-padding" alt="A popover is used as help in side navigation menu" width="720"/>
+
+When using a popover with a trigger element that is an icon (see below) please ensure that the icon used is the `utility-information-alt` icon in the colour token `$grey-neu-dark` (#717171).
+<img src={popoversWhenToUse2} className="img-padding" alt="Information icon used as trigger element for popover"/>

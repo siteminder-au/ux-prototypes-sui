@@ -1,0 +1,123 @@
+import { Meta } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+
+<Meta title="Guides/White labelling" />
+
+<SuiStorybookPageLabel>Guides</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>White labelling</h1>
+  <p>
+    Our app header can be themed to help support our partner customers.
+  </p>
+</SuiStorybookTitle>
+
+- [Overview](#overview)
+- [Nexus colour mapping](#nexus-colour-mapping)
+- [What gets branded?](#what-gets-branded?)
+- [How to](#how-to)
+- [Design alignment](#design-alignment)
+
+## Overview
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Confluence page</strong></td>
+      <td><a href="https://siteminder.atlassian.net/wiki/spaces/SUI/pages/2154760320/SUI+header+and+Nexus+variable+mapping">SUI app header: nexus variable mapping</a></td>
+    </tr>
+    <tr>
+      <td><strong>Figma</strong></td>
+      <td>
+        <a href="https://www.figma.com/file/Au1waCRAR4SpFvIgEMASgf/sui-documentation?node-id=12%3A129606">White labelling</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+White labelling, in SiteMinder's case specifically, is used to allow aesthetic edits to the navigation components only. This is available to our partner customers.
+
+Our partner customers have the ability to:
+- edit their app headers to include their own custom logo, in place of the SiteMinder logo
+- edit the 6 colour variables used in the app header - this gives allows our partners to have a sense of their own branding when managing their properties channels.
+
+## Nexus colour mapping
+
+Nexus currently offers 6 colour variables to customise our app-header. In order to transfer customers across from Channel Manager to Property Platform we are required to keep like-for-like functionality which includes white-labelling of the header. Therefore these 6 variables needs to be translated to the SUI header format.
+
+In order to do this we have grouped existing SUI white-labelling variables and mapped them to corresponding Nexus variables.
+
+This provides like-for-like functionality but not like-for-like implementation. Some colours still need to be updated to make the SUI header functional and accessible. We hope to improve this in the future.
+
+See <a href="https://siteminder.atlassian.net/wiki/spaces/SUI/pages/2154760320/SUI+header+and+Nexus+variable+mapping">SUI app header: nexus variable mapping</a>
+
+
+## What gets branded?
+
+Colours are configurable via this guide, but content and imagery should be
+passed where relevant. For example, the `sm-app-header` component accepts a
+logo property, which should be implemented in your application's logic. Consult
+the team for requirements and acceptance criteria when branding your
+application.
+
+
+## How to
+
+### Step 1: Install the SUI white-labelling.css
+
+**Deprecated: `sui-core@15.0.0-vue3`**
+
+Proceed to step two.
+
+The `white-labelling.css` file is no longer exported by the library.
+The white-labelling tokens are already mapped inside the relevant component files.
+
+**For `sui-core@14.X.X-vue3` and earlier:**
+
+Add the following to your project's `main.ts` (or a similar entry-level file):
+
+```ts dark
+import '@siteminder/sui-core/white-labelling/white-labelling.css'
+```
+
+### Step 2: Define your CSS variables
+
+The white-labelling solution leverages global [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
+to style certain components, such as the app-header. Where your application
+sources those colours is not part of the SUI white-labelling solution.
+
+Note: CSS Variables may not be supported by your application's browser support
+matrix. In fact, as of today, almost all SiteMinder applications should apply
+a polyfill, such as the `css-vars-ponyfill`.
+
+Add the list following variables to your project's css files or inside `style` tag.
+
+
+## Design alignment
+
+After version `sui-core@0.107.0` (Vue2), we had to make some modification to
+the SUI white-labelling variables to align `Nexus/SPUTNIK` white-labelling variables.
+
+Please find the [SUI and Nexus variable mapping document](https://siteminder.atlassian.net/wiki/spaces/SUI/pages/2154760320/SUI+header+and+Nexus+variable+mapping)
+and an agreement on the phases release.
+
+### Released: Phase 1
+
+```css dark
+:root {
+  --secondary-background: #006ade;
+  --secondary-foreground: #ffffff;
+  --tertiary-background: #ffffff;
+  --tertiary-foreground: #333333;
+  --primary-background: #006add;
+  --primary-foreground: #e6ebf2;
+
+  /* wip */
+  --scenery-background: /**/;
+  --scenery-foreground: /**/;
+  --quaternary-background: /**/;
+  --quaternary-foreground: /**/;
+  --quinary-background: /**/;
+  --quinary-foreground: /**/;
+}
+```

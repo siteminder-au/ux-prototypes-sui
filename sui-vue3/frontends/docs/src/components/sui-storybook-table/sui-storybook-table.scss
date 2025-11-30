@@ -1,0 +1,23 @@
+.sui-storybook-table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+
+  tr:nth-of-type(2n) {
+    background-color: #fff;
+  }
+
+  td {
+    border: 1px solid #c6d0e0;
+    vertical-align: top;
+    padding: 16px 12px;
+  }
+
+  th {
+    border: 1px solid #c6d0e0;;
+    background-color: #e6ebf2;
+    text-align: left;
+    padding: 12px;
+  }
+}

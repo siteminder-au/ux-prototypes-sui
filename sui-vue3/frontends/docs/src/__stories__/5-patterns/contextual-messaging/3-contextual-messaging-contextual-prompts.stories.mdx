@@ -1,0 +1,95 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import promptBanner from './images/contextual-messaging-prompt-banner.png'
+import promptDialog from './images/contextual-messaging-prompt-dialogs.png'
+import helpPanel from './images/contextual-messaging-help-panel.png'
+import helpIcons from './images/contextual-messaging-help-icons.png'
+import helpTooltips from './images/contextual-messaging-help-tooltips.png'
+import helpPopover from './images/contextual-messaging-help-popovers.png'
+
+<style>
+   {`
+    .img-padding {
+      padding-bottom: 16px;
+    }
+  `}
+</style>
+
+<Meta title="Design patterns/Contextual messaging/Contextual prompts" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Contextual prompts</h1>
+  <p>Contextual prompts are displayed prominently within a page to provide important information or alerts to users. These prompts are typically designed to grab the user's attention and convey critical messages that are contextually relevant to the user's current task or situation. They guide users on specific actions, suggest next steps, or offer relevant recommendations based on their current context.</p>
+</SuiStorybookTitle>
+
+- [Attributes of contextual prompts](#attributes-of-contextual-prompts)
+- [Components to use](#components-to-use)
+- [When to use](#when-to-use)
+- [Recommendations](#recommendations)
+
+
+## Attributes of contextual prompts
+
+- These messages are usually positioned at the top or bottom of the screen or interface where they are highly visible or they may obstruct the user from their current task.
+- They display information that is directly related to the user's current context or task. They may provide updates, notifications, warnings, reminders, or calls to action based on specific events, user actions, or time-sensitive information.
+- They can include system alerts, error messages or important announcements. Banners serve as a prominent way to communicate such messages to users.
+
+
+## Components to use
+
+  ### Banners
+  Banners display important, succinct product or system-level messages and provide optional actions for users.
+  They are used to inform users of site-wide issues or display warnings or errors that will directly impact the user's ability to complete certain tasks.
+  <img src={promptBanner} className="img-padding" alt="Banner used as contextual prompt to indicate that user's connection is ready for setup" />
+
+  ### Dialogs
+  A dialog is a type of modal that appears on top of the main content to capture the user's attention and provide specific information or options based on the context or user interaction.
+  As contextual prompts, they typically have a clear title or heading that summarizes the purpose of the prompt. They may also include descriptive content, buttons for confirming or dismissing the prompt, and any additional options or information relevant to the context.
+  <img src={promptDialog} alt="Dialogs used as contextual prompt to confirm unsaved changes or deactivate rates" />
+
+## When to use
+
+### Banners
+
+#### System-level:
+<strong>Alert:</strong> when you want the user to take a specific action or to warn them that something is about to go wrong.
+
+- Your trial is expiring
+- Running out of storage
+- Setup system
+
+<strong>Warning:</strong> when informing users something critical has happened and requires immediate attention.
+
+- Payment overdue
+- Connectivity issues
+- Failure to load
+
+<strong>Info/default:</strong> used by admins who want to make a general announcement about the product. These banners do not contain an icon.
+
+- Planned maintenance
+- The critical survey by law
+
+<strong>Success:</strong> when letting users know they have completed an action
+
+- Third party connection successful in the system side
+- An App is successfully activated and require user's actions to setup
+
+### Dialog
+
+- Use a dialog to direct the user's attention.
+- Used for doing quick tasks.
+- Used to obtain user feedback.
+- Use a dialog to display key information.
+
+
+## Recommendations
+
+- Ensure that the content of the alert banners and dialogs is concise and focused on the most critical information.
+- Use clear and actionable language
+- Ensure that alert messages and dialogs are contextually relevant to the user's current task or situation. Tailor the content to address the specific issue or provide relevant information that users need at that moment.
+- Use appropriate urgency and persistence. Determine the appropriate level of urgency for the alert and how persistent it should be. Some alerts may require immediate attention and should remain visible until addressed, while others may be less critical and can be dismissed after a certain period or upon user interaction.
+- Be mindful of the potential interruptions caused by contextual prompts. They should not disrupt the user's workflow excessively or interfere with their ability to complete tasks. Ensure that the prompts are presented in a way that allows users to easily acknowledge and dismiss them if needed.
+- Offer clear actions and options: If there are actions users need to take in response to the alert, clearly present those actions as options.
+- Allow users to dismiss or close alert banners and dialogs if they no longer need the information or if they have already taken the necessary actions. Dismissal options should be clearly visible and easily accessible, maintaining a positive user experience.

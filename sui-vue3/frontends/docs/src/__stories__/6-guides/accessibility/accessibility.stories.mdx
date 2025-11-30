@@ -1,0 +1,191 @@
+import { Meta } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+
+<Meta title="Guides/Accessibility" />
+
+<SuiStorybookPageLabel>Guides</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Accessibility</h1>
+</SuiStorybookTitle>
+
+- [Accessibility, Usability and Inclusion](#accessibility,-usability-and-inclusion)
+
+## Accessibility, Usability and Inclusion
+
+All SiteMinder products should strive to be accessible and usable for everyone. SUI aims to meet AA accessibility at a minimum, following the WCAG guidelines, but goes further than that. Our aim is to build an accessible system that holds usability in the highest regard - usability for all users regardless of access needs.
+
+> **1 in 5 people in Australia have a disability.** That's 20% of Australians. Of those 20% of Australians, the online experience of 18.5% are affected by inaccessible design. This is Australia's largest minority group, so let's not ignore them.
+
+> **Total spending power** of families with at least one disabled person is estimated at $54 million a year.
+
+> People aged **65 and over develop age related impairments**. We have an ageing population, staying in the workforce longer.
+
+<div className="sui-storybook-highlight sui-storybook-highlight--alert">
+  Your product can meet WCAG guidelines but still be unusable. Accessibility is a requirement but usability is far more important.
+  We must strive to design and build satisfying user experiences for everyone - WCAG is only the mandatory stuff.
+</div>
+
+[WCAG guidelines](https://www.w3.org/WAI/standards-guidelines/wcag/)
+
+[Accessibility, Usability and Inclusion](https://www.w3.org/WAI/fundamentals/accessibility-usability-inclusion/)
+
+
+### Types of access needs
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Access need
+      </th>
+      <th>
+        Assistive technologies
+      </th>
+      <th>
+        What to consider
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <strong>Vision:</strong>
+        <ul>
+          <li>Blindness</li>
+          <li>Low-vision</li>
+          <li>Colour blindness</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Screen reader</li>
+          <li>Braille keyboard</li>
+          <li>These users will likely not use a mouse or pointer</li>
+          <li>Screen magnifiers</li>
+          <li>High contrast mode</li>
+          <li>Enlarged font size</li>
+          <li><a href="https://www.youtube.com/watch?v=Hx4ivoI_GmM" target="_blank" rel="noopener noreferrer">Example: Buzzfeed</a></li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Images, controls, and other structural elements that do not have equivalent text alternatives.</li>
+          <li>Text, images, and page layouts that cannot be resized, or that lose information when resized.</li>
+          <li>Missing visual and non-visual orientation cues, page structure, and other navigational aids.</li>
+          <li>Video content that does not have text or audio alternatives, or an audio-description track.</li>
+          <li>Inconsistent, unpredictable, and overly complicated navigation mechanisms and page functions.</li>
+          <li>Text and images with insufficient contrast between foreground and background colour combinations.</li>
+          <li>Websites, web browsers, and authoring tools that do not support the use of custom colour combinations.</li>
+          <li>Websites, web browsers, and authoring tools that do not provide full keyboard support.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Auditory:</strong>
+        <ul>
+          <li>Hard of hearing</li>
+          <li>Deafness</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Closed captioning</li>
+          <li>Sign language</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Audio content, such as videos with voices and sounds, without captions or transcripts.</li>
+          <li>Media players that do not display captions and that do not provide volume controls.</li>
+          <li>Media players that do not provide options to adjust the text size and colors for captions.</li>
+          <li>Web-based services, including web applications, that rely on interaction using voice only.</li>
+          <li>Lack of sign language to supplement important information and text that is difficult to read.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Physical/mobility:</strong>
+        <ul>
+          <li>Amputation</li>
+          <li>Reduced dexterity</li>
+          <li>Muscular dystrophy</li>
+          <li>Repetitive stress injury (RSI)</li>
+          <li>Tremor and spasms</li>
+          <li>Quadriplegia/Tetraplegia</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Keyboards</li>
+          <li>Trackballs</li>
+          <li>Voice recognition</li>
+          <li>Mouth stick</li>
+          <li>Switches operated by foot</li>
+          <li>Eye tracking / Hands-free</li>
+          <li><a href="https://www.youtube.com/watch?v=ZMvikz2cA-8" target="_blank" rel="noopener noreferrer">Example: Rocky No Hands</a></li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Websites, web browsers, and authoring tools that do not provide full keyboard support.</li>
+          <li>Insufficient time limits to respond or to complete tasks, such as to fill out online forms.</li>
+          <li>Controls, including links with images of text, that do not have equivalent text alternatives.</li>
+          <li>Missing visual and non-visual orientation cues, page structure, and other navigational aids.</li>
+          <li>Inconsistent, unpredictable, and overly complicated navigation mechanisms and page functions.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Cognitive impairment:</strong>
+        <ul>
+          <li>ADHD</li>
+          <li>Autism</li>
+          <li>Seizure disorders</li>
+          <li>Dyslexia</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Consistent labelling of forms, buttons, and other content parts</li>
+          <li>Predictable link targets, functionality, and overall interaction</li>
+          <li>Options to suppress blinking, flickering, flashing, and otherwise distracting content</li>
+          <li>Ability to customise font and colours</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Complex navigation mechanisms and page layouts that are difficult to understand and use.</li>
+          <li>Complex sentences that are difficult to read and unusual words that are difficult to understand.</li>
+          <li>Long passages of text without images, graphs, or other illustrations to highlight the context.</li>
+          <li>Moving, blinking, or flickering content, and background audio that cannot be turned off.</li>
+          <li>Web browsers and media players that do not provide mechanisms to suppress animations and audio.</li>
+          <li>Visual page designs that cannot be adapted using web browser controls or custom style sheets.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Temporary and situational examples:</strong>
+        <ul>
+          <li>Broken arm or leg</li>
+          <li>Surgery</li>
+          <li>Medication</li>
+          <li>Loud environments</li>
+          <li>Poverty</li>
+        </ul>
+      </td>
+      <td>
+        &nbsp;
+      </td>
+      <td>
+        <ul>
+          <li>In general, if you are considering all the access needs listed above in your products, then temporary and situational disabilities will be catered for. </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>

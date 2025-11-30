@@ -1,0 +1,117 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import alert from './images/banner-alert.png'
+import anatomy from './images/banner-anatomy.png'
+import info from './images/banner-info.png'
+import placement from './images/banner-placement.png'
+import success from './images/banner-success.png'
+import warning from './images/banner-warning.png'
+
+<Meta title="Components/Banner/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Banner</h1>
+  <p>
+    Banners are vital to communicating system-wide messages with our users.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Specs](#specs)
+- [Behaviours](#behaviours)
+
+
+
+## Usage
+
+Banners display important, succinct product or system-level messages and provide optional actions for users.
+
+They are used to inform users of site-wide issues or display warnings or errors that will directly impact the user's ability to complete certain tasks.
+
+### How to use
+
+Avoid stacking multiple banners.
+
+If the user must be presented with more than one banner, then they should appear one at a time, in order of importance and only disappear when no longer required.
+
+If a user dismisses a banner but does not take any action towards fixing the issue, then the banner should appear again at the next users session.
+
+
+## Formatting
+
+### Anatomy
+
+**1: Container colour** - The background colour of the banner is one of two visual indicators to communicate the importance of the banner. Warning/Red being the most critical, then alert/orange, then default/blue.
+
+**2: Icon** - The icon within the message area of the banner is one of two visual indicators to communicate the importance of the banner. Warning being the most critical, then alert, then info/default.
+
+**3: Message** - Your message goes here.
+
+**4: Tertiary button (optional)** - If you would like the user to take an action to address the message, please use the tertiary button provided. The text in the button should describe what it will trigger.
+
+**5: Close icon button (optional)** - If a user is allowed to dismiss the banner, then you can turn on this feature. If a user dismisses a banner but does not take any action towards fixing the issue, then the banner should appear again at the next users session.
+
+<img src={anatomy} alt="Anatomy" />
+
+### Placement
+
+Place banners under the navigation, at the top of the main content. Banners animate into a screen by pushing the entire content below down. They should appear one at a time, in order of importance and only disappear when no longer required.
+
+<img src={placement} alt="Placement" />
+
+
+## Specs
+
+### Types
+
+#### Alert (System-level)
+
+The default form of a banner. Use alert banners when you want the user to take a specific action or to warn them that something is about to go wrong.
+
+- Your trial is expiring
+- Running out of storage
+- Setup system
+
+<img src={alert} alt="Alert banner" />
+
+#### Warning (System-level)
+
+Use warning banners to inform users something critical has happened and requires immediate attention.
+
+- Payment overdue
+- Connectivity issues
+- Failure to load
+
+<img src={warning} alt="Warning banner" />
+
+#### Info/default (System-level)
+
+Announcement banners are used by admins who want to make a general announcement about the product. These banners do not contain an icon.
+
+- Planned maintenance
+- The critical survey by law
+
+<img src={info} alt="Info banner" />
+
+#### Success (System-level)
+
+Success messages let users know they have completed an action. For these messages, it's best to confirm the outcome and let people continue.
+
+- Third party connection successful in the system side
+- An App is successfully activated and require user's actions to setup
+
+<img src={success} alt="Success banner" />
+
+
+## Behaviours
+
+### Motion
+
+Use banners under the navigation, at the top of the main content. Banners animate into a screen by pushing the entire content below down.
+
+### Dismissing a banner
+
+Banners persist until dismissed by the user, or remain until the state that caused the banner is resolved. If a user dismisses a banner.

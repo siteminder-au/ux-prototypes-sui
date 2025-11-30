@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+    @media only screen and (min-width: 641px) {
+      .row {
+        display: flex;
+        column-gap: 24px;
+      }
+
+      .column {
+        flex: 0 auto;
+      }
+    }
+  `}
+</style>
+
+<Meta title="Components/Dropdown/Accessibility" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Dropdown</h1>
+  <p>
+    Dropdown menus offer a compact list of actions to a user.
+  </p>
+</SuiStorybookTitle>
+
+
+## Keyboard interaction
+
+| Key | Usage |
+| :--- | :--- |
+| Space <br/> Enter | Opens dropdown menu and moves to focus on the first item in the list. |
+| Escape | Closes dropdown menu and moves focus to trigger action. |
+| Down arrow | Moves focus to next item. |
+| Up arrow | Moves focus to previous item. |
+| Home | Moves focus to the first item in the submenu. |
+| End | Moves focus to the last item in the submenu. |
+| Tab | Closes menu and takes user to the next item in tab order. |
+| Shift + tab | This key combination provides the same behaviour as the tab key, but in the reverse order. |

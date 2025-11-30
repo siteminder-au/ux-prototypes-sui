@@ -1,0 +1,48 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import example from './images/patterns-editing-progressive-example1.png'
+import exampleTwo from './images/patterns-editing-progressive-example2.png'
+import anatomy from './images/patterns-editing-progressive-anatomy.png'
+
+<Meta title="Design patterns/Editing/Progressive" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Editing</h1>
+  <p>Editing is the act of updating an existing resource or set of data within out product.</p>
+</SuiStorybookTitle>
+
+- [Progressive editing](#progressive-editing)
+- [Example in use](#example-in-use)
+- [Recommendations](#recommendations)
+- [How to build](#how-to-build)
+
+## Progressive editing
+
+### When to use progressive editing
+- When the user is doing a lot of detailed editing (such as writing translations) and would like to progressively save their progress
+- When the user is making edits to a page that is not a modal, or 'modal-like' (i.e Drawer) in which the edits can be saved but the user can still stay on the page
+- Full-page editing works very well with progressive editing, often hand-in-hand (such as the Translations page or the Inventory Grid)
+
+
+## Example in use
+Before any edits are made the action buttons are disabled:
+<img src={example} alt="Progressive editing after edits are made" width="960" />
+
+And now, after edits are made the user can then save them with the now active action buttons:
+<img src={exampleTwo} alt="Progressive editing before any edits are made" width="960" />
+
+Ensure the save button has a count of all the changes being made:
+<img src={anatomy} alt="Ensure the save button has a count" width="960" />
+
+## Recommendations
+When using this pattern, keep the following recommendations in mind:
+
+- Try to ensure the save button is easy to spot so that users know they need to save the data before the changes take effect
+- Always make sure there is a count of all the changes that have been made in the primary save button label
+
+
+
+## How to build
+This pattern can be built using a range of components, however the constants are the save and discard buttons, and they tend to be used in conjunction with an sm-table edit using a full-page layout.

@@ -1,0 +1,6 @@
+src/lang/dist/**/*
+src/shims.d.ts
+src/config.ts
+src/**/*.stories.ts
+src/**/*.cy.ts
+cypress-component-testing/**/*

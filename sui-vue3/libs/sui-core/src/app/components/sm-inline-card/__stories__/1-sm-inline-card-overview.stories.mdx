@@ -1,0 +1,127 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/sm-inline-cards-anatomy.png'
+import placementWizard from './images/sm-inline-cards-placement.png'
+import placementDrawer1 from './images/sm-inline-cards-drawer-1.png'
+import placementDrawer2 from './images/sm-inline-cards-drawer-2.png'
+import sizingSmall from './images/sm-inline-cards-sizing-small.png'
+import sizingLarge from './images/sm-inline-cards-sizing-large.png'
+import scalingDesktop from './images/sm-inline-cards-scaling-desktop.png'
+import scalingTablet from './images/sm-inline-cards-scaling-tablet.png'
+import scalingMobile from './images/sm-inline-cards-scaling-mobile.png'
+import specs from './images/sm-inline-cards-specs.png'
+import utilitySuccess from './images/sm-inline-cards-utility-success.png'
+import utilityAlert from './images/sm-inline-cards-utility-alert.png'
+import utilityWarning from './images/sm-inline-cards-utility-warning.png'
+import utilityInfo from './images/sm-inline-cards-utility-info.png'
+import behavior from './images/sm-inline-cards-behavior.png'
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+  `}
+</style>
+
+
+<Meta title="Components/Inline Card/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Inline card</h1>
+  <p>
+    Inline cards are a great way to group content, media and actions which users need to be made aware of, but should not impact the workflow on the page.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Scaling and Adaptation](#scaling-and-adaptation)
+- [Specs](#specs)
+- [Utility states](#utility-states)
+
+
+## Usage
+Inline cards should be used in scenarios where users need to be made aware of some information, but the information does not impact the workflow, or, the information is relevant; but inserting it inline with other content would break the visual flow of the page.
+
+For example:
+
+- When inside a booking information drawer, a message is needed to notify the information failed to sync to other platforms.
+- Long user agreement forms, that users have to click a checkbox to agree to, but will break visual flow if the whole agreement is inserted into the page
+
+
+## Formatting
+
+### Anatomy
+**1: Container -** Container size is defined by the amount of space those elements take up. The container expresses card elevation.
+
+**2: Icon (for info, alert, warning and success types) -** Supplementary visual to aid content
+
+**3: Title -** The subject of the card, frequently communicated through the headline text.
+
+**4: Subtext -** Body material, such as an article summary or a description, is an example of supporting text.
+
+**5: Body -** Content area used to display long form text or other custom data
+
+**6: Footer (optional) -** Section used for inputs/actions
+
+**7: Close (optional) -** Action to close the card
+
+**8: Divider -** Used to separate heading, body and footer.
+
+<img src={anatomy} className="img-padding" alt="Anatomy of an inline card" />
+
+
+### Placement
+Inline cards can be placed in a wizard, or the drawer, or anywhere on the page where users need to be made aware of some information, but the information does not impact the workflow on the page.
+
+#### Inline cards in a wizard or anywhere in a page
+Inline cards can be place in a wizard or on a page. Make sure to follow the breakpoints guidelines and the specs in the wizard. Recommended maximum width in a wizard is **600px**.
+<img src={placementWizard} className="img-padding" alt="Placement of an inline card in a wizard."/>
+
+#### Inline cards in a drawer
+When used in drawers, inline card will fill the minimum **container width of 464px**, observing the drawer padding rules.
+<img src={placementDrawer1} className="img-padding" alt="Placement of an inline card in a drawer with minimum container width of 464px." width="840"/>
+
+<img src={placementDrawer2} className="img-padding" alt="Placement of an inline card in a drawer."/>
+
+
+### Sizing
+There are 2 sizes for inline cards, small and large. Sizes vary depending on the left padding of the body content.
+
+**1. Small:** for use inside drawers, where the custom content and footer are inline with the icon.
+<img src={sizingSmall} className="img-padding" alt="Small sized inline card" width="480"/>
+
+**2. Large**
+<img src={sizingLarge} className="img-padding" alt="Large sized inline card" width="480"/>
+
+
+## Scaling and adaptation
+Adjust the visual presentation of a card when scaling layouts for smaller displays by specifying minimum and maximum values for margins, padding, and container dimensions.
+
+Follow the guidelines for paddings and spacings in the [breakpoints documentation](https://sui-dev-v3-sui-docs.dev.siteminderlabs.com/?path=/story/foundations-breakpoints--page).
+
+<span className="sui-storybook-image-caption">Desktop (1025 and above)</span>
+<img src={scalingDesktop} className="img-padding" alt="Scaling of inline card in desktop"/>
+
+<span className="sui-storybook-image-caption">Tablet (641 and above)</span>
+<img src={scalingTablet} className="img-padding" alt="Scaling of inline card in tablet" width="720"/>
+
+<span className="sui-storybook-image-caption">Mobile (640 and below)</span>
+<img src={scalingMobile} className="img-padding" alt="Scaling of inline card in mobile" width="320"/>
+
+
+## Specs
+<img src={specs} className="img-padding" alt="Inline card specs" />
+
+
+## Utility states
+Because utility state cards contain icons, we will include two variants of each utility state. One where the padding of the custom content and footer is inline with the header text **(large)**. The other, for use inside drawers, where the custom content and footer is inline with the icon instead **(small)**.
+<img src={utilitySuccess} className="img-padding" alt="Inline cards success utility state." />
+<img src={utilityAlert} className="img-padding" alt="Inline cards alert utility state." />
+<img src={utilityWarning} className="img-padding" alt="Inline cards warning utility state." />
+<img src={utilityInfo} className="img-padding" alt="Inline cards info utility state." />

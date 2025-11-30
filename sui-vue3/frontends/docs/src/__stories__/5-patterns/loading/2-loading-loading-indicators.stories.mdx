@@ -1,0 +1,134 @@
+import {Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import indicatorFullPageLoading from './images/loading-full-page.png'
+import indicatorSpinner from './images/loading-full-page-spinner.png'
+import inlineLoading from './images/loading-inline.png'
+import inlineLoadingButtons1 from './images/loading-inline-loading-buttons1.png'
+import inlineLoadingButtons2 from './images/loading-inline-loading-buttons2.png'
+import inlineLoadingSelect from './images/loading-inline-select-remote-load.png'
+
+<style>
+  {`
+    .img-padding {
+      padding-bottom: 16px;
+    }
+  `}
+</style>
+
+<Meta title="Design patterns/Loading/Loading Indicators" />
+
+<SuiStorybookPageLabel>Design patterns</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Loading Indicators</h1>
+  <p>Loading indicators are visual components designed to inform users that a process is currently in progress and they need to wait until it is completed. These indicators are typically employed in situations where data or content is being fetched, processed, or authenticated.</p>
+</SuiStorybookTitle>
+
+- [Full-page loading](#full-page-loading)
+- [Inline loading](#inline-loading)
+
+## Full-page loading
+
+For full-page loading, the spinner is to be used when the page is authenticating, often applied when a the platform needs to authenticate the validity of the user to access other pages.
+<img src={indicatorFullPageLoading} alt="Loading indicators on full-page screens" />
+
+### Component to use
+
+  #### Spinner
+  This type of loader is suitable when the load time is uncertain or when the user doesn't require information about the expected load time, ensuring that the user remains on the page while the data is being processed.
+
+  On property platform, the sputnik spinner is used for full-page loading.
+  <img src={indicatorSpinner} alt="Sputnik spinner specs" width="640" />
+
+  ### When to use
+
+  <table>
+   <thead>
+    <tr>
+      <th>Process</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+    <tbody>
+      <tr>
+        <td><strong>Page authentications</strong> </td>
+        <td>Only use full-page loading is for authentication processes. <br /><br />
+        This type of loading is displayed to users during the authentication process, indicating that the system is verifying their credentials or performing necessary checks. <br /><br />
+        It covers the entire page, ensuring that users understand that the authentication is in progress and that they need to wait until it is completed.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  ### When to use something else
+
+  <table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+    <tbody>
+      <tr>
+        <td><strong>Skeleton loaders</strong> </td>
+        <td>Skeletons are recommended when the content is predictable to create a seamless transition between the loading state and the actual content.</td>
+      </tr>
+      <tr>
+        <td><strong>Progress bars</strong> </td>
+        <td>Use progress bars when you can track the loading progress. They show users how much longer they have to wait for the content to finish loading by visually representing progress along a straight line. This helps users estimate the remaining wait time based on the position of the progress indicator.</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+## Inline loading
+Inline loading is a visual element that is displayed within the context of a specific component or element on a page to indicate that a loading process is underway. Unlike full-page loading spinners or progress bars, inline loading indicators are typically smaller and more localized.
+
+They are often placed near the element or component that is being loaded or updated, providing immediate feedback to the user about the progress of that specific action.
+<img src={inlineLoading} alt="Sample inline loading for button and select component" />
+
+### Components to use
+
+#### Loading buttons
+Loading buttons are used while executing actions. It's a visual indicative state that lets the user know that their request is being processed.
+Use the <strong>loading props</strong> to control whether the button is in a loading state.
+<img src={inlineLoadingButtons1} alt="Buttons on loading state" width="400" />
+
+While the button is loading, all user interactions with the button itself are disabled.
+<img src={inlineLoadingButtons2} className="img-padding" alt="Button interactions on loading state" width="400" />
+
+  ##### When to use
+  Loading buttons are used in scenarios where a user triggers an action that requires some processing time, such as submitting a form or initiating a lengthy task.
+  <table>
+   <thead>
+    <tr>
+      <th>Process</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+    <tbody>
+     <tr>
+       <td><strong>Form submissions</strong> </td>
+       <td>When a user submits a form that requires server-side processing or validation, displaying a loading spinner on the submit button helps indicate that the form is being processed, preventing multiple submissions.</td>
+      </tr>
+     <tr>
+       <td><strong>Action feedback</strong> </td>
+        <td>If an action performed by a button takes some time to complete, using a loading spinner on the button provides visual feedback.</td>
+      </tr>
+      <tr>
+        <td><strong>Asynchronous operations</strong> </td>
+        <td>If a button triggers an asynchronous operation, such as saving data or performing an API request, showing a loading spinner on the button informs the user that their action has been acknowledged and the system is actively working on it.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br /><br />
+
+#### Select component
+The sm-select component allows remote load and search which is  beneficial to provide feedback to the user during the search process. When a user initiates a search that involves retrieving data from a remote source, displaying a loading spinner indicates that the search is in progress and helps manage user expectations.
+
+Use the <strong>loading props</strong> for the <strong>sm-select remote load and search component</strong> loading to add loading spinner on the select to provide visual feedback when doing asynchronous API calls.
+<img src={inlineLoadingSelect} className="img-padding" alt="Select component showing remote load and search" width="320" />
+
+  ##### When to use
+  When a user initiates a search that involves retrieving data from a remote source, displaying a loading spinner indicates that the search is in progress and helps manage user expectations.

@@ -1,0 +1,56 @@
+  - group: 'sui-icons'
+
+    steps:
+
+      - label: 'sui-icons npm cache'
+        key: npm-cache-sui-icons
+        command: "./node_modules/@siteminder/overlord/shared/ci-scripts/npm-cache.sh libs/sui-icons/docker-compose.yaml"
+        agents:
+          queue: "${BUILDKITE_AGENT_META_DATA_QUEUE}"
+        timeout_in_minutes: 30
+        soft_fail:
+          - exit_status: 2
+
+      - label: 'sui-icons audit'
+        command: "./node_modules/@siteminder/overlord/shared/ci-scripts/audit.sh libs/sui-icons/docker-compose.yaml"
+        agents:
+          queue: "${BUILDKITE_AGENT_META_DATA_QUEUE}"
+        timeout_in_minutes: 30
+        soft_fail:
+          - exit_status: 3
+
+      - label: 'sui-icons lint'
+        depends_on:
+          - step: npm-cache-sui-icons
+            allow_failure: true
+        command: "./node_modules/@siteminder/overlord/shared/ci-scripts/lint.sh libs/sui-icons/docker-compose.yaml"
+        agents:
+          queue: "${BUILDKITE_AGENT_META_DATA_QUEUE}"
+        timeout_in_minutes: 30
+
+      - label: 'sui-icons test'
+        key: test-sui-icons
+        depends_on:
+          - step: npm-cache-sui-icons
+            allow_failure: true
+        command: "./node_modules/@siteminder/overlord/shared/ci-scripts/test.sh libs/sui-icons/docker-compose.yaml"
+        agents:
+          queue: "${BUILDKITE_AGENT_META_DATA_QUEUE}"
+        timeout_in_minutes: 30
+        artifact_paths:
+          - "libs/sui-icons/test/logs/*.log"
+          - "libs/sui-icons/test/logs/*.tar.gz"
+        retry:
+          automatic:
+          - exit_status: -1 # Agent was lost
+            limit: 1
+          - exit_status: 1  # Test failure
+            limit: 1
+          # No other exit codes supported, e.g. exit code 2 is used for non-recoverable errors e.g. compile failures
+
+      - label: 'sui-icons npm publish'
+        depends_on: test-sui-icons
+        command: "./node_modules/@siteminder/overlord/shared/ci-scripts/smpublish.sh libs/sui-icons/docker-compose.yaml"
+        agents:
+          queue: "${BUILDKITE_AGENT_META_DATA_QUEUE}"
+        timeout_in_minutes: 30

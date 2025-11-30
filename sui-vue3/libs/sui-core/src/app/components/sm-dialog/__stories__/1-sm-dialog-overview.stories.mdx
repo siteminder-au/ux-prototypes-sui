@@ -1,0 +1,231 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/sm-dialog-anatomy.png'
+import scalingDesktop from './images/sm-dialog-scaling-desktop.png'
+import scalingTablet from './images/sm-dialog-scaling-tablet.png'
+import scalingMobile from './images/sm-dialog-scaling-mobile.png'
+import variantBasic from './images/sm-dialog-variants-basic.png'
+import variantAlert from './images/sm-dialog-variants-alert.png'
+import variantForms from './images/sm-dialog-variants-forms.png'
+import variantPrompts from './images/sm-dialog-variants-prompts.png'
+import variantWarning from './images/sm-dialog-variants-warning.png'
+import specsOneLiner from './images/sm-dialog-specs-basic-1-liner.png'
+import specsInput from './images/sm-dialog-specs-basic-input.png'
+import specsMultipleContent from './images/sm-dialog-specs-basic-multiple-content.png'
+import statesDefault from './images/sm-dialog-states-default.png'
+import statesAlert from './images/sm-dialog-states-alert.png'
+import statesWarning from './images/sm-dialog-states-warning.png'
+import behaviorAppearing from './images/sm-dialog-behavior-appearing.gif'
+import behaviorPosition from './images/sm-dialog-behavior-position.png'
+import behaviorScrolling from './images/sm-dialog-behavior-scrolling.gif'
+import internationalisation from './images/sm-dialog-internationalisation.png'
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+    @media only screen and (min-width: 641px) {
+      .row {
+        display: flex;
+        column-gap: 24px;
+      }
+
+      .column {
+        flex: 0 auto;
+      }
+    }
+
+  `}
+</style>
+
+<Meta title="Components/Dialog/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Dialog</h1>
+  <p>
+    Dialogs are used to present the user with self-contained, critical actions that require them to complete a specific task, decision or acknowledgement.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Anatomy](#anatomy)
+- [Scaling and Adaptation](#scaling-and-adaptation)
+- [Variants](#variants)
+- [Specs](#specs)
+- [States](#states)
+- [Behaviours](#behaviours)
+- [Internationalisation](#internationalisation)
+- [References](#references)
+
+
+
+## Usage
+Use a dialog when you need to present the user with a critical action that needs to be made in order to complete the user journey, when it is critical to gain the users attention, or when a user is saving or deleting important data.
+  ### When to use:
+  - Use a dialog to direct the user's attention.
+  - Used for doing quick tasks.
+  - To obtain user feedback.
+  - Use a dialog to display key information.
+
+
+## Anatomy
+**1: Container** - Container house both content and controls of the dialog
+
+**2: Border** - All SUI dialogs have a 2px border on the top
+
+**3: Header** - The intention of a dialog should be indicated through its header and button text.
+
+**4: Leading icon/Prefix icon (optional)** - Describe the type of input required by a text field.
+
+**5: Body** - Provides more context on the intention of the dialog.
+
+**6: Footer** - The actions required to complete or cancel the task.
+
+**7: Close button** - The close x icon closes the dialog without submitting any information.
+
+**8: Overlay/Scrim** - An overlay is a temporary treatment that may be placed on surfaces to make the content on the surface less visible. To indicate that the body of the web app is inaccessible, an overlay is used to focus attention on the dialog.
+
+<img src={anatomy} className="img-padding" alt="Anatomy of a dialog" width="620" />
+
+
+## Scaling and adaptation
+Adjust the visual presentation of a dialog when scaling layouts for smaller displays by specifying minimum and maximum values for margins, padding, and container dimensions.
+
+On bigger displays, **basic dialogs** can expand to a **maximum width of 600px**. There is no max-height set for this. Basic dialogs are always kept  at the center of the screen.
+<img src={scalingDesktop} className="img-padding" alt="Scaling and adaptation of a dialog on desktop" />
+<img src={scalingTablet} className="img-padding" alt="Scaling and adaptation of a dialog on tablet" width="640" />
+
+Dialogs should be kept at least **24px** away from the screen's leading and trailing edges. On tiny displays, dialogs scale vertically.
+<img src={scalingMobile} className="img-padding" alt="Scaling and adaptation of a dialog on mobile" width="320" />
+
+
+## Variants
+
+  ### Basic
+  Basic dialogs interrupt users with important information, details, or activities. Alerts, quick selection, and confirmation are common use cases for simple dialogs.
+  <img src={variantBasic} className="img-padding" alt="Dialog basic variant" />
+
+  ### Alert
+  Alert dialogs disrupt users with important information, details, or tasks.
+  <img src={variantAlert} className="img-padding" alt="Dialog alert variant" />
+
+  ### Warning
+  There will be implications if an action is done. Using an icon or altering the color of text are two options for conveying severity.
+  <img src={variantWarning} className="img-padding" alt="Dialog warning variant" />
+
+  ### Prompts
+  When the user must make a conscious decision, or when you wish to imply some hesitancy. Requesting a choice from the user that will affect any future activities inside the app, consenting to terms and conditions before proceeding to the rest of the application, and so forth.
+  <img src={variantPrompts} className="img-padding" alt="Dialog prompt variant" />
+
+  ### Forms
+  In order for the dialog to be finished and closed, an action must be made (i.e. fill up a form, checkboxes, etc.) There are cancel and major action buttons on this page.
+  <img src={variantForms} className="img-padding" alt="Dialog forms variant" />
+
+
+## Specs
+
+  ### One-liner
+  <img src={specsOneLiner} className="img-padding" alt="Basic one-liner dialog specs" width="800" />
+
+  ### Input
+  <img src={specsInput} className="img-padding" alt="Basic input dialog specs" width="800" />
+
+  ### Multiple content
+  <img src={specsMultipleContent} className="img-padding" alt="Basic multiple content dialog specs" width="800" />
+
+
+## States
+  ### Default
+  <div className="row">
+  <div className="column">
+    <ul className="list">
+      <li><strong>Top border:</strong> 2px; **Color:** $app-info</li>
+      <li><strong>Container border:</strong> $blue-neu-mid</li>
+      <li><strong>Text color:</strong> $grey-neu-black</li>
+      <li><strong>Prefix icon color:</strong> $primary-blue</li>
+      <li><strong>Button:</strong> Tertiary; Primary</li>
+      <li><strong>Elevation:</strong> shadow-xl</li>
+    </ul>
+  </div>
+  <div className="column">
+  <img src={statesDefault} alt="Dialog default state" width="560" />
+  </div>
+  </div>
+
+  ### Alert
+  <div className="row">
+  <div className="column">
+    <ul className="list">
+      <li><strong>Top border:</strong> 2px; **Color:** $app-alert</li>
+      <li><strong>Container border:</strong> $app-alert</li>
+      <li><strong>Text color:</strong> $grey-neu-black</li>
+      <li><strong>Prefix icon color:</strong> $app-alert</li>
+      <li><strong>Button:</strong> Tertiary; Alert</li>
+      <li><strong>Elevation:</strong> shadow-xl</li>
+    </ul>
+  </div>
+  <div className="column">
+  <img src={statesAlert} alt="Dialog alert state" width="560" />
+  </div>
+  </div>
+
+  ### Warning
+  <div className="row">
+  <div className="column">
+    <ul className="list">
+      <li><strong>Top border:</strong> 2px; **Color:** $app-warning</li>
+      <li><strong>Container border:</strong> $app-warning</li>
+      <li><strong>Text color:</strong> $grey-neu-black</li>
+      <li><strong>Prefix icon color:</strong> $app-warning</li>
+      <li><strong>Button:</strong> Tertiary; Warning</li>
+      <li><strong>Elevation:</strong> shadow-xl</li>
+    </ul>
+  </div>
+  <div className="column">
+  <img src={statesWarning} alt="Dialog warning state" width="560" />
+  </div>
+  </div>
+
+
+## Behaviours
+
+  ### Appearing
+  Dialogs appear unexpectedly, causing users to pause their current task/goal. They should be used with caution, since not every option or setting deserves an interruption.
+
+  A **fade-transition** pattern is used to enter and exit dialogs on the screen
+  <img src={behaviorAppearing} alt="Dialog appearing when a button is clicked" />
+
+  ### Position
+  Dialogs maintain focus until they are closed or an action is taken. With the exception of full-screen dialogs, they should not be blocked by other components or show partially on screen.
+  <img src={behaviorPosition} alt="Dialog position maintaining focus" />
+
+  ### Scrolling
+  Most dialog should avoid scrolling.  When scrolling is needed, the dialog title is fixed at the top, followed by the buttons at the bottom. This guarantees that the chosen content, as well as the title and buttons, stay visible even when scrolling.
+
+  Outside components, such as the overlay, do not scroll with dialogs.
+  <img src={behaviorScrolling} alt="Dialog scrolling behavior" />
+
+  ### Dismissing dialogs
+  Dialogs can be dismissed by:
+
+  - If a "cancel" button is displayed, press it.
+  - Using the Escape key on the keyboard
+  - Click elsewhere: If you click outside the dialog, it will dismiss automatically.
+  - To proceed, if the user's ability to dismiss a dialog is disabled, the user must select a dialog action.
+
+
+## Internationalisation
+The layout of the alert dialog is mirrored for RTL (right-to-left) languages. Text is positioned to the right, and buttons are aligned to the left.
+<img src={internationalisation} alt="Dialog internationalisation" width="560" />
+
+### References
+[Modal Dialog Example](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/dialog/)
+
+[Alert Dialog Example](https://www.w3.org/WAI/ARIA/apg/patterns/alertdialog/examples/alertdialog/)
+
+[M3 Dialogs](https://m3.material.io/components/dialogs/guidelines#89a9e18e-b7d6-4a8b-9640-07c28a49f8c0)

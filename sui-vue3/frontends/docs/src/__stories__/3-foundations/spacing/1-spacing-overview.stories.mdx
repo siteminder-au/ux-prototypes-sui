@@ -1,0 +1,132 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import spacing from './images/spacing.png'
+import restrictionsCaution from './images/restrictions-caution.png'
+import restrictionsDo from './images/restrictions-do.png'
+import restrictionsDont from './images/restrictions-dont.png'
+
+<Meta title="Foundations/Spacing/Overview" />
+
+<style>
+  {`
+    .card-col {
+      flex-basis: 400px;
+      max-width: 400px;
+    }
+  `}
+</style>
+
+<SuiStorybookPageLabel>Foundations</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Spacing</h1>
+  <p>
+    To ensure consistency and to help our product be designed and built efficiently, we use a hybrid 4/8pt grid, with set spacing variables to use in our app.
+  </p>
+</SuiStorybookTitle>
+
+- [Why do we use a hybrid 4/8pt grid?](#why-do-we-use-a-hybrid-4/8pt-grid?)
+- [What spacing variables are available](#what-spacing-variables-are-available)
+- [Restrictions](#restrictions)
+
+## Why do we use a hybrid 4/8pt grid?
+
+SUI uses set spacing variables all of which are a multiple of either a 4 or an 8.
+The reason we have set variables is so that visually, we have a consistent
+rhythm throughout our app. This is often referred to as vertical rhythm.
+
+The reason SUI uses a 8pt grid is because it scales perfectly no matter what
+device the user is on. Many popular design systems use this grid so that the
+components scale perfectly despite the scale being used:
+@0.75, @1, @1.5, @2, @3, etc.
+
+<img src={spacing} alt="Spacing" width="756" />
+
+
+## What spacing variables are available
+
+Another hugely important reason we have set variables is so that we can easily communicate with the product engineers which spacing variable to use.
+Below you will find a complete list of the spacing variables available, and what they are named. **These are available to your engineers in Tailwind.**
+
+```ts dark
+px: '4px',
+'0': '0',
+'4': '4px',
+'8': '8px',
+'12': '12px',
+'16': '16px',
+'20': '20px',
+'24': '24px',
+'32': '32px',
+'40': '40px',
+'48': '48px',
+'56': '56px',
+'64': '64px',
+'72': '72px',
+'80': '80px',
+'96': '96px',
+'112': '112px',
+'128': '128px',
+'160': '160px',
+'192': '192px',
+'224': '224px',
+'256': '256px',
+'320': '320px',
+'384': '384px',
+'448': '448px',
+'512': '512px',
+'640': '640px',
+'768': '768px',
+'896': '896px',
+'1024': '1024px',
+```
+
+These spacing variables can affect properties such as: `padding`, `margin`, `width`, `height`, `maxHeight`, `gap`, `inset`, `space`, and `translate`.
+If the property directly affects the visual rhythm of your page layout then you should be using a spacing variable.
+**This should also be detailed in your dev handoff notes.**
+
+Essentially, we use a 4pt grid up until `'24'` and then we switch to an 8pt grid up until `'96'`.
+
+If there is a spacing variable that you would like added, that is a multiple of 8, please get in contact with the SUI team to have it added.
+
+<div className="sui-storybook-highlight sui-storybook-highlight--warning">
+  Please strive to always stay within our variables. We understand that with really small or detailed components, it can sometimes be impossible,
+  but wherever possible you must stick to the spacing set within the SUI components, to reduce confusion between design and engineering.
+</div>
+
+<br/>
+
+### Why is having set variables important?
+- It takes a lot of the guesswork out of spacing to help designers deliver a clear, polished, and consistent layout.
+- Not having a consistent unit of measurement can lead to layout inconsistencies between pages, particularly on projects with two or more designers.
+
+
+## Restrictions
+
+<div className="grid grid-cols-2 gap-x-24 gap-y-32">
+  <div className="card-col">
+    <div className="p-16 bg-app-success-light rounded-default flex flex-col justify-between">
+      <img src={restrictionsDo} alt="Sample do's" width="380" />
+      <span className="sui-storybook-image-caption">Correct medium component spacing</span>
+    </div>
+    <strong className="block mt-8">Do</strong>
+    <span>Do use consistent spacing, with proper hierarchy.</span>
+  </div>
+
+  <div className="card-col">
+    <div className="p-16 bg-app-warning-light rounded-default flex flex-col justify-between">
+      <img src={restrictionsDont} alt="Sample don'ts" width="380" />
+      <span className="sui-storybook-image-caption">Incorrect medium component spacing</span>
+    </div>
+    <strong className="block mt-8">Don't</strong>
+    <span>Don't use inconsistent spacing with half pixels, that are not within the set variable list.</span>
+  </div>
+
+  <div className="card-col">
+    <div className="p-16 bg-app-alert-light rounded-default flex flex-col justify-between">
+      <img src={restrictionsCaution} alt="Sample caution" width="380" />
+    </div>
+    <strong className="block mt-8">Caution</strong>
+    <span>Please ensure you are doing design QA with your product team. Human error will inevitably occur and there is a chance that design errors will get built into your product.</span>
+  </div>
+</div>

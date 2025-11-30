@@ -7,7 +7,6 @@
     "npm": ">=9.0.0"
   },
   "scripts": {
-    "postinstall": "git clone https://github.com/siteminder-au/sui.git sui-vue3 || echo 'sui-vue3 already exists'",
     "install": "cd prototypes && npm install",
     "build": "cd prototypes && npm run build",
     "start": "cd prototypes && npm start"

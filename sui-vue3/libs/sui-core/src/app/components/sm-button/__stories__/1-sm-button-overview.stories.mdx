@@ -1,0 +1,200 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy1 from './images/button-anatomy-1.png'
+import anatomy2 from './images/button-anatomy-2.png'
+import dialogSample from './images/button-dialog-sample.png'
+import inlineCardSample from './images/button-inline-card-sample.png'
+import interaction from './images/button-interaction.png'
+import loading from './images/button-loading.png'
+import largeIcon from './images/button-sizing-large-icon.png'
+import large from './images/button-sizing-large.png'
+import mediumIcon from './images/button-sizing-medium-icon.png'
+import medium from './images/button-sizing-medium.png'
+import mini from './images/button-sizing-mini.png'
+import small from './images/button-sizing-small.png'
+import specsPrimary from './images/button-specs-primary.png'
+import specsTertiary from './images/button-specs-tertiary.png'
+import specsText from './images/button-specs-text.png'
+import typesText from './images/button-types-text.png'
+import typesUtility from './images/button-types-utility.png'
+import usage from './images/button-usage.png'
+import variantsPrimary from './images/button-variants-primary.png'
+import variantsSecondary from './images/button-variants-secondary.png'
+import variantsTertiary from './images/button-variants-tertiary.png'
+import variantsText from './images/button-variants-text.png'
+
+<Meta title="Components/Button/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Button</h1>
+  <p>
+    Buttons allow users to identify and initiate actions quickly and easily.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Specs](#specs)
+- [Variants](#variants)
+- [Types](#types)
+- [Behaviour](#behaviour)
+
+
+## Usage
+
+### When to use
+Use buttons to communicate actions that users can trigger. Buttons are used when you want an action to be available and easy to identify to a user.
+It is a quick way to allow them to take important actions.
+
+#### Primary
+Typically we only use one primary action per page. The primary action is the most important action available to the user and so that it doesn't lose its focal significance on the page, it should only be used once.
+
+#### Secondary
+Any other important actions, that are not the primary action, should use the secondary button. These buttons are commonly used in conjunction with the primary, as part of a pair, with all the secondary action/s using this styling.
+
+#### Tertiary
+Less prominent actions, or independent actions can use tertiary styling. An example of this is the advanced filters button used in the filter pattern. 'Cancel' buttons should always be tertiary.
+
+#### Text
+Use text buttons for the least prominent actions on a page. 'Back' buttons should always be text buttons. These buttons have the least emphasis on a page, due to the container not being filled or stroked with any colour, so these can be used multiple times.
+
+<img src={usage} alt="Usage" width="846" />
+
+## Formatting
+
+### Anatomy
+
+<img src={anatomy1} alt="Anatomy" width="252" />
+
+**1: Container **- The button container holds the content within the button. It can be filled, stroked or both. The container has a border radius of 4px.
+
+**2: Label** - The button label is the most important element of a button. This text should describe the resulting action if a user triggers a button. Please ensure users who are using screen readers can make sense of the button label.
+
+Please use sentence case, don't capitalise all the letters of the first letter of each word.
+
+**3: Icon (optional)** - Use icons to visually communicate the button's action and help call attention to it. There are certain situations where an icon will suffice (using an icon button) in place of a label, an example of this is the context-menu icon button which is used widely throughout our app.
+
+You can use both suffix and prefix icons in buttons.
+
+**4: Badge (optional)** - Badges can also be used with buttons. In buttons containing a text label, please only use an inline medium badge. Icon buttons can contain both inline medium as well as small badges.
+
+<img src={anatomy2} alt="Anatomy with badges" width="420" />
+
+### Sizing
+Our buttons come in large, medium, small and mini sizes. Icon buttons are available in large and medium only.
+
+#### Large/default
+This is the size you should use at all times, unless space is an issue. The font style is identical to para-lg, except the line-height is 24px. Padding on top and bottom is `$sm-8` and left and right is `$sm-24`
+
+<img src={large} alt="Large button" width="756" />
+
+#### Medium
+Only use medium sized buttons in conjunction with mid to smaller components such as medium tables. Padding on top and bottom is `$sm-8` and left and right is `$sm-20`
+
+<img src={medium} alt="Medium button" width="756" />
+
+#### Small
+Only use small sized buttons in conjunction with small components such as tables. Padding on top and bottom is `$sm-8` and left and right is `$sm-16`
+
+<img src={small} alt="Small button" width="756" />
+
+#### Mini
+**This size should only be used in extreme cases where space is tight**. The font style is identical to para-xsm, except the line-height is 24px. Padding on top and bottom is `$sm-8` and left and right is `$sm-12`
+
+<img src={mini} alt="Mini button" width="756" />
+
+#### Large/default icon button
+This is the default sized icon button. It should be used in most cases, especially when paired with a button with a text label, as they will sit side by side.
+
+<img src={largeIcon} alt="Large button with icon" width="756" />
+
+#### Medium icon button
+In cases where size is an issue, we have a medium icon button, sometimes used to close components where space may be an issue, such as a popover.
+
+<img src={mediumIcon} alt="Medium button with icon" width="756" />
+
+
+## Specs
+
+### Primary
+
+<img src={specsPrimary} alt="Primary button specs" width="846" />
+
+### Tertiary
+
+<img src={specsTertiary} alt="Tertiary button specs" width="846" />
+
+### Text
+
+<img src={specsText} alt="Text button specs" width="846" />
+
+
+## Variants
+
+### Primary
+
+<img src={variantsPrimary} alt="Primary button" width="846" />
+
+### Secondary
+
+<img src={variantsSecondary} alt="Secondary button" width="846" />
+
+### Tertiary
+
+<img src={variantsTertiary} alt="Tertiary button" width="846" />
+
+### Text
+
+<img src={variantsText} alt="Text button" width="846" />
+
+
+## Types
+
+### Utility buttons
+A HSB scale has been used to create the utility color palette. The light, medium, and standard colors were carried over and the dark and black values were calculated with brightness -10 and -20 from the standard colour.
+
+The alert type is only available as a Primary button.
+
+<img src={typesUtility} alt="Utility buttons" width="504" />
+
+### How and when to use utility buttons
+Warning, success and alert buttons are available to use for specific types of components and in specific types of situations.
+
+**Warning:** Use the warning buttons to help alert the user that they might be doing something irreversible, such as deleting data.
+
+**Success:** Use the success buttons to help alert the user that they will or have successfully completed a task.
+
+**Alert:** Use the alert button to help warn the user that they may be performing an action that they didn’t intend to, such as closing a drawer without saving the information first.
+
+**Dialog examples**
+
+<img src={dialogSample} alt="Dialog buttons" width="846" />
+
+**Inline card examples**
+
+<img src={inlineCardSample} alt="Inline card buttons" width="846" />
+
+### Text links
+
+Please use the following for styling links within text.
+
+<img src={typesText} alt="Text links" width="588" />
+
+
+## Behaviour
+
+### Interactions
+A button can be triggered by clicking anywhere within the button container.
+
+<img src={interaction} alt="Interaction" width="84" />
+
+### Loading Buttons
+Loading buttons are used while executing actions. It's a visual indicative state that lets the user know that their request is being processed. While the button is loading, all user interactions with the button itself are disabled.
+
+Use the **loading props** to control whether the button is in a loading state.
+
+**Please keep in mind that the spinner is hidden from assistive technologies, so make sure to notify screen reader users of the loading status.**
+
+<img src={loading} alt="Loading" width="588" />

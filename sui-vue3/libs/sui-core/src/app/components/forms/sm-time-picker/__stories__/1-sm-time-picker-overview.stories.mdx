@@ -1,0 +1,95 @@
+import { Meta } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import usage from './images/sm-time-picker-usage.png'
+import anatomy from './images/sm-time-picker-anatomy.png'
+import statesDefault from './images/sm-time-picker-states-default.png'
+import statesActive from './images/sm-time-picker-states-active.png'
+import statesSelected from './images/sm-time-picker-states-selected.png'
+import statesDisabled from './images/sm-time-picker-states-disabled.png'
+import specs from './images/sm-time-picker-specs.png'
+import variantDefault from './images/sm-time-picker-default.png'
+import variantRequired from './images/sm-time-picker-required.png'
+import behaviour from './images/sm-time-picker-behavior.gif'
+
+
+
+<style>
+  {`
+    .img-padding {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+  `}
+</style>
+
+<Meta title="Components/Form/Time-Picker/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+ <h1>Time Picker</h1>
+  <p>
+    A time picker allows the user to select a specific time.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [States](#states)
+- [Specs](#specs)
+- [Variants](#variants)
+- [Behaviour](#behaviour)
+
+
+## Usage
+The time picker lets users to either choose a single time from a menu or input a specific time as needed for scheduling. It's frequently used in forms that enables users to specify a time.
+### Scheduling
+Time pickers are often used for scheduling, whether users need to choose a particular time or establish a range of availability.
+<img src={usage} className="img-padding" alt="Time picker used for check-in and check-out." width="640px"/>
+
+## Formatting
+### Anatomy
+**1: Label** - Labels should show what information is needed in the field. The label is aligned to the left.
+
+**2: Time input field** - Choosing this field reveals a dropdown where available times are displayed. Upon selecting a time, it will appear in the text input. The default time is a 24-hour format, customization is possible using the `from` and `to` props.
+
+**3: Time selection dropdown** - This contains all the available times for selection. By default time intervals of 1 hour is displayed. Customisation is possible through the `step` props.
+
+<img src={anatomy} className="img-padding" alt="Time picker anatomy." width="640px"/>
+
+### Placement
+By default, the time selection dropdown will appear below the select field. If there is no space below the field in the viewport, then it will appear above the field.
+
+### Sizing
+The width of the select input is always 100% and can be controlled via width of a parent container.
+
+
+## States
+### Default
+<img src={statesDefault} className="img-padding" alt="Time picker default state." width="720px"/>
+
+### Active
+<img src={statesActive} className="img-padding" alt="Time picker active state." width="720px"/>
+
+### Selected
+<img src={statesSelected} className="img-padding" alt="Time picker selected state." width="720px"/>
+
+### Disabled
+<img src={statesDisabled} className="img-padding" alt="Time picker disabled state." width="720px"/>
+
+## Specs
+<img src={specs} className="img-padding" alt="Time picker specs." width="480px"/>
+
+
+## Variants
+### Default
+<img src={variantDefault} className="img-padding" alt="Time picker default variant." width="720px"/>
+
+### Required
+<img src={variantRequired} className="img-padding" alt="Time picker requied variant." width="720px"/>
+
+
+## Behaviour
+Users have the option to select a time from the drop-down menu or input their choice directly. If they type into the input, the component will highlight the closest matching option from the list.
+<img src={behaviour} className="img-padding" alt="Time picker behaviour." width="640px"/>

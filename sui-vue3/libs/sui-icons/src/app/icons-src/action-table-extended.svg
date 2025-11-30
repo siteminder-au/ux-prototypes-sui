@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>sui-final/icons/24px/actions/action-table-extended</title>
+    <g id="sui-final/icons/24px/actions/action-table-extended" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M10,0 C11.1045695,0 12,0.8954305 12,2 L12,22 C12,23.1045695 11.1045695,24 10,24 L4,24 C2.8954305,24 2,23.1045695 2,22 L2,2 C2,0.8954305 2.8954305,0 4,0 L10,0 Z M19,0 C20.5976809,0 21.9036609,1.24891996 21.9949073,2.82372721 L22,3 L22,21 C22,22.5976809 20.75108,23.9036609 19.1762728,23.9949073 L19,24 L14,24 L14,22 L19,22 C19.5128358,22 19.9355072,21.6139598 19.9932723,21.1166211 L20,21 L20,16.833 L14,16.8333333 L14,14.8333333 L20,14.833 L20,9.166 L14,9.16666667 L14,7.16666667 L20,7.166 L20,3 C20,2.48716416 19.6139598,2.06449284 19.1166211,2.00672773 L19,2 L14,2 L14,0 L19,0 Z M10,16.833 L4,16.833 L4,22 L10,22 L10,16.833 Z M10,9.166 L4,9.166 L4,14.833 L10,14.833 L10,9.166 Z M10,2 L4,2 L4,7.166 L10,7.166 L10,2 Z" id="table-extended" fill="#333333" fill-rule="nonzero"></path>
+    </g>
+</svg>

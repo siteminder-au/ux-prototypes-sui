@@ -1,0 +1,12 @@
+{
+  "page-title": "Manage users",
+  "add-user-button": "Add user",
+  "empty-state-title": "No users added",
+  "empty-state-description": "Add users to your account to manage them here.",
+  "tag-admin-role": "Admin",
+  "tag-general-role": "General",
+  "dropdown-label": "More actions",
+  "dropdown-active-label": "ACTIVE",
+  "dropdown-edit-user-label": "Edit this user",
+  "dropdown-delete-user-label": "Delete this user"
+}

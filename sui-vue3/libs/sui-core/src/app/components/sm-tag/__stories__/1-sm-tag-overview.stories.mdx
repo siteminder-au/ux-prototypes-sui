@@ -1,0 +1,86 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomy from './images/sm-tag-formatting-anatomy.png'
+import variantSm from './images/sm-tag-variants-small.png'
+import variantMd from './images/sm-tag-variants-medium.png'
+import variantLg from './images/sm-tag-variants-large.png'
+import typeAlert from './images/sm-tag-types-alert.png'
+import typeDefault from './images/sm-tag-types-default.png'
+import typeDisabled from './images/sm-tag-types-disabled.png'
+import typeFocus from './images/sm-tag-types-focus.png'
+import typeSuccess from './images/sm-tag-types-success.png'
+import typeWarning from './images/sm-tag-types-warning.png'
+
+
+
+<Meta title="Components/Tag/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Tag</h1>
+  <p>Use tags to label, categorise, or organise items so that our users can make selections, filter content and enter data.</p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Formatting](#formatting)
+- [Variants](#variants)
+- [Types](#types)
+
+
+## Usage
+### What is a tag?
+Tags are used as a way to visually label and categorise data for our users. This in turn allows our users to easily comprehend the data they are shown and are able to make selections and filter out unnecessary information.
+
+### When should I use a tag?
+You should use this component if:
+
+You are assigning a status to an item (i.e. the status of a channel can be ‘Enabled’, ‘Awaiting setup’, ‘Disabled’, etc).
+You are using advanced filters: this is automatically used in our multi-select component.
+
+## Formatting
+### Anatomy
+**1: Label and content**  - This is where the label of the tag goes. This content area can also accept icons. Both prefix and suffix icons are fine to use, however if you have closable/dismissable tags, be aware that using a suffix icon may look cluttered.
+
+**2: Close (optional)** - The closable property is optional, either set it to true or false
+
+<img src={anatomy} alt="Tag anatomy" width="158" />
+
+
+## Variants
+### Small tags
+Use small tags when assigning status labelling to an item or when space is an issue.
+<img src={variantSm} alt="Small tag variant" width="478" />
+
+### Medium tags
+Use medium tags for removable items such as when in use with the multi-select component.
+<img src={variantMd} alt="Medium tag variant" width="498" />
+
+### Large tags
+Use the default large tag for simplified filter patterns.
+<img src={variantLg} alt="Large tag variant" width="506" />
+
+## Types
+### Default
+The default tag uses the info utility colours. These are just standard tags and are used to assign a non-important status and in patterns such as the filter pattern.
+<img src={typeDefault} alt="Default tag" width="283" />
+
+### Success
+Use success tags when assigning an active or working status, such as when a channel or plug-in is active.
+<img src={typeSuccess} alt="Success tag" width="283" />
+
+### Warning
+Only use warning tags when indicating an error status to an item, such as when a channel is not responding due to an error.
+<img src={typeWarning} alt="Warning tag" width="283" />
+
+### Alert
+Use alert tags when you want to indicate to the user that an item is experiencing difficulty, such as when a channel is slow or updates are slow.
+<img src={typeAlert} alt="Alert tag" width="283" />
+
+### Disabled
+Use disabled tags when you want to indicate a disabled status. This status usually means that something can become enabled again, however at this time it is disabled.
+<img src={typeDisabled} alt="Disabled tag" width="283" />
+
+### Focus
+For keyboard users, this component is set to our default focus style.
+<img src={typeFocus} alt="Focus tag" width="283" />

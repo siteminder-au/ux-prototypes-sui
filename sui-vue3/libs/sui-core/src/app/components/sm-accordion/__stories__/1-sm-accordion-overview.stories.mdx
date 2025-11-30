@@ -1,0 +1,204 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { SuiStorybookPageLabel, SuiStorybookTitle } from '@/components'
+import anatomyStandardImage from './images/accordion-anatomy-standard.png'
+import anatomyGraphicImage from './images/accordion-anatomy-graphic.png'
+import typesStandardImage from './images/accordion-types-standard.png'
+import typesStandardTwoImage from './images/accordion-types-standard-2.png'
+import typesStackedImage from './images/accordion-types-stacked.png'
+import typesStackedTwoImage from './images/accordion-types-stacked-2.png'
+import typesNestedImage from './images/accordion-types-nested.png'
+import typesNestedTwoImage from './images/accordion-types-nested-2.png'
+import typesGraphicImage from './images/accordion-types-graphic.png'
+import typesGraphicTwoImage from './images/accordion-types-graphic-2.png'
+import formattingAlignmentImage from './images/accordion-formatting-alignment.png'
+import formattingPlacementImage from './images/accordion-formatting-placement.png'
+import behavioursStatesImage from './images/accordion-behaviours-states.png'
+import behavioursStatesTwoImage from './images/accordion-behaviours-states-2.png'
+import behavioursInteractionImage from './images/accordion-behaviours-interaction.png'
+import behavioursInteractionTwoImage from './images/accordion-behaviours-interaction-2.png'
+import specsStandardImage from './images/accordion-specs-standard.png'
+import specsStandardTwoImage from './images/accordion-specs-standard-2.png'
+import specsStandardThreeImage from './images/accordion-specs-standard-3.png'
+import specsGraphicImage from './images/accordion-specs-graphic.png'
+
+<Meta title="Components/Accordion/Overview" />
+
+<SuiStorybookPageLabel>Components</SuiStorybookPageLabel>
+
+<SuiStorybookTitle>
+  <h1>Accordion</h1>
+  <p>
+    An accordion is a vertically stacked list of headers that users can interact with to expose (expand) or hide (collapse) content associated with them.
+    They reduce page length and scrolling.
+  </p>
+</SuiStorybookTitle>
+
+- [Usage](#usage)
+- [Anatomy](#anatomy)
+- [Types](#types)
+- [Formatting](#formatting)
+- [Behaviors](#behaviors)
+- [Specs](#specs)
+- [References](#references)
+
+## Usage
+
+1. Use accordions to see a brief overview of several related sections of content
+2. Use accordions to section information and reduce clutter to make the page appear less daunting
+3. Accordions reduce page length and scrolling
+4. Use when there is limited space and long content cannot be displayed all at once, such as on a mobile interface or a side panel.
+
+## Anatomy
+
+### Standard
+
+**1: Header** - Includes the section title and acts as a control to reveal the panel
+
+**2: Icon** - Determines whether the panel is open or closed
+
+**3: Content Panel** - Container portion of content related to an accordion header
+
+**4: Action/ Action icon (optional)** - Extra action displayed on the right of the accordion. Note that this action is different from the click state that expands the accordion. This is required in order to make it accessible.
+
+<img src={anatomyStandardImage} alt="Standard anatomy" />
+
+### Graphic
+
+**1: Header** - Includes the section title and acts as a control to reveal the panel
+
+**2: Icon** - Determines whether the panel is open or closed
+
+**3: Content Panel** - Container portion of content related to an accordion header
+
+**4: Action/action icon (optional)** - Extra action displayed on the right of the accordion. Note that this action is different from the click state that expands the accordion. This is required in order to make it accessible.
+
+**5: Image (optional)** - Image related to an accordion header
+
+<img src={anatomyGraphicImage} alt="Graphic image anatomy" />
+
+
+## Types
+
+### Standard
+
+On busy pages, you can hide some information behind a standard accordion item. Standard accordions can be separated by a substantial amount of space. When you don't need to save vertical space, this method is ideal.
+
+This has been designed with minimal styles, allowing you to enhance it visually as needed. SUI enforces only the chevron icon, which indicates to users that the item can be opened.
+
+<img src={typesStandardImage} alt="Standard type" width="756px" />
+
+**Best practice**
+
+- To trigger expansion, make the entire title label area clickable.
+- Suitable for use with no more than ten sections of content.
+- If you want your users to see all of your content at once, don't use it.
+
+<img src={typesStandardTwoImage} alt="Standard best practice" />
+
+### Stacked
+
+Information is hidden behind multiple accordions, and the user can select which options to view. Use **stacked props - true** to indicate whether the accordion should be stacked on top of each other.
+
+<img src={typesStackedImage} alt="Stacked type" width="756px" />
+
+**Best practice**
+
+- Stacked accordions are usually used to visually **display a group**, you may use any number of them.
+- If you want to save space, this approach is recommended.
+
+<img src={typesStackedTwoImage} alt="Stacked best practice" />
+
+### Nested
+
+Nested accordions are similar to stacked accordions, except that they can have multiple sublayers. In SUI, a second and third level of accordions can be used within a standard accordion.
+
+<img src={typesNestedImage} alt="Nested type" />
+
+**Best practice**
+
+- Don't use a nested accordion without a standard accordion.
+- Minimize use to only one nested accordion per design. Nested accordions increase cognitive load and should only be applied when the content of the header is contextually relevant
+
+<img src={typesNestedTwoImage} alt="Nested type best practice" />
+
+
+### Graphic
+
+Graphic accordions usually showcase images that are related to the accordion header. In Siteminder, these are usually used for Room types and Extras.
+
+<img src={typesGraphicImage} alt="Graphic type" />
+
+**Best practice**
+
+- Images uploaded should be related to the content
+- Always make sure that alternative text is displayed for screen readers
+
+<img src={typesGraphicTwoImage} alt="Graphic type best practice" />
+
+
+## Formatting
+
+### Alignment
+
+By default, the chevron icon appears at the left side of the header. Make sure that the header is aligned with other type elements in the layout.
+
+<img src={formattingAlignmentImage} alt="Alignment" />
+
+### Placement
+
+Accordions can be placed on the main page content or within a container such as a drawer or card.
+
+<img src={formattingPlacementImage} alt="Placement" />
+
+
+## Behaviors
+
+### States
+
+There are two main states for the accordion
+- collapsed
+- expanded
+
+The arrow icon at the rights side of the accordion indicates which state it is in. The arrow points downward when collapsed and upward when expanded.
+
+Accordions start in the collapsed state by default, with all content panels closed. Beginning in a collapsed state provides the user with a high-level overview of the available data.
+
+<img src={behavioursStatesImage} alt="Behaviour" />
+
+Accordions have interactive states for focus and disabled in addition to the collapsed and expanded states.
+
+<img src={behavioursStatesTwoImage} alt="Disabled and focused behaviour" />
+
+### Interaction
+
+#### Mouse
+
+Users can change the state of the page by clicking on the arrow or anywhere in the header area.
+
+<img src={behavioursInteractionImage} alt="Mouse interaction" />
+
+For disabled state, accordion is not clickable and cannot expand
+
+<img src={behavioursInteractionTwoImage} alt="Disabled mouse interaction" width="480px" />
+
+
+## Specs
+
+### Standard
+
+<img src={specsStandardImage} alt="Specs level 1" />
+<img src={specsStandardTwoImage} alt="Specs level 2" />
+<img src={specsStandardThreeImage} alt="Specs level 3" />
+
+### Graphic
+
+<img src={specsGraphicImage} alt="Graphic specs" />
+
+
+## References
+
+https://www.nngroup.com/articles/accordions-complex-content/
+
+https://uxdesign.cc/ui-cheat-sheet-accordions-3e88f0d4dfee
+
+https://blog.prototypr.io/designing-the-accordion-best-practices-3c1bd54bf26e

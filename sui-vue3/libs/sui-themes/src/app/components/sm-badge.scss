@@ -1,0 +1,132 @@
+/**
+ * Badge styles
+ * These are the actual CSS properties for the badge component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+
+ body {
+  .sm-badge {
+    & .sm-badge__content {
+      text-transform: var(--sm-c-badge-text-transform);
+    }
+
+    /* Sizes */
+    &.sm-badge--size_small {
+      border-radius: var(--sm-c-badge-border-radius-small);
+      font-size: var(--sm-c-badge-font-size-small);
+      height: var(--sm-c-badge-height-small);
+      width: var(--sm-c-badge-width-small);
+
+      .sm-badge__content {
+        line-height: var(--sm-c-badge-line-height-small);
+      }
+    }
+
+    &.sm-badge--size_medium {
+      border-radius: var(--sm-c-badge-border-radius-medium);
+      font-size: var(--sm-c-badge-font-size-medium);
+      height: var(--sm-c-badge-height-medium);
+      min-width: var(--sm-c-badge-min-width-medium);
+      padding: var(--sm-c-badge-padding-medium);
+
+      .sm-badge__content {
+        line-height: var(--sm-c-badge-line-height-medium);
+      }
+    }
+
+    &.sm-badge--size_large {
+      border-radius: var(--sm-c-badge-border-radius-large);
+      font-size: var(--sm-c-badge-font-size-large);
+      height: var(--sm-c-badge-height-large);
+      min-width: var(--sm-c-badge-min-width-large);
+      padding: var(--sm-c-badge-padding-large);
+
+      .sm-badge__content {
+        line-height: var(--sm-c-badge-line-height-large);
+      }
+    }
+
+    /* Types */
+    &.sm-badge--type-info {
+      background: var(--sm-c-badge-color-background-info);
+
+      .sm-badge__content {
+        color: var(--sm-c-badge-color-text-info);
+      }
+    }
+
+    &.sm-badge--type-alert {
+      background: var(--sm-c-badge-color-background-alert);
+
+      .sm-badge__content {
+        color: var(--sm-c-badge-color-text-alert);
+      }
+    }
+
+    &.sm-badge--type-success {
+      background: var(--sm-c-badge-color-background-success);
+
+      .sm-badge__content {
+        color: var(--sm-c-badge-color-text-success);
+      }
+    }
+
+    &.sm-badge--type-warning {
+      background: var(--sm-c-badge-color-background-warning);
+
+      .sm-badge__content {
+        color: var(--sm-c-badge-color-text-warning);
+      }
+    }
+
+    &.sm-badge--light-type-info {
+      background: var(--sm-c-badge-color-background-light-info);
+
+      .sm-badge__content {
+        color: var(--sm-c-badge-color-text-light-info);
+      }
+    }
+
+    &.sm-badge--light-type-alert {
+      background: var(--sm-c-badge-color-background-light-alert);
+
+      .sm-badge__content {
+        color: var(--sm-c-badge-color-text-light-alert);
+      }
+    }
+
+    &.sm-badge--light-type-success {
+      background: var(--sm-c-badge-color-background-light-success);
+
+      .sm-badge__content {
+        color: var(--sm-c-badge-color-text-light-success);
+      }
+    }
+
+    &.sm-badge--light-type-warning {
+      background: var(--sm-c-badge-color-background-light-warning);
+
+      .sm-badge__content {
+        color: var(--sm-c-badge-color-text-light-warning);
+      }
+    }
+
+    /* Disabled state */
+    &.sm-badge--disabled {
+      background: var(--sm-c-badge-color-background-disabled);
+
+      .sm-badge__content {
+        color: var(--sm-c-badge-color-text-disabled);
+      }
+    }
+
+    &.sm-badge--light-disabled {
+      background: var(--sm-c-badge-color-background-light-disabled);
+
+      .sm-badge__content {
+        color: var(--sm-c-badge-color-text-light-disabled);
+      }
+    }
+  }
+}

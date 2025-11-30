@@ -1,0 +1,10 @@
+{
+  "relative-time-few-minutes": "A few minutes ago",
+  "relative-time-half-hour": "About half an hour ago",
+  "relative-time-hour": "About an hour ago",
+  "relative-time-hours": "{hours} hour ago | {hours} hours ago",
+  "relative-time-yesterday": "Yesterday",
+  "relative-time-days": "{days} day ago | {days} days ago",
+  "relative-time-last-week": "Last week",
+  "relative-time-date": "On {date}"
+}

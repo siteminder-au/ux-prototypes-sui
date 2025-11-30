@@ -1,0 +1,5 @@
+src/**/*.d.ts
+# allow linting on stories inside a __stories__ folder
+# but do not lint any stories outside of a __stories__ folder
+src/**/*.stories.ts
+!src/**/__stories__/*.stories.ts

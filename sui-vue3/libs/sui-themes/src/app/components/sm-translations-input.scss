@@ -1,0 +1,45 @@
+/**
+ * Translations input styles
+ * These are the actual CSS properties for the translations input component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+body {
+  .sm-translations-input {
+    .sm-translations-input__created-inner {
+      border-left-style: var(--sm-c-translations-input-created-list-border-style-left);
+      border-left-width: var(--sm-c-translations-input-created-list-border-width-left);
+      border-image: var(--sm-c-translations-input-created-list-image-border);
+    }
+
+    .sm-translations-input__created-item {
+      padding-left: var(--sm-c-translations-input-created-item-padding-left);
+
+      &-indicator {
+        background: var(--sm-c-translations-input-created-item-indicator-color-background);
+        border-radius: var(--sm-c-translations-input-created-item-indicator-border-radius);
+        width: var(--sm-c-translations-input-created-item-indicator-width);
+        height: var(--sm-c-translations-input-created-item-indicator-height);
+        top: var(--sm-c-translations-input-created-item-indicator-top);
+        left: var(--sm-c-translations-input-created-item-indicator-left);
+      }
+
+      &:focus-within .sm-translations-input__created-item-indicator {
+        background: var(--sm-c-translations-input-created-item-indicator-color-background-focus);
+      }
+    }
+
+    /* Dropdown item */
+    .sm-translations-input__item {
+      background: var(--sm-c-translations-input-dropdown-item-color-background);
+      color: var(--sm-c-translations-input-dropdown-item-color-text);
+      padding: var(--sm-c-translations-input-dropdown-item-padding);
+
+      &:hover,
+      &:focus {
+        background: var(--sm-c-translations-input-dropdown-item-color-background-hover);
+        color: var(--sm-c-translations-input-dropdown-item-color-text-hover);
+      }
+    }
+  }
+}

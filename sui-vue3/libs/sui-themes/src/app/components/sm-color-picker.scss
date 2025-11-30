@@ -1,0 +1,99 @@
+/**
+ * Color picker styles
+ * These are the actual CSS properties for the color picker component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+body {
+  .sm-color-picker {
+    .sm-color-picker__select-button {
+      top: var(--sm-c-color-picker-select-button-top);
+      margin: var(--sm-c-color-picker-select-button-margin);
+    }
+
+    .sm-color-picker__button {
+      min-width: var(--sm-c-color-picker-select-button-min-width);
+    }
+
+    .vc-photoshop {
+      border: var(--sm-c-color-picker-border);
+      border-radius: var(--sm-c-color-picker-border-radius);
+      background-color: var(--sm-c-color-picker-color-background);
+      padding: var(--sm-c-color-picker-padding);
+      box-shadow: var(--sm-c-color-picker-box-shadow);
+      max-width: var(--sm-c-color-picker-max-width);
+      min-height: var(--sm-c-color-picker-min-height);
+    }
+
+    .vc-ps-saturation-wrap {
+      border: var(--sm-c-color-picker-saturation-border);
+      border-radius: var(--sm-c-color-picker-saturation-border-radius);
+      height: var(--sm-c-color-picker-saturation-height);
+      width: var(--sm-c-color-picker-saturation-width);
+    }
+
+    .vc-ps-saturation-wrap .vc-saturation-circle {
+      border-radius: var(--sm-c-color-picker-saturation-picker-border-radius);
+      box-shadow: var(--sm-c-color-picker-saturation-picker-box-shadow);
+      width: var(--sm-c-color-picker-saturation-picker-width);
+      height: var(--sm-c-color-picker-saturation-picker-height);
+    }
+
+    .vc-hue-picker {
+      background: var(--sm-c-color-picker-hue-picker-background);
+      border-radius: var(--sm-c-color-picker-hue-picker-border-radius);
+      box-shadow: var(--sm-c-color-picker-hue-picker-box-shadow);
+      width: var(--sm-c-color-picker-hue-picker-width);
+      height: var(--sm-c-color-picker-hue-picker-height);
+      transform: var(--sm-c-color-picker-hue-picker-transform);
+    }
+
+    .vc-ps-hue-wrap {
+      margin-left: var(--sm-c-color-picker-hue-margin-left);
+      width: var(--sm-c-color-picker-hue-width);
+      height: var(--sm-c-color-picker-hue-height);
+    }
+
+    .vc-hue {
+      border-radius: var(--sm-c-color-picker-hue-border-radius);
+    }
+
+    .vc-ps-previews__pr-color {
+      width: var(--sm-c-color-picker-color-preview-width);
+      height: var(--sm-c-color-picker-color-preview-height);
+      border-radius: var(--sm-c-color-picker-color-preview-border-radius);
+      border: var(--sm-c-color-picker-color-preview-border);
+    }
+
+    .vc-ps-fields__hex {
+      right: var(--sm-c-color-picker-input-right);
+    }
+
+    .vc-ps-fields__hex .vc-input__label {
+      width: var(--sm-c-color-picker-input-prefix-width);
+      height: var(--sm-c-color-picker-input-prefix-height);
+      border-bottom-left-radius: var(--sm-c-color-picker-input-border-radius);
+      border-top-left-radius: var(--sm-c-color-picker-input-border-radius);
+      border: var(--sm-c-color-picker-input-prefix-border);
+      border-right: 0;
+      background-color: var(--sm-c-color-picker-input-prefix-color-background);
+      color: var(--sm-c-color-picker-input-prefix-color-text);
+    }
+
+    .vc-ps-fields__hex .vc-input__input {
+      margin-left: var(--sm-c-color-picker-input-prefix-width);
+      width: var(--sm-c-color-picker-input-field-width);
+      height: var(--sm-c-color-picker-input-field-height);
+      border-top-right-radius: var(--sm-c-color-picker-input-border-radius);
+      border-bottom-right-radius: var(--sm-c-color-picker-input-border-radius);
+      border: var(--sm-c-color-picker-input-field-border);
+      background-color: var(--sm-c-color-picker-input-field-color-background);
+      color: var(--sm-c-color-picker-input-field-color-text);
+
+      &:focus {
+        border-color: var(--sm-c-color-picker-input-field-color-border-focus);
+        box-shadow: var(--sm-c-color-picker-input-field-box-shadow-focus);
+      }
+    }
+  }
+}

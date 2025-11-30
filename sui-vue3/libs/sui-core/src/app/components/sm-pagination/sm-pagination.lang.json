@@ -1,0 +1,11 @@
+{
+  "of-total-pages": "of {totalPages}",
+  "go-to-label": "Go to",
+  "page-count": "{startPage} - {endPage} of {totalResults} results",
+  "dropdown-items-per-page": "{itemsPerPage}/page",
+  "a11y__input-field-label": "Page number",
+  "a11y__click-to-previous-button": "Previous page",
+  "a11y__click-to-next-button": "Next page",
+  "a11y__jump-backward-button": "Jump pages backward",
+  "a11y__jump-forward-button": "Jump pages forward"
+}

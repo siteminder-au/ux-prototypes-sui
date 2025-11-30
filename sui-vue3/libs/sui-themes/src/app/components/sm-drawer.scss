@@ -1,0 +1,70 @@
+/**
+ * Drawer styles
+ * These are the actual CSS properties for the drawer component.
+ * The shared CSS declarations as written as normal CSS, but themeable
+ * values are expressed as variables.
+ */
+body {
+  .sm-drawer {
+    & .sm-drawer__underlay {
+      background: var(--sm-c-drawer-underlay-color-background);
+    }
+
+    & .sm-drawer__content {
+      background: var(--sm-c-drawer-content-color-background);
+      color: var(--sm-c-drawer-content-color-text);
+      box-shadow: var(--sm-c-drawer-content-box-shadow) !important;
+    }
+
+    & .sm-drawer__close {
+      top: var(--sm-c-drawer-close-top-mobile);
+      left: var(--sm-c-drawer-close-left-mobile);
+
+      .sm-button__content {
+        background-color: var(--sm-c-drawer-close-color-background);
+        color: var(--sm-c-drawer-close-color-text);
+        border: var(--sm-c-drawer-close-border);
+      }
+
+      @media only screen and (min-width: 641px) {
+        top: var(--sm-c-drawer-close-top-tablet);
+        left: var(--sm-c-drawer-close-left-tablet);
+      }
+
+      @media only screen and (min-width: 769px) {
+        top: var(--sm-c-drawer-close-top-desktop);
+        left: var(--sm-c-drawer-close-left-desktop);
+      }
+    }
+
+    & .sm-drawer__body {
+      padding: var(--sm-c-drawer-body-padding-mobile);
+
+      @media only screen and (min-width: 769px) {
+        padding: var(--sm-c-drawer-body-padding-desktop);
+      }
+    }
+
+    & .sm-drawer__header {
+      border-bottom: var(--sm-c-drawer-header-border-bottom);
+      color: var(--sm-c-drawer-header-color-text);
+      box-shadow: var(--sm-c-drawer-header-box-shadow);
+      padding: var(--sm-c-drawer-header-padding-mobile);
+
+      @media only screen and (min-width: 641px) {
+        padding: var(--sm-c-drawer-header-padding-tablet);
+      }
+
+      @media only screen and (min-width: 769px) {
+        padding: var(--sm-c-drawer-header-padding-desktop);
+      }
+    }
+
+    & .sm-drawer__footer-actions {
+      border-top: var(--sm-c-drawer-footer-border-top);
+      color: var(--sm-c-drawer-footer-color-text);
+      box-shadow: var(--sm-c-drawer-footer-box-shadow);
+      padding: var(--sm-c-drawer-footer-padding-mobile);
+    }
+  }
+}

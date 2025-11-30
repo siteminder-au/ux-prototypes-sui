@@ -1,0 +1,41 @@
+{
+  "name": "@siteminder/sui-themes",
+  "version": "23.4.0-vue3",
+  "type": "module",
+  "repository": "https://github.com/siteminder-au/sui.git",
+  "author": "SiteMinder",
+  "description": "",
+  "style": "sui-theme.esm.css",
+  "license": "UNLICENSED",
+  "scripts": {
+    "audit": "npm audit --omit=dev",
+    "build-only": "vite build",
+    "clean": "../../node_modules/@siteminder/overlord/shared/project/clean.sh",
+    "compile": "npm run build-only",
+    "lint": "eslint ./src/app/ --ext .ts && npm run lint:css",
+    "lint:fix": "eslint --fix --ext .ts ./src && npm run lint:css:fix",
+    "lint:css": "npx stylelint 'src/**/*.{vue,scss}' --quiet",
+    "lint:css:fix": "npx stylelint 'src/**/*.{vue,scss}' --fix",
+    "smpublish": "../../node_modules/@siteminder/overlord/shared/project/publish.sh",
+    "test": "exit 0"
+  },
+  "keywords": [
+    "siteminder",
+    "sui"
+  ],
+  "devDependencies": {
+    "@siteminder/eslint-config": "^5.1.0",
+    "rollup-plugin-copy": "^3.4.0",
+    "stylelint": "^15.10.0",
+    "stylelint-config-recommended-scss": "^12.0.0",
+    "stylelint-config-standard": "^33.0.0",
+    "stylelint-config-standard-scss": "^10.0.0",
+    "stylelint-config-standard-vue": "^1.0.0",
+    "typescript": "5.0.4",
+    "vite": "5.0.11"
+  },
+  "engines": {
+    "node": ">14.0.0",
+    "npm": ">=6.0.0"
+  }
+}
