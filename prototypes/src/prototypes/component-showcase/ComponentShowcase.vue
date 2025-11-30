@@ -67,10 +67,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import $ from 'jquery'
-import SmButton from '@sui/app/components/sm-button/sm-button.vue'
-import SmBadge from '@sui/app/components/sm-badge/sm-badge.vue'
-import SmCard from '@sui/app/components/sm-card/sm-card.vue'
-import SmCardContent from '@sui/app/components/sm-card/sm-card-content.vue'
+// Note: SmButton, SmBadge, SmCard, etc. are globally registered - no need to import!
 
 const clickCount = ref(0)
 

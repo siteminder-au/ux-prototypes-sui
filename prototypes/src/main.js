@@ -1,13 +1,12 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import SmIcon from '@sui-icons/app/sm-icon.vue'
+import globalComponents from './plugins/global-components'
 import './shared/styles/reset.scss'
 
 const app = createApp(App)
 
-// Register sm-icon globally so all SUI components can use it
-app.component('sm-icon', SmIcon)
-
+// Register commonly-used components globally for prototyping convenience
+app.use(globalComponents)
 app.use(router)
 app.mount('#app')

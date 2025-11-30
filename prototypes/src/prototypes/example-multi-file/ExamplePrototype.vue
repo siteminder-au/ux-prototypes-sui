@@ -15,9 +15,9 @@
 
 <script setup>
 import { ref } from 'vue'
-import SmBadge from '@sui/app/components/sm-badge/sm-badge.vue'
 import HeaderSection from './HeaderSection.vue'
 import ContentSection from './ContentSection.vue'
+// Note: SmBadge is globally registered - no need to import!
 
 const clickCount = ref(0)
 
