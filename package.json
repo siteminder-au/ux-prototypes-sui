@@ -1,0 +1,14 @@
+{
+  "name": "sui-prototyping-stub",
+  "version": "1.0.0",
+  "description": "SUI Vue3 Prototyping Environment",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "scripts": {
+    "install": "cd prototypes && npm install",
+    "build": "cd prototypes && npm run build",
+    "start": "cd prototypes && npm start"
+  }
+}
