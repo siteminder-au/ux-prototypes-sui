@@ -1,40 +1,35 @@
-// Colors
-$color-primary: #2196F3;
-$color-primary-hover: #1976D2;
-$color-success: #4CAF50;
-$color-warning: #FF9800;
-$color-danger: #F44336;
-$color-info: #e3f2fd;
+// Import SUI's variables and mixins
+@import '@sui/app/common/variables.scss';
+@import '@sui/app/common/mixins.scss';
 
-$color-text-primary: #333;
-$color-text-secondary: #555;
-$color-text-muted: #666;
+// ====================================
+// Prototype-specific variables
+// ====================================
+// These are convenience aliases and prototype-specific additions
+// Use SUI variables directly when possible (e.g., $primary-blue, $sm-16)
 
-$color-bg-light: #f5f5f5;
-$color-bg-white: white;
-$color-border: #e0e0e0;
+// Convenience aliases for SUI spacing
+$spacing-xs: $sm-8;
+$spacing-sm: $sm-16;
+$spacing-md: $sm-32;
+$spacing-lg: $sm-48;
+$spacing-xl: $sm-64;
 
-// Spacing
-$spacing-xs: 0.5rem;
-$spacing-sm: 1rem;
-$spacing-md: 2rem;
-$spacing-lg: 3rem;
-$spacing-xl: 4rem;
+// Convenience aliases for SUI colors
+$color-primary: $primary-blue;
+$color-success: $app-success;
+$color-warning: $app-alert;
+$color-danger: $app-warning;
 
-// Typography
-$font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-$font-size-sm: 12px;
-$font-size-base: 14px;
-$font-size-md: 15px;
-$font-size-lg: 1.5rem;
+$color-text-primary: $grey-neu-black;
+$color-text-secondary: $grey-neu-dark;
+$color-text-muted: $grey-neu-mid;
 
-// Border radius
-$border-radius-sm: 4px;
-$border-radius-md: 8px;
+$color-bg-light: $grey-neu-white;
+$color-bg-white: $true-white;
+$color-border: $grey-neu-light;
 
-// Shadows
-$shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-$shadow-md: 0 2px 4px rgba(0,0,0,0.05);
-
-// Layout
+// Prototype-specific variables (not in SUI)
 $container-max-width: 1200px;
+$prototype-card-shadow: 0 1px 3px rgba(0,0,0,0.1);
+$prototype-card-radius: 8px;

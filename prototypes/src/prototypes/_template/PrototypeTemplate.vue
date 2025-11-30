@@ -29,9 +29,9 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
-// Option 1: Import shared styles
-@import '@/shared/styles/variables.scss';
-@import '@/shared/styles/mixins.scss';
+// Option 1: Import shared styles (includes SUI variables + prototype-specific mixins)
+@import '@/shared/styles/variables.scss';  // Imports SUI variables + convenience aliases
+@import '@/shared/styles/mixins.scss';     // Prototype-specific mixins
 
 .prototype-container {
   max-width: $container-max-width;
