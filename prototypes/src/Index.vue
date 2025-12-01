@@ -29,10 +29,10 @@ const prototypes = [
     path: '/component-showcase'
   },
   {
-    id: 'example-multi-file',
-    name: 'Multi-File Example',
-    description: 'Example showing how to organize a complex prototype across multiple files',
-    path: '/example-multi-file'
+    id: 'dynamic-form',
+    name: 'Dynamic Form',
+    description: 'Dynamic form ux exploration and guidelines',
+    path: '/dynamic-form'
   },
 ]
 </script>

@@ -78,6 +78,54 @@ vue-prototypes/
 - Prototypes are isolated - break them up into sub-components as needed
 - Use the `shared/` folder for components used across multiple prototypes
 
+## Using SUI Form Components
+
+SUI form components (SmInput, SmSelect, SmFormGroup) integrate with vee-validate and vue-i18n. Follow these requirements:
+
+### 1. All form inputs require a `name` prop
+```vue
+<!-- ✅ Correct -->
+<SmInput name="email" v-model="formData.email" />
+
+<!-- ❌ Will cause vee-validate errors -->
+<SmInput v-model="formData.email" />
+```
+
+### 2. SmSelect requires the `options` prop
+SmSelect uses vue-multiselect, which needs an array of objects with `label` and `code` properties:
+
+```vue
+<script setup>
+const inclusionOptions = [
+  { label: 'Breakfast', code: 'breakfast' },
+  { label: 'WiFi', code: 'wifi' }
+]
+
+const formData = ref({
+  inclusions: null  // Initialize as null, not empty string
+})
+</script>
+
+<template>
+  <SmSelect
+    name="inclusions"
+    v-model="formData.inclusions"
+    :options="inclusionOptions"
+    placeholder="Select inclusions"
+    allow-empty
+  />
+</template>
+```
+
+**Note:** Native `<option>` tags don't work with SmSelect.
+
+### 3. Dependencies
+- **vue-i18n@9** - Required for SUI component translations
+- **vee-validate@4** - Required for form validation
+- **patch-package** - Maintains SmSelect CSS fix across installs
+
+These are automatically configured in `main.js`.
+
 ## Deployment Workflow
 
 This project is configured for Heroku deployment with a pre-build approach:

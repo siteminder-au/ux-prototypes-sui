@@ -8,7 +8,8 @@ export default defineConfig({
     alias: {
       '@': resolve(__dirname, './src'),
       '@sui': resolve(__dirname, './node_modules/sui-vue3/libs/sui-core/src'),
-      '@sui-icons': resolve(__dirname, './node_modules/sui-vue3/libs/sui-icons/src')
+      '@sui-icons': resolve(__dirname, './node_modules/sui-vue3/libs/sui-icons/src'),
+      'lodash': 'lodash-es'
     }
   },
   server: {

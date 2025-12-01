@@ -8,5 +8,8 @@
   },
   "scripts": {
     "start": "cd prototypes && npm start"
+  },
+  "dependencies": {
+    "vue-i18n": "^9.14.5"
   }
 }

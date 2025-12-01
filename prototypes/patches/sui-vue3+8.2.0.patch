@@ -1,0 +1,13 @@
+diff --git a/node_modules/sui-vue3/libs/sui-core/src/app/components/forms/sm-select/sm-select.vue b/node_modules/sui-vue3/libs/sui-core/src/app/components/forms/sm-select/sm-select.vue
+index 7b74021..af51fd3 100644
+--- a/node_modules/sui-vue3/libs/sui-core/src/app/components/forms/sm-select/sm-select.vue
++++ b/node_modules/sui-vue3/libs/sui-core/src/app/components/forms/sm-select/sm-select.vue
+@@ -689,7 +689,7 @@ defineExpose ({
+ <style lang="scss">
+ @import "../../../common/variables";
+ @import "../../../common/mixins";
+-@import '../../../../../node_modules/vue-multiselect/dist/vue-multiselect.css';
++// @import '../../../../../node_modules/vue-multiselect/dist/vue-multiselect.css'; // Commented out - CSS loaded in main.js instead
+ 
+ $sm-input--placeholder-color: $grey-neu-black;
+ $sm-select--border-color: #c6ceda;

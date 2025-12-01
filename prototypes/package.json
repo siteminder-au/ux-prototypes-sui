@@ -6,19 +6,25 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "npx serve dist -s -l ${PORT:-3000}"
+    "start": "npx serve dist -s -l ${PORT:-3000}",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "jquery": "^3.7.1",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "serve": "^14.2.5",
     "sui-vue3": "github:siteminder-au/sui#vue3",
+    "vee-validate": "^4.15.1",
     "vue": "^3.4.38",
     "vue-demi": "^0.14.10",
+    "vue-multiselect": "^3.4.0",
     "vue-router": "^4.6.3"
   },
   "devDependencies": {
     "@types/jquery": "^3.5.33",
     "@vitejs/plugin-vue": "^5.0.3",
+    "patch-package": "^8.0.1",
     "sass": "^1.69.5",
     "vite": "^5.0.11"
   }
