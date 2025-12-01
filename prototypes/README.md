@@ -77,3 +77,21 @@ vue-prototypes/
 - Use `sm-icon` component for icons (already registered globally)
 - Prototypes are isolated - break them up into sub-components as needed
 - Use the `shared/` folder for components used across multiple prototypes
+
+## Deployment Workflow
+
+This project is configured for Heroku deployment with a pre-build approach:
+
+1. **Develop** - Make changes and test locally with `npm run dev`
+2. **Build** - Run `npm run build` to create production bundle in `dist/`
+3. **Commit** - Commit changes including the `dist/` folder
+4. **Deploy** - Push to Heroku with `git push heroku main`
+
+The `dist/` folder is tracked in git to avoid GitHub authentication issues on Heroku.
+
+## SUI Component Library
+
+- Installed as npm dependency: `sui-vue3: "github:siteminder-au/sui#vue3"`
+- Located in `node_modules/sui-vue3/`
+- Aliased in Vite config as `@sui` and `@sui-icons`
+- Update with `npm update sui-vue3`
