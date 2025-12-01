@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
-    <title>sui-final/icons/24px/arrows/arrow-down</title>
-    <desc>Created with Sketch.</desc>
-    <g id="sui-final/icons/24px/arrows/arrow-down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M22.1377017,6.31951988 C22.5637282,5.89349337 23.2544536,5.89349337 23.6804801,6.31951988 C24.1065066,6.74554638 24.1065066,7.43627181 23.6804801,7.86229831 L12.7713892,18.7713892 C12.3453627,19.1974157 11.6546373,19.1974157 11.2286108,18.7713892 L0.319519875,7.86229831 C-0.106506625,7.43627181 -0.106506625,6.74554638 0.319519875,6.31951988 C0.745546375,5.89349337 1.43627181,5.89349337 1.86229831,6.31951988 L12,16.4572216 L22.1377017,6.31951988 Z" id="Arrow---down" fill="#717171"></path>
-    </g>
-</svg>

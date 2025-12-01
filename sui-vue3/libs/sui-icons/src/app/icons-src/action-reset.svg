@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
-    <title>sui-final/icons/24px/actions/action-reset</title>
-    <desc>Created with Sketch.</desc>
-    <g id="sui-final/icons/24px/actions/action-reset" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M23,11 C22.447,11 22,11.447 22,12 C22,17.514 17.514,22 12,22 C6.486,22 2,17.514 2,12 C2,6.486 6.486,2 12,2 C14.95,2 17.711,3.289 19.6,5.5 L16.4,5.5 C15.848,5.5 15.4,5.947 15.4,6.5 C15.4,7.053 15.848,7.5 16.4,7.5 L21.9,7.5 C22.453,7.5 22.9,7.053 22.9,6.5 L22.9,1 C22.9,0.447 22.453,0 21.9,0 C21.348,0 20.9,0.447 20.9,1 L20.9,3.972 C18.642,1.466 15.433,0 12,0 C5.383,0 0,5.383 0,12 C0,18.617 5.383,24 12,24 C18.617,24 24,18.617 24,12 C24,11.447 23.553,11 23,11" id="Fill-1" fill="#333333"></path>
-    </g>
-</svg>

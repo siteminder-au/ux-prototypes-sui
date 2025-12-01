@@ -1,8 +1,0 @@
-{
-  "a11y__click-to-close": "Click to close",
-  "back-button-text": "Back",
-  "next-button-text": "Next",
-  "confirm-button-text": "Review and save",
-  "current-steps-text": "{currentStep} of {totalSteps}",
-  "next-step-text": "Next: {nextStep}"
-}

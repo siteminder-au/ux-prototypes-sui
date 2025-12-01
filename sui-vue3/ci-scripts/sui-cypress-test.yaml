@@ -1,7 +1,0 @@
-- label: "running sui-cypress tests on Sample app for SUI ${BUILDKITE_BUILD_URL}"
-  trigger: 'sui-cypress'
-  async: true
-  build:
-    branch: 'master'
-    env:
-      SUI_CYPRESS_VERSION: vue3

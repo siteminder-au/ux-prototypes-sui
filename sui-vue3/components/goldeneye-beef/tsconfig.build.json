@@ -1,5 +1,0 @@
-{
-  "extends": [
-    "@siteminder/base-typescript/tsconfig/component.build.json"
-  ],
-}

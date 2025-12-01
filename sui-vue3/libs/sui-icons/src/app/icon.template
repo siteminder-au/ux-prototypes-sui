@@ -1,6 +1,0 @@
-export default {
-  width: ${width},
-  height: ${height},
-  viewBox: ${viewBox},
-  path: `${data}`
-}

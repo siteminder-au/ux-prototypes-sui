@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
-    <title>sui-final/icons/24px/actions/action-checkmark</title>
-    <desc>Created with Sketch.</desc>
-    <g id="sui-final/icons/24px/actions/action-checkmark" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M7.72880001,18.0176289 L22.0159517,3.34948644 C22.4698302,2.88350452 23.2057126,2.88350452 23.6595911,3.34948644 C24.1134696,3.81546835 24.1134696,4.57097431 23.6595911,5.03695623 L8.55061972,20.5488336 C8.09674123,21.0148155 7.3608588,21.0148155 6.90698031,20.5488336 L0.340408867,13.9598811 C-0.113469622,13.4938991 -0.113469622,12.7383932 0.340408867,12.2724113 C0.794287356,11.8064294 1.53016978,11.8064294 1.98404827,12.2724113 L7.72880001,18.0176289 Z" id="checkmark" fill="#717171"></path>
-    </g>
-</svg>

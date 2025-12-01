@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>sui-final/icons/24px/actions/action-video</title>
-    <g id="sui-final/icons/24px/actions/action-video" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M22,3 C23.1045695,3 24,3.8954305 24,5 L24,19 C24,20.1045695 23.1045695,21 22,21 L2,21 C0.8954305,21 0,20.1045695 0,19 L0,5 C0,3.8954305 0.8954305,3 2,3 L22,3 Z M22,5 L2,5 L2,19 L22,19 L22,5 Z M9.44722,7.52744 L16.2111,10.9094 C16.9482,11.2779 16.9482,12.3297 16.2111,12.6983 L9.44722,16.0802 C8.78231,16.4127 8,15.9292 8,15.1858 L8,8.42187 C8,7.67848 8.78231,7.19499 9.44722,7.52744 Z" id="video" fill="#333333" fill-rule="nonzero"></path>
-    </g>
-</svg>

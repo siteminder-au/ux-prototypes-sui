@@ -7,8 +7,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
-      '@sui': resolve(__dirname, '../sui-vue3/libs/sui-core/src'),
-      '@sui-icons': resolve(__dirname, '../sui-vue3/libs/sui-icons/src')
+      '@sui': resolve(__dirname, './node_modules/sui-vue3/libs/sui-core/src'),
+      '@sui-icons': resolve(__dirname, './node_modules/sui-vue3/libs/sui-icons/src')
     }
   },
   server: {
