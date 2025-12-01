@@ -5,8 +5,8 @@ package-lock.json
 # SUI library
 sui-vue3/
 
-# Build outputs
-dist/
+# Build outputs (commented out - committing dist for Heroku deployment)
+# dist/
 
 # OS files
 .DS_Store

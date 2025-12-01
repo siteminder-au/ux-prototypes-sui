@@ -7,8 +7,6 @@
     "npm": ">=9.0.0"
   },
   "scripts": {
-    "install": "cd prototypes && npm install",
-    "build": "cd prototypes && npm run build",
     "start": "cd prototypes && npm start"
   }
 }
