@@ -3,6 +3,9 @@
 // Slideshow-specific layout for dynamic form prototype
 // ============================================================================
 
+// Import form utilities so @extend can reference them
+@import '@/shared/styles/form-utilities.scss';
+
 .slideshow-container {
   display: flex;
   flex-direction: column;

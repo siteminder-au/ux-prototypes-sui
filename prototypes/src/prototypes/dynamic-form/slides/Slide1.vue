@@ -1161,10 +1161,6 @@ onMounted(() => {
 
 // Component-specific styles (general layout utilities are in ../styles.scss)
 
-.derived-rate-fields {
-  margin-top: 1.5rem;
-}
-
 .highlight-booking-engine-section {
   margin-top: 1.5rem;
 }
