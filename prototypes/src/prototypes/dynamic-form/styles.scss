@@ -2,6 +2,22 @@
 @import "@/shared/styles/variables.scss";
 @import "@/shared/styles/mixins.scss";
 
+// ============================================================================
+// SUI COMPONENT OVERRIDES
+// ============================================================================
+
+:deep(.sm-input__footer) {
+        min-height: 0px;
+}
+
+:deep(.sm-form-group) {
+        margin-bottom: 2rem;
+}
+
+// ============================================================================
+// SLIDE LAYOUT
+// ============================================================================
+
 .slideshow-container {
         display: flex;
         flex-direction: column;
@@ -60,25 +76,316 @@
         }
 }
 
-.slide-right {
-        .form-container {
-                max-width: 600px;
-                width: 100%;
-                margin: 0 auto;
+// ============================================================================
+// FORM LAYOUT UTILITIES
+// ============================================================================
 
-                h2 {
-                        margin-top: 0;
-                        margin-bottom: 1.5rem;
-                        color: #333;
+.form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        // margin-bottom: 1rem;
+}
+
+.form-col {
+        display: flex;
+        flex-direction: column;
+}
+
+.form-col.col-span-1 {
+        grid-column: span 1;
+}
+
+.form-col.col-span-2 {
+        grid-column: span 2;
+}
+
+.form-col.col-span-3 {
+        grid-column: span 3 / span 3;
+}
+
+.form-field {
+        margin-bottom: 1rem;
+}
+
+.field-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        font-size: 0.875rem;
+}
+
+.sm-textarea {
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid #d1d5db;
+        border-radius: 4px;
+        font-family: inherit;
+        font-size: 0.875rem;
+        resize: vertical;
+
+        &:focus {
+                outline: none;
+                border-color: #3b82f6;
+                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+}
+
+.radio-group {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+}
+
+.tooltip-icon {
+        cursor: pointer;
+}
+
+.form-checkbox-group {
+        margin-bottom: 1rem;
+}
+
+// ============================================================================
+// REPEATING SECTIONS (Date ranges, overrides, card-based items)
+// ============================================================================
+
+.date-range-item {
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background: #f9fafb;
+        border-radius: 4px;
+}
+
+.date-range-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.75rem;
+}
+
+.date-range-label {
+        font-weight: 600;
+        font-size: 0.875rem;
+}
+
+.date-range-actions {
+        display: flex;
+        gap: 0.5rem;
+}
+
+// ============================================================================
+// ACTION BUTTONS
+// ============================================================================
+
+// Small action buttons (clear, delete, etc.)
+.date-range-action-btn {
+        padding: 0.25rem 0.75rem;
+        font-size: 0.75rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+
+        &.clear-btn {
+                background: #e5e7eb;
+                color: #374151;
+
+                &:hover {
+                        background: #d1d5db;
                 }
+        }
 
-                .form-group {
-                        margin-bottom: 1.5rem;
+        &.delete-btn {
+                background: #fee2e2;
+                color: #dc2626;
+
+                &:hover {
+                        background: #fecaca;
                 }
         }
 }
 
-// Responsive
+// Add buttons (dashed border style)
+.add-date-range-btn,
+.add-selling-point-btn,
+.add-media-btn,
+.add-item-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: white;
+        border: 1px dashed #d1d5db;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.875rem;
+        color: #374151;
+        margin-top: 0.5rem;
+
+        &:hover {
+                border-color: #9ca3af;
+                background: #f9fafb;
+        }
+
+        .plus-icon {
+                font-size: 1.25rem;
+                font-weight: 700;
+        }
+}
+
+// ============================================================================
+// MEDIA UPLOAD COMPONENTS
+// ============================================================================
+
+.media-upload-section {
+        margin-bottom: 1.5rem;
+}
+
+.media-upload-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+}
+
+.media-upload-label {
+        font-weight: 600;
+        font-size: 0.875rem;
+}
+
+.sm-media {
+        border: 1px solid #d1d5db;
+        border-radius: 4px;
+        overflow: hidden;
+}
+
+.sm-media__drop-zone {
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f9fafb;
+}
+
+.sm-media--items {
+        width: 100%;
+        height: 200px;
+}
+
+.sm-media-item {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+}
+
+.sm-media-item__card {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0.5rem;
+}
+
+.sm-media-item__actions {
+        display: flex;
+        gap: 0.5rem;
+}
+
+.sm-media__empty-state {
+        text-align: center;
+        padding: 2rem;
+}
+
+.sm-media__input-hidden {
+        display: none;
+}
+
+// ============================================================================
+// LIST MANAGEMENT (Sortable lists, drag handles)
+// ============================================================================
+
+.key-selling-points-section {
+        margin-top: 1.5rem;
+}
+
+.selling-points-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+}
+
+.selling-points-label {
+        font-weight: 600;
+        font-size: 0.875rem;
+}
+
+.selling-points-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+}
+
+.selling-point-item {
+        margin-bottom: 0.75rem;
+        cursor: move;
+
+        &:hover {
+                .drag-handle {
+                        opacity: 1;
+                }
+        }
+}
+
+.selling-point-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+}
+
+.drag-handle {
+        display: flex;
+        align-items: center;
+        color: #9ca3af;
+        opacity: 0.5;
+        transition: opacity 0.2s;
+        cursor: grab;
+
+        &:active {
+                cursor: grabbing;
+        }
+}
+
+.selling-point-input-wrapper {
+        flex: 1;
+}
+
+.selling-point-input {
+        width: 100%;
+}
+
+.remove-point-btn {
+        flex-shrink: 0;
+}
+
+// ============================================================================
+// MESSAGES & HELPER TEXT
+// ============================================================================
+
+.date-range-limit-message,
+.max-selling-points-message {
+        margin-top: 0.5rem;
+        font-size: 0.875rem;
+        color: #6b7280;
+}
+
+// ============================================================================
+// RESPONSIVE
+// ============================================================================
+
 @media (max-width: 768px) {
         .slideshow-container {
                 padding: 0.5rem;
@@ -99,5 +406,9 @@
                 width: 100%;
                 height: 50vh;
                 padding: 1rem;
+        }
+
+        .form-row {
+                grid-template-columns: 1fr;
         }
 }

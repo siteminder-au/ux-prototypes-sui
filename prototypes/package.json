@@ -10,11 +10,14 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
+    "@vueuse/core": "^14.1.0",
+    "floating-vue": "^5.2.2",
     "jquery": "^3.7.1",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "serve": "^14.2.5",
     "sui-vue3": "github:siteminder-au/sui#vue3",
+    "v-calendar": "^3.1.2",
     "vee-validate": "^4.15.1",
     "vue": "^3.4.38",
     "vue-demi": "^0.14.10",
