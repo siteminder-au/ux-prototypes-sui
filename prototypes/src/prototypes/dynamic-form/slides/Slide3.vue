@@ -132,7 +132,7 @@ const handleSubmit = () => {
 </script>
 
 <style scoped lang="scss">
-@import '../styles.scss';
+@import '../styles/index.scss';
 
 .form-input {
   width: 100%;

@@ -129,7 +129,7 @@ const handleFinalSubmit = async () => {
 </script>
 
 <style scoped lang="scss">
-@import '../styles.scss';
+@import '../styles/index.scss';
 
 .review-section {
   margin-bottom: 2rem;
