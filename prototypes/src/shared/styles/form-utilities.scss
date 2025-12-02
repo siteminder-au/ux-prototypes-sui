@@ -69,7 +69,208 @@
   margin-bottom: 1rem;
 }
 
-// Responsive adjustments
+// ============================================================================
+// CARD-BASED REPEATING SECTIONS
+// ============================================================================
+
+.form-card-item {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 4px;
+}
+
+.form-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.form-card-label {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.form-card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+// ============================================================================
+// ACTION BUTTONS
+// ============================================================================
+
+// Small action buttons (clear, delete, etc.)
+.action-btn {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+
+  &.clear-btn {
+    background: #e5e7eb;
+    color: #374151;
+
+    &:hover {
+      background: #d1d5db;
+    }
+  }
+
+  &.delete-btn {
+    background: #fee2e2;
+    color: #dc2626;
+
+    &:hover {
+      background: #fecaca;
+    }
+  }
+}
+
+// Add buttons (dashed border style)
+.add-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 1px dashed #d1d5db;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #374151;
+  margin-top: 0.5rem;
+
+  &:hover {
+    border-color: #9ca3af;
+    background: #f9fafb;
+  }
+
+  .plus-icon {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+}
+
+// ============================================================================
+// SORTABLE LISTS & DRAG HANDLES
+// ============================================================================
+
+.sortable-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sortable-item {
+  margin-bottom: 0.75rem;
+  cursor: move;
+
+  &:hover {
+    .drag-handle {
+      opacity: 1;
+    }
+  }
+}
+
+.drag-handle {
+  display: flex;
+  align-items: center;
+  color: #9ca3af;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+// ============================================================================
+// MEDIA UPLOAD COMPONENTS
+// ============================================================================
+
+.media-upload-section {
+  margin-bottom: 1.5rem;
+}
+
+.media-upload-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.media-upload-label {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.sm-media {
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.sm-media__drop-zone {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9fafb;
+}
+
+.sm-media--items {
+  width: 100%;
+  height: 200px;
+}
+
+.sm-media-item {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.sm-media-item__card {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
+}
+
+.sm-media-item__actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.sm-media__empty-state {
+  text-align: center;
+  padding: 2rem;
+}
+
+.sm-media__input-hidden {
+  display: none;
+}
+
+// ============================================================================
+// HELPER MESSAGES
+// ============================================================================
+
+.form-helper-message {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+// ============================================================================
+// RESPONSIVE
+// ============================================================================
+
 @media (max-width: 768px) {
   .form-row {
     grid-template-columns: 1fr;

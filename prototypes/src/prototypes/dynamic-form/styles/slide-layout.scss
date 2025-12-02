@@ -1,6 +1,6 @@
 // ============================================================================
 // SLIDE LAYOUT
-// Slideshow-specific layout and components for dynamic form prototype
+// Slideshow-specific layout for dynamic form prototype
 // ============================================================================
 
 .slideshow-container {
@@ -62,164 +62,45 @@
 }
 
 // ============================================================================
-// REPEATING SECTIONS (Date ranges, overrides, card-based items)
+// BACKWARDS COMPATIBILITY ALIASES
+// These map old class names to new generic classes in form-utilities.scss
 // ============================================================================
 
 .date-range-item {
-  margin-bottom: 1rem;
-  padding: 1rem;
-  background: #f9fafb;
-  border-radius: 4px;
+  @extend .form-card-item;
 }
 
 .date-range-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
+  @extend .form-card-header;
 }
 
 .date-range-label {
-  font-weight: 600;
-  font-size: 0.875rem;
+  @extend .form-card-label;
 }
 
 .date-range-actions {
-  display: flex;
-  gap: 0.5rem;
+  @extend .form-card-actions;
 }
 
-// ============================================================================
-// ACTION BUTTONS
-// ============================================================================
-
-// Small action buttons (clear, delete, etc.)
 .date-range-action-btn {
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-
-  &.clear-btn {
-    background: #e5e7eb;
-    color: #374151;
-
-    &:hover {
-      background: #d1d5db;
-    }
-  }
-
-  &.delete-btn {
-    background: #fee2e2;
-    color: #dc2626;
-
-    &:hover {
-      background: #fecaca;
-    }
-  }
+  @extend .action-btn;
 }
 
-// Add buttons (dashed border style)
 .add-date-range-btn,
 .add-selling-point-btn,
 .add-media-btn,
 .add-item-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: white;
-  border: 1px dashed #d1d5db;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.875rem;
-  color: #374151;
-  margin-top: 0.5rem;
+  @extend .add-btn;
+}
 
-  &:hover {
-    border-color: #9ca3af;
-    background: #f9fafb;
-  }
-
-  .plus-icon {
-    font-size: 1.25rem;
-    font-weight: 700;
-  }
+.date-range-limit-message,
+.max-selling-points-message {
+  @extend .form-helper-message;
 }
 
 // ============================================================================
-// MEDIA UPLOAD COMPONENTS
-// ============================================================================
-
-.media-upload-section {
-  margin-bottom: 1.5rem;
-}
-
-.media-upload-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-}
-
-.media-upload-label {
-  font-weight: 600;
-  font-size: 0.875rem;
-}
-
-.sm-media {
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.sm-media__drop-zone {
-  min-height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f9fafb;
-}
-
-.sm-media--items {
-  width: 100%;
-  height: 200px;
-}
-
-.sm-media-item {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
-.sm-media-item__card {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem;
-}
-
-.sm-media-item__actions {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.sm-media__empty-state {
-  text-align: center;
-  padding: 2rem;
-}
-
-.sm-media__input-hidden {
-  display: none;
-}
-
-// ============================================================================
-// LIST MANAGEMENT (Sortable lists, drag handles)
+// CONTENT-SPECIFIC STYLES
+// Selling points specific to this prototype
 // ============================================================================
 
 .key-selling-points-section {
@@ -239,39 +120,17 @@
 }
 
 .selling-points-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  @extend .sortable-list;
 }
 
 .selling-point-item {
-  margin-bottom: 0.75rem;
-  cursor: move;
-
-  &:hover {
-    .drag-handle {
-      opacity: 1;
-    }
-  }
+  @extend .sortable-item;
 }
 
 .selling-point-container {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.drag-handle {
-  display: flex;
-  align-items: center;
-  color: #9ca3af;
-  opacity: 0.5;
-  transition: opacity 0.2s;
-  cursor: grab;
-
-  &:active {
-    cursor: grabbing;
-  }
 }
 
 .selling-point-input-wrapper {
@@ -284,17 +143,6 @@
 
 .remove-point-btn {
   flex-shrink: 0;
-}
-
-// ============================================================================
-// MESSAGES & HELPER TEXT
-// ============================================================================
-
-.date-range-limit-message,
-.max-selling-points-message {
-  margin-top: 0.5rem;
-  font-size: 0.875rem;
-  color: #6b7280;
 }
 
 // ============================================================================
