@@ -22,10 +22,10 @@
    4. Conditional sections get extra margin-bottom for breathing room
 
    SPACING EXAMPLE:
-   - Between form groups: $gap-level-0 (32px)
-   - Between items in a form group: $gap-level-1-body (8px)
-   - Heading to its content: $gap-level-1-heading (16px) via margin-bottom
-   - After conditional content: $gap-level-2-heading (12px) extra margin-bottom
+   - Between form groups: $gap-level-0-body (40px)
+   - Between items in a form group: $gap-level-1-body (16px)
+   - Heading to its content: $margin-level-1-heading (8px) via margin-bottom
+   - After conditional content: $margin-level-2-heading (8px) extra margin-bottom
 
    IMPORTANT NOTES:
    - Slide1.vue is UNTOUCHED - uses original SUI spacing
@@ -33,8 +33,41 @@
    - All user agent heading styles are reset (font-size, font-weight, line-height, margin)
    - Typography hierarchy comes purely from .form-heading-* classes
 
-   Easy configuration for all spacing levels.
-   Adjust these values to experiment with different spacing hierarchies.
+   IMPLEMENTATION IN SLIDE2.VUE:
+
+   Level 0 ($gap-level-0-body):
+   - Applied to: .form-content-wrapper (main form container)
+   - Creates spacing between major SmFormGroup sections
+
+   Level 1 ($margin-level-1-heading + $gap-level-1-body):
+   - Heading margins: .form-heading-1 (h2 elements)
+   - Body gap: SmFormGroup, .derived-rate-fields, .conditional-form-section,
+               .discount-type-section, .date-ranges-container, .los-rules-section,
+               .seasonal-overrides-container
+   - Spacing between form fields and sub-sections
+
+   Level 2 ($margin-level-2-heading + $gap-level-2-body):
+   - Heading margins: .form-heading-2 (h3 elements)
+   - Body gap: .date-range-item, .seasonal-override-content
+   - Spacing within date ranges and seasonal overrides
+   - Also used for breathing room after conditional sections
+
+   Level 3 ($margin-level-3-heading + $gap-level-3-body):
+   - Heading margins: .form-heading-3 (h4 elements)
+   - Body gap: .selling-points-list
+   - Spacing for nested subsections and selling points
+
+   Level 4 ($margin-level-4-heading + $gap-level-4-body):
+   - Heading margins: .form-heading-4 (h5 elements)
+   - Spacing for minor sections like "Charges for additional nights"
+
+   SPECIAL RULES:
+   - Consecutive headings: When a heading immediately follows another heading,
+     margin-top is removed to prevent triple spacing (heading margin-bottom +
+     container gap + next heading margin-top)
+   - Conditional sections: Get extra margin-bottom using $margin-level-2-heading
+     for breathing room when they appear mid-form
+
    ============================================ */
 
 // Level 0: Main form wrapper (between major sections)
@@ -62,45 +95,45 @@ $gap-level-4-body: 8px;
    ============================================ */
 
 // TIGHT SPACING
-// $gap-level-0: 24px;
-// $gap-level-1-heading: 12px;
+// $gap-level-0-body: 24px;
+// $margin-level-1-heading: 12px;
 // $gap-level-1-body: 6px;
-// $gap-level-2-heading: 10px;
+// $margin-level-2-heading: 10px;
 // $gap-level-2-body: 6px;
-// $gap-level-3-heading: 8px;
+// $margin-level-3-heading: 8px;
 // $gap-level-3-body: 6px;
-// $gap-level-4-heading: 6px;
+// $margin-level-4-heading: 6px;
 // $gap-level-4-body: 6px;
 
 // LOOSE SPACING
-// $gap-level-0: 48px;
-// $gap-level-1-heading: 24px;
+// $gap-level-0-body: 48px;
+// $margin-level-1-heading: 24px;
 // $gap-level-1-body: 12px;
-// $gap-level-2-heading: 16px;
+// $margin-level-2-heading: 16px;
 // $gap-level-2-body: 12px;
-// $gap-level-3-heading: 12px;
+// $margin-level-3-heading: 12px;
 // $gap-level-3-body: 12px;
-// $gap-level-4-heading: 12px;
+// $margin-level-4-heading: 12px;
 // $gap-level-4-body: 12px;
 
 // UNIFORM SPACING (same gap everywhere)
-// $gap-level-0: 16px;
-// $gap-level-1-heading: 16px;
+// $gap-level-0-body: 16px;
+// $margin-level-1-heading: 16px;
 // $gap-level-1-body: 16px;
-// $gap-level-2-heading: 16px;
+// $margin-level-2-heading: 16px;
 // $gap-level-2-body: 16px;
-// $gap-level-3-heading: 16px;
+// $margin-level-3-heading: 16px;
 // $gap-level-3-body: 16px;
-// $gap-level-4-heading: 16px;
+// $margin-level-4-heading: 16px;
 // $gap-level-4-body: 16px;
 
-// Test off (same gap everywhere) - Currently DISABLED to see actual spacing
-// $gap-level-0: 0px;
-// $gap-level-1-heading: 0px;
+// DEBUG: Zero spacing (reveals native component spacing)
+// $gap-level-0-body: 0px;
+// $margin-level-1-heading: 0px;
 // $gap-level-1-body: 0px;
-// $gap-level-2-heading: 0px;
+// $margin-level-2-heading: 0px;
 // $gap-level-2-body: 0px;
-// $gap-level-3-heading: 0px;
+// $margin-level-3-heading: 0px;
 // $gap-level-3-body: 0px;
-// $gap-level-4-heading: 0px;
+// $margin-level-4-heading: 0px;
 // $gap-level-4-body: 0px;
