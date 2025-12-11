@@ -84,3 +84,139 @@
 :deep(.seasonal-override-card .sm-card-content) {
   padding: 16px !important;
 }
+
+// Dynamic Length of Stay Rules - delete column alignment
+.los-delete-col {
+  justify-content: flex-end;
+  padding-bottom: 5px; // Default padding, reset to 0 by gap-spacing.scss
+}
+
+// Highlight hero image preview and empty state with reduced height
+.highlight-image-preview,
+.highlight-image-empty {
+  height: 100px;
+}
+
+/* ============================================
+   SLIDE1-SPECIFIC STYLES
+   Currently used by Slide1, may be adopted by other slides
+   ============================================ */
+
+// Error list styling for validation drawer
+.error-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.error-link {
+  color: #c70101;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: #a00000;
+  }
+}
+
+// Derived rate fields container
+.derived-rate-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+// LOS add button spacing
+.los-add-button {
+  margin-top: 16px;
+}
+
+// Form content wrapper establishes positioning context for grid overlay
+.form-content-wrapper {
+  position: relative;
+}
+
+// Remove margin under drawer header title
+.sm-drawer__header h3 {
+  margin-bottom: 0;
+}
+
+// Remove margin under selling points list
+.selling-points-list {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   SLIDE2-SPECIFIC STYLES
+   Editable card patterns for property settings
+   ============================================ */
+
+// Settings card spacing
+:deep(.settings-card) {
+  margin-bottom: 24px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Override SmFormGroup margin inside editable cards for tighter spacing
+:deep(.settings-card .sm-form-group) {
+  margin-bottom: 0;
+}
+
+// Edit mode form container - consistent top spacing with read mode
+:deep(.settings-card .sm-form) {
+  padding-top: 16px;
+  position: relative;
+}
+
+// Ensure multiselect dropdown appears above card content
+:deep(.settings-card .multiselect__content-wrapper) {
+  z-index: 1000;
+}
+
+// Edit mode action buttons - separate from form fields
+.edit-actions {
+  margin-top: 24px;
+
+  .text-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+}
+
+// Read mode fields container
+.read-fields {
+  padding-top: 16px;
+}
+
+// Read mode field display
+.read-field {
+  margin-bottom: 16px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.read-field-label {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.read-field-value {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  font-weight: 400;
+}
+
+// Checkbox with tooltip wrapper
+.checkbox-with-tooltip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

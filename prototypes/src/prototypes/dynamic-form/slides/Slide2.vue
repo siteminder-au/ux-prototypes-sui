@@ -1,744 +1,428 @@
 <template>
   <div class="slide-wrapper" :class="{ 'full-width': fullWidthForm }">
-    <div class="slide-left" v-if="!fullWidthForm">
-      <div class="container-header">Current state</div>
+
+    <!-- LEFT: Reference/Before -->
+    <div v-if="!fullWidthForm" class="slide-left">
+      <div class="container-header">Before / Production</div>
       <div class="container-content">
-        <img src="/images/dynamic-form/rate-plan-1.png" alt="Rate Plan 1" />
-        <img src="/images/dynamic-form/rate-plan-2.png" alt="Rate Plan 2" />
-        <img src="/images/dynamic-form/rate-plan-3.png" alt="Rate Plan 3" />
-        <img src="/images/dynamic-form/rate-plan-4.png" alt="Rate Plan 4" />
+        <img :src="readModeRef2" alt="Property settings 2 read mode - production" style="width: 100%; display: block;" />
+        <img :src="editModeRef2" alt="Property settings 2 edit mode - production" style="width: 100%; display: block; margin-top: 1rem;" />
+        <img :src="readModeRef3" alt="Property settings 3 read mode - production" style="width: 100%; display: block; margin-top: 1rem;" />
+        <img :src="editModeRef3" alt="Property settings 3 edit mode - production" style="width: 100%; display: block; margin-top: 1rem;" />
+        <img :src="readModeRef" alt="Property settings read mode - production" style="width: 100%; display: block; margin-top: 1rem;" />
+        <img :src="editModeRef" alt="Property settings edit mode - production" style="width: 100%; display: block; margin-top: 1rem;" />
       </div>
     </div>
 
+    <!-- RIGHT: Proposed Implementation -->
     <div class="slide-right">
       <div class="container-header">Proposed</div>
-
-      <!-- Drawer Header -->
-      <div class="sm-drawer__header">
-        <div class="sm-drawer__header-section sm-drawer__header-section--title">
-          <h3>Edit rate plan</h3>
-          <p class="drawer-page-subtitle">Advance purchase</p>
-        </div>
-        <div class="sm-drawer__action-buttons">
-          <div class="sm-drawer__header-section sm-drawer__header-section--actions">
-            <SmButton type="tertiary" size="large" @click="handleCancel">
-              Cancel
-            </SmButton>
-            <SmButton type="primary" size="large" native-type="submit" form="rate-plan-form"
-              :disabled="!isFormModified">
-              Save
-            </SmButton>
-          </div>
-        </div>
-      </div>
-
       <div class="container-content">
-        <!-- Form Content -->
-        <SmForm id="rate-plan-form" @submit="handleFormSubmit" @invalid-submit="handleInvalidSubmit">
-          <div class="form-content-wrapper" :class="{ 'show-backgrounds': showContainerBackgrounds }">
-            <!-- Grid Overlay -->
-            <GridOverlay :show="showGridOverlay" />
+        <div class="form-content-wrapper" :class="{ 'show-backgrounds': showContainerBackgrounds }">
 
-            <!-- Error Summary Card -->
-            <SmHelpCard v-if="hasErrors" type="warning">
-              <template #header>
-                Please check the following fields for errors.
-              </template>
-              <template #body>
-                <ul class="error-list">
-                  <li v-for="field in errorFieldsList" :key="field.name">
-                    <a :href="`#${field.id}`" class="error-link">{{
-                      field.label }}</a>
-                  </li>
-                </ul>
-              </template>
-            </SmHelpCard>
+                <!-- Currency Card -->
+                <SmCard class="settings-card">
+                  <SmCardActions>
+                    <SmButton
+                      type="text"
+                      shape="square"
+                      @click="toggleEdit('currency')"
+                      :aria-label="editingCurrency ? 'Cancel editing' : 'Edit currency'"
+                    >
+                      <SmIcon :name="editingCurrency ? 'action-cross' : 'action-edit'" />
+                    </SmButton>
+                  </SmCardActions>
 
-            <!-- General Information -->
-            <SmFormGroup id="general-information">
-              <h2 class="form-heading-1">General Information</h2>
-              <SmInput id="ratePlanName" v-model="ratePlanName" label="Rate plan name" name="ratePlanName"
-                placeholder="Enter rate plan name" :mandatory="true" />
+                  <SmCardContent>
+                    <h4>Currency</h4>
 
-              <SmInput type="textarea" label="Rate plan description" name="ratePlanDescription"
-                v-model="ratePlanDescription" placeholder="Enter description" :rows="3" />
-            </SmFormGroup>
+                    <!-- EDIT MODE -->
+                    <SmForm v-if="editingCurrency" @submit="saveEdit('currency')">
+                      <GridOverlay :show="showGridOverlay" />
+                      <SmFormGroup>
+                        <SmSelect
+                          id="baseCurrency"
+                          v-model="baseCurrency"
+                          label="Base currency"
+                          name="baseCurrency"
+                          :options="currencyOptions"
+                          placeholder="Select currency"
+                          disabled
+                        />
 
-            <!-- Restrictions and Inclusions -->
-            <SmFormGroup id="restrictions-inclusions">
-              <h2 class="form-heading-1">Restrictions and Inclusions</h2>
-              <div class="form-row">
-                <div class="form-col">
-                  <SmInput v-model="defaultMinStay" label="Default minimum stay" name="defaultMinStay" placeholder="" />
-                </div>
-                <div class="form-col">
-                  <SmInput v-model="defaultMaxStay" label="Default maximum stay" name="defaultMaxStay" placeholder="" />
-                </div>
-              </div>
+                        <SmCheckbox
+                          v-model="enableCurrencyConversion"
+                          id="enableCurrencyConversion"
+                          name="enableCurrencyConversion"
+                          label="Enable currency conversion"
+                        />
+                      </SmFormGroup>
 
-              <div class="form-row">
-                <div class="form-col">
-                  <SmInput v-model="releasePeriod" label="Release period" name="releasePeriod" placeholder="14" />
-                </div>
-                <div class="form-col">
-                  <SmSelect v-model="inclusions" label="Inclusions" name="inclusions" :options="inclusionsOptions"
-                    placeholder="None" />
-                </div>
-              </div>
-            </SmFormGroup>
-
-            <!-- Pricing Details -->
-            <SmFormGroup id="pricing-details">
-              <h2 class="form-heading-1">Pricing Details</h2>
-              <div class="form-row">
-                <div class="form-col">
-                  <SmInput v-model="currency" label="Currency" name="currency" placeholder="Australian Dollar"
-                    disabled />
-                </div>
-                <div class="form-col">
-                  <SmInput v-model="minimumRate" label="Minimum rate" name="minimumRate" placeholder="" disabled>
-                    <template #prefix>
-                      <SmInputPrefixContent>AUD
-                      </SmInputPrefixContent>
-                    </template>
-                    <template v-slot:suffix>
-                      <sm-button @click="enabled = !enabled" aria-controls="min-rate" type="tertiary" size="large"
-                        :aria-label="enabled ? 'Lock field' : 'Unlock field'"
-                        :title="enabled ? 'Lock field' : 'Unlock field'">
-                        <sm-icon :name="enabled ? 'action-lock-open' : 'action-lock'" />
-                      </sm-button>
-                    </template>
-                    <template #action>
-                      <SmTooltip
-                        title="If set, this value will override all lower rates in the inventory grid (including derived rates)."
-                        trigger="hover" placement="right">
-                        <SmIcon name="utility-information-alt" class="tooltip-icon" width="14px" height="14px" />
-                      </SmTooltip>
-                    </template>
-                  </SmInput>
-                </div>
-              </div>
-            </SmFormGroup>
-
-            <!-- Rate Setup -->
-            <SmFormGroup id="rate-setup">
-              <h2 class="form-heading-1">Rate Setup</h2>
-              <SmRadioGroup label="Rate setup method" v-model="rateSetup" name="rateSetup">
-                <SmRadio label="Manually input daily rates" selected-value="manual" v-model="rateSetup" name="rateSetup"
-                  :error-disabled="true" />
-                <SmRadio label="Derive daily rates from an existing rate plan" selected-value="derive"
-                  v-model="rateSetup" name="rateSetup" :error-disabled="true" />
-              </SmRadioGroup>
-
-              <div v-show="rateSetup === 'derive'" class="derived-rate-fields">
-                <SmSelect id="derivedFrom" v-model="derivedFrom" label="Derived from" name="derivedFrom"
-                  :options="derivedFromOptions" placeholder="Non-Refundable" />
-
-                <SmSelect v-model="adjustDailyRatesBy" label="Adjust daily rates by" name="adjustDailyRatesBy"
-                  :options="adjustByOptions" placeholder="Percentage" />
-
-                <div class="form-row">
-                  <div class="form-col col-span-3">
-                    <SmSelect v-model="percentageAdjustmentType" label="Percentage adjustment"
-                      name="percentageAdjustmentType" :options="percentageTypeOptions" placeholder="Decrease by (%)" />
-                  </div>
-                  <div class="form-col col-span-1">
-                    <SmInput v-model="percentageAdjustmentValue" label="Value" name="percentageValue"
-                      placeholder="10" />
-                  </div>
-                </div>
-              </div>
-            </SmFormGroup>
-
-            <!-- Direct Booking Controls -->
-            <SmFormGroup id="booking-controls">
-              <h2 class="form-heading-1">Direct Booking Controls</h2>
-              <h3 class="form-heading-2">Restrict bookable dates</h3>
-              <SmCheckbox v-model="applicableDates" id="applicableDates" name="applicableDates"
-                label="Enable included stay dates">
-              </SmCheckbox>
-
-                  <!-- Included stay date ranges container -->
-                  <div v-if="applicableDates" class="date-ranges-container">
-                    <div v-for="(_, index) in applicableDateRanges" :key="index" class="date-range-item">
-                      <div class="form-item-header">
-                        <label class="sm-field-label sm-text--small">Date range</label>
-                        <div class="form-item-actions">
-                          <SmButton type="text" size="small" @click="clearDateRange('applicable', index)">
-                            Clear
+                      <div class="edit-actions">
+                        <div class="text-right">
+                          <SmButton type="tertiary" @click="cancelEdit('currency')">
+                            Cancel
                           </SmButton>
-                          <SmButton type="text-warning" size="small" @click="deleteDateRange('applicable', index)">
-                            Delete
+                          <SmButton type="primary" native-type="submit">
+                            Save
                           </SmButton>
                         </div>
                       </div>
-                      <SmDatePicker v-model="applicableDateRanges[index]" :name="`applicableDateRange${index}`"
-                        :is-range="true" start-date-placeholder="DD/MM/YYYY" end-date-placeholder="DD/MM/YYYY"
-                        :label-hidden="true" mode="date" />
-                    </div>
+                    </SmForm>
 
-                    <div v-if="applicableDateRanges.length < 5">
-                      <SmButton type="text" size="large" @click="addDateRange('applicable')">
-                        <SmIcon name="controls-add" />
-                        Add included dates
-                      </SmButton>
-                    </div>
-                    <div v-else class="date-range-limit-message">
-                      Maximum of 5 date ranges reached
-                    </div>
-                  </div>
-
-                  <SmCheckbox v-model="includedStayDays" id="includedStayDays" name="includedStayDays"
-                    label="Enable days of the week restriction" />
-
-                  <div v-if="includedStayDays" class="conditional-form-section">
-                    <SmSelect v-model="stayDatesIncludedDays" label="Included days" name="stayDatesIncludedDays"
-                      :options="daysOfWeekOptions" :multiple="true" placeholder="All days" />
-                  </div>
-
-                  <SmCheckbox v-model="excludedStayDates" id="excludedStayDates" name="excludedStayDates"
-                    label="Enable excluded stay dates" />
-
-                  <!-- Excluded stay date ranges container -->
-                  <div v-if="excludedStayDates" class="date-ranges-container">
-                    <div v-for="(_, index) in excludedStayDateRanges" :key="index" class="date-range-item">
-                      <div class="form-item-header">
-                        <label class="sm-field-label sm-text--small">Date range</label>
-                        <div class="form-item-actions">
-                          <SmButton type="text" size="small" @click="clearDateRange('excluded', index)">
-                            Clear
-                          </SmButton>
-                          <SmButton type="text-warning" size="small" @click="deleteDateRange('excluded', index)">
-                            Delete
-                          </SmButton>
-                        </div>
-                      </div>
-                      <SmDatePicker v-model="excludedStayDateRanges[index]" :name="`excludedStayDateRange${index}`"
-                        :is-range="true" start-date-placeholder="DD/MM/YYYY" end-date-placeholder="DD/MM/YYYY"
-                        :label-hidden="true" mode="date" />
-                    </div>
-
-                    <div v-if="excludedStayDateRanges.length < 5">
-                      <SmButton type="text" size="large" @click="addDateRange('excluded')">
-                        <SmIcon name="controls-add" />
-                        Add excluded dates
-                      </SmButton>
-                    </div>
-                    <div v-else class="date-range-limit-message">
-                      Maximum of 5 date ranges reached
-                    </div>
-                  </div>
-
-              <h3 class="form-heading-2">Restrict advertised dates</h3>
-              <SmCheckbox v-model="includedAdvertisedDates" id="includedAdvertisedDates" name="includedAdvertisedDates"
-                label="Enable included advertised dates">
-              </SmCheckbox>
-
-                  <!-- Included advertised date ranges container -->
-                  <div v-if="includedAdvertisedDates" class="date-ranges-container">
-                    <div v-for="(_, index) in includedAdvertisedDateRanges" :key="index" class="date-range-item">
-                      <div class="form-item-header">
-                        <label class="sm-field-label sm-text--small">Date range</label>
-                        <div class="form-item-actions">
-                          <SmButton type="text" size="small" @click="clearDateRange('includedAdvertised', index)">
-                            Clear
-                          </SmButton>
-                          <SmButton type="text-warning" size="small" @click="deleteDateRange('includedAdvertised', index)">
-                            Delete
-                          </SmButton>
-                        </div>
-                      </div>
-                      <SmDatePicker v-model="includedAdvertisedDateRanges[index]"
-                        :name="`includedAdvertisedDateRange${index}`" :is-range="true" start-date-placeholder="DD/MM/YYYY"
-                        end-date-placeholder="DD/MM/YYYY" :label-hidden="true" mode="date" />
-                    </div>
-
-                    <div v-if="includedAdvertisedDateRanges.length < 5">
-                      <SmButton type="text" size="large" @click="addDateRange('includedAdvertised')">
-                        <SmIcon name="controls-add" />
-                        Add included advertised dates
-                      </SmButton>
-                    </div>
-                    <div v-else class="date-range-limit-message">
-                      Maximum of 5 date ranges reached
-                    </div>
-                  </div>
-
-                  <SmCheckbox v-model="excludedAdvertisedDates" id="excludedAdvertisedDates" name="excludedAdvertisedDates"
-                    label="Enable excluded advertised dates" />
-
-                  <!-- Excluded advertised date ranges container -->
-                  <div v-if="excludedAdvertisedDates" class="date-ranges-container">
-                    <div v-for="(_, index) in excludedAdvertisedDateRanges" :key="index" class="date-range-item">
-                      <div class="form-item-header">
-                        <label class="sm-field-label sm-text--small">Date range</label>
-                        <div class="form-item-actions">
-                          <SmButton type="text" size="small" @click="clearDateRange('excludedAdvertised', index)">
-                            Clear
-                          </SmButton>
-                          <SmButton type="text-warning" size="small" @click="deleteDateRange('excludedAdvertised', index)">
-                            Delete
-                          </SmButton>
-                        </div>
-                      </div>
-                      <SmDatePicker v-model="excludedAdvertisedDateRanges[index]"
-                        :name="`excludedAdvertisedDateRange${index}`" :is-range="true" start-date-placeholder="DD/MM/YYYY"
-                        end-date-placeholder="DD/MM/YYYY" :label-hidden="true" mode="date" />
-                    </div>
-
-                    <div v-if="excludedAdvertisedDateRanges.length < 5">
-                      <SmButton type="text" size="large" @click="addDateRange('excludedAdvertised')">
-                        <SmIcon name="controls-add" />
-                        Add excluded advertised dates
-                      </SmButton>
-                    </div>
-                    <div v-else class="date-range-limit-message">
-                      Maximum of 5 date ranges reached
-                    </div>
-                  </div>
-
-                  <SmCheckbox v-model="maxAdvanceBookingDates" id="maxAdvanceBookingDates" name="maxAdvanceBookingDates"
-                    label="Enable advance booking restriction" />
-
-                  <div v-if="maxAdvanceBookingDates" class="conditional-form-section">
-                    <div class="form-row">
-                      <div class="form-col col-span-2">
-                        <SmInput v-model="maxAdvanceBookingDays" name="maxAdvanceBookingDays" label="Number of days"
-                          type="number" placeholder="e.g., 30, 60, 90" />
-                      </div>
-                      <div class="form-col col-span-2">
-                        <SmSelect v-model="maxAdvanceBookingTimeframe" name="maxAdvanceBookingTimeframe" label="Timeframe"
-                          :options="maxAdvanceBookingTimeframeOptions" />
-                      </div>
-                    </div>
-                  </div>
-
-              <h3 class="form-heading-2">Additional options</h3>
-              <SmCheckbox v-model="dynamicDiscounts" id="dynamicDiscounts" name="dynamicDiscounts"
-                label="Enable dynamic discounts" />
-
-                  <div v-if="dynamicDiscounts" class="conditional-form-section">
-                    <SmSelect v-model="discountType" name="discountType" label="Discount type"
-                      placeholder="Select a discount type" :options="discountTypeOptions" />
-
-                    <!-- Dynamic Length of Stay Fields -->
-                    <div v-if="discountType === 'dynamic_los'" class="discount-type-section los-rules-section">
-                      <div v-for="(rule, index) in losRules" :key="index" class="form-row">
-                        <div class="form-col">
-                          <SmSelect v-model="rule.nights" :name="`losNights_${index}`" label="Nights"
-                            placeholder="Select nights" :options="losNightsOptions" />
-                        </div>
-                        <div
-                          :class="index === losRules.length - 1 && losRules.length > 1 ? 'form-col col-span-1' : 'form-col'">
-                          <SmInput v-model="rule.discountPercent" :name="`losDiscountPercent_${index}`" label="Discount %"
-                            type="number" placeholder="0" />
-                        </div>
-                        <div v-if="index === losRules.length - 1 && losRules.length > 1"
-                          class="form-col col-span-1 los-delete-col">
-                          <SmButton type="text-warning" size="small" @click="removeLosRule(index)" style="width: 100%;">
-                            Delete
-                          </SmButton>
-                        </div>
-                      </div>
-                      <div v-if="losRules.length < 15" class="los-add-button">
-                        <SmButton type="text" size="large" @click="addLosRule">
-                          <SmIcon name="controls-add" />
-                          Add rule
-                        </SmButton>
-                      </div>
-                      <div v-if="losRules.length >= 15" class="date-range-limit-message">
-                        Maximum of 15 rules reached
-                      </div>
-                    </div>
-
-                    <!-- Stay Pay Deal Fields -->
-                    <div v-if="discountType === 'stay_pay'" class="discount-type-section">
-                      <div class="form-row">
-                        <div class="form-col">
-                          <SmInput v-model="stayNights" name="stayNights" label="Stay nights" type="number"
-                            placeholder="e.g., 3" />
-                        </div>
-                        <div class="form-col">
-                          <SmInput v-model="payNights" name="payNights" label="Pay nights" type="number"
-                            placeholder="e.g., 2" />
-                        </div>
+                    <!-- READ MODE -->
+                    <div v-else class="read-fields">
+                      <div class="read-field">
+                        <span class="read-field-label">Base currency</span>
+                        <span class="read-field-value">{{ getCurrencyLabel(baseCurrency) }}</span>
                       </div>
 
-                      <SmRadioGroup name="discountFor" label="Discount for">
-                        <SmRadio v-model="discountFor" name="discountFor" selected-value="all_nights" label="All nights"
-                          :error-disabled="true" />
-                        <SmRadio v-model="discountFor" name="discountFor" selected-value="last_night" label="Last night"
-                          :error-disabled="true" />
-                        <SmRadio v-model="discountFor" name="discountFor" selected-value="cheapest_night"
-                          label="Cheapest night" :error-disabled="true" />
-                      </SmRadioGroup>
+                      <div class="read-field">
+                        <span class="read-field-label">Currency conversion</span>
+                        <span class="read-field-value">{{ enableCurrencyConversion ? 'Enabled' : 'Disabled' }}</span>
+                      </div>
                     </div>
+                  </SmCardContent>
+                </SmCard>
 
-                    <!-- Package Deal Fields -->
-                    <div v-if="discountType === 'package'" class="discount-type-section">
-                      <SmInput v-model="packageIncludedNights" name="packageIncludedNights"
-                        label="Number of included nights" type="number" placeholder="0" />
+                <!-- Inventory Card -->
+                <SmCard class="settings-card">
+                  <SmCardActions>
+                    <SmButton
+                      type="text"
+                      shape="square"
+                      @click="toggleEdit('inventory')"
+                      :aria-label="editingInventory ? 'Cancel editing' : 'Edit inventory'"
+                    >
+                      <SmIcon :name="editingInventory ? 'action-cross' : 'action-edit'" />
+                    </SmButton>
+                  </SmCardActions>
 
-                      <h4 class="form-heading-3">Charges for additional nights</h4>
-                      <div class="form-row">
-                          <div class="form-col">
-                            <SmInput v-model="packageField1" name="packageField1" label="Included occupants rate"
-                              type="number" placeholder="0">
-                              <template #prefix>
-                                <SmInputPrefixContent>AUD</SmInputPrefixContent>
-                              </template>
-                            </SmInput>
-                          </div>
-                          <div class="form-col">
-                            <SmInput v-model="packageField2" name="packageField2" label="Extra adult rate" type="number"
-                              placeholder="0">
-                              <template #prefix>
-                                <SmInputPrefixContent>AUD</SmInputPrefixContent>
-                              </template>
-                            </SmInput>
-                          </div>
-                        </div>
+                  <SmCardContent>
+                    <h4>Inventory</h4>
 
+                    <!-- EDIT MODE -->
+                    <SmForm v-if="editingInventory" @submit="saveEdit('inventory')">
+                      <GridOverlay :show="showGridOverlay" />
+                      <SmFormGroup>
                         <div class="form-row">
-                          <div class="form-col">
-                            <SmInput v-model="packageField3" name="packageField3" label="Extra child rate" type="number"
-                              placeholder="0">
+                          <div class="form-col col-span-2">
+                            <SmInput
+                              id="minimumRate"
+                              v-model="minimumRate"
+                              label="Minimum rate"
+                              name="minimumRate"
+                              type="number"
+                              placeholder="0"
+                            >
                               <template #prefix>
                                 <SmInputPrefixContent>AUD</SmInputPrefixContent>
                               </template>
                             </SmInput>
                           </div>
-                          <div class="form-col">
-                            <SmInput v-model="packageField4" name="packageField4" label="Extra infant rate" type="number"
-                              placeholder="0">
-                              <template #prefix>
-                                <SmInputPrefixContent>AUD</SmInputPrefixContent>
-                              </template>
-                            </SmInput>
-                          </div>
                         </div>
 
-                      <!-- Seasonal Overrides -->
-                      <div class="seasonal-overrides-container">
-                        <SmCard v-for="(override, index) in packageSeasonalOverrides" :key="index"
-                          class="seasonal-override-card">
-                          <SmCardContent>
-                            <div class="seasonal-override-content">
-                              <div class="seasonal-override-header">
-                                <h4 class="form-heading-3">Seasonal override</h4>
-                                <SmButton type="button" shape="round" size="medium" @click="removeSeasonalOverride(index)"
-                                  aria-label="Delete seasonal override">
-                                  <SmIcon name="action-remove" style="color: var(--color-warning);" />
-                                </SmButton>
-                              </div>
-                              <div class="date-range-item">
-                                  <div class="form-item-header">
-                                    <label class="sm-field-label sm-text--small">Date range</label>
-                                    <div class="form-item-actions">
-                                      <SmButton type="text" size="small" @click="clearSeasonalOverrideDateRange(index)">
-                                        Clear
-                                      </SmButton>
-                                    </div>
-                                  </div>
-                                  <SmDatePicker v-model="override.dateRange" :name="`seasonalOverrideDateRange${index}`"
-                                    :is-range="true" start-date-placeholder="DD/MM/YYYY" end-date-placeholder="DD/MM/YYYY"
-                                    :label-hidden="true" mode="date" :mandatory="true" />
-                                </div>
+                        <SmSelect
+                          id="updatePeriod"
+                          v-model="updatePeriod"
+                          name="updatePeriod"
+                          :options="updatePeriodOptions"
+                          placeholder="Select update period"
+                        >
+                          <template #label>
+                            Update period
+                            <SmTooltip
+                              title="Set the maximum number of days that updates are sent to your connected channels. The number of days each channel supports can be found in the channels section."
+                              trigger="hover"
+                              placement="right"
+                            >
+                              <SmIcon name="utility-information-alt" class="tooltip-icon" width="14px" height="14px" />
+                            </SmTooltip>
+                          </template>
+                        </SmSelect>
 
-                                <div class="form-row">
-                                  <div class="form-col">
-                                    <SmInput v-model="override.includedNights" :name="`seasonalOverrideIncludedNights${index}`"
-                                      label="Number of included nights" type="number" placeholder="0" :mandatory="true" />
-                                  </div>
-                                </div>
+                        <SmSelect
+                          id="weekendStartsOn"
+                          v-model="weekendStartsOn"
+                          label="Weekend starts on"
+                          name="weekendStartsOn"
+                          :options="weekendStartsOnOptions"
+                          placeholder="Select day"
+                        />
 
-                                <h5 class="form-heading-4">Charges for additional nights</h5>
-                                <div class="form-row">
-                                    <div class="form-col">
-                                      <SmInput v-model="override.field1" :name="`seasonalOverrideField1_${index}`"
-                                        label="Included occupants rate" type="number" placeholder="0" :mandatory="true">
-                                        <template #prefix>
-                                          <SmInputPrefixContent>AUD</SmInputPrefixContent>
-                                        </template>
-                                      </SmInput>
-                                    </div>
-                                    <div class="form-col">
-                                      <SmInput v-model="override.field2" :name="`seasonalOverrideField2_${index}`"
-                                        label="Extra adult rate" type="number" placeholder="0" :mandatory="true">
-                                        <template #prefix>
-                                          <SmInputPrefixContent>AUD</SmInputPrefixContent>
-                                        </template>
-                                      </SmInput>
-                                    </div>
-                                  </div>
+                        <div class="checkbox-with-tooltip">
+                          <SmCheckbox
+                            v-model="enableAutoReplenishment"
+                            id="enableAutoReplenishment"
+                            name="enableAutoReplenishment"
+                            label="Enable Auto-replenishment"
+                          />
+                          <SmTooltip
+                            title="Enabling this functionality will ensure that your room availability will be replenished in your inventory automatically whenever a reservation has been cancelled or modified."
+                            trigger="hover"
+                            placement="right"
+                          >
+                            <SmIcon name="utility-information-alt" class="tooltip-icon" width="14px" height="14px" />
+                          </SmTooltip>
+                        </div>
 
-                                  <div class="form-row">
-                                    <div class="form-col">
-                                      <SmInput v-model="override.field3" :name="`seasonalOverrideField3_${index}`"
-                                        label="Extra child rate" type="number" placeholder="0" :mandatory="true">
-                                        <template #prefix>
-                                          <SmInputPrefixContent>AUD</SmInputPrefixContent>
-                                        </template>
-                                      </SmInput>
-                                    </div>
-                                    <div class="form-col">
-                                      <SmInput v-model="override.field4" :name="`seasonalOverrideField4_${index}`"
-                                        label="Extra infant rate" type="number" placeholder="0" :mandatory="true">
-                                        <template #prefix>
-                                          <SmInputPrefixContent>AUD</SmInputPrefixContent>
-                                        </template>
-                                      </SmInput>
-                                    </div>
-                                  </div>
-                            </div>
-                          </SmCardContent>
-                        </SmCard>
+                        <SmRadioGroup
+                          v-if="enableAutoReplenishment"
+                          label="Auto replenishment rules"
+                          v-model="autoReplenishmentMode"
+                          name="autoReplenishmentMode"
+                        >
+                          <SmRadio
+                            v-model="autoReplenishmentMode"
+                            name="autoReplenishmentMode"
+                            selected-value="always"
+                            label="Always"
+                            :error-disabled="true"
+                          />
+                          <SmRadio
+                            v-model="autoReplenishmentMode"
+                            name="autoReplenishmentMode"
+                            selected-value="conditional"
+                            label="Only if the availability is 1 or more"
+                            :error-disabled="true"
+                          />
+                        </SmRadioGroup>
+                      </SmFormGroup>
 
-                        <div>
-                          <SmButton type="text" size="large" @click="addSeasonalOverride">
-                            <SmIcon name="controls-add" />
-                            Add seasonal override
+                      <div class="edit-actions">
+                        <div class="text-right">
+                          <SmButton type="tertiary" @click="cancelEdit('inventory')">
+                            Cancel
+                          </SmButton>
+                          <SmButton type="primary" native-type="submit">
+                            Save
                           </SmButton>
                         </div>
                       </div>
-                    </div>
-                  </div>
+                    </SmForm>
 
-                  <SmCheckbox v-model="restrictRateToMobile" id="restrictRateToMobile" name="restrictRateToMobile"
-                    label="Enable restrict to mobile devices">
-                  </SmCheckbox>
+                    <!-- READ MODE -->
+                    <div v-else class="read-fields">
+                      <div class="read-field">
+                        <span class="read-field-label">Minimum rate</span>
+                        <span class="read-field-value">{{ minimumRate }} (AUD)</span>
+                      </div>
 
-                  <SmCheckbox v-model="highlightRatePlan" id="highlightRatePlan" name="highlightRatePlan"
-                    label="Enable highlight on booking engine">
-                  </SmCheckbox>
+                      <div class="read-field">
+                        <span class="read-field-label">Update period</span>
+                        <span class="read-field-value">{{ getUpdatePeriodLabel(updatePeriod) }}</span>
+                      </div>
 
-                  <!-- Highlight on booking engine expanded fields -->
-                  <div v-if="highlightRatePlan" class="conditional-form-section">
-                    <label class="sm-field-label">
-                      Hero image
-                      <SmTooltip title="The recommended size is 1500x500 px. Supported formats: GIF, JPG, PNG."
-                        trigger="hover" placement="right">
-                        <SmIcon name="utility-information-alt" class="tooltip-icon" width="14px" height="14px" />
-                      </SmTooltip>
-                    </label>
-                    <div class="sm-media">
-                      <div class="sm-media__drop-zone">
-                        <div v-if="highlightImageUrl" class="sm-media--items">
-                          <div class="sm-media-item highlight-image-preview" :style="{ backgroundImage: `url(${highlightImageUrl})` }">
-                            <div class="sm-media-item__card">
-                              <div class="sm-media-item__actions">
-                                <SmButton type="button" shape="square" size="medium" @click="removeHighlightImage">
-                                  <SmIcon name="action-cross" />
-                                </SmButton>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div v-else class="sm-media__empty-state highlight-image-empty">
-                          <input ref="highlightImageInput" type="file" accept="image/png,image/jpg,image/jpeg,image/gif"
-                            class="sm-media__input-hidden" @change="handleHighlightImageUpload" />
-                          <div>
-                            <SmButton type="text" size="large" @click="openMediaLibrary">
-                              <SmIcon name="controls-add" />
-                              Assign from media library
-                            </SmButton>
-                          </div>
-                        </div>
+                      <div class="read-field">
+                        <span class="read-field-label">Weekend starts on</span>
+                        <span class="read-field-value">{{ getWeekendStartLabel(weekendStartsOn) }}</span>
+                      </div>
+
+                      <div class="read-field">
+                        <span class="read-field-label">Auto-replenishment</span>
+                        <span class="read-field-value">{{ enableAutoReplenishment ? 'Enabled' : 'Disabled' }}</span>
                       </div>
                     </div>
+                  </SmCardContent>
+                </SmCard>
 
-                    <SmInput v-model="highlightTagline" name="highlightTagline" label="Tagline" placeholder="Enter tagline"
-                      :mandatory="true">
-                      <template #action>
-                        <SmTooltip
-                          title="A short and catchy description of your rate plan. Include whether the rate is discounted or is a limited time offer."
-                          trigger="hover" placement="right">
-                          <SmIcon name="utility-information-alt" class="tooltip-icon" width="14px" height="14px" />
-                        </SmTooltip>
-                      </template>
-                    </SmInput>
+                <!-- Language and Region Card -->
+                <SmCard class="settings-card">
+                  <SmCardActions>
+                    <SmButton
+                      type="text"
+                      shape="square"
+                      @click="toggleEdit('languageRegion')"
+                      :aria-label="editingLanguageRegion ? 'Cancel editing' : 'Edit language and region'"
+                    >
+                      <SmIcon :name="editingLanguageRegion ? 'action-cross' : 'action-edit'" />
+                    </SmButton>
+                  </SmCardActions>
 
-                    <SmInput v-model="highlightHeadline" name="highlightHeadline" label="Headline"
-                      placeholder="Enter headline" :mandatory="true">
-                      <template #action>
-                        <SmTooltip title="The main headline text that will be prominently displayed" trigger="hover"
-                          placement="right">
-                          <SmIcon name="utility-information-alt" class="tooltip-icon" width="14px" height="14px" />
-                        </SmTooltip>
-                      </template>
-                    </SmInput>
+                  <SmCardContent>
+                    <h4>Language and region</h4>
 
-                    <div>
-                      <h5 class="form-heading-4">Key selling points</h5>
-                      <ol class="selling-points-list">
-                          <li v-for="(point, index) in highlightKeySellingPoints" :key="index" class="selling-point-item"
-                            draggable="true" @dragstart="handleSellingPointDragStart(index)"
-                            @dragover="handleSellingPointDragOver" @drop="handleSellingPointDrop($event, index)"
-                            @dragend="handleSellingPointDragEnd">
-                            <div class="selling-point-container">
-                              <span class="drag-handle" aria-hidden="true">
-                                <SmIcon name="action-drag" />
-                              </span>
-                              <span class="selling-point-input-wrapper">
-                                <SmInput v-model="highlightKeySellingPoints[index]" :name="`keySellingPoint${index}`"
-                                  placeholder="Add a selling point" :label-hidden="true" class="selling-point-input" />
-                              </span>
-                              <SmButton v-if="highlightKeySellingPoints.length > 1" type="button" shape="round"
-                                aria-label="Delete" @click="removeKeySellingPoint(index)" class="remove-point-btn">
-                                <SmIcon name="action-remove" style="color: var(--color-warning);" />
-                              </SmButton>
-                            </div>
-                          </li>
-                        </ol>
-                        <div v-if="!isMaxSellingPoints">
-                          <SmButton type="text" size="large" @click="addKeySellingPoint">
-                            <SmIcon name="controls-add" />
-                            Add
+                    <!-- EDIT MODE -->
+                    <SmForm v-if="editingLanguageRegion" @submit="saveEdit('languageRegion')">
+                      <GridOverlay :show="showGridOverlay" />
+                      <SmFormGroup>
+                        <SmSelect
+                          id="baseLanguage"
+                          v-model="baseLanguage"
+                          label="Base language"
+                          name="baseLanguage"
+                          :options="languageOptions"
+                          placeholder="Select language"
+                        />
+
+                        <SmRadioGroup
+                          label="Units of measurement"
+                          v-model="unitsOfMeasurement"
+                          name="unitsOfMeasurement"
+                        >
+                          <SmRadio
+                            v-model="unitsOfMeasurement"
+                            name="unitsOfMeasurement"
+                            selected-value="metric"
+                            label="Metric"
+                            :error-disabled="true"
+                          />
+                          <SmRadio
+                            v-model="unitsOfMeasurement"
+                            name="unitsOfMeasurement"
+                            selected-value="imperial"
+                            label="Imperial"
+                            :error-disabled="true"
+                          />
+                        </SmRadioGroup>
+
+                        <SmSelect
+                          id="timeZone"
+                          v-model="timeZone"
+                          label="Time zone"
+                          name="timeZone"
+                          :options="timeZoneOptions"
+                          placeholder="Select time zone"
+                        />
+                      </SmFormGroup>
+
+                      <div class="edit-actions">
+                        <div class="text-right">
+                          <SmButton type="tertiary" @click="cancelEdit('languageRegion')">
+                            Cancel
+                          </SmButton>
+                          <SmButton type="primary" native-type="submit">
+                            Save
                           </SmButton>
                         </div>
-                        <p v-if="isMaxSellingPoints" class="form-helper-message">
-                          Maximum of 10 key selling points reached
-                        </p>
+                      </div>
+                    </SmForm>
+
+                    <!-- READ MODE -->
+                    <div v-else class="read-fields">
+                      <div class="read-field">
+                        <span class="read-field-label">Base language</span>
+                        <span class="read-field-value">{{ getLanguageLabel(baseLanguage) }}</span>
+                      </div>
+
+                      <div class="read-field">
+                        <span class="read-field-label">Units of measurement</span>
+                        <span class="read-field-value">{{ unitsOfMeasurement === 'metric' ? 'Metric' : 'Imperial' }}</span>
+                      </div>
+
+                      <div class="read-field">
+                        <span class="read-field-label">Time zone</span>
+                        <span class="read-field-value">{{ getTimeZoneLabel(timeZone) }}</span>
+                      </div>
                     </div>
-                  </div>
-            </SmFormGroup>
-          </div>
-        </SmForm>
+                  </SmCardContent>
+                </SmCard>
+
+        </div>
       </div>
     </div>
 
-    <!-- Prototype Settings Panel -->
+    <!-- Settings Panel -->
     <PrototypeSettings>
-      <div class="settings-section">
-        <h3 class="settings-section-title">Display Controls</h3>
-        <div class="toggle-item">
-          <label class="toggle-label">
-            <input type="checkbox" v-model="showGridOverlay" id="grid-overlay-toggle" />
-            <span>Show Grid Overlay</span>
-          </label>
-        </div>
-        <div class="toggle-item">
-          <label class="toggle-label">
-            <input type="checkbox" v-model="fullWidthForm" id="full-width-form-toggle" />
-            <span>Full width form</span>
-          </label>
-        </div>
-      </div>
+      <DisplaySettings />
     </PrototypeSettings>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
+import { ref } from 'vue'
 import PrototypeSettings from '@/shared/components/PrototypeSettings.vue'
 import GridOverlay from '@/shared/components/GridOverlay.vue'
+import DisplaySettings from '../components/DisplaySettings.vue'
+import { useDisplaySettings } from '../composables/useDisplaySettings.js'
 
-/* ============================================
-   FORM DATA - RATE PLAN
-   ============================================ */
-// General Information
-const ratePlanName = ref('Advanced Purchase')
-const ratePlanDescription = ref('')
+// Import reference images
+import readModeRef from '/images/dynamic-form/property-settings/propery-settings-1.png'
+import editModeRef from '/images/dynamic-form/property-settings/propery-settings-2.png'
+import readModeRef2 from '/images/dynamic-form/property-settings/propery-settings-3.png'
+import editModeRef2 from '/images/dynamic-form/property-settings/propery-settings-4.png'
+import readModeRef3 from '/images/dynamic-form/property-settings/propery-settings-5.png'
+import editModeRef3 from '/images/dynamic-form/property-settings/propery-settings-6.png'
 
-// Restrictions
-const defaultMinStay = ref('')
-const defaultMaxStay = ref('')
-const releasePeriod = ref('14')
-const inclusions = ref(null)
-const currency = ref('Australian Dollar')
-const minimumRate = ref('')
+const { showGridOverlay, showContainerBackgrounds, fullWidthForm } = useDisplaySettings()
 
-// Rate Setup
-const rateSetup = ref('manual') // 'manual' or 'derive'
-const derivedFrom = ref(null)
-const adjustDailyRatesBy = ref(null)
-const percentageAdjustmentType = ref(null)
-const percentageAdjustmentValue = ref('10')
+// Edit state tracking
+const editingCurrency = ref(false)
+const editingInventory = ref(false)
+const editingLanguageRegion = ref(false)
 
-// Toggle Switches
-const applicableDates = ref(false)
-const includedStayDays = ref(false)
-const excludedStayDates = ref(false)
-const includedAdvertisedDates = ref(false)
-const excludedAdvertisedDates = ref(false)
-const maxAdvanceBookingDates = ref(false)
-const dynamicDiscounts = ref(false)
-const discountType = ref('')
-const stayNights = ref('')
-const payNights = ref('')
-const discountFor = ref('all_nights')
-const losRules = ref([{ nights: null, discountPercent: '' }])
-const packageIncludedNights = ref('')
-const packageField1 = ref('')
-const packageField2 = ref('')
-const packageField3 = ref('')
-const packageField4 = ref('')
-const packageSeasonalOverrides = ref([])
-const restrictRateToMobile = ref(false)
-const highlightRatePlan = ref(false)
+// Form data - Currency
+const baseCurrency = ref('AUD')
+const enableCurrencyConversion = ref(false)
 
-// Grid overlay state
-const showGridOverlay = ref(false)
+// Form data - Inventory
+const minimumRate = ref('23')
+const updatePeriod = ref('525')
+const weekendStartsOn = ref('saturday')
+const enableAutoReplenishment = ref(true)
+const autoReplenishmentMode = ref('always')
 
-// Full width form state
-const fullWidthForm = ref(false)
+// Form data - Language and Region
+const baseLanguage = ref('en')
+const unitsOfMeasurement = ref('metric')
+const timeZone = ref('Australia/Sydney')
 
-// Container backgrounds toggle state
-const showContainerBackgrounds = ref(true)
+// Backup for cancel functionality
+let baseCurrencyBackup = null
+let enableCurrencyConversionBackup = null
+let minimumRateBackup = null
+let updatePeriodBackup = null
+let weekendStartsOnBackup = null
+let enableAutoReplenishmentBackup = null
+let autoReplenishmentModeBackup = null
+let baseLanguageBackup = null
+let unitsBackup = null
+let timeZoneBackup = null
 
-// Highlight on booking engine fields
-const highlightTagline = ref('')
-const highlightHeadline = ref('')
-const highlightKeySellingPoints = ref(['', '', ''])
-const highlightImageUrl = ref('')
-const draggedSellingPointIndex = ref(null)
-
-// Date ranges for toggles
-const applicableDateRanges = ref([])
-const excludedStayDateRanges = ref([])
-const includedAdvertisedDateRanges = ref([])
-const excludedAdvertisedDateRanges = ref([])
-const maxAdvanceBookingDateRanges = ref([])
-
-// Included days for stay dates (empty means all days)
-const stayDatesIncludedDays = ref([])
-
-// Restrict advance booking
-const maxAdvanceBookingDays = ref('')
-const maxAdvanceBookingTimeframe = ref('before_checkin')
-
-// Form validation error tracking
-const formErrors = ref({})
-
-// Store initial form state for comparison
-const initialFormState = ref(null)
-
-/* ============================================
-   OPTIONS
-   ============================================ */
-const inclusionsOptions = [
-  { label: 'None', code: 'none' },
-  { label: 'Breakfast included', code: 'breakfast' },
-  { label: 'Full board', code: 'full-board' }
+// Language options
+const languageOptions = [
+  { label: 'English', code: 'en' },
+  { label: 'Thai', code: 'th' },
+  { label: 'Japanese', code: 'ja' },
+  { label: 'Chinese (Simplified)', code: 'zh-CN' },
+  { label: 'French', code: 'fr' },
+  { label: 'German', code: 'de' },
+  { label: 'Spanish', code: 'es' }
 ]
 
-const derivedFromOptions = [
-  { label: 'Non-Refundable', code: 'non-refundable' },
-  { label: 'Flexible', code: 'flexible' },
-  { label: 'Standard', code: 'standard' }
+// Time zone options
+const timeZoneOptions = [
+  { label: 'GMT+11:00 Eastern Australia Time (Australia/Sydney)', code: 'Australia/Sydney' },
+  { label: 'GMT+10:00 Australian Eastern Standard Time (Australia/Brisbane)', code: 'Australia/Brisbane' },
+  { label: 'GMT+08:00 Australian Western Standard Time (Australia/Perth)', code: 'Australia/Perth' },
+  { label: 'GMT+09:30 Australian Central Standard Time (Australia/Adelaide)', code: 'Australia/Adelaide' },
+  { label: 'GMT+00:00 Greenwich Mean Time (Europe/London)', code: 'Europe/London' },
+  { label: 'GMT-05:00 Eastern Standard Time (America/New_York)', code: 'America/New_York' },
+  { label: 'GMT-08:00 Pacific Standard Time (America/Los_Angeles)', code: 'America/Los_Angeles' }
 ]
 
-const adjustByOptions = [
-  { label: 'Percentage', code: 'percentage' },
-  { label: 'Fixed amount', code: 'fixed' }
+// Currency options
+const currencyOptions = [
+  { label: 'AUD - Australian Dollar', code: 'AUD' },
+  { label: 'USD - US Dollar', code: 'USD' },
+  { label: 'EUR - Euro', code: 'EUR' },
+  { label: 'GBP - British Pound', code: 'GBP' },
+  { label: 'JPY - Japanese Yen', code: 'JPY' },
+  { label: 'CAD - Canadian Dollar', code: 'CAD' }
 ]
 
-const percentageTypeOptions = [
-  { label: 'Decrease by (%)', code: 'decrease' },
-  { label: 'Increase by (%)', code: 'increase' }
+// Update period options
+const updatePeriodOptions = [
+  { label: '400 days', code: '400' },
+  { label: '425 days', code: '425' },
+  { label: '450 days', code: '450' },
+  { label: '475 days', code: '475' },
+  { label: '500 days', code: '500' },
+  { label: '525 days', code: '525' }
 ]
 
-const daysOfWeekOptions = [
+// Weekend starts on options
+const weekendStartsOnOptions = [
   { label: 'Monday', code: 'monday' },
   { label: 'Tuesday', code: 'tuesday' },
   { label: 'Wednesday', code: 'wednesday' },
@@ -748,821 +432,139 @@ const daysOfWeekOptions = [
   { label: 'Sunday', code: 'sunday' }
 ]
 
-const maxAdvanceBookingTimeframeOptions = [
-  { label: 'Before check-in date', code: 'before_checkin' },
-  { label: 'Before booking date', code: 'before_booking' }
-]
-
-const discountTypeOptions = [
-  { label: 'Dynamic length of stay discount', code: 'dynamic_los' },
-  { label: 'Package deal', code: 'package' },
-  { label: 'Stay pay deal', code: 'stay_pay' }
-]
-
-const losNightsOptions = [
-  { label: 'Stay 1+ night', code: 1 },
-  { label: 'Stay 2+ nights', code: 2 },
-  { label: 'Stay 3+ nights', code: 3 },
-  { label: 'Stay 4+ nights', code: 4 },
-  { label: 'Stay 5+ nights', code: 5 },
-  { label: 'Stay 6+ nights', code: 6 },
-  { label: 'Stay 7+ nights', code: 7 },
-  { label: 'Stay 8+ nights', code: 8 },
-  { label: 'Stay 9+ nights', code: 9 },
-  { label: 'Stay 10+ nights', code: 10 },
-  { label: 'Stay 11+ nights', code: 11 },
-  { label: 'Stay 12+ nights', code: 12 },
-  { label: 'Stay 13+ nights', code: 13 },
-  { label: 'Stay 14+ nights', code: 14 },
-  { label: 'Stay 15+ nights', code: 15 },
-  { label: 'Stay 16+ nights', code: 16 }
-]
-
-/* ============================================
-   FORM HANDLERS
-   ============================================ */
-// Form submission handler
-const handleFormSubmit = (values) => {
-  console.log('Form submitted with values:', values)
-  formErrors.value = {}
-  alert('Form is valid! Saving rate plan...')
-  // After successful save, update initial state to current state
-  initialFormState.value = captureInitialFormState()
+// Helper functions
+const getLanguageLabel = (value) => {
+  return languageOptions.find(opt => opt.code === value)?.label || value
 }
 
-// Handle invalid form submission
-const handleInvalidSubmit = (errors) => {
-  console.log('Form validation errors:', errors)
-  formErrors.value = errors?.errors || {}
+const getTimeZoneLabel = (value) => {
+  return timeZoneOptions.find(opt => opt.code === value)?.label || value
 }
 
-// Cancel handler
-const handleCancel = () => {
-  console.log('Cancel clicked')
+const getCurrencyLabel = (value) => {
+  return currencyOptions.find(opt => opt.code === value)?.label || value
 }
 
-// Computed property to get list of error field names with labels
-const errorFieldsList = computed(() => {
-  const fieldLabels = {
-    ratePlanName: 'Rate plan name',
-    derivedFrom: 'Derived from',
-    stayNights: 'Stay nights',
-    payNights: 'Pay nights',
-    discountFor: 'Discount for',
+const getWeekendStartLabel = (value) => {
+  const days = {
+    monday: 'Monday',
+    tuesday: 'Tuesday',
+    wednesday: 'Wednesday',
+    thursday: 'Thursday',
+    friday: 'Friday',
+    saturday: 'Saturday',
+    sunday: 'Sunday'
   }
-
-  const fieldIds = {
-    ratePlanName: 'ratePlanName',
-    derivedFrom: 'derivedFrom',
-    stayNights: 'stayNights',
-    payNights: 'payNights',
-    discountFor: 'discountFor',
-  }
-
-  return Object.keys(formErrors.value).map(fieldName => ({
-    name: fieldName,
-    id: fieldIds[fieldName] || fieldName,
-    label: fieldLabels[fieldName] || fieldName,
-    error: formErrors.value[fieldName]
-  }))
-})
-
-// Check if there are any validation errors
-const hasErrors = computed(() => Object.keys(formErrors.value).length > 0)
-
-/* ============================================
-   FORM CHANGE DETECTION
-   ============================================ */
-// Capture initial form state
-const captureInitialFormState = () => {
-  return {
-    ratePlanName: ratePlanName.value,
-    ratePlanDescription: ratePlanDescription.value,
-    defaultMinStay: defaultMinStay.value,
-    defaultMaxStay: defaultMaxStay.value,
-    releasePeriod: releasePeriod.value,
-    inclusions: inclusions.value,
-    currency: currency.value,
-    minimumRate: minimumRate.value,
-    rateSetup: rateSetup.value,
-    derivedFrom: derivedFrom.value,
-    adjustDailyRatesBy: adjustDailyRatesBy.value,
-    percentageAdjustmentType: percentageAdjustmentType.value,
-    percentageAdjustmentValue: percentageAdjustmentValue.value,
-    applicableDates: applicableDates.value,
-    includedStayDays: includedStayDays.value,
-    excludedStayDates: excludedStayDates.value,
-    includedAdvertisedDates: includedAdvertisedDates.value,
-    excludedAdvertisedDates: excludedAdvertisedDates.value,
-    maxAdvanceBookingDates: maxAdvanceBookingDates.value,
-    dynamicDiscounts: dynamicDiscounts.value,
-    discountType: discountType.value,
-    stayNights: stayNights.value,
-    payNights: payNights.value,
-    discountFor: discountFor.value,
-    losRules: JSON.parse(JSON.stringify(losRules.value)),
-    packageIncludedNights: packageIncludedNights.value,
-    packageField1: packageField1.value,
-    packageField2: packageField2.value,
-    packageField3: packageField3.value,
-    packageField4: packageField4.value,
-    packageSeasonalOverrides: JSON.parse(JSON.stringify(packageSeasonalOverrides.value)),
-    restrictRateToMobile: restrictRateToMobile.value,
-    highlightRatePlan: highlightRatePlan.value,
-    highlightTagline: highlightTagline.value,
-    highlightHeadline: highlightHeadline.value,
-    highlightKeySellingPoints: JSON.parse(JSON.stringify(highlightKeySellingPoints.value)),
-    highlightImageUrl: highlightImageUrl.value,
-    applicableDateRanges: JSON.parse(JSON.stringify(applicableDateRanges.value)),
-    excludedStayDateRanges: JSON.parse(JSON.stringify(excludedStayDateRanges.value)),
-    includedAdvertisedDateRanges: JSON.parse(JSON.stringify(includedAdvertisedDateRanges.value)),
-    excludedAdvertisedDateRanges: JSON.parse(JSON.stringify(excludedAdvertisedDateRanges.value)),
-    maxAdvanceBookingDateRanges: JSON.parse(JSON.stringify(maxAdvanceBookingDateRanges.value)),
-    stayDatesIncludedDays: JSON.parse(JSON.stringify(stayDatesIncludedDays.value)),
-    maxAdvanceBookingDays: maxAdvanceBookingDays.value,
-    maxAdvanceBookingTimeframe: maxAdvanceBookingTimeframe.value,
-  }
+  return days[value] || value
 }
 
-// Check if form has been modified
-const isFormModified = computed(() => {
-  if (!initialFormState.value) return false
-
-  const initial = initialFormState.value
-
-  // Compare all fields
-  if (ratePlanName.value !== initial.ratePlanName) return true
-  if (ratePlanDescription.value !== initial.ratePlanDescription) return true
-  if (defaultMinStay.value !== initial.defaultMinStay) return true
-  if (defaultMaxStay.value !== initial.defaultMaxStay) return true
-  if (releasePeriod.value !== initial.releasePeriod) return true
-  if (inclusions.value !== initial.inclusions) return true
-  if (currency.value !== initial.currency) return true
-  if (minimumRate.value !== initial.minimumRate) return true
-  if (rateSetup.value !== initial.rateSetup) return true
-  if (derivedFrom.value !== initial.derivedFrom) return true
-  if (adjustDailyRatesBy.value !== initial.adjustDailyRatesBy) return true
-  if (percentageAdjustmentType.value !== initial.percentageAdjustmentType) return true
-  if (percentageAdjustmentValue.value !== initial.percentageAdjustmentValue) return true
-  if (applicableDates.value !== initial.applicableDates) return true
-  if (includedStayDays.value !== initial.includedStayDays) return true
-  if (excludedStayDates.value !== initial.excludedStayDates) return true
-  if (includedAdvertisedDates.value !== initial.includedAdvertisedDates) return true
-  if (excludedAdvertisedDates.value !== initial.excludedAdvertisedDates) return true
-  if (maxAdvanceBookingDates.value !== initial.maxAdvanceBookingDates) return true
-  if (dynamicDiscounts.value !== initial.dynamicDiscounts) return true
-  if (discountType.value !== initial.discountType) return true
-  if (stayNights.value !== initial.stayNights) return true
-  if (payNights.value !== initial.payNights) return true
-  if (discountFor.value !== initial.discountFor) return true
-  if (packageIncludedNights.value !== initial.packageIncludedNights) return true
-  if (packageField1.value !== initial.packageField1) return true
-  if (packageField2.value !== initial.packageField2) return true
-  if (packageField3.value !== initial.packageField3) return true
-  if (packageField4.value !== initial.packageField4) return true
-  if (restrictRateToMobile.value !== initial.restrictRateToMobile) return true
-  if (highlightRatePlan.value !== initial.highlightRatePlan) return true
-  if (highlightTagline.value !== initial.highlightTagline) return true
-  if (highlightHeadline.value !== initial.highlightHeadline) return true
-  if (highlightImageUrl.value !== initial.highlightImageUrl) return true
-  if (maxAdvanceBookingDays.value !== initial.maxAdvanceBookingDays) return true
-  if (maxAdvanceBookingTimeframe.value !== initial.maxAdvanceBookingTimeframe) return true
-
-  // Compare arrays by stringifying (simple comparison)
-  if (JSON.stringify(losRules.value) !== JSON.stringify(initial.losRules)) return true
-  if (JSON.stringify(packageSeasonalOverrides.value) !== JSON.stringify(initial.packageSeasonalOverrides)) return true
-  if (JSON.stringify(highlightKeySellingPoints.value) !== JSON.stringify(initial.highlightKeySellingPoints)) return true
-  if (JSON.stringify(applicableDateRanges.value) !== JSON.stringify(initial.applicableDateRanges)) return true
-  if (JSON.stringify(excludedStayDateRanges.value) !== JSON.stringify(initial.excludedStayDateRanges)) return true
-  if (JSON.stringify(includedAdvertisedDateRanges.value) !== JSON.stringify(initial.includedAdvertisedDateRanges)) return true
-  if (JSON.stringify(excludedAdvertisedDateRanges.value) !== JSON.stringify(initial.excludedAdvertisedDateRanges)) return true
-  if (JSON.stringify(maxAdvanceBookingDateRanges.value) !== JSON.stringify(initial.maxAdvanceBookingDateRanges)) return true
-  if (JSON.stringify(stayDatesIncludedDays.value) !== JSON.stringify(initial.stayDatesIncludedDays)) return true
-
-  return false
-})
-
-/* ============================================
-   DATE RANGE MANAGEMENT
-   ============================================ */
-const addDateRange = (type) => {
-  if (type === 'applicable') {
-    applicableDateRanges.value.push({ start: null, end: null })
-  } else if (type === 'excluded') {
-    excludedStayDateRanges.value.push({ start: null, end: null })
-  } else if (type === 'includedAdvertised') {
-    includedAdvertisedDateRanges.value.push({ start: null, end: null })
-  } else if (type === 'excludedAdvertised') {
-    excludedAdvertisedDateRanges.value.push({ start: null, end: null })
-  } else if (type === 'maxAdvance') {
-    maxAdvanceBookingDateRanges.value.push({ start: null, end: null })
-  }
+const getUpdatePeriodLabel = (value) => {
+  return updatePeriodOptions.find(opt => opt.code === value)?.label || value
 }
 
-const clearDateRange = (type, index) => {
-  if (type === 'applicable') {
-    applicableDateRanges.value[index] = { start: null, end: null }
-  } else if (type === 'excluded') {
-    excludedStayDateRanges.value[index] = { start: null, end: null }
-  } else if (type === 'includedAdvertised') {
-    includedAdvertisedDateRanges.value[index] = { start: null, end: null }
-  } else if (type === 'excludedAdvertised') {
-    excludedAdvertisedDateRanges.value[index] = { start: null, end: null }
-  } else if (type === 'maxAdvance') {
-    maxAdvanceBookingDateRanges.value[index] = { start: null, end: null }
-  }
-}
-
-const deleteDateRange = (type, index) => {
-  if (type === 'applicable') {
-    applicableDateRanges.value.splice(index, 1)
-  } else if (type === 'excluded') {
-    excludedStayDateRanges.value.splice(index, 1)
-  } else if (type === 'includedAdvertised') {
-    includedAdvertisedDateRanges.value.splice(index, 1)
-  } else if (type === 'excludedAdvertised') {
-    excludedAdvertisedDateRanges.value.splice(index, 1)
-  } else if (type === 'maxAdvance') {
-    maxAdvanceBookingDateRanges.value.splice(index, 1)
-  }
-}
-
-/* ============================================
-   DYNAMIC DISCOUNT FUNCTIONS
-   ============================================ */
-// Watch checkbox toggles and reset data when unchecked
-watch(applicableDates, (newValue) => {
-  if (!newValue) {
-    applicableDateRanges.value = []
-  }
-})
-
-watch(excludedStayDates, (newValue) => {
-  if (!newValue) {
-    excludedStayDateRanges.value = []
-  }
-})
-
-watch(includedAdvertisedDates, (newValue) => {
-  if (!newValue) {
-    includedAdvertisedDateRanges.value = []
-  }
-})
-
-watch(excludedAdvertisedDates, (newValue) => {
-  if (!newValue) {
-    excludedAdvertisedDateRanges.value = []
-  }
-})
-
-watch(includedStayDays, (newValue) => {
-  if (!newValue) {
-    stayDatesIncludedDays.value = []
-  }
-})
-
-// Watch dynamic discounts toggle and reset all discount fields
-watch(dynamicDiscounts, (newValue) => {
-  if (!newValue) {
-    discountType.value = ''
-    losRules.value = [{ nights: null, discountPercent: '' }]
-    stayNights.value = ''
-    payNights.value = ''
-    discountFor.value = ''
-    packageIncludedNights.value = ''
-    packageField1.value = ''
-    packageField2.value = ''
-    packageField3.value = ''
-    packageField4.value = ''
-    packageSeasonalOverrides.value = []
-  }
-})
-
-// Watch discount type changes and reset fields
-watch(discountType, (newValue) => {
-  if (newValue !== 'stay_pay') {
-    stayNights.value = ''
-    payNights.value = ''
-    discountFor.value = ''
-  }
-  if (newValue !== 'dynamic_los') {
-    losRules.value = [{ nights: null, discountPercent: '' }]
-  }
-  if (newValue !== 'package') {
-    packageIncludedNights.value = ''
-    packageField1.value = ''
-    packageField2.value = ''
-    packageField3.value = ''
-    packageField4.value = ''
-    packageSeasonalOverrides.value = []
-  }
-})
-
-// Add a new LOS rule
-const addLosRule = () => {
-  if (losRules.value.length < 15) {
-    losRules.value.push({ nights: null, discountPercent: '' })
-  }
-}
-
-// Remove a LOS rule
-const removeLosRule = (index) => {
-  if (losRules.value.length > 1) {
-    losRules.value.splice(index, 1)
-  }
-}
-
-// Add a seasonal override for package deal
-const addSeasonalOverride = () => {
-  packageSeasonalOverrides.value.push({
-    dateRange: null,
-    includedNights: '',
-    field1: '',
-    field2: '',
-    field3: '',
-    field4: ''
-  })
-}
-
-// Remove a seasonal override
-const removeSeasonalOverride = (index) => {
-  packageSeasonalOverrides.value.splice(index, 1)
-}
-
-// Clear date range for seasonal override
-const clearSeasonalOverrideDateRange = (index) => {
-  packageSeasonalOverrides.value[index].dateRange = null
-}
-
-/* ============================================
-   HIGHLIGHT BOOKING ENGINE FUNCTIONS
-   ============================================ */
-// Add a key selling point
-const addKeySellingPoint = () => {
-  if (highlightKeySellingPoints.value.length < 10) {
-    highlightKeySellingPoints.value.push('')
-  }
-}
-
-// Remove a key selling point
-const removeKeySellingPoint = (index) => {
-  if (highlightKeySellingPoints.value.length > 1) {
-    highlightKeySellingPoints.value.splice(index, 1)
-  }
-}
-
-// Drag and drop handlers for selling points
-const handleSellingPointDragStart = (index) => {
-  draggedSellingPointIndex.value = index
-}
-
-const handleSellingPointDragOver = (event) => {
-  event.preventDefault()
-}
-
-const handleSellingPointDrop = (event, dropIndex) => {
-  event.preventDefault()
-
-  if (draggedSellingPointIndex.value === null) return
-
-  const dragIndex = draggedSellingPointIndex.value
-  if (dragIndex === dropIndex) return
-
-  // Remove the dragged item and insert it at the new position
-  const items = [...highlightKeySellingPoints.value]
-  const [draggedItem] = items.splice(dragIndex, 1)
-  items.splice(dropIndex, 0, draggedItem)
-
-  highlightKeySellingPoints.value = items
-  draggedSellingPointIndex.value = null
-}
-
-const handleSellingPointDragEnd = () => {
-  draggedSellingPointIndex.value = null
-}
-
-// Computed property to check if at max selling points
-const isMaxSellingPoints = computed(() => highlightKeySellingPoints.value.length >= 10)
-
-// Handle highlight image upload
-const handleHighlightImageUpload = (event) => {
-  const file = event.target.files?.[0]
-
-  if (file) {
-    // Create a local URL for the uploaded image
-    const reader = new FileReader()
-    reader.onload = (e) => {
-      highlightImageUrl.value = e.target?.result
+// Edit mode handlers
+const toggleEdit = (section) => {
+  if (section === 'currency') {
+    if (!editingCurrency.value) {
+      // Entering edit mode - backup current values
+      baseCurrencyBackup = baseCurrency.value
+      enableCurrencyConversionBackup = enableCurrencyConversion.value
     }
-    reader.readAsDataURL(file)
-  }
-}
-
-// Remove highlight image
-const removeHighlightImage = () => {
-  highlightImageUrl.value = ''
-}
-
-// Open media library (placeholder function)
-const openMediaLibrary = () => {
-  console.log('Open media library')
-}
-
-/* ============================================
-   WATCHERS
-   ============================================ */
-// Reset derived rate fields when switching to manual input
-watch(rateSetup, (newValue) => {
-  if (newValue === 'manual') {
-    derivedFrom.value = null
-    adjustDailyRatesBy.value = null
-    percentageAdjustmentType.value = null
-    percentageAdjustmentValue.value = '10'
-  }
-})
-
-// Reset highlight fields when toggled off
-watch(highlightRatePlan, (newValue) => {
-  if (!newValue) {
-    highlightTagline.value = ''
-    highlightHeadline.value = ''
-    highlightKeySellingPoints.value = ['', '', '']
-    highlightImageUrl.value = ''
-  }
-})
-
-/* ============================================
-   LIFECYCLE
-   ============================================ */
-
-// Keyboard event handler for hotkeys
-const handleKeyPress = (event) => {
-  // 'b' key to toggle container backgrounds
-  if (event.key === 'b' && !event.ctrlKey && !event.metaKey && !event.altKey) {
-    // Only trigger if not typing in an input/textarea
-    const activeElement = document.activeElement
-    const isTyping = activeElement?.tagName === 'INPUT' ||
-                     activeElement?.tagName === 'TEXTAREA' ||
-                     activeElement?.isContentEditable
-
-    if (!isTyping) {
-      showContainerBackgrounds.value = !showContainerBackgrounds.value
-      event.preventDefault()
+    editingCurrency.value = !editingCurrency.value
+  } else if (section === 'inventory') {
+    if (!editingInventory.value) {
+      // Entering edit mode - backup current values
+      minimumRateBackup = minimumRate.value
+      updatePeriodBackup = updatePeriod.value
+      weekendStartsOnBackup = weekendStartsOn.value
+      enableAutoReplenishmentBackup = enableAutoReplenishment.value
+      autoReplenishmentModeBackup = autoReplenishmentMode.value
     }
+    editingInventory.value = !editingInventory.value
+  } else if (section === 'languageRegion') {
+    if (!editingLanguageRegion.value) {
+      // Entering edit mode - backup current values
+      baseLanguageBackup = baseLanguage.value
+      unitsBackup = unitsOfMeasurement.value
+      timeZoneBackup = timeZone.value
+    }
+    editingLanguageRegion.value = !editingLanguageRegion.value
   }
 }
 
-onMounted(() => {
-  // Capture initial form state after a brief delay to ensure all defaults are set
-  setTimeout(() => {
-    initialFormState.value = captureInitialFormState()
-  }, 100)
+const cancelEdit = (section) => {
+  if (section === 'currency') {
+    // Restore backup values
+    baseCurrency.value = baseCurrencyBackup
+    enableCurrencyConversion.value = enableCurrencyConversionBackup
+    editingCurrency.value = false
+    baseCurrencyBackup = null
+    enableCurrencyConversionBackup = null
+  } else if (section === 'inventory') {
+    // Restore backup values
+    minimumRate.value = minimumRateBackup
+    updatePeriod.value = updatePeriodBackup
+    weekendStartsOn.value = weekendStartsOnBackup
+    enableAutoReplenishment.value = enableAutoReplenishmentBackup
+    autoReplenishmentMode.value = autoReplenishmentModeBackup
+    editingInventory.value = false
+    minimumRateBackup = null
+    updatePeriodBackup = null
+    weekendStartsOnBackup = null
+    enableAutoReplenishmentBackup = null
+    autoReplenishmentModeBackup = null
+  } else if (section === 'languageRegion') {
+    // Restore backup values
+    baseLanguage.value = baseLanguageBackup
+    unitsOfMeasurement.value = unitsBackup
+    timeZone.value = timeZoneBackup
+    editingLanguageRegion.value = false
+    baseLanguageBackup = null
+    unitsBackup = null
+    timeZoneBackup = null
+  }
+}
 
-  // Add keyboard event listener
-  window.addEventListener('keydown', handleKeyPress)
-})
-
-onBeforeUnmount(() => {
-  // Clean up keyboard event listener
-  window.removeEventListener('keydown', handleKeyPress)
-})
+const saveEdit = (section) => {
+  if (section === 'currency') {
+    // In a real app, this would save to backend
+    console.log('Saving currency:', {
+      baseCurrency: baseCurrency.value,
+      enableCurrencyConversion: enableCurrencyConversion.value
+    })
+    editingCurrency.value = false
+    baseCurrencyBackup = null
+    enableCurrencyConversionBackup = null
+  } else if (section === 'inventory') {
+    // In a real app, this would save to backend
+    console.log('Saving inventory:', {
+      minimumRate: minimumRate.value,
+      updatePeriod: updatePeriod.value,
+      weekendStartsOn: weekendStartsOn.value,
+      enableAutoReplenishment: enableAutoReplenishment.value,
+      autoReplenishmentMode: autoReplenishmentMode.value
+    })
+    editingInventory.value = false
+    minimumRateBackup = null
+    updatePeriodBackup = null
+    weekendStartsOnBackup = null
+    enableAutoReplenishmentBackup = null
+    autoReplenishmentModeBackup = null
+  } else if (section === 'languageRegion') {
+    // In a real app, this would save to backend
+    console.log('Saving language and region:', {
+      baseLanguage: baseLanguage.value,
+      unitsOfMeasurement: unitsOfMeasurement.value,
+      timeZone: timeZone.value
+    })
+    editingLanguageRegion.value = false
+    baseLanguageBackup = null
+    unitsBackup = null
+    timeZoneBackup = null
+  }
+}
 </script>
 
 <style scoped lang="scss">
 @import '../styles/index.scss';
-@import '../styles/gap-spacing-config.scss';
-
-/* ============================================
-   HYBRID GAP + MARGIN SPACING SYSTEM - SLIDE 2
-   Combines gap for containers with margins for headings
-
-   Configure all spacing values in:
-   ../styles/gap-spacing-config.scss
-
-   APPROACH:
-   - Containers use gap for vertical spacing
-   - Headings use margin-bottom for space to content
-   - Headings use margin-top (when not first-child) for space from previous content
-   - No wrapper divs needed!
-   ============================================ */
-
-/* PHASE 1: GLOBAL RESETS - Remove existing vertical margins/padding */
-
-// Reset all form containers and their children
-:deep(.sm-form-group),
-:deep(.sm-form-group) > *,
-.derived-rate-fields,
-.derived-rate-fields > *,
-.conditional-form-section,
-.conditional-form-section > *,
-.date-ranges-container,
-.date-ranges-container > *,
-.date-range-item,
-.discount-type-section,
-.discount-type-section > *,
-.seasonal-overrides-container,
-.seasonal-override-content,
-.seasonal-override-content > *,
-.los-rules-section,
-.los-rules-section > * {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-// Reset ALL heading elements (h1-h6) to remove user agent styles
-// Note: Font properties use inherit without !important so .form-heading-* classes can override
-:deep(h1),
-:deep(h2),
-:deep(h3),
-:deep(h4),
-:deep(h5),
-:deep(h6) {
-  margin: 0 !important;
-  padding: 0 !important;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-}
-
-// Reset form utilities
-.form-row,
-.form-col,
-.selling-points-list,
-.selling-point-item,
-.los-add-button,
-.form-item-header {
-  margin: 0 !important;
-}
-
-// Remove margins from form input components themselves
-:deep(.sm-input),
-:deep(.sm-select),
-:deep(.sm-textarea) {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-
-  // Also remove internal margins from children to create hard edges
-  > *:first-child {
-    margin-top: 0 !important;
-  }
-
-  > *:last-child {
-    margin-bottom: 0 !important;
-  }
-}
-
-// Checkboxes and radios - reset all margins, spacing comes from container gap
-:deep(.sm-checkbox),
-:deep(.sm-radio),
-:deep(.sm-radio-group) {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-
-  // Also remove internal margins from children to create hard edges
-  > *:first-child {
-    margin-top: 0 !important;
-  }
-
-  > *:last-child {
-    margin-bottom: 0 !important;
-  }
-}
-
-// Reset top padding on field labels to create hard top edge
-:deep(.sm-field-label) {
-  padding-top: 0 !important;
-}
-
-// Remove margin-bottom from standalone checkbox labels (not in groups)
-// Preserve SUI internal spacing for checkbox groups
-:deep(.sm-checkbox:not(.sm-checkbox-group .sm-checkbox) .sm-checkbox__label) {
-  margin-bottom: 0 !important;
-}
-
-/* PHASE 2: APPLY HYBRID GAP + MARGIN SPACING */
-
-// Level 0: Main form wrapper - gap between major sections
-.form-content-wrapper {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: $gap-between-form-groups !important;
-}
-
-// Level 1: SmFormGroup - gap between items
-:deep(.sm-form-group) {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: $gap-between-form-rows !important;
-}
-
-// Level 1 headings - margin-bottom for space to content, margin-top when not first child
-:deep(.form-heading-1) {
-  margin-top: 0 !important;
-  margin-bottom: $margin-above-and-below-form-headings !important;
-
-  &:not(:first-child) {
-    margin-top: $margin-above-and-below-form-headings !important;
-  }
-}
-
-// Level 2 headings - margin-bottom for space to content, margin-top when not first child
-:deep(.form-heading-2) {
-  margin-top: 0 !important;
-  margin-bottom: $margin-above-and-below-form-headings !important;
-
-  &:not(:first-child) {
-    margin-top: $margin-above-and-below-form-headings !important;
-  }
-}
-
-// Remove margin-top when level 2 heading immediately follows any other heading
-:deep([class*='form-heading-'] + .form-heading-2),
-:deep([class*='form-heading-'] + h3.form-heading-2) {
-  margin-top: 0 !important;
-}
-
-// Level 3 headings - margin-bottom for space to content, margin-top when not first child
-:deep(.form-heading-3),
-.form-heading-3 {
-  margin-top: 0 !important;
-  margin-bottom: $margin-above-and-below-form-headings !important;
-
-  &:not(:first-child) {
-    margin-top: $margin-above-and-below-form-headings !important;
-  }
-}
-
-// Remove margin-top when level 3 heading immediately follows any other heading
-:deep([class*='form-heading-'] + .form-heading-3),
-:deep([class*='form-heading-'] + h4.form-heading-3) {
-  margin-top: 0 !important;
-}
-
-// Level 4 headings - margin-bottom for space to content, margin-top when not first child
-:deep(.form-heading-4),
-.form-heading-4 {
-  margin-top: 0 !important;
-  margin-bottom: $margin-above-and-below-form-headings !important;
-
-  &:not(:first-child) {
-    margin-top: $margin-above-and-below-form-headings !important;
-  }
-}
-
-// Remove margin-top when level 4 heading immediately follows any other heading
-:deep([class*='form-heading-'] + .form-heading-4),
-:deep([class*='form-heading-'] + h5.form-heading-4) {
-  margin-top: 0 !important;
-}
-
-// Nested containers - use gap for spacing
-// Note: Don't use !important on display for containers with v-show/v-if
-.derived-rate-fields,
-.conditional-form-section,
-.discount-type-section,
-.date-ranges-container,
-.los-rules-section,
-.seasonal-overrides-container {
-  display: flex;
-  flex-direction: column;
-  gap: $gap-between-form-rows !important;
-}
-
-// Add breathing room after conditional sections
-.conditional-form-section:not(:last-child),
-.date-ranges-container:not(:last-child),
-.seasonal-overrides-container:not(:last-child) {
-  margin-bottom: $margin-above-and-below-form-headings !important;
-}
-
-// Nested item containers
-.date-range-item,
-.seasonal-override-content {
-  display: flex;
-  flex-direction: column;
-  gap: $gap-between-form-rows !important;
-}
-
-// Selling points list
-.selling-points-list {
-  display: flex;
-  flex-direction: column;
-  gap: $gap-between-form-rows !important;
-}
-
-/* PHASE 3: PRESERVE EXISTING NON-SPACING BEHAVIOR */
-
-// LOS delete column alignment
-.los-delete-col {
-  justify-content: flex-end;
-  padding-bottom: 0;
-}
-
-// Highlight images
-.highlight-image-preview,
-.highlight-image-empty {
-  height: 100px;
-}
-
-:deep(.sm-media__drop-zone) {
-  min-height: 100px;
-}
-
-// Settings panel styles
-.settings-section-title {
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #4b5563;
-  margin: 0 0 16px 0;
-}
-
-.settings-section {
-  margin-bottom: 32px;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-
-.toggle-item {
-  padding: 12px 0;
-
-  .toggle-label {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    font-size: 14px;
-    color: #1f2937;
-
-    input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      cursor: pointer;
-      accent-color: #0066cc;
-    }
-
-    &:hover {
-      span {
-        color: #0066cc;
-      }
-    }
-  }
-}
-
-// Visual indicator for hybrid spacing slide
-.container-header::after {
-  content: ' (Hybrid Gap+Margin)';
-  font-size: 0.75rem;
-  font-weight: normal;
-  color: #0066cc;
-  text-transform: none;
-}
-
-/* ============================================
-   DEBUG: CONTAINER BACKGROUND COLORS
-   Visualize hybrid gap+margin spacing
-   Toggle with 'b' key
-   ============================================ */
-
-// Level 0: Main form wrapper (very light blue)
-.form-content-wrapper.show-backgrounds {
-  background-color: rgba(173, 216, 230, 0.1) !important;
-}
-
-// Level 1: SmFormGroup containers (light green)
-.show-backgrounds :deep(.sm-form-group) {
-  background-color: rgba(144, 238, 144, 0.15) !important;
-}
-
-// Heading backgrounds for visibility
-.show-backgrounds :deep(.form-heading-1) {
-  background-color: rgba(100, 149, 237, 0.2) !important;
-}
-
-.show-backgrounds :deep(.form-heading-2) {
-  background-color: rgba(135, 206, 235, 0.2) !important;
-}
-
-.show-backgrounds :deep(.form-heading-3),
-.show-backgrounds .form-heading-3 {
-  background-color: rgba(173, 216, 230, 0.2) !important;
-}
-
-.show-backgrounds :deep(.form-heading-4),
-.show-backgrounds .form-heading-4 {
-  background-color: rgba(176, 224, 230, 0.2) !important;
-}
-
-// Nested containers
-.show-backgrounds .derived-rate-fields,
-.show-backgrounds .conditional-form-section,
-.show-backgrounds .discount-type-section,
-.show-backgrounds .date-ranges-container,
-.show-backgrounds .seasonal-overrides-container,
-.show-backgrounds .los-rules-section {
-  background-color: rgba(255, 255, 224, 0.3) !important;
-}
 </style>

@@ -103,3 +103,30 @@
   margin-bottom: 4px;
 }
 
+// Override sm-media drop zone min-height for highlight image section
+:deep(.sm-media__drop-zone) {
+  min-height: 100px;
+}
+
+// Drawer header subtitle styling
+:deep(.drawer-page-subtitle) {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+
+  strong {
+    font-weight: 600;
+    color: #333;
+  }
+}
+
+// h4 styling inside SmCardContent (for editable card titles)
+:deep(.sm-card-content) {
+  h4 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 0 0 16px 0;
+  }
+}
