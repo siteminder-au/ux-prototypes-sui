@@ -13,6 +13,25 @@ import 'sui-vue3/libs/sui-core/src/app/common/sui-core.scss'
 // Import SUI base typography styles
 import 'sui-vue3/libs/sui-core/src/app/common/typography/base.scss'
 
+// Configure vee-validate rules
+import { defineRule, configure } from 'vee-validate'
+import { required, email, min, max, min_value, max_value, numeric } from '@vee-validate/rules'
+
+defineRule('required', required)
+defineRule('email', email)
+defineRule('min', min)
+defineRule('max', max)
+defineRule('min_value', min_value)
+defineRule('max_value', max_value)
+defineRule('numeric', numeric)
+
+// Configure validation messages
+configure({
+  generateMessage: (context) => {
+    return `This field is required`
+  },
+})
+
 // Set up SUI i18n
 import { setup as setupSuiI18n } from '../node_modules/sui-vue3/libs/sui-core/src/app/libs/vue-i18n'
 
