@@ -7,8 +7,7 @@
     "npm": ">=9.0.0"
   },
   "scripts": {
-    "start": "cd prototypes && npm start",
-    "heroku-postbuild": "cd prototypes && npm install && npm run build"
+    "start": "cd prototypes && npm start"
   },
   "dependencies": {
     "vue-i18n": "^9.14.5"
