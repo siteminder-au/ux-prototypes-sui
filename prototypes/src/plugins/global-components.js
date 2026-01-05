@@ -28,6 +28,7 @@ import SmSelect from '@sui/app/components/forms/sm-select/sm-select.vue'
 import SmMultiSelect from '@sui/app/components/forms/sm-multi-select/sm-multi-select.vue'
 import SmRadio from '@sui/app/components/forms/sm-radio/sm-radio.vue'
 import SmRadioGroup from '@sui/app/components/forms/sm-radio/sm-radio-group.vue'
+import SmRadioButton from '@sui/app/components/forms/sm-radio/sm-radio-button.vue'
 import SmCheckbox from '@sui/app/components/forms/sm-checkbox/sm-checkbox.vue'
 import SmCheckboxGroup from '@sui/app/components/forms/sm-checkbox/sm-checkbox-group.vue'
 import SmSwitch from '@sui/app/components/forms/sm-switch/sm-switch.vue'
@@ -65,6 +66,7 @@ export default {
     app.component('SmMultiSelect', SmMultiSelect)
     app.component('SmRadio', SmRadio)
     app.component('SmRadioGroup', SmRadioGroup)
+    app.component('SmRadioButton', SmRadioButton)
     app.component('SmCheckbox', SmCheckbox)
     app.component('SmCheckboxGroup', SmCheckboxGroup)
     app.component('SmSwitch', SmSwitch)

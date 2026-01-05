@@ -12,10 +12,10 @@
             label="Rate Status"
             name="rateStatus"
             class="filter-radio-group"
-            orientation="vertical"
+            :is-button-style-group="true"
           >
-            <SmRadio value="active" label="Active" />
-            <SmRadio value="inactive" label="Inactive" />
+            <SmRadioButton value="active" label="Active" />
+            <SmRadioButton value="inactive" label="Inactive" />
           </SmRadioGroup>
 
           <!-- Room Types Multi-Select - Always visible -->
