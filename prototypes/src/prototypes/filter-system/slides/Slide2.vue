@@ -29,7 +29,7 @@
               class="expand-all-btn"
               @click="handleExpandAll"
             >
-              <SmIcon name="navigation-chevron-down" />
+              <SmIcon name="action-expand-all" />
               Expand all
             </SmButton>
             <SmButton
@@ -37,7 +37,7 @@
               class="reorder-btn"
               @click="handleReorder"
             >
-              <SmIcon name="action-drag-handle" />
+              <SmIcon name="action-reorder" />
               Reorder
             </SmButton>
           </div>

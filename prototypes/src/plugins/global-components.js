@@ -32,6 +32,7 @@ import SmCheckbox from '@sui/app/components/forms/sm-checkbox/sm-checkbox.vue'
 import SmCheckboxGroup from '@sui/app/components/forms/sm-checkbox/sm-checkbox-group.vue'
 import SmSwitch from '@sui/app/components/forms/sm-switch/sm-switch.vue'
 import SmDatePicker from '@sui/app/components/forms/sm-date-picker/sm-date-picker.vue'
+import SmCalendar from '@sui/app/components/forms/sm-calendar/sm-calendar.vue'
 
 export default {
   install(app) {
@@ -68,6 +69,7 @@ export default {
     app.component('SmCheckboxGroup', SmCheckboxGroup)
     app.component('SmSwitch', SmSwitch)
     app.component('SmDatePicker', SmDatePicker)
+    app.component('SmCalendar', SmCalendar)
 
     console.log('Global components registered!')
   }

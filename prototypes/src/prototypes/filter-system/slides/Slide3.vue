@@ -6,65 +6,80 @@
       <div class="container-content">
         <!-- Filter Bar -->
         <div class="filter-bar">
-          <!-- View by Multi-Select - Always visible -->
-          <SmMultiSelect
-            v-model="viewBy"
-            label="View by"
-            name="viewBy"
-            placeholder="Select view"
-            class="filter-select"
-            :options="viewByOptions"
-            :filterable="false"
-            :multiple="true"
-            :collapse-tags="true"
-          />
+          <!-- Left: Filters and More Filters button -->
+          <div class="filter-bar-left">
+            <!-- View by Multi-Select - Always visible -->
+            <SmMultiSelect
+              v-model="viewBy"
+              label="View by"
+              name="viewBy"
+              placeholder="Select view"
+              class="filter-select"
+              :options="viewByOptions"
+              :filterable="false"
+              :multiple="true"
+              :collapse-tags="true"
+            />
 
-          <!-- Room Types Multi-Select - Hidden on mobile -->
-          <SmMultiSelect
-            v-model="roomTypes"
-            label="Room types"
-            name="roomTypes"
-            placeholder="All room types"
-            class="filter-select filter-select--hide-mobile"
-            :options="roomTypeOptions"
-            :filterable="false"
-            :multiple="true"
-            :collapse-tags="true"
-          />
+            <!-- Room Types Multi-Select - Hidden on mobile -->
+            <SmMultiSelect
+              v-model="roomTypes"
+              label="Room types"
+              name="roomTypes"
+              placeholder="All room types"
+              class="filter-select filter-select--hide-mobile"
+              :options="roomTypeOptions"
+              :filterable="false"
+              :multiple="true"
+              :collapse-tags="true"
+            />
 
-          <!-- Rate Plans Multi-Select - Hidden on tablet and mobile -->
-          <SmMultiSelect
-            v-model="ratePlans"
-            label="Rate plans"
-            name="ratePlans"
-            placeholder="All rate plans"
-            class="filter-select filter-select--hide-tablet"
-            :options="ratePlanOptions"
-            :filterable="false"
-            :multiple="true"
-            :collapse-tags="true"
-          />
+            <!-- Rate Plans Multi-Select - Hidden on tablet and mobile -->
+            <SmMultiSelect
+              v-model="ratePlans"
+              label="Rate plans"
+              name="ratePlans"
+              placeholder="All rate plans"
+              class="filter-select filter-select--hide-tablet"
+              :options="ratePlanOptions"
+              :filterable="false"
+              :multiple="true"
+              :collapse-tags="true"
+            />
 
-          <!-- Room Rates Search Input - Hidden on tablet and mobile -->
-          <SmInput
-            v-model="roomRates"
-            label="Room rates"
-            placeholder="Search room rates"
-            class="filter-input filter-select--hide-tablet"
-          />
+            <!-- Room Rates Search Input - Hidden on tablet and mobile -->
+            <SmInput
+              v-model="roomRates"
+              label="Room rates"
+              placeholder="Search room rates"
+              class="filter-input filter-select--hide-tablet"
+            />
 
-          <!-- More Filters Icon Button - Only visible on tablet and mobile -->
-          <SmButton
-            type="tertiary"
-            class="more-filters-btn filter-select--show-tablet"
-            @click="openDrawer"
-            :aria-label="`More Filters${moreFiltersCount > 0 ? ` (${moreFiltersCount} active)` : ''}`"
-          >
-            <SmIcon name="action-filter" />
-            <SmBadge v-if="moreFiltersCount > 0" type="info" size="medium" class="filter-badge">
-              {{ moreFiltersCount }}
-            </SmBadge>
-          </SmButton>
+            <!-- More Filters Icon Button - Only visible on tablet and mobile -->
+            <SmButton
+              type="tertiary"
+              class="more-filters-btn filter-select--show-tablet"
+              @click="openDrawer"
+              :aria-label="`More Filters${moreFiltersCount > 0 ? ` (${moreFiltersCount} active)` : ''}`"
+            >
+              <SmIcon name="action-filter" />
+              <SmBadge v-if="moreFiltersCount > 0" type="info" size="medium" class="filter-badge">
+                {{ moreFiltersCount }}
+              </SmBadge>
+            </SmButton>
+          </div>
+
+          <!-- Right: Collapse all button -->
+          <div class="filter-bar-right">
+            <SmButton
+              type="text"
+              class="collapse-all-btn"
+              @click="handleCollapseAll"
+            >
+              <SmIcon name="action-collapse" />
+              Collapse all
+            </SmButton>
+          </div>
 
           <!-- Active Filters Pills -->
           <ActiveFiltersPills
@@ -298,6 +313,10 @@ const applyFilters = () => {
   roomRates.value = tempRoomRates.value
   showDrawer.value = false
   console.log('Filters applied:', activeFilters.value)
+}
+
+const handleCollapseAll = () => {
+  console.log('Collapse all clicked')
 }
 </script>
 

@@ -6,26 +6,41 @@
       <div class="container-content">
         <!-- Filter Bar -->
         <div class="filter-bar">
-          <!-- Channel Name Search Input - Always visible -->
-          <SmInput
-            v-model="channelName"
-            label="Channel name"
-            placeholder="Search by channel name"
-            class="filter-input"
-          />
+          <!-- Left: Filters -->
+          <div class="filter-bar-left">
+            <!-- Channel Name Search Input - Always visible -->
+            <SmInput
+              v-model="channelName"
+              label="Channel name"
+              placeholder="Search by channel name"
+              class="filter-input"
+            />
 
-          <!-- Connection Type Multi-Select - Always visible -->
-          <SmMultiSelect
-            v-model="connectionType"
-            label="Connection type"
-            name="connectionType"
-            placeholder="All connection types"
-            class="filter-select"
-            :options="connectionTypeOptions"
-            :filterable="false"
-            :multiple="true"
-            :collapse-tags="true"
-          />
+            <!-- Connection Type Multi-Select - Always visible -->
+            <SmMultiSelect
+              v-model="connectionType"
+              label="Connection type"
+              name="connectionType"
+              placeholder="All connection types"
+              class="filter-select"
+              :options="connectionTypeOptions"
+              :filterable="false"
+              :multiple="true"
+              :collapse-tags="true"
+            />
+          </div>
+
+          <!-- Right: Reorder button -->
+          <div class="filter-bar-right">
+            <SmButton
+              type="text"
+              class="reorder-btn"
+              @click="handleReorder"
+            >
+              <SmIcon name="action-reorder" />
+              Reorder
+            </SmButton>
+          </div>
 
           <!-- Active Filters Pills -->
           <ActiveFiltersPills
@@ -117,6 +132,10 @@ const clearFilter = (filter) => {
 const clearAllFilters = () => {
   channelName.value = ''
   connectionType.value = []
+}
+
+const handleReorder = () => {
+  console.log('Reorder clicked')
 }
 </script>
 

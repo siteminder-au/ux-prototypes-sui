@@ -55,6 +55,7 @@
               class="reorder-btn"
               @click="handleReorder"
             >
+              <SmIcon name="action-reorder" />
               Reorder
             </SmButton>
           </div>

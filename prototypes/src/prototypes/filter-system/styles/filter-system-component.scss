@@ -27,6 +27,12 @@
   align-items: flex-end;
   flex-shrink: 0;
   flex-wrap: nowrap; // Keep children on same line
+
+  // Override SUI's default .sm-button + .sm-button spacing
+  // SUI applies 12px/24px margins that interfere with our gap-based layout
+  :deep(.sm-button + .sm-button) {
+    margin-left: 0 !important;
+  }
 }
 
 // Right group: buttons aligned right
@@ -38,6 +44,11 @@
   flex-wrap: nowrap; // Keep children on same line
   margin-left: auto; // Push to right
   min-width: 0; // Allow content to determine minimum width
+
+  // Override SUI's default .sm-button + .sm-button spacing
+  :deep(.sm-button + .sm-button) {
+    margin-left: 0 !important;
+  }
 }
 
 .filter-input,
@@ -76,9 +87,32 @@
   }
 }
 
-// Reorder button
-.reorder-btn {
+// Search button
+.search-btn {
   height: 40px;
+  align-self: flex-end;
+}
+
+// Right-aligned text buttons with icons
+.expand-all-btn,
+.collapse-all-btn,
+.reorder-btn,
+.download-csv-btn {
+  height: 40px;
+
+  // Make icons SUI blue
+  :deep(.sm-icon) {
+    color: #0064d2 !important; // SUI primary blue
+
+    svg {
+      fill: #0064d2 !important;
+    }
+
+    use,
+    path {
+      fill: #0064d2 !important;
+    }
+  }
 }
 
 // SmDrawer body padding - matches form system .container-content padding
