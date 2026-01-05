@@ -3,6 +3,20 @@
 // Filter-bar specific adjustments to SUI components
 // ============================================================================
 
+// Collapse footers for all form field types (matching form system pattern)
+:deep(.sm-input__footer),
+:deep(.sm-select__footer),
+:deep(.sm-multi-select__footer),
+:deep(.sm-date-picker__footer) {
+  min-height: 0px !important;
+  padding: 0;
+}
+
+:deep(.sm-field-error) {
+  min-height: 0px;
+  padding: 0px !important;
+}
+
 // Ensure consistent control heights in filter bar
 :deep(.sm-input),
 :deep(.sm-select),
@@ -23,4 +37,22 @@
 :deep(.sm-tag) {
   font-size: 0.875rem;
   padding: 0.25rem 0.75rem;
+}
+
+// Drawer header subtitle styling - matches form system
+:deep(.drawer-page-subtitle) {
+  margin: 0;
+  margin-top: 4px;
+  color: #666;
+  font-size: 14px;
+
+  strong {
+    font-weight: 600;
+    color: #333;
+  }
+}
+
+// Remove margin under drawer header title
+:deep(.sm-drawer__header h2) {
+  margin-bottom: 0;
 }

@@ -29,7 +29,7 @@
 </template>
 
 <script setup>
-import { useDisplaySettings } from '../composables/useDisplaySettings.js'
+import { useDisplaySettings } from '@/shared/composables/useDisplaySettings.js'
 
 // Get shared display settings
 const { showGridOverlay, showContainerBackgrounds, fullWidthForm, showMarkup } = useDisplaySettings()

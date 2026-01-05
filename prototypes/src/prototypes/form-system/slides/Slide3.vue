@@ -353,8 +353,8 @@
 import { ref, computed } from 'vue'
 import PrototypeSettings from '@/shared/components/PrototypeSettings.vue'
 import GridOverlay from '@/shared/components/GridOverlay.vue'
-import DisplaySettings from '../components/DisplaySettings.vue'
-import { useDisplaySettings } from '../composables/useDisplaySettings.js'
+import DisplaySettings from '@/shared/components/DisplaySettings.vue'
+import { useDisplaySettings } from '@/shared/composables/useDisplaySettings.js'
 
 // Import reference images
 import roomTypeRef1 from '/images/dynamic-form/room-type-1.png'

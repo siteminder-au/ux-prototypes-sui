@@ -1,11 +1,11 @@
 // ============================================================================
-// FILTER-BAR STYLES HUB
-// Import all filter-bar specific styles
+// FILTER SYSTEM STYLES HUB
+// Import all filter system specific styles
 // ============================================================================
 
 @import "@/shared/styles/variables.scss";
 @import "@/shared/styles/mixins.scss";
 
 @import "./proto-slide-layout.scss";
-@import "./filter-bar-component.scss";
+@import "./filter-system-component.scss";
 @import "./sui-overrides.scss";

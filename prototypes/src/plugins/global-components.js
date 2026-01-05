@@ -14,6 +14,7 @@ import SmTooltip from '@sui/app/components/sm-tooltip/sm-tooltip.vue'
 import SmHelpCard from '@sui/app/components/sm-help-card/sm-help-card.vue'
 import SmInlineCard from '@sui/app/components/sm-inline-card/sm-inline-card.vue'
 import SmTag from '@sui/app/components/sm-tag/sm-tag.vue'
+import SmDrawer from '@sui/app/components/sm-drawer/sm-drawer.vue'
 
 // ============================================================================
 // FORM COMPONENTS
@@ -49,6 +50,7 @@ export default {
     app.component('SmHelpCard', SmHelpCard)
     app.component('SmInlineCard', SmInlineCard)
     app.component('SmTag', SmTag)
+    app.component('SmDrawer', SmDrawer)
 
     // ========================================================================
     // Register Form Components

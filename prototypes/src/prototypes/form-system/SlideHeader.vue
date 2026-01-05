@@ -2,6 +2,9 @@
   <div class="header-wrapper">
     <div class="page-header">
       <div class="page-header-content">
+        <button @click="goBack" class="back-button" title="Back to prototypes">
+          ← Back
+        </button>
         <h1 class="page-title">SM form system</h1>
         <button @click="showReadme = !showReadme" class="readme-toggle">
           {{ showReadme ? '▼' : '▶' }} Read me
@@ -51,6 +54,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 defineProps({
   currentSlide: Number,
@@ -63,7 +67,12 @@ defineProps({
 
 defineEmits(['navigate', 'goToSlide'])
 
+const router = useRouter()
 const showReadme = ref(false)
+
+const goBack = () => {
+  router.push('/')
+}
 </script>
 
 <style scoped lang="scss">
@@ -122,6 +131,26 @@ const showReadme = ref(false)
   gap: 16px;
   position: relative;
   z-index: 1;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #4A90E2;
+  }
 }
 
 .page-title {

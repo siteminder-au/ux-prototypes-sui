@@ -3,58 +3,58 @@ import Index from './Index.vue'
 
 // Import your prototypes
 import ComponentShowcase from './prototypes/component-showcase/ComponentShowcase.vue'
-import DynamicForm from './prototypes/dynamic-form/DynamicForm.vue'
-import SlideLayout from './prototypes/dynamic-form/SlideLayout.vue'
-import FilterBar from './prototypes/filter-bar/FilterBar.vue'
-import FilterBarSlideLayout from './prototypes/filter-bar/SlideLayout.vue'
+import FormSystem from './prototypes/form-system/FormSystem.vue'
+import FormSystemSlideLayout from './prototypes/form-system/SlideLayout.vue'
+import FilterSystem from './prototypes/filter-system/FilterSystem.vue'
+import FilterSystemSlideLayout from './prototypes/filter-system/SlideLayout.vue'
 
 // Define routes - add new prototypes here!
 const routes = [
   { path: '/', component: Index },
   { path: '/component-showcase', component: ComponentShowcase },
   {
-    path: '/dynamic-form',
-    component: DynamicForm,
+    path: '/form-system',
+    component: FormSystem,
     children: [
       {
         path: '',
-        redirect: '/dynamic-form/1'
+        redirect: '/form-system/1'
       },
       {
         path: ':slideNumber',
-        name: 'dynamic-form-slide',
-        component: SlideLayout,
+        name: 'form-system-slide',
+        component: FormSystemSlideLayout,
         props: true,
         beforeEnter: (to, from, next) => {
           const slideNum = parseInt(to.params.slideNumber)
           if (slideNum >= 1 && slideNum <= 5) {
             next()
           } else {
-            next('/dynamic-form/1')
+            next('/form-system/1')
           }
         }
       }
     ]
   },
   {
-    path: '/filter-bar',
-    component: FilterBar,
+    path: '/filter-system',
+    component: FilterSystem,
     children: [
       {
         path: '',
-        redirect: '/filter-bar/1'
+        redirect: '/filter-system/1'
       },
       {
         path: ':slideNumber',
-        name: 'filter-bar-slide',
-        component: FilterBarSlideLayout,
+        name: 'filter-system-slide',
+        component: FilterSystemSlideLayout,
         props: true,
         beforeEnter: (to, from, next) => {
           const slideNum = parseInt(to.params.slideNumber)
           if (slideNum >= 1 && slideNum <= 1) {
             next()
           } else {
-            next('/filter-bar/1')
+            next('/filter-system/1')
           }
         }
       }

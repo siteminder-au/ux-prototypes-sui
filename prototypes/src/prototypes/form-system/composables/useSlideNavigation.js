@@ -14,7 +14,7 @@ export function useSlideNavigation(totalSlides = 5) {
 
   const goToSlide = (slideNumber) => {
     if (slideNumber >= 1 && slideNumber <= totalSlides) {
-      router.push(`/dynamic-form/${slideNumber}`)
+      router.push(`/form-system/${slideNumber}`)
     }
   }
 

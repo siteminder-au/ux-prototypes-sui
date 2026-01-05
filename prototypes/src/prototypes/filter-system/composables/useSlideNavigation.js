@@ -14,7 +14,7 @@ export function useSlideNavigation(totalSlides = 5) {
 
   const goToSlide = (slideNumber) => {
     if (slideNumber >= 1 && slideNumber <= totalSlides) {
-      router.push(`/filter-bar/${slideNumber}`)
+      router.push(`/filter-system/${slideNumber}`)
     }
   }
 

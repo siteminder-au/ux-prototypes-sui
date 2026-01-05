@@ -1,0 +1,95 @@
+// ============================================================================
+// FILTER BAR COMPONENT STYLES
+// ============================================================================
+
+.filter-bar {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.filter-input,
+.filter-select {
+  width: 200px;
+}
+
+// Left action group (More Filters icon + Clear all link)
+.filter-actions-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-end;
+}
+
+// More filters button container with badge
+.more-filters-container {
+  position: relative;
+  display: inline-flex;
+  align-self: flex-end;
+}
+
+.more-filters-btn {
+  height: 40px;
+  width: 40px;
+  min-width: 40px;
+  padding: 0;
+}
+
+.filter-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  pointer-events: none;
+}
+
+// Reorder button on the right
+.reorder-btn {
+  height: 40px;
+  margin-left: auto;
+}
+
+// SmDrawer body padding - matches form system .container-content padding
+// Override SUI's default responsive padding
+:deep(.sm-drawer__body) {
+  padding: 24px !important;
+}
+
+// Drawer body filters - adopting form system spacing patterns
+.drawer-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; // Matches form system $gap-between-form-rows
+
+  .filter-select,
+  .filter-input {
+    width: 100%;
+  }
+
+  // Remove margins from all form components (like form system resets)
+  :deep(.sm-input),
+  :deep(.sm-select),
+  :deep(.sm-multi-select) {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  // Reset field label padding
+  :deep(.sm-field-label) {
+    padding-top: 0 !important;
+  }
+}
+
+// Responsive breakpoints
+@media (max-width: 1024px) {
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-input,
+  .filter-select {
+    width: 100%;
+  }
+}

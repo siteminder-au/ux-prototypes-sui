@@ -2,7 +2,10 @@
   <div class="header-wrapper">
     <div class="page-header">
       <div class="page-header-content">
-        <h1 class="page-title">SM filter-bar system</h1>
+        <button @click="goBack" class="back-button" title="Back to prototypes">
+          ← Back
+        </button>
+        <h1 class="page-title">SM filter system</h1>
         <button @click="showReadme = !showReadme" class="readme-toggle">
           {{ showReadme ? '▼' : '▶' }} Read me
         </button>
@@ -10,9 +13,9 @@
       <template v-if="showReadme">
         <!-- EDITABLE CONTENT BELOW -->
         <p>
-          This prototype demonstrates the SiteMinder unified filter bar component patterns. The filter-bar consolidates 26+ different filter implementations across SiteMinder into a unified design system.
+          This prototype demonstrates the SiteMinder unified filter system component patterns. The filter system consolidates 26+ different filter implementations across SiteMinder into a unified design system.
         </p>
-        <p>The slides below show the system applied to various filter patterns with responsive behavior. These serve as examples of how the unified filter bar works across different contexts.</p>
+        <p>The slides below show the system applied to various filter patterns with responsive behavior. These serve as examples of how the unified filter system works across different contexts.</p>
         <p>Press tilda key ~ on your keyboard to see available settings.</p>
         <!-- EDIT THE TEXT ABOVE AS NEEDED -->
       </template>
@@ -42,6 +45,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 defineProps({
   currentSlide: Number,
@@ -54,7 +58,12 @@ defineProps({
 
 defineEmits(['navigate', 'goToSlide'])
 
+const router = useRouter()
 const showReadme = ref(false)
+
+const goBack = () => {
+  router.push('/')
+}
 </script>
 
 <style scoped lang="scss">
@@ -113,6 +122,26 @@ const showReadme = ref(false)
   gap: 16px;
   position: relative;
   z-index: 1;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #4A90E2;
+  }
 }
 
 .page-title {

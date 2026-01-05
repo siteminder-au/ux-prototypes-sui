@@ -1,16 +1,11 @@
 <template>
   <div class="index">
     <div class="index-container">
-      <h1 class="index-title">SUI Prototypes</h1>
+      <h1 class="index-title">SiteMinder Design System</h1>
       <p class="index-description">Select a prototype to view:</p>
 
       <div class="prototype-grid">
-        <router-link
-          v-for="proto in prototypes"
-          :key="proto.id"
-          :to="proto.path"
-          class="prototype-card"
-        >
+        <router-link v-for="proto in prototypes" :key="proto.id" :to="proto.path" class="prototype-card">
           <h2>{{ proto.name }}</h2>
           <p>{{ proto.description }}</p>
         </router-link>
@@ -22,23 +17,23 @@
 <script setup>
 // List your prototypes here - add new ones when ready!
 const prototypes = [
+  // {
+  //   id: 'component-showcase',
+  //   name: 'Component Showcase',
+  //   description: 'Demo of SUI Vue components with jQuery integration examples',
+  //   path: '/component-showcase'
+  // },
   {
-    id: 'component-showcase',
-    name: 'Component Showcase',
-    description: 'Demo of SUI Vue components with jQuery integration examples',
-    path: '/component-showcase'
+    id: 'form-system',
+    name: 'Form System',
+    description: 'Form system ux rules, guidelines and applied examples',
+    path: '/form-system'
   },
   {
-    id: 'dynamic-form',
-    name: 'Dynamic Form',
-    description: 'Dynamic form ux exploration and guidelines',
-    path: '/dynamic-form'
-  },
-  {
-    id: 'filter-bar',
-    name: 'Filter Bar',
-    description: 'Filter bar component patterns with responsive behavior',
-    path: '/filter-bar'
+    id: 'filter-system',
+    name: 'Filter System',
+    description: 'Filter system ux rules, guidelines and applied examples',
+    path: '/filter-system'
   },
 ]
 </script>
