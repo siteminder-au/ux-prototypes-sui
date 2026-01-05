@@ -51,7 +51,7 @@ const routes = [
         props: true,
         beforeEnter: (to, from, next) => {
           const slideNum = parseInt(to.params.slideNumber)
-          if (slideNum >= 1 && slideNum <= 1) {
+          if (slideNum >= 1 && slideNum <= 7) {
             next()
           } else {
             next('/filter-system/1')

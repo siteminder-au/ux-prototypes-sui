@@ -6,58 +6,65 @@
       <div class="container-content">
         <!-- Filter Bar -->
         <div class="filter-bar">
-          <!-- Left: Filters and More Filters button -->
-          <div class="filter-bar-left">
-            <!-- Room Types Multi-Select - Always visible -->
-            <SmMultiSelect
-              v-model="roomTypes"
-              label="Room types"
-              name="roomTypes"
-              placeholder="All room types"
-              class="filter-select"
-              :options="roomTypeOptions"
-              :filterable="false"
-              :multiple="true"
-              :collapse-tags="true"
-            />
+          <!-- View by Multi-Select - Always visible -->
+          <SmMultiSelect
+            v-model="viewBy"
+            label="View by"
+            name="viewBy"
+            placeholder="Select view"
+            class="filter-select"
+            :options="viewByOptions"
+            :filterable="false"
+            :multiple="true"
+            :collapse-tags="true"
+          />
 
-            <!-- Rate Plans Multi-Select - Hidden on tablet and mobile -->
-            <SmMultiSelect
-              v-model="ratePlans"
-              label="Rate plans"
-              name="ratePlans"
-              placeholder="All rate plans"
-              class="filter-select filter-select--hide-tablet"
-              :options="ratePlanOptions"
-              :filterable="false"
-              :multiple="true"
-              :collapse-tags="true"
-            />
+          <!-- Room Types Multi-Select - Hidden on mobile -->
+          <SmMultiSelect
+            v-model="roomTypes"
+            label="Room types"
+            name="roomTypes"
+            placeholder="All room types"
+            class="filter-select filter-select--hide-mobile"
+            :options="roomTypeOptions"
+            :filterable="false"
+            :multiple="true"
+            :collapse-tags="true"
+          />
 
-            <!-- More Filters Icon Button - Always visible -->
-            <SmButton
-              type="tertiary"
-              class="more-filters-btn"
-              @click="openDrawer"
-              :aria-label="`More Filters${moreFiltersCount > 0 ? ` (${moreFiltersCount} active)` : ''}`"
-            >
-              <SmIcon name="action-filter" />
-              <SmBadge v-if="moreFiltersCount > 0" type="info" size="medium" class="filter-badge">
-                {{ moreFiltersCount }}
-              </SmBadge>
-            </SmButton>
-          </div>
+          <!-- Rate Plans Multi-Select - Hidden on tablet and mobile -->
+          <SmMultiSelect
+            v-model="ratePlans"
+            label="Rate plans"
+            name="ratePlans"
+            placeholder="All rate plans"
+            class="filter-select filter-select--hide-tablet"
+            :options="ratePlanOptions"
+            :filterable="false"
+            :multiple="true"
+            :collapse-tags="true"
+          />
 
-          <!-- Right: Reorder button -->
-          <div class="filter-bar-right">
-            <SmButton
-              type="text"
-              class="reorder-btn"
-              @click="handleReorder"
-            >
-              Reorder
-            </SmButton>
-          </div>
+          <!-- Room Rates Search Input - Hidden on tablet and mobile -->
+          <SmInput
+            v-model="roomRates"
+            label="Room rates"
+            placeholder="Search room rates"
+            class="filter-input filter-select--hide-tablet"
+          />
+
+          <!-- More Filters Icon Button - Only visible on tablet and mobile -->
+          <SmButton
+            type="tertiary"
+            class="more-filters-btn filter-select--show-tablet"
+            @click="openDrawer"
+            :aria-label="`More Filters${moreFiltersCount > 0 ? ` (${moreFiltersCount} active)` : ''}`"
+          >
+            <SmIcon name="action-filter" />
+            <SmBadge v-if="moreFiltersCount > 0" type="info" size="medium" class="filter-badge">
+              {{ moreFiltersCount }}
+            </SmBadge>
+          </SmButton>
 
           <!-- Active Filters Pills -->
           <ActiveFiltersPills
@@ -91,27 +98,27 @@
 
             <!-- Drawer Body -->
             <div class="drawer-filters">
-              <!-- Rate Plans - Only visible on tablet and mobile -->
+              <!-- Room Types - Only visible on mobile -->
               <SmMultiSelect
-                v-model="tempRatePlans"
-                label="Rate plans"
-                name="ratePlans"
-                placeholder="All rate plans"
-                class="filter-select filter-select--show-tablet"
-                :options="ratePlanOptions"
+                v-model="tempRoomTypes"
+                label="Room types"
+                name="roomTypes"
+                placeholder="All room types"
+                class="filter-select filter-select--show-mobile"
+                :options="roomTypeOptions"
                 :filterable="false"
                 :multiple="true"
                 :collapse-tags="true"
               />
 
-              <!-- Channels Multi-Select -->
+              <!-- Rate Plans - Always in drawer -->
               <SmMultiSelect
-                v-model="tempChannels"
-                label="Channels"
-                name="channels"
-                placeholder="All channels"
+                v-model="tempRatePlans"
+                label="Rate plans"
+                name="ratePlans"
+                placeholder="All rate plans"
                 class="filter-select"
-                :options="channelOptions"
+                :options="ratePlanOptions"
                 :filterable="false"
                 :multiple="true"
                 :collapse-tags="true"
@@ -124,19 +131,6 @@
                 placeholder="Search room rates"
                 class="filter-input"
               />
-
-              <!-- Occupancy Based Pricing Multi-Select -->
-              <SmMultiSelect
-                v-model="tempOccupancyPricing"
-                label="Occupancy based pricing"
-                name="occupancyPricing"
-                placeholder="Select occupancy"
-                class="filter-select"
-                :options="occupancyPricingOptions"
-                :filterable="false"
-                :multiple="true"
-                :collapse-tags="true"
-              />
             </div>
           </SmDrawer>
         </div>
@@ -147,9 +141,7 @@
     <div class="slide-bottom">
       <div class="container-header">Reference</div>
       <div class="container-content">
-        <img src="/images/filter-system/image 1.png" alt="Standard filter system overview" />
-        <img src="/images/filter-system/active-filters.png" alt="Active filters display" />
-        <img src="/images/filter-system/image 18.png" alt="Filter system with modal" />
+        <img src="/images/filter-system/image 3.png" alt="View selector with filters and search" />
       </div>
     </div>
 
@@ -167,6 +159,11 @@ import PrototypeSettings from '@/shared/components/PrototypeSettings.vue'
 import DisplaySettings from '@/shared/components/DisplaySettings.vue'
 
 // Options data for multi-selects
+const viewByOptions = ref([
+  { label: 'All rates and availability', code: 'all-rates' },
+  { label: 'Channels Plus', code: 'channels-plus' },
+])
+
 const roomTypeOptions = ref([
   { label: 'Deluxe Single Room', code: 'deluxe-single' },
   { label: 'Deluxe Studio', code: 'deluxe-studio' },
@@ -179,37 +176,34 @@ const ratePlanOptions = ref([
   { label: 'Non-Refundable', code: 'non-refundable' },
 ])
 
-const channelOptions = ref([
-  { label: 'Airbnb', code: 'airbnb' },
-  { label: 'Booking.com', code: 'booking' },
-  { label: 'Expedia', code: 'expedia' },
-  { label: 'Direct booking', code: 'direct' },
-])
-
-const occupancyPricingOptions = ref([
-  { label: '1 adult', code: '1-adult' },
-  { label: '2 adults', code: '2-adults' },
-  { label: '3 adults', code: '3-adults' },
-  { label: '4 adults', code: '4-adults' },
-])
-
 // Filter state - start with empty values
+const viewBy = ref([])
 const roomTypes = ref([])
 const ratePlans = ref([])
-const channels = ref([])
 const roomRates = ref('')
-const occupancyPricing = ref([])
 const showDrawer = ref(false)
 
 // Temporary drawer filter state - only applies on submit
+const tempRoomTypes = ref([])
 const tempRatePlans = ref([])
-const tempChannels = ref([])
 const tempRoomRates = ref('')
-const tempOccupancyPricing = ref([])
 
 // Computed
 const activeFilters = computed(() => {
   const filters = []
+
+  // View by - individual pill for each selection
+  if (viewBy.value.length > 0) {
+    viewBy.value.forEach(code => {
+      const option = viewByOptions.value.find(opt => opt.code === code)
+      filters.push({
+        key: `viewBy-${code}`,
+        filterKey: 'viewBy',
+        filterValue: code,
+        label: `View by: ${option?.label || code}`
+      })
+    })
+  }
 
   // Room types - individual pill for each selection
   if (roomTypes.value.length > 0) {
@@ -237,19 +231,6 @@ const activeFilters = computed(() => {
     })
   }
 
-  // Channels - individual pill for each selection
-  if (channels.value.length > 0) {
-    channels.value.forEach(code => {
-      const option = channelOptions.value.find(opt => opt.code === code)
-      filters.push({
-        key: `channels-${code}`,
-        filterKey: 'channels',
-        filterValue: code,
-        label: `Channels: ${option?.label || code}`
-      })
-    })
-  }
-
   // Room rates - single pill for text input
   if (roomRates.value) {
     filters.push({
@@ -260,19 +241,6 @@ const activeFilters = computed(() => {
     })
   }
 
-  // Occupancy pricing - individual pill for each selection
-  if (occupancyPricing.value.length > 0) {
-    occupancyPricing.value.forEach(code => {
-      const option = occupancyPricingOptions.value.find(opt => opt.code === code)
-      filters.push({
-        key: `occupancyPricing-${code}`,
-        filterKey: 'occupancyPricing',
-        filterValue: code,
-        label: `Occupancy based pricing: ${option?.label || code}`
-      })
-    })
-  }
-
   return filters
 })
 
@@ -280,66 +248,56 @@ const hasActiveFilters = computed(() => activeFilters.value.length > 0)
 
 const moreFiltersCount = computed(() => {
   let count = 0
-  // Count individual channel selections
-  count += channels.value.length
+  // Count individual room type selections (when in drawer on mobile)
+  count += roomTypes.value.length
+  // Count individual rate plan selections
+  count += ratePlans.value.length
   // Count room rates as 1 if text is entered
   if (roomRates.value) count++
-  // Count individual occupancy pricing selections
-  count += occupancyPricing.value.length
   return count
 })
 
 // Methods
 const openDrawer = () => {
   // Copy current state to temporary state when opening drawer
+  tempRoomTypes.value = [...roomTypes.value]
   tempRatePlans.value = [...ratePlans.value]
-  tempChannels.value = [...channels.value]
   tempRoomRates.value = roomRates.value
-  tempOccupancyPricing.value = [...occupancyPricing.value]
   showDrawer.value = true
 }
 
 const clearFilter = (filter) => {
   // filter is an object with { filterKey, filterValue }
   switch(filter.filterKey) {
+    case 'viewBy':
+      viewBy.value = viewBy.value.filter(v => v !== filter.filterValue)
+      break
     case 'roomTypes':
       roomTypes.value = roomTypes.value.filter(v => v !== filter.filterValue)
       break
     case 'ratePlans':
       ratePlans.value = ratePlans.value.filter(v => v !== filter.filterValue)
       break
-    case 'channels':
-      channels.value = channels.value.filter(v => v !== filter.filterValue)
-      break
     case 'roomRates':
       roomRates.value = ''
-      break
-    case 'occupancyPricing':
-      occupancyPricing.value = occupancyPricing.value.filter(v => v !== filter.filterValue)
       break
   }
 }
 
 const clearAllFilters = () => {
+  viewBy.value = []
   roomTypes.value = []
   ratePlans.value = []
-  channels.value = []
   roomRates.value = ''
-  occupancyPricing.value = []
 }
 
 const applyFilters = () => {
   // Apply temporary state to actual state
+  roomTypes.value = [...tempRoomTypes.value]
   ratePlans.value = [...tempRatePlans.value]
-  channels.value = [...tempChannels.value]
   roomRates.value = tempRoomRates.value
-  occupancyPricing.value = [...tempOccupancyPricing.value]
   showDrawer.value = false
   console.log('Filters applied:', activeFilters.value)
-}
-
-const handleReorder = () => {
-  console.log('Reorder clicked')
 }
 </script>
 

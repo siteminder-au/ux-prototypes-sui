@@ -6,13 +6,51 @@
   display: flex;
   gap: 1rem;
   align-items: flex-end;
-  flex-wrap: wrap;
+  flex-wrap: wrap; // Allow active filter pills to wrap to next line
   padding: 0;
+
+  // Keep filter inputs and button on same line, don't shrink
+  > .filter-select,
+  > .filter-input,
+  > .more-filters-btn,
+  > .search-btn,
+  > .filter-segmented,
+  > .reorder-btn {
+    flex-shrink: 0;
+  }
+}
+
+// Left group: filters and buttons aligned left
+.filter-bar-left {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  flex-shrink: 0;
+  flex-wrap: nowrap; // Keep children on same line
+}
+
+// Right group: buttons aligned right
+.filter-bar-right {
+  display: flex;
+  gap: 0.5rem; // Tighter gap between right-aligned buttons
+  align-items: flex-end;
+  flex-shrink: 1; // Allow shrinking to prevent wrapping
+  flex-wrap: nowrap; // Keep children on same line
+  margin-left: auto; // Push to right
+  min-width: 0; // Allow content to determine minimum width
 }
 
 .filter-input,
 .filter-select {
   width: 200px;
+  min-width: 200px;
+}
+
+// Active filter pills component - force to new line
+:deep(.active-filters-pills) {
+  width: 100%;
+  flex-basis: 100%;
+  order: 999; // Ensure it always appears after all filters
 }
 
 // Left action group (More Filters icon + Clear all link)
@@ -23,31 +61,24 @@
   align-self: flex-end;
 }
 
-// More filters button container with badge
-.more-filters-container {
-  position: relative;
-  display: inline-flex;
-  align-self: flex-end;
-}
-
+// More filters button with badge inside
 .more-filters-btn {
   height: 40px;
-  width: 40px;
+  align-self: flex-end;
+
+  // Allow button to grow to fit content (icon + badge)
+  width: auto;
   min-width: 40px;
-  padding: 0;
+
+  // Badge inside button
+  .filter-badge {
+    margin-left: 0.5rem;
+  }
 }
 
-.filter-badge {
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  pointer-events: none;
-}
-
-// Reorder button on the right
+// Reorder button
 .reorder-btn {
   height: 40px;
-  margin-left: auto;
 }
 
 // SmDrawer body padding - matches form system .container-content padding
@@ -81,15 +112,104 @@
   }
 }
 
-// Responsive breakpoints
-@media (max-width: 1024px) {
-  .filter-bar {
-    flex-direction: column;
-    align-items: stretch;
+// ============================================================================
+// RESPONSIVE BREAKPOINT SYSTEM
+// ============================================================================
+//
+// Simple 2-tier system:
+// - TABLET (< 1050px): Hide tertiary filters (3rd, 4th, etc.)
+// - MOBILE (< 620px): Hide secondary filters (2nd filter)
+//
+// Breakpoint calculation (includes right-aligned content):
+// TABLET (2 filters visible):
+// - 2 fields × 200px = 400px
+// - More Filters button = 40px
+// - 2 gaps × 16px = 32px (left group)
+// - Gap between groups = 16px
+// - Reorder button ≈ 80px
+// - Container padding ≈ 100px
+// - Total ≈ 668px → use 1050px to hide 3rd+ filters before any wrapping
+//
+// MOBILE (1 filter visible):
+// - 1 field × 200px (expands) = 200px+
+// - More Filters button = 40px
+// - 1 gap × 16px = 16px (left group)
+// - Gap between groups = 16px
+// - Reorder button ≈ 80px
+// - Container padding ≈ 100px
+// - Total ≈ 452px → use 620px to hide 2nd filter before wrapping
+//
+// Classes to use:
+// - .filter-select--hide-tablet → Hides at tablet and below (< 1050px)
+// - .filter-select--hide-mobile → Hides at mobile only (< 620px)
+// - .filter-select--show-tablet → Shows at tablet and below (< 1050px)
+// - .filter-select--show-mobile → Shows at mobile only (< 620px)
+// ============================================================================
+
+$breakpoint-tablet: 1050px;
+$breakpoint-mobile: 620px;
+
+// Desktop: Hide responsive-only elements
+.filter-select--show-tablet,
+.filter-select--show-mobile {
+  display: none !important;
+}
+
+// TABLET: Hide tertiary filters, show More Filters button
+@media (max-width: $breakpoint-tablet) {
+  .filter-select--hide-tablet {
+    display: none !important;
   }
 
+  .filter-select--show-tablet {
+    display: flex !important;
+  }
+
+  .filter-bar {
+    gap: 0.75rem;
+  }
+}
+
+// MOBILE: Hide secondary filters, expand remaining filter
+@media (max-width: $breakpoint-mobile) {
+  .filter-select--hide-mobile {
+    display: none !important;
+  }
+
+  .filter-select--show-mobile {
+    display: block !important;
+  }
+
+  .filter-bar {
+    gap: 0.5rem;
+  }
+
+  // Left group: expand to fill available space
+  .filter-bar-left {
+    flex: 1 1 auto;
+    min-width: 0; // Allow shrinking
+    gap: 0.5rem;
+  }
+
+  // Right group: prevent wrapping by allowing shrink
+  .filter-bar-right {
+    flex-shrink: 1;
+    min-width: 0;
+  }
+
+  // Expand remaining filter to fill available space in left group
   .filter-input,
   .filter-select {
-    width: 100%;
+    flex: 1 1 auto;
+    min-width: 100px; // Reduced to allow more shrinking at very small viewports
+    max-width: 100%; // Allow natural expansion
+    width: min-content !important; // Override SUI component's width: auto at this breakpoint
+  }
+
+  // Buttons can shrink if absolutely necessary
+  .expand-all-btn,
+  .reorder-btn {
+    white-space: nowrap;
+    flex-shrink: 1;
   }
 }

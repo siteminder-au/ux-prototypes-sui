@@ -56,3 +56,11 @@
 :deep(.sm-drawer__header h2) {
   margin-bottom: 0;
 }
+
+// Fix drawer header padding on desktop
+@media only screen and (min-width: 769px) {
+  :deep(.sm-drawer__header) {
+    padding: 24px 56px 23px !important;
+    padding-left: 24px !important;
+  }
+}
