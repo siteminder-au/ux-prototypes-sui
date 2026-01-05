@@ -10,7 +10,7 @@
           <SmInput
             v-model="channels"
             label="Channels"
-            placeholder="Search channel"
+            placeholder="Search channels"
             class="filter-input"
             suffix-icon="action-search"
           />
