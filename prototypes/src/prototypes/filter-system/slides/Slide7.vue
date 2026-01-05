@@ -8,14 +8,13 @@
         <div class="filter-bar">
           <!-- Rate Status Radio Group - Always visible -->
           <SmRadioGroup
-            v-model="rateStatus"
             label="Rate Status"
             name="rateStatus"
             class="filter-radio-group"
             :is-button-style-group="true"
           >
-            <SmRadioButton name="active" value="active" label="Active" />
-            <SmRadioButton name="inactive" value="inactive" label="Inactive" />
+            <SmRadioButton name="rateStatus" selected-value="active" label="Active" v-model="rateStatus" />
+            <SmRadioButton name="rateStatus" selected-value="inactive" label="Inactive" v-model="rateStatus" />
           </SmRadioGroup>
 
           <!-- Room Types Multi-Select - Always visible -->
