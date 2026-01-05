@@ -6,26 +6,17 @@
       <div class="container-content">
         <!-- Filter Bar -->
         <div class="filter-bar">
-          <!-- Rate Status Segmented Control - Always visible -->
-          <div class="filter-segmented">
-            <label class="sm-field-label">Rate Status</label>
-            <div class="segmented-control">
-              <SmButton
-                :type="rateStatus === 'active' ? 'primary' : 'secondary'"
-                @click="rateStatus = 'active'"
-                class="segmented-button"
-              >
-                Active
-              </SmButton>
-              <SmButton
-                :type="rateStatus === 'inactive' ? 'primary' : 'secondary'"
-                @click="rateStatus = 'inactive'"
-                class="segmented-button"
-              >
-                Inactive
-              </SmButton>
-            </div>
-          </div>
+          <!-- Rate Status Radio Group - Always visible -->
+          <SmRadioGroup
+            v-model="rateStatus"
+            label="Rate Status"
+            name="rateStatus"
+            class="filter-radio-group"
+            orientation="vertical"
+          >
+            <SmRadio value="active" label="Active" />
+            <SmRadio value="inactive" label="Inactive" />
+          </SmRadioGroup>
 
           <!-- Room Types Multi-Select - Always visible -->
           <SmMultiSelect
@@ -273,31 +264,7 @@ const applyFilters = () => {
 <style scoped lang="scss">
 @import '../styles/index.scss';
 
-.filter-segmented {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.filter-radio-group {
   align-self: flex-end;
-}
-
-.segmented-control {
-  display: flex;
-  gap: 0;
-  border-radius: 4px;
-  overflow: hidden;
-
-  .segmented-button {
-    border-radius: 0;
-
-    &:first-child {
-      border-top-left-radius: 4px;
-      border-bottom-left-radius: 4px;
-    }
-
-    &:last-child {
-      border-top-right-radius: 4px;
-      border-bottom-right-radius: 4px;
-    }
-  }
 }
 </style>
