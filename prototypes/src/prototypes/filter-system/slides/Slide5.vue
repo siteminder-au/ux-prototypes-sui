@@ -37,6 +37,7 @@
               label="Booking reference"
               placeholder="Enter booking reference"
               class="filter-input filter-select--hide-tablet"
+              suffix-icon="action-search"
             />
 
             <!-- More Filters Icon Button - Visible on mobile or always if needed -->
