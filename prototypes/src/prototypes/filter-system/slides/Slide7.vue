@@ -6,55 +6,78 @@
       <div class="container-content">
         <!-- Filter Bar -->
         <div class="filter-bar">
-          <!-- Rate Status Radio Group - Always visible -->
-          <SmRadioGroup
-            label="Rate Status"
-            name="rateStatus"
-            class="filter-radio-group"
-            :is-button-style-group="true"
-          >
-            <SmRadioButton name="rateStatus" selected-value="active" label="Active" v-model="rateStatus" />
-            <SmRadioButton name="rateStatus" selected-value="inactive" label="Inactive" v-model="rateStatus" />
-          </SmRadioGroup>
+          <!-- Left: Filters and More Filters button -->
+          <div class="filter-bar-left">
+            <!-- Rate Status Radio Group - Always visible -->
+            <SmRadioGroup
+              label="Rate Status"
+              name="rateStatus"
+              class="filter-radio-group"
+              :is-button-style-group="true"
+            >
+              <SmRadioButton name="rateStatus" selected-value="active" label="Active" v-model="rateStatus" />
+              <SmRadioButton name="rateStatus" selected-value="inactive" label="Inactive" v-model="rateStatus" />
+            </SmRadioGroup>
 
-          <!-- Room Types Multi-Select - Always visible -->
-          <SmMultiSelect
-            v-model="roomTypes"
-            label="Room types"
-            name="roomTypes"
-            placeholder="All room types"
-            class="filter-select"
-            :options="roomTypeOptions"
-            :filterable="false"
-            :multiple="true"
-            :collapse-tags="true"
-          />
+            <!-- Room Types Multi-Select - Always visible -->
+            <SmMultiSelect
+              v-model="roomTypes"
+              label="Room types"
+              name="roomTypes"
+              placeholder="All room types"
+              class="filter-select"
+              :options="roomTypeOptions"
+              :filterable="false"
+              :multiple="true"
+              :collapse-tags="true"
+            />
 
-          <!-- Rate Plans Multi-Select - Hidden on tablet and mobile -->
-          <SmMultiSelect
-            v-model="ratePlans"
-            label="Rate plans"
-            name="ratePlans"
-            placeholder="All rate plans"
-            class="filter-select filter-select--hide-tablet"
-            :options="ratePlanOptions"
-            :filterable="false"
-            :multiple="true"
-            :collapse-tags="true"
-          />
+            <!-- Rate Plans Multi-Select - Hidden on tablet and mobile -->
+            <SmMultiSelect
+              v-model="ratePlans"
+              label="Rate plans"
+              name="ratePlans"
+              placeholder="All rate plans"
+              class="filter-select filter-select--hide-tablet"
+              :options="ratePlanOptions"
+              :filterable="false"
+              :multiple="true"
+              :collapse-tags="true"
+            />
 
-          <!-- More Filters Icon Button - Only visible on tablet and mobile -->
-          <SmButton
-            type="tertiary"
-            class="more-filters-btn filter-select--show-tablet"
-            @click="openDrawer"
-            :aria-label="`More Filters${moreFiltersCount > 0 ? ` (${moreFiltersCount} active)` : ''}`"
-          >
-            <SmIcon name="action-filter" />
-            <SmBadge v-if="moreFiltersCount > 0" type="info" size="medium" class="filter-badge">
-              {{ moreFiltersCount }}
-            </SmBadge>
-          </SmButton>
+            <!-- Only show recommended rates Checkbox - Hidden on tablet and mobile -->
+            <SmCheckbox
+              v-model="showRecommendedOnly"
+              label="Only show recommended rates"
+              name="showRecommendedOnly"
+              class="filter-checkbox filter-select--hide-tablet"
+            />
+
+            <!-- More Filters Icon Button - Only visible on tablet and mobile -->
+            <SmButton
+              type="tertiary"
+              class="more-filters-btn filter-select--show-tablet"
+              @click="openDrawer"
+              :aria-label="`More Filters${moreFiltersCount > 0 ? ` (${moreFiltersCount} active)` : ''}`"
+            >
+              <SmIcon name="action-filter" />
+              <SmBadge v-if="moreFiltersCount > 0" type="info" size="medium" class="filter-badge">
+                {{ moreFiltersCount }}
+              </SmBadge>
+            </SmButton>
+          </div>
+
+          <!-- Right: Deactivate rates button -->
+          <div class="filter-bar-right">
+            <SmButton
+              type="secondary"
+              class="deactivate-rates-btn"
+              :disabled="true"
+              @click="handleDeactivateRates"
+            >
+              Deactivate rates
+            </SmButton>
+          </div>
 
           <!-- Active Filters Pills -->
           <ActiveFiltersPills
@@ -207,9 +230,9 @@ const hasActiveFilters = computed(() => activeFilters.value.length > 0)
 
 const moreFiltersCount = computed(() => {
   let count = 0
-  // Count individual rate plan selections
+  // Count individual rate plan selections (hidden on tablet/mobile)
   count += ratePlans.value.length
-  // Count checkbox as 1 if checked
+  // Count checkbox as 1 if checked (hidden on tablet/mobile)
   if (showRecommendedOnly.value) count++
   return count
 })
@@ -253,12 +276,25 @@ const applyFilters = () => {
   showDrawer.value = false
   console.log('Filters applied:', activeFilters.value)
 }
+
+const handleDeactivateRates = () => {
+  console.log('Deactivate rates clicked')
+}
 </script>
 
 <style scoped lang="scss">
 @import '../styles/index.scss';
 
 .filter-radio-group {
+  align-self: flex-end;
+}
+
+.filter-checkbox {
+  align-self: flex-end;
+}
+
+.deactivate-rates-btn {
+  height: 40px;
   align-self: flex-end;
 }
 </style>
