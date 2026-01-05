@@ -12,6 +12,7 @@
             label="Channels"
             placeholder="Search channel"
             class="filter-input"
+            suffix-icon="action-search"
           />
 
           <!-- Active Filters Pills -->
