@@ -14,8 +14,8 @@
             class="filter-radio-group"
             :is-button-style-group="true"
           >
-            <SmRadioButton value="active" label="Active" />
-            <SmRadioButton value="inactive" label="Inactive" />
+            <SmRadioButton name="active" value="active" label="Active" />
+            <SmRadioButton name="inactive" value="inactive" label="Inactive" />
           </SmRadioGroup>
 
           <!-- Room Types Multi-Select - Always visible -->
