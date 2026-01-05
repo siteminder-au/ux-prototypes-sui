@@ -161,13 +161,8 @@ const tempShowRecommendedOnly = ref(false)
 const activeFilters = computed(() => {
   const filters = []
 
-  // Rate status - always show since there's always a selection
-  filters.push({
-    key: 'rateStatus',
-    filterKey: 'rateStatus',
-    filterValue: rateStatus.value,
-    label: `Rate Status: ${rateStatus.value === 'active' ? 'Active' : 'Inactive'}`
-  })
+  // Rate status - don't show as pill since it's always visible in the filter bar
+  // (radio button groups should not create active filter pills)
 
   // Room types - individual pill for each selection
   if (roomTypes.value.length > 0) {
