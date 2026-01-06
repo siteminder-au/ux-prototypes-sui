@@ -3,58 +3,58 @@ import Index from './Index.vue'
 
 // Import your prototypes
 import ComponentShowcase from './prototypes/component-showcase/ComponentShowcase.vue'
-import FormSystem from './prototypes/form-system/FormSystem.vue'
-import FormSystemSlideLayout from './prototypes/form-system/SlideLayout.vue'
-import FilterSystem from './prototypes/filter-system/FilterSystem.vue'
-import FilterSystemSlideLayout from './prototypes/filter-system/SlideLayout.vue'
+import Forms from './prototypes/forms/FormSystem.vue'
+import FormsSlideLayout from './prototypes/forms/SlideLayout.vue'
+import Filters from './prototypes/filters/FilterSystem.vue'
+import FiltersSlideLayout from './prototypes/filters/SlideLayout.vue'
 
 // Define routes - add new prototypes here!
 const routes = [
   { path: '/', component: Index },
   { path: '/component-showcase', component: ComponentShowcase },
   {
-    path: '/form-system',
-    component: FormSystem,
+    path: '/forms',
+    component: Forms,
     children: [
       {
         path: '',
-        redirect: '/form-system/1'
+        redirect: '/forms/1'
       },
       {
         path: ':slideNumber',
-        name: 'form-system-slide',
-        component: FormSystemSlideLayout,
+        name: 'forms-slide',
+        component: FormsSlideLayout,
         props: true,
         beforeEnter: (to, from, next) => {
           const slideNum = parseInt(to.params.slideNumber)
           if (slideNum >= 1 && slideNum <= 5) {
             next()
           } else {
-            next('/form-system/1')
+            next('/forms/1')
           }
         }
       }
     ]
   },
   {
-    path: '/filter-system',
-    component: FilterSystem,
+    path: '/filters',
+    component: Filters,
     children: [
       {
         path: '',
-        redirect: '/filter-system/1'
+        redirect: '/filters/1'
       },
       {
         path: ':slideNumber',
-        name: 'filter-system-slide',
-        component: FilterSystemSlideLayout,
+        name: 'filters-slide',
+        component: FiltersSlideLayout,
         props: true,
         beforeEnter: (to, from, next) => {
           const slideNum = parseInt(to.params.slideNumber)
           if (slideNum >= 1 && slideNum <= 7) {
             next()
           } else {
-            next('/filter-system/1')
+            next('/filters/1')
           }
         }
       }

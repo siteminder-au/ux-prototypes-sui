@@ -24,16 +24,16 @@ const prototypes = [
   //   path: '/component-showcase'
   // },
   {
-    id: 'form-system',
-    name: 'Form System',
+    id: 'forms',
+    name: 'Forms',
     description: 'Form system ux rules, guidelines and applied examples',
-    path: '/form-system'
+    path: '/forms'
   },
   {
-    id: 'filter-system',
-    name: 'Filter System',
+    id: 'filters',
+    name: 'Filters',
     description: 'Filter system ux rules, guidelines and applied examples',
-    path: '/filter-system'
+    path: '/filters'
   },
 ]
 </script>
