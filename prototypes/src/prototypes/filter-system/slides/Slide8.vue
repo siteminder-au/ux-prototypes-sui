@@ -6,54 +6,39 @@
       <div class="container-content">
         <!-- Filter Bar -->
         <div class="filter-bar">
-          <!-- Left: Filters -->
-          <div class="filter-bar-left">
-            <!-- Deal Status Radio Group - Always visible -->
-            <SmRadioGroup
-              label="Deal status"
-              name="dealStatus"
-              class="filter-radio-group"
-              :is-button-style-group="true"
-            >
-              <SmRadioButton name="dealStatus" selected-value="all" label="All" v-model="dealStatus" />
-              <SmRadioButton name="dealStatus" selected-value="active" label="Active" v-model="dealStatus" />
-              <SmRadioButton name="dealStatus" selected-value="inactive" label="Inactive" v-model="dealStatus" />
-            </SmRadioGroup>
+          <!-- Deal Status Radio Group - Always visible -->
+          <SmRadioGroup
+            label="Deal status"
+            name="dealStatus"
+            class="filter-radio-group"
+            :is-button-style-group="true"
+          >
+            <SmRadioButton name="dealStatus" selected-value="all" label="All" v-model="dealStatus" />
+            <SmRadioButton name="dealStatus" selected-value="active" label="Active" v-model="dealStatus" />
+            <SmRadioButton name="dealStatus" selected-value="inactive" label="Inactive" v-model="dealStatus" />
+          </SmRadioGroup>
 
-            <!-- View by Deal Type Multi-Select - Always visible -->
-            <SmMultiSelect
-              v-model="dealType"
-              label="View by deal type"
-              name="dealType"
-              placeholder="All deal types"
-              class="filter-select"
-              :options="dealTypeOptions"
-              :filterable="false"
-              :multiple="true"
-              :collapse-tags="true"
-            />
+          <!-- View by Deal Type Multi-Select - Always visible -->
+          <SmMultiSelect
+            v-model="dealType"
+            label="View by deal type"
+            name="dealType"
+            placeholder="All deal types"
+            class="filter-select"
+            :options="dealTypeOptions"
+            :filterable="false"
+            :multiple="true"
+            :collapse-tags="true"
+          />
 
-            <!-- Deal Name Search Input - Always visible -->
-            <SmInput
-              v-model="dealName"
-              label="Deal name"
-              placeholder="Search a deal name"
-              class="filter-input"
-              suffix-icon="action-search"
-            />
-          </div>
-
-          <!-- Right: Deactivate deals button -->
-          <div class="filter-bar-right">
-            <SmButton
-              type="secondary"
-              class="deactivate-deals-btn"
-              :disabled="true"
-              @click="handleDeactivateDeals"
-            >
-              Deactivate deals
-            </SmButton>
-          </div>
+          <!-- Deal Name Search Input - Always visible -->
+          <SmInput
+            v-model="dealName"
+            label="Deal name"
+            placeholder="Search a deal name"
+            class="filter-input"
+            suffix-icon="action-search"
+          />
 
           <!-- Active Filters Pills -->
           <ActiveFiltersPills
@@ -154,21 +139,12 @@ const clearAllFilters = () => {
   dealType.value = []
   dealName.value = ''
 }
-
-const handleDeactivateDeals = () => {
-  console.log('Deactivate deals clicked')
-}
 </script>
 
 <style scoped lang="scss">
 @import '../styles/index.scss';
 
 .filter-radio-group {
-  align-self: flex-end;
-}
-
-.deactivate-deals-btn {
-  height: 40px;
   align-self: flex-end;
 }
 </style>
