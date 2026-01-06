@@ -30,30 +30,42 @@
               :collapse-tags="true"
             />
 
-            <!-- Rate Plans Multi-Select - Hidden on tablet and mobile -->
+            <!-- Rate Plans Multi-Select - Always visible -->
             <SmMultiSelect
               v-model="ratePlans"
               label="Rate plans"
               name="ratePlans"
               placeholder="Filter rate plans"
-              class="filter-select filter-select--hide-tablet"
+              class="filter-select"
               :options="ratePlanOptions"
               :filterable="false"
               :multiple="true"
               :collapse-tags="true"
             />
 
-            <!-- More Filters Icon Button - Only visible on tablet and mobile -->
+            <!-- More Filters Button - Always visible -->
             <SmButton
               type="tertiary"
-              class="more-filters-btn filter-select--show-tablet"
+              class="more-filters-btn"
               @click="openDrawer"
               :aria-label="`More Filters${moreFiltersCount > 0 ? ` (${moreFiltersCount} active)` : ''}`"
             >
               <SmIcon name="action-filter" />
+              More Filters
               <SmBadge v-if="moreFiltersCount > 0" type="info" size="medium" class="filter-badge">
                 {{ moreFiltersCount }}
               </SmBadge>
+            </SmButton>
+          </div>
+
+          <!-- Right: Expand all button -->
+          <div class="filter-bar-right">
+            <SmButton
+              type="tertiary"
+              class="expand-all-btn"
+              @click="handleExpandAll"
+            >
+              Expand all
             </SmButton>
           </div>
 
@@ -89,19 +101,6 @@
 
             <!-- Drawer Body -->
             <div class="drawer-filters">
-              <!-- Rate Plans - Only visible on tablet and mobile -->
-              <SmMultiSelect
-                v-model="tempRatePlans"
-                label="Rate plans"
-                name="ratePlans"
-                placeholder="Filter rate plans"
-                class="filter-select"
-                :options="ratePlanOptions"
-                :filterable="false"
-                :multiple="true"
-                :collapse-tags="true"
-              />
-
               <!-- Channels Multi-Select -->
               <SmMultiSelect
                 v-model="tempChannels"
@@ -179,7 +178,6 @@ const dateRange = ref(null)
 const showDrawer = ref(false)
 
 // Temporary drawer filter state - only applies on submit
-const tempRatePlans = ref([])
 const tempChannels = ref([])
 const tempDateRange = ref(null)
 
@@ -256,8 +254,6 @@ const hasActiveFilters = computed(() => activeFilters.value.length > 0)
 
 const moreFiltersCount = computed(() => {
   let count = 0
-  // Count individual rate plan selections (hidden on tablet/mobile)
-  count += ratePlans.value.length
   // Count channels
   count += channels.value.length
   // Count date range as 1 if selected
@@ -268,7 +264,6 @@ const moreFiltersCount = computed(() => {
 // Methods
 const openDrawer = () => {
   // Copy current state to temporary state when opening drawer
-  tempRatePlans.value = [...ratePlans.value]
   tempChannels.value = [...channels.value]
   tempDateRange.value = dateRange.value
   showDrawer.value = true
@@ -304,13 +299,25 @@ const clearAllFilters = () => {
 
 const applyFilters = () => {
   // Apply temporary state to actual state
-  ratePlans.value = [...tempRatePlans.value]
   channels.value = [...tempChannels.value]
   dateRange.value = tempDateRange.value
   showDrawer.value = false
+}
+
+const handleExpandAll = () => {
+  console.log('Expand all clicked')
 }
 </script>
 
 <style scoped lang="scss">
 @import '../styles/index.scss';
+
+.more-filters-btn {
+  align-self: flex-end;
+}
+
+.expand-all-btn {
+  height: 40px;
+  align-self: flex-end;
+}
 </style>
