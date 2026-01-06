@@ -6,54 +6,54 @@
       <div class="container-content">
         <!-- Filter Bar -->
         <div class="filter-bar">
-          <!-- Deal Status Segmented Control - Always visible -->
-          <div class="filter-segmented">
-            <label class="sm-field-label">Deal status</label>
-            <div class="segmented-control">
-              <SmButton
-                :type="dealStatus === 'all' ? 'primary' : 'secondary'"
-                @click="dealStatus = 'all'"
-                class="segmented-button"
-              >
-                All
-              </SmButton>
-              <SmButton
-                :type="dealStatus === 'active' ? 'primary' : 'secondary'"
-                @click="dealStatus = 'active'"
-                class="segmented-button"
-              >
-                Active
-              </SmButton>
-              <SmButton
-                :type="dealStatus === 'inactive' ? 'primary' : 'secondary'"
-                @click="dealStatus = 'inactive'"
-                class="segmented-button"
-              >
-                Inactive
-              </SmButton>
-            </div>
+          <!-- Left: Filters -->
+          <div class="filter-bar-left">
+            <!-- Deal Status Radio Group - Always visible -->
+            <SmRadioGroup
+              label="Deal status"
+              name="dealStatus"
+              class="filter-radio-group"
+              :is-button-style-group="true"
+            >
+              <SmRadioButton name="dealStatus" selected-value="all" label="All" v-model="dealStatus" />
+              <SmRadioButton name="dealStatus" selected-value="active" label="Active" v-model="dealStatus" />
+              <SmRadioButton name="dealStatus" selected-value="inactive" label="Inactive" v-model="dealStatus" />
+            </SmRadioGroup>
+
+            <!-- View by Deal Type Multi-Select - Always visible -->
+            <SmMultiSelect
+              v-model="dealType"
+              label="View by deal type"
+              name="dealType"
+              placeholder="All deal types"
+              class="filter-select"
+              :options="dealTypeOptions"
+              :filterable="false"
+              :multiple="true"
+              :collapse-tags="true"
+            />
+
+            <!-- Deal Name Search Input - Always visible -->
+            <SmInput
+              v-model="dealName"
+              label="Deal name"
+              placeholder="Search a deal name"
+              class="filter-input"
+              suffix-icon="action-search"
+            />
           </div>
 
-          <!-- View by Deal Type Multi-Select - Always visible -->
-          <SmMultiSelect
-            v-model="dealType"
-            label="View by deal type"
-            name="dealType"
-            placeholder="All deal types"
-            class="filter-select"
-            :options="dealTypeOptions"
-            :filterable="false"
-            :multiple="true"
-            :collapse-tags="true"
-          />
-
-          <!-- Deal Name Search Input - Always visible -->
-          <SmInput
-            v-model="dealName"
-            label="Deal name"
-            placeholder="Search a deal name"
-            class="filter-input"
-          />
+          <!-- Right: Deactivate deals button -->
+          <div class="filter-bar-right">
+            <SmButton
+              type="secondary"
+              class="deactivate-deals-btn"
+              :disabled="true"
+              @click="handleDeactivateDeals"
+            >
+              Deactivate deals
+            </SmButton>
+          </div>
 
           <!-- Active Filters Pills -->
           <ActiveFiltersPills
@@ -103,13 +103,8 @@ const dealName = ref('')
 const activeFilters = computed(() => {
   const filters = []
 
-  // Deal status - always show since there's always a selection
-  filters.push({
-    key: 'dealStatus',
-    filterKey: 'dealStatus',
-    filterValue: dealStatus.value,
-    label: `Deal status: ${dealStatus.value.charAt(0).toUpperCase() + dealStatus.value.slice(1)}`
-  })
+  // Deal status - don't show as pill since it's always visible in the filter bar
+  // (radio button groups should not create active filter pills)
 
   // Deal type - individual pill for each selection
   if (dealType.value.length > 0) {
@@ -159,36 +154,21 @@ const clearAllFilters = () => {
   dealType.value = []
   dealName.value = ''
 }
+
+const handleDeactivateDeals = () => {
+  console.log('Deactivate deals clicked')
+}
 </script>
 
 <style scoped lang="scss">
 @import '../styles/index.scss';
 
-.filter-segmented {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.filter-radio-group {
   align-self: flex-end;
 }
 
-.segmented-control {
-  display: flex;
-  gap: 0;
-  border-radius: 4px;
-  overflow: hidden;
-
-  .segmented-button {
-    border-radius: 0;
-
-    &:first-child {
-      border-top-left-radius: 4px;
-      border-bottom-left-radius: 4px;
-    }
-
-    &:last-child {
-      border-top-right-radius: 4px;
-      border-bottom-right-radius: 4px;
-    }
-  }
+.deactivate-deals-btn {
+  height: 40px;
+  align-self: flex-end;
 }
 </style>
