@@ -43,10 +43,10 @@
               :collapse-tags="true"
             />
 
-            <!-- More Filters Icon Button - Only visible on tablet and mobile -->
+            <!-- More Filters Icon Button - Always visible -->
             <SmButton
               type="tertiary"
-              class="more-filters-btn filter-select--show-tablet"
+              class="more-filters-btn"
               @click="openDrawer"
               :aria-label="`More Filters${moreFiltersCount > 0 ? ` (${moreFiltersCount} active)` : ''}`"
             >
