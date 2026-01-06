@@ -9,8 +9,8 @@
           <!-- Promotion Code Search Input -->
           <SmInput
             v-model="searchQuery"
-            label="Search promotion code"
-            placeholder="Search promotion code"
+            label="Promotion codes"
+            placeholder="Search promotion codes"
             class="filter-input"
             suffix-icon="action-search"
           />
