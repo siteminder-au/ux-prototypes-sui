@@ -114,12 +114,12 @@
                 :collapse-tags="true"
               />
 
-              <!-- Date Range Picker -->
-              <SmDatePicker
+              <!-- Date Range Calendar -->
+              <SmCalendar
                 v-model="tempDateRange"
                 label="Date range"
                 name="dateRange"
-                class="filter-date-picker"
+                class="filter-calendar"
                 :range="true"
                 placeholder="Select date range"
               />

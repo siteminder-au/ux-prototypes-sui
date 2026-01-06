@@ -60,18 +60,6 @@
             </SmButton>
           </div>
 
-          <!-- Right: Expand all button -->
-          <div class="filter-bar-right">
-            <SmButton
-              type="text"
-              class="expand-all-btn"
-              @click="handleExpandAll"
-            >
-              <SmIcon name="action-expand-all" />
-              Expand all
-            </SmButton>
-          </div>
-
           <!-- Active Filters Pills -->
           <ActiveFiltersPills
             v-if="hasActiveFilters"
@@ -260,10 +248,6 @@ const clearAllFilters = () => {
   ratePlans.value = []
   rateType.value = []
 }
-
-const handleExpandAll = () => {
-  console.log('Expand all clicked')
-}
 </script>
 
 <style scoped lang="scss">
@@ -274,10 +258,6 @@ const handleExpandAll = () => {
 }
 
 .more-filters-btn {
-  align-self: flex-end;
-}
-
-.expand-all-btn {
   align-self: flex-end;
 }
 </style>

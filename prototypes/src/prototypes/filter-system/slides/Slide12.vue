@@ -6,14 +6,29 @@
       <div class="container-content">
         <!-- Filter Bar -->
         <div class="filter-bar">
-          <!-- Promotion Code Search Input -->
-          <SmInput
-            v-model="searchQuery"
-            label="Promotion codes"
-            placeholder="Search promotion codes"
-            class="filter-input"
-            suffix-icon="action-search"
-          />
+          <!-- Left: Filters -->
+          <div class="filter-bar-left">
+            <!-- Promotion Code Search Input -->
+            <SmInput
+              v-model="searchQuery"
+              label="Promotion codes"
+              placeholder="Search promotion codes"
+              class="filter-input"
+              suffix-icon="action-search"
+            />
+          </div>
+
+          <!-- Right: Expand all button -->
+          <div class="filter-bar-right">
+            <SmButton
+              type="text"
+              class="expand-all-btn"
+              @click="handleExpandAll"
+            >
+              <SmIcon name="action-expand-all" />
+              Expand all
+            </SmButton>
+          </div>
 
           <!-- Active Filters Pills -->
           <ActiveFiltersPills
@@ -78,8 +93,16 @@ const clearFilter = (filter) => {
 const clearAllFilters = () => {
   searchQuery.value = ''
 }
+
+const handleExpandAll = () => {
+  console.log('Expand all clicked')
+}
 </script>
 
 <style scoped lang="scss">
 @import '../styles/index.scss';
+
+.expand-all-btn {
+  align-self: flex-end;
+}
 </style>
