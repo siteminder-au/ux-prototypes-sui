@@ -60,11 +60,11 @@
           <!-- Right: Expand all button -->
           <div class="filter-bar-right">
             <SmButton
-              type="tertiary"
+              type="text"
               class="expand-all-btn"
               @click="handleExpandAll"
             >
-              <SmIcon name="navigation-expand-vertical" />
+              <SmIcon name="action-expand-all" />
               Expand all
             </SmButton>
           </div>
@@ -115,11 +115,11 @@
               />
 
               <!-- Date Range Picker -->
-              <SmCalendar
+              <SmDatePicker
                 v-model="tempDateRange"
                 label="Date range"
                 name="dateRange"
-                class="filter-calendar"
+                class="filter-date-picker"
                 :range="true"
                 placeholder="Select date range"
               />
@@ -313,11 +313,6 @@ const handleExpandAll = () => {
 @import '../styles/index.scss';
 
 .more-filters-btn {
-  align-self: flex-end;
-}
-
-.expand-all-btn {
-  height: 40px;
   align-self: flex-end;
 }
 </style>
