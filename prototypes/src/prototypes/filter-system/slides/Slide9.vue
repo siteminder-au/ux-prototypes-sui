@@ -43,15 +43,14 @@
               :collapse-tags="true"
             />
 
-            <!-- More Filters Button - Always visible -->
+            <!-- More Filters Icon Button - Only visible on tablet and mobile -->
             <SmButton
               type="tertiary"
-              class="more-filters-btn"
+              class="more-filters-btn filter-select--show-tablet"
               @click="openDrawer"
               :aria-label="`More Filters${moreFiltersCount > 0 ? ` (${moreFiltersCount} active)` : ''}`"
             >
               <SmIcon name="action-filter" />
-              More Filters
               <SmBadge v-if="moreFiltersCount > 0" type="info" size="medium" class="filter-badge">
                 {{ moreFiltersCount }}
               </SmBadge>
@@ -65,6 +64,7 @@
               class="expand-all-btn"
               @click="handleExpandAll"
             >
+              <SmIcon name="navigation-expand-vertical" />
               Expand all
             </SmButton>
           </div>
