@@ -8,7 +8,7 @@
         <div class="filter-bar">
           <!-- Left: Filters -->
           <div class="filter-bar-left">
-            <!-- View by Select -->
+            <!-- View by Select - Always visible -->
             <SmSelect
               v-model="viewBy"
               label="View by"
@@ -19,33 +19,33 @@
               :filterable="false"
             />
 
-            <!-- Room Types Multi-Select -->
+            <!-- Room Types Multi-Select - Hidden on tablet and mobile -->
             <SmMultiSelect
               v-model="roomTypes"
               label="Room types"
               name="roomTypes"
               placeholder="Filter room types"
-              class="filter-select"
+              class="filter-select filter-select--hide-tablet"
               :options="roomTypeOptions"
               :filterable="false"
               :multiple="true"
               :collapse-tags="true"
             />
 
-            <!-- Rate Plans Multi-Select -->
+            <!-- Rate Plans Multi-Select - Hidden on tablet and mobile -->
             <SmMultiSelect
               v-model="ratePlans"
               label="Rate plans"
               name="ratePlans"
               placeholder="Filter rate plans"
-              class="filter-select"
+              class="filter-select filter-select--hide-tablet"
               :options="ratePlanOptions"
               :filterable="false"
               :multiple="true"
               :collapse-tags="true"
             />
 
-            <!-- Room Rates Search Input -->
+            <!-- Room Rates Search Input - Always visible -->
             <SmInput
               v-model="roomRates"
               label="Room rates"
@@ -53,6 +53,19 @@
               class="filter-input"
               suffix-icon="action-search"
             />
+
+            <!-- More Filters Icon Button - Only visible on tablet and mobile -->
+            <SmButton
+              type="tertiary"
+              class="more-filters-btn filter-select--show-tablet"
+              @click="openDrawer"
+              :aria-label="`More Filters${moreFiltersCount > 0 ? ` (${moreFiltersCount} active)` : ''}`"
+            >
+              <SmIcon name="action-filter" />
+              <SmBadge v-if="moreFiltersCount > 0" type="info" size="medium" class="filter-badge">
+                {{ moreFiltersCount }}
+              </SmBadge>
+            </SmButton>
           </div>
 
           <!-- Right: Collapse all button -->
@@ -62,7 +75,7 @@
               class="collapse-all-btn"
               @click="handleCollapseAll"
             >
-              <SmIcon name="action-collapse-all" />
+              <SmIcon name="action-collapse" />
               Collapse all
             </SmButton>
           </div>
@@ -74,6 +87,58 @@
             @clear-filter="clearFilter"
             @clear-all="clearAllFilters"
           />
+
+          <!-- More Filters Drawer -->
+          <SmDrawer
+            v-model:visible="showDrawer"
+            :action-buttons-visible="true"
+            :close-on-click-modal="true"
+            :close-on-press-escape="true"
+            content-class="sm-drawer__fixed-width"
+          >
+            <template #title>
+              <h2>Filters</h2>
+            </template>
+
+            <template #actions="{ close }">
+              <SmButton type="tertiary" @click="close">Cancel</SmButton>
+              <SmButton type="primary" @click="applyFilters">Apply Filters</SmButton>
+            </template>
+
+            <template #mobile-actions="{ close }">
+              <SmButton type="tertiary" @click="close">Cancel</SmButton>
+              <SmButton type="primary" @click="applyFilters">Apply Filters</SmButton>
+            </template>
+
+            <!-- Drawer Body -->
+            <div class="drawer-filters">
+              <!-- Room Types Multi-Select -->
+              <SmMultiSelect
+                v-model="tempRoomTypes"
+                label="Room types"
+                name="roomTypes"
+                placeholder="Filter room types"
+                class="filter-select"
+                :options="roomTypeOptions"
+                :filterable="false"
+                :multiple="true"
+                :collapse-tags="true"
+              />
+
+              <!-- Rate Plans Multi-Select -->
+              <SmMultiSelect
+                v-model="tempRatePlans"
+                label="Rate plans"
+                name="ratePlans"
+                placeholder="Filter rate plans"
+                class="filter-select"
+                :options="ratePlanOptions"
+                :filterable="false"
+                :multiple="true"
+                :collapse-tags="true"
+              />
+            </div>
+          </SmDrawer>
         </div>
       </div>
     </div>
@@ -123,6 +188,11 @@ const viewBy = ref('all')
 const roomTypes = ref([])
 const ratePlans = ref([])
 const roomRates = ref('')
+const showDrawer = ref(false)
+
+// Temporary drawer filter state - only applies on submit
+const tempRoomTypes = ref([])
+const tempRatePlans = ref([])
 
 // Computed
 const activeFilters = computed(() => {
@@ -180,7 +250,27 @@ const activeFilters = computed(() => {
 
 const hasActiveFilters = computed(() => activeFilters.value.length > 0)
 
+const moreFiltersCount = computed(() => {
+  let count = 0
+  count += roomTypes.value.length
+  count += ratePlans.value.length
+  return count
+})
+
 // Methods
+const openDrawer = () => {
+  // Copy current state to temporary state when opening drawer
+  tempRoomTypes.value = [...roomTypes.value]
+  tempRatePlans.value = [...ratePlans.value]
+  showDrawer.value = true
+}
+
+const applyFilters = () => {
+  // Apply temporary state to actual state
+  roomTypes.value = [...tempRoomTypes.value]
+  ratePlans.value = [...tempRatePlans.value]
+  showDrawer.value = false
+}
 const clearFilter = (filter) => {
   switch(filter.filterKey) {
     case 'viewBy':
@@ -214,6 +304,10 @@ const handleCollapseAll = () => {
 @import '../styles/index.scss';
 
 .collapse-all-btn {
+  align-self: flex-end;
+}
+
+.more-filters-btn {
   align-self: flex-end;
 }
 </style>
