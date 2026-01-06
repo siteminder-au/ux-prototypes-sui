@@ -6,14 +6,37 @@
       <div class="container-content">
         <!-- Filter Bar -->
         <div class="filter-bar">
-          <!-- Extra Name Search Input -->
-          <SmInput
-            v-model="searchQuery"
-            label="Search extra by name"
-            placeholder="Search extra by name"
-            class="filter-input"
-            suffix-icon="action-search"
-          />
+          <!-- Left: Filters -->
+          <div class="filter-bar-left">
+            <!-- Extra Name Search Input -->
+            <SmInput
+              v-model="searchQuery"
+              label="Extras"
+              placeholder="Search extras"
+              class="filter-input"
+              suffix-icon="action-search"
+            />
+          </div>
+
+          <!-- Right: Expand all and Reorder buttons -->
+          <div class="filter-bar-right">
+            <SmButton
+              type="text"
+              class="expand-all-btn"
+              @click="handleExpandAll"
+            >
+              <SmIcon name="action-expand-all" />
+              Expand all
+            </SmButton>
+            <SmButton
+              type="text"
+              class="reorder-btn"
+              @click="handleReorder"
+            >
+              <SmIcon name="action-reorder" />
+              Reorder
+            </SmButton>
+          </div>
 
           <!-- Active Filters Pills -->
           <ActiveFiltersPills
@@ -78,8 +101,24 @@ const clearFilter = (filter) => {
 const clearAllFilters = () => {
   searchQuery.value = ''
 }
+
+const handleExpandAll = () => {
+  console.log('Expand all clicked')
+}
+
+const handleReorder = () => {
+  console.log('Reorder clicked')
+}
 </script>
 
 <style scoped lang="scss">
 @import '../styles/index.scss';
+
+.expand-all-btn {
+  align-self: flex-end;
+}
+
+.reorder-btn {
+  align-self: flex-end;
+}
 </style>

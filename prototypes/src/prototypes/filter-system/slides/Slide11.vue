@@ -20,36 +20,36 @@
               <SmRadioButton name="rateStatus" selected-value="all" label="All" v-model="rateStatus" />
             </SmRadioGroup>
 
-            <!-- Room Types Multi-Select - Always visible -->
+            <!-- Room Types Multi-Select - Hidden on tablet and mobile -->
             <SmMultiSelect
               v-model="roomTypes"
               label="Room types"
               name="roomTypes"
               placeholder="Filter room types"
-              class="filter-select"
+              class="filter-select filter-select--hide-tablet"
               :options="roomTypeOptions"
               :filterable="false"
               :multiple="true"
               :collapse-tags="true"
             />
 
-            <!-- Rate Plans Multi-Select - Always visible -->
+            <!-- Rate Plans Multi-Select - Hidden on tablet and mobile -->
             <SmMultiSelect
               v-model="ratePlans"
               label="Rate plans"
               name="ratePlans"
               placeholder="Filter rate plans"
-              class="filter-select"
+              class="filter-select filter-select--hide-tablet"
               :options="ratePlanOptions"
               :filterable="false"
               :multiple="true"
               :collapse-tags="true"
             />
 
-            <!-- More Filters Icon Button - Always visible -->
+            <!-- More Filters Icon Button - Only visible on tablet and mobile -->
             <SmButton
               type="tertiary"
-              class="more-filters-btn"
+              class="more-filters-btn filter-select--show-tablet"
               @click="openDrawer"
               :aria-label="`More Filters${moreFiltersCount > 0 ? ` (${moreFiltersCount} active)` : ''}`"
             >
@@ -104,6 +104,32 @@
 
             <!-- Drawer Body -->
             <div class="drawer-filters">
+              <!-- Room Types Multi-Select -->
+              <SmMultiSelect
+                v-model="tempRoomTypes"
+                label="Room types"
+                name="roomTypes"
+                placeholder="Filter room types"
+                class="filter-select"
+                :options="roomTypeOptions"
+                :filterable="false"
+                :multiple="true"
+                :collapse-tags="true"
+              />
+
+              <!-- Rate Plans Multi-Select -->
+              <SmMultiSelect
+                v-model="tempRatePlans"
+                label="Rate plans"
+                name="ratePlans"
+                placeholder="Filter rate plans"
+                class="filter-select"
+                :options="ratePlanOptions"
+                :filterable="false"
+                :multiple="true"
+                :collapse-tags="true"
+              />
+
               <!-- Rate Type Multi-Select -->
               <SmMultiSelect
                 v-model="tempRateType"
@@ -169,6 +195,8 @@ const rateType = ref([])
 const showDrawer = ref(false)
 
 // Temporary drawer filter state - only applies on submit
+const tempRoomTypes = ref([])
+const tempRatePlans = ref([])
 const tempRateType = ref([])
 
 // Computed
@@ -224,6 +252,8 @@ const hasActiveFilters = computed(() => activeFilters.value.length > 0)
 
 const moreFiltersCount = computed(() => {
   let count = 0
+  count += roomTypes.value.length
+  count += ratePlans.value.length
   count += rateType.value.length
   return count
 })
@@ -231,12 +261,16 @@ const moreFiltersCount = computed(() => {
 // Methods
 const openDrawer = () => {
   // Copy current state to temporary state when opening drawer
+  tempRoomTypes.value = [...roomTypes.value]
+  tempRatePlans.value = [...ratePlans.value]
   tempRateType.value = [...rateType.value]
   showDrawer.value = true
 }
 
 const applyFilters = () => {
   // Apply temporary state to actual state
+  roomTypes.value = [...tempRoomTypes.value]
+  ratePlans.value = [...tempRatePlans.value]
   rateType.value = [...tempRateType.value]
   showDrawer.value = false
 }
