@@ -20,13 +20,26 @@
             </SmRadioGroup>
 
             <!-- Stay Date Calendar - Always visible -->
-            <SmCalendar
+            <SmDatePicker
               v-model="stayDate"
               label="Stay date"
               name="stayDate"
               class="filter-calendar filter-select--hide-tablet"
-              :range="true"
-              placeholder="Select date range"
+              :is-range="true"
+              :columns="2"
+              startDatePlaceholder="Start date"
+              endDatePlaceholder="End date"
+            />
+
+            <!-- Time Period Select - Always visible -->
+            <SmSelect
+              v-model="timePeriod"
+              label="Time period"
+              name="timePeriod"
+              placeholder="Month to date"
+              class="filter-select filter-select--hide-tablet"
+              :options="timePeriodOptions"
+              :filterable="false"
             />
 
             <!-- Comparison Select - Hidden on tablet and mobile -->
@@ -40,10 +53,10 @@
               :filterable="false"
             />
 
-            <!-- More Filters Icon Button - Only visible on tablet and mobile -->
+            <!-- More Filters Icon Button - Always visible -->
             <SmButton
               type="tertiary"
-              class="more-filters-btn filter-select--show-tablet"
+              class="more-filters-btn"
               @click="openDrawer"
               :aria-label="`More Filters${moreFiltersCount > 0 ? ` (${moreFiltersCount} active)` : ''}`"
             >
@@ -86,23 +99,36 @@
 
             <!-- Drawer Body -->
             <div class="drawer-filters">
-              <!-- Stay Date - Only visible on tablet and mobile -->
-              <SmCalendar
+              <!-- Stay Date - Only show in drawer on tablet and mobile (when hidden from main page) -->
+              <SmDatePicker
                 v-model="tempStayDate"
                 label="Stay date"
                 name="stayDate"
-                class="filter-calendar"
-                :range="true"
-                placeholder="Select date range"
+                class="filter-calendar drawer-field--tablet-only"
+                :is-range="true"
+                :columns="2"
+                startDatePlaceholder="Start date"
+                endDatePlaceholder="End date"
               />
 
-              <!-- Comparison - Only visible on tablet and mobile -->
+              <!-- Time Period - Only show in drawer on tablet and mobile (when hidden from main page) -->
+              <SmSelect
+                v-model="tempTimePeriod"
+                label="Time period"
+                name="timePeriod"
+                placeholder="Month to date"
+                class="filter-select drawer-field--tablet-only"
+                :options="timePeriodOptions"
+                :filterable="false"
+              />
+
+              <!-- Comparison - Only show in drawer on tablet and mobile (when hidden from main page) -->
               <SmSelect
                 v-model="tempComparison"
                 label="Comparison"
                 name="comparison"
                 placeholder="Last year"
-                class="filter-select"
+                class="filter-select drawer-field--tablet-only"
                 :options="comparisonOptions"
                 :filterable="false"
               />
@@ -186,6 +212,15 @@ import PrototypeSettings from '@/shared/components/PrototypeSettings.vue'
 import DisplaySettings from '@/shared/components/DisplaySettings.vue'
 
 // Options data
+const timePeriodOptions = ref([
+  { label: 'Month to date', code: 'month-to-date' },
+  { label: 'Year to date', code: 'year-to-date' },
+  { label: 'Custom dates', code: 'custom-dates' },
+  { label: 'Choose month', code: 'choose-month' },
+  { label: 'Tomorrow', code: 'tomorrow' },
+  { label: 'Next 7 days', code: 'next-7-days' },
+])
+
 const comparisonOptions = ref([
   { label: 'Last year', code: 'last-year' },
   { label: 'Last month', code: 'last-month' },
@@ -218,6 +253,7 @@ const ratePlanOptions = ref([
 
 // Filter state
 const performanceBy = ref('booked-on-date')
+const timePeriod = ref('month-to-date')
 const stayDate = ref(null)
 const comparison = ref('last-year')
 const channels = ref([])
@@ -228,6 +264,7 @@ const showDrawer = ref(false)
 
 // Temporary drawer filter state
 const tempStayDate = ref(null)
+const tempTimePeriod = ref('month-to-date')
 const tempComparison = ref('last-year')
 const tempChannels = ref([])
 const tempCountries = ref([])
@@ -242,9 +279,24 @@ const activeFilters = computed(() => {
   // (radio button groups should not create active filter pills)
 
   if (stayDate.value) {
-    const dateLabel = Array.isArray(stayDate.value)
-      ? `${stayDate.value[0]} - ${stayDate.value[1]}`
-      : stayDate.value
+    const formatDate = (date) => {
+      if (!date) return ''
+      const d = new Date(date)
+      const month = String(d.getMonth() + 1).padStart(2, '0')
+      const day = String(d.getDate()).padStart(2, '0')
+      const year = d.getFullYear()
+      return `${month}/${day}/${year}`
+    }
+
+    let dateLabel = ''
+    if (stayDate.value.start && stayDate.value.end) {
+      dateLabel = `${formatDate(stayDate.value.start)} - ${formatDate(stayDate.value.end)}`
+    } else if (Array.isArray(stayDate.value) && stayDate.value.length === 2) {
+      dateLabel = `${formatDate(stayDate.value[0])} - ${formatDate(stayDate.value[1])}`
+    } else {
+      dateLabel = JSON.stringify(stayDate.value)
+    }
+
     filters.push({
       key: 'stayDate',
       filterKey: 'stayDate',
@@ -312,8 +364,11 @@ const hasActiveFilters = computed(() => activeFilters.value.length > 0)
 
 const moreFiltersCount = computed(() => {
   let count = 0
+  // Count fields that are hidden on tablet/mobile
   if (stayDate.value) count++
+  if (timePeriod.value !== 'month-to-date') count++
   if (comparison.value !== 'last-year') count++
+  // Count multi-select fields (always in drawer)
   count += channels.value.length
   count += countries.value.length
   count += roomTypes.value.length
@@ -324,6 +379,7 @@ const moreFiltersCount = computed(() => {
 // Methods
 const openDrawer = () => {
   tempStayDate.value = stayDate.value
+  tempTimePeriod.value = timePeriod.value
   tempComparison.value = comparison.value
   tempChannels.value = [...channels.value]
   tempCountries.value = [...countries.value]
@@ -354,6 +410,7 @@ const clearFilter = (filter) => {
 
 const clearAllFilters = () => {
   // Keep performanceBy at default
+  timePeriod.value = 'month-to-date'
   stayDate.value = null
   comparison.value = 'last-year'
   channels.value = []
@@ -364,6 +421,7 @@ const clearAllFilters = () => {
 
 const applyFilters = () => {
   stayDate.value = tempStayDate.value
+  timePeriod.value = tempTimePeriod.value
   comparison.value = tempComparison.value
   channels.value = [...tempChannels.value]
   countries.value = [...tempCountries.value]
@@ -377,6 +435,10 @@ const applyFilters = () => {
 @import '../styles/index.scss';
 
 .filter-radio-group {
+  align-self: flex-end;
+}
+
+.more-filters-btn {
   align-self: flex-end;
 }
 </style>

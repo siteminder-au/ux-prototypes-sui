@@ -6,7 +6,7 @@
       <div class="container-content">
         <!-- Filter Bar -->
         <div class="filter-bar">
-          <!-- Left: Filters -->
+          <!-- Left: Filters and Search button -->
           <div class="filter-bar-left">
             <!-- Show Check-ins For Select -->
             <SmSelect
@@ -20,18 +20,19 @@
             />
 
             <!-- Select Dates Calendar -->
-            <SmCalendar
+            <SmDatePicker
               v-model="selectDates"
               label="Select dates"
               name="selectDates"
               class="filter-calendar"
-              :range="true"
-              placeholder="Select date range"
+              :is-range="true"
+              :columns="2"
+              :disabled="showCheckInsFor !== 'custom'"
+              startDatePlaceholder="Start date"
+              endDatePlaceholder="End date"
             />
-          </div>
 
-          <!-- Right: Search button -->
-          <div class="filter-bar-right">
+            <!-- Search button - At end of left group -->
             <SmButton
               type="primary"
               class="search-btn"
@@ -78,7 +79,7 @@ const checkInPeriodOptions = ref([
   { label: 'Next 7 days', code: 'next-7-days' },
   { label: 'Next 14 days', code: 'next-14-days' },
   { label: 'Next 30 days', code: 'next-30-days' },
-  { label: 'Custom', code: 'custom' },
+  { label: 'Custom date range', code: 'custom' },
 ])
 
 // Filter state
@@ -90,9 +91,24 @@ const activeFilters = computed(() => {
   const filters = []
 
   if (selectDates.value) {
-    const dateLabel = Array.isArray(selectDates.value)
-      ? `${selectDates.value[0]} - ${selectDates.value[1]}`
-      : selectDates.value
+    const formatDate = (date) => {
+      if (!date) return ''
+      const d = new Date(date)
+      const month = String(d.getMonth() + 1).padStart(2, '0')
+      const day = String(d.getDate()).padStart(2, '0')
+      const year = d.getFullYear()
+      return `${month}/${day}/${year}`
+    }
+
+    let dateLabel = ''
+    if (selectDates.value.start && selectDates.value.end) {
+      dateLabel = `${formatDate(selectDates.value.start)} - ${formatDate(selectDates.value.end)}`
+    } else if (Array.isArray(selectDates.value) && selectDates.value.length === 2) {
+      dateLabel = `${formatDate(selectDates.value[0])} - ${formatDate(selectDates.value[1])}`
+    } else {
+      dateLabel = JSON.stringify(selectDates.value)
+    }
+
     filters.push({
       key: 'selectDates',
       filterKey: 'selectDates',

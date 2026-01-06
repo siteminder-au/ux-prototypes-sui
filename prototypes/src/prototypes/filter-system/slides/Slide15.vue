@@ -6,31 +6,38 @@
       <div class="container-content">
         <!-- Filter Bar -->
         <div class="filter-bar">
-          <!-- Room Types Multi-Select -->
-          <SmMultiSelect
-            v-model="roomTypes"
-            label="Filter room types"
-            name="roomTypes"
-            placeholder="All room types"
-            class="filter-select"
-            :options="roomTypeOptions"
-            :filterable="false"
-            :multiple="true"
-            :collapse-tags="true"
-          />
+          <!-- Left: Filters -->
+          <div class="filter-bar-left">
+            <!-- Room Types Search Input -->
+            <SmInput
+              v-model="roomTypes"
+              label="Room types"
+              placeholder="Search room types"
+              class="filter-input"
+              suffix-icon="action-search"
+            />
 
-          <!-- Rate Plans Multi-Select -->
-          <SmMultiSelect
-            v-model="ratePlans"
-            label="Filter rate plans"
-            name="ratePlans"
-            placeholder="All rate plans"
-            class="filter-select"
-            :options="ratePlanOptions"
-            :filterable="false"
-            :multiple="true"
-            :collapse-tags="true"
-          />
+            <!-- Rate Plans Search Input -->
+            <SmInput
+              v-model="ratePlans"
+              label="Rate plans"
+              placeholder="Search rate plans"
+              class="filter-input"
+              suffix-icon="action-search"
+            />
+          </div>
+
+          <!-- Right: Expand all button -->
+          <div class="filter-bar-right">
+            <SmButton
+              type="text"
+              class="expand-all-btn"
+              @click="handleExpandAll"
+            >
+              <SmIcon name="action-expand-all" />
+              Expand all
+            </SmButton>
+          </div>
 
           <!-- Active Filters Pills -->
           <ActiveFiltersPills
@@ -64,50 +71,31 @@ import ActiveFiltersPills from '../components/ActiveFiltersPills.vue'
 import PrototypeSettings from '@/shared/components/PrototypeSettings.vue'
 import DisplaySettings from '@/shared/components/DisplaySettings.vue'
 
-// Options data
-const roomTypeOptions = ref([
-  { label: 'Deluxe Single Room', code: 'deluxe-single' },
-  { label: 'Deluxe Studio', code: 'deluxe-studio' },
-  { label: 'Deluxe Suite', code: 'deluxe-suite' },
-])
-
-const ratePlanOptions = ref([
-  { label: 'Flexible Rate', code: 'flexible' },
-  { label: 'Non-Refundable', code: 'non-refundable' },
-  { label: 'Advanced Purchase', code: 'advanced-purchase' },
-])
-
 // Filter state
-const roomTypes = ref([])
-const ratePlans = ref([])
+const roomTypes = ref('')
+const ratePlans = ref('')
 
 // Computed
 const activeFilters = computed(() => {
   const filters = []
 
-  // Room types - individual pill for each selection
-  if (roomTypes.value.length > 0) {
-    roomTypes.value.forEach(code => {
-      const option = roomTypeOptions.value.find(opt => opt.code === code)
-      filters.push({
-        key: `roomTypes-${code}`,
-        filterKey: 'roomTypes',
-        filterValue: code,
-        label: `Room types: ${option?.label || code}`
-      })
+  // Room types - single pill for text input
+  if (roomTypes.value) {
+    filters.push({
+      key: 'roomTypes',
+      filterKey: 'roomTypes',
+      filterValue: roomTypes.value,
+      label: `Room types: ${roomTypes.value}`
     })
   }
 
-  // Rate plans - individual pill for each selection
-  if (ratePlans.value.length > 0) {
-    ratePlans.value.forEach(code => {
-      const option = ratePlanOptions.value.find(opt => opt.code === code)
-      filters.push({
-        key: `ratePlans-${code}`,
-        filterKey: 'ratePlans',
-        filterValue: code,
-        label: `Rate plans: ${option?.label || code}`
-      })
+  // Rate plans - single pill for text input
+  if (ratePlans.value) {
+    filters.push({
+      key: 'ratePlans',
+      filterKey: 'ratePlans',
+      filterValue: ratePlans.value,
+      label: `Rate plans: ${ratePlans.value}`
     })
   }
 
@@ -120,20 +108,28 @@ const hasActiveFilters = computed(() => activeFilters.value.length > 0)
 const clearFilter = (filter) => {
   switch(filter.filterKey) {
     case 'roomTypes':
-      roomTypes.value = roomTypes.value.filter(v => v !== filter.filterValue)
+      roomTypes.value = ''
       break
     case 'ratePlans':
-      ratePlans.value = ratePlans.value.filter(v => v !== filter.filterValue)
+      ratePlans.value = ''
       break
   }
 }
 
 const clearAllFilters = () => {
-  roomTypes.value = []
-  ratePlans.value = []
+  roomTypes.value = ''
+  ratePlans.value = ''
+}
+
+const handleExpandAll = () => {
+  console.log('Expand all clicked')
 }
 </script>
 
 <style scoped lang="scss">
 @import '../styles/index.scss';
+
+.expand-all-btn {
+  align-self: flex-end;
+}
 </style>

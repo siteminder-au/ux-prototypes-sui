@@ -12,7 +12,7 @@
             <SmInput
               v-model="bookingReference"
               label="Booking reference"
-              placeholder="Enter booking reference"
+              placeholder="Search booking reference"
               class="filter-input"
               suffix-icon="action-search"
             />
@@ -29,19 +29,21 @@
             />
 
             <!-- Select Dates Calendar - Hidden on tablet and mobile -->
-            <SmCalendar
+            <SmDatePicker
               v-model="selectDates"
               label="Select dates"
               name="selectDates"
               class="filter-calendar filter-select--hide-tablet"
-              :range="true"
-              placeholder="29/10/2025 - 12/11/2025"
+              :is-range="true"
+              :columns="2"
+              startDatePlaceholder="Start date"
+              endDatePlaceholder="End date"
             />
 
-            <!-- More Filters Icon Button - Only visible on tablet and mobile -->
+            <!-- More Filters Icon Button - Always visible -->
             <SmButton
               type="tertiary"
-              class="more-filters-btn filter-select--show-tablet"
+              class="more-filters-btn"
               @click="openDrawer"
               :aria-label="`More Filters${moreFiltersCount > 0 ? ` (${moreFiltersCount} active)` : ''}`"
             >
@@ -50,10 +52,8 @@
                 {{ moreFiltersCount }}
               </SmBadge>
             </SmButton>
-          </div>
 
-          <!-- Right: Search button -->
-          <div class="filter-bar-right">
+            <!-- Search button - At end of left group -->
             <SmButton
               type="primary"
               class="search-btn"
@@ -95,16 +95,6 @@
 
             <!-- Drawer Body -->
             <div class="drawer-filters">
-              <!-- Select Dates - Only visible on tablet and mobile -->
-              <SmCalendar
-                v-model="tempSelectDates"
-                label="Select dates"
-                name="selectDates"
-                class="filter-calendar"
-                :range="true"
-                placeholder="29/10/2025 - 12/11/2025"
-              />
-
               <!-- Guest Last Name Search -->
               <SmInput
                 v-model="tempGuestLastName"
@@ -114,19 +104,21 @@
                 suffix-icon="action-search"
               />
 
-              <!-- Channels Select -->
-              <SmSelect
+              <!-- Channels Multi-Select -->
+              <SmMultiSelect
                 v-model="tempChannels"
                 label="Channels"
                 name="channels"
-                placeholder="Select channel"
+                placeholder="Select channels"
                 class="filter-select"
                 :options="channelOptions"
                 :filterable="false"
+                :multiple="true"
+                :collapse-tags="true"
               />
 
-              <!-- Booking Status Select -->
-              <SmSelect
+              <!-- Booking Status Multi-Select -->
+              <SmMultiSelect
                 v-model="tempBookingStatus"
                 label="Booking status"
                 name="bookingStatus"
@@ -134,10 +126,12 @@
                 class="filter-select"
                 :options="bookingStatusOptions"
                 :filterable="false"
+                :multiple="true"
+                :collapse-tags="true"
               />
 
-              <!-- PMS Delivery Status Select -->
-              <SmSelect
+              <!-- PMS Delivery Status Multi-Select -->
+              <SmMultiSelect
                 v-model="tempPmsDeliveryStatus"
                 label="PMS delivery status"
                 name="pmsDeliveryStatus"
@@ -145,6 +139,8 @@
                 class="filter-select"
                 :options="pmsDeliveryStatusOptions"
                 :filterable="false"
+                :multiple="true"
+                :collapse-tags="true"
               />
             </div>
           </SmDrawer>
@@ -175,27 +171,32 @@ import DisplaySettings from '@/shared/components/DisplaySettings.vue'
 
 // Options data
 const dateTypeOptions = ref([
+  { label: 'Booked-on', code: 'booked-on' },
+  { label: 'Modified-on', code: 'modified-on' },
+  { label: 'Cancelled-on', code: 'cancelled-on' },
   { label: 'Check-in', code: 'check-in' },
   { label: 'Check-out', code: 'check-out' },
-  { label: 'Booking date', code: 'booking-date' },
 ])
 
 const channelOptions = ref([
-  { label: 'Booking.com', code: 'booking-com' },
-  { label: 'Expedia', code: 'expedia' },
-  { label: 'Direct booking', code: 'direct' },
+  { label: 'Direct Booking', code: 'direct-booking' },
+  { label: 'Altura Destination Services', code: 'altura' },
+  { label: 'AsiaYo', code: 'asiayo' },
+  { label: 'Bing Hotel Ads', code: 'bing' },
+  { label: 'Channels Plus', code: 'channels-plus' },
+  { label: 'DER Touristik', code: 'der-touristik' },
 ])
 
 const bookingStatusOptions = ref([
-  { label: 'Confirmed', code: 'confirmed' },
-  { label: 'Pending', code: 'pending' },
+  { label: 'Booked', code: 'booked' },
+  { label: 'Modified', code: 'modified' },
   { label: 'Cancelled', code: 'cancelled' },
 ])
 
 const pmsDeliveryStatusOptions = ref([
+  { label: 'Pending', code: 'pending' },
   { label: 'Delivered', code: 'delivered' },
   { label: 'Failed', code: 'failed' },
-  { label: 'Pending', code: 'pending' },
 ])
 
 // Filter state
@@ -203,17 +204,16 @@ const bookingReference = ref('')
 const dateType = ref('check-in')
 const selectDates = ref(null)
 const guestLastName = ref('')
-const channels = ref('')
-const bookingStatus = ref('')
-const pmsDeliveryStatus = ref('')
+const channels = ref([])
+const bookingStatus = ref([])
+const pmsDeliveryStatus = ref([])
 const showDrawer = ref(false)
 
 // Temporary drawer filter state
-const tempSelectDates = ref(null)
 const tempGuestLastName = ref('')
-const tempChannels = ref('')
-const tempBookingStatus = ref('')
-const tempPmsDeliveryStatus = ref('')
+const tempChannels = ref([])
+const tempBookingStatus = ref([])
+const tempPmsDeliveryStatus = ref([])
 
 // Computed
 const activeFilters = computed(() => {
@@ -229,9 +229,28 @@ const activeFilters = computed(() => {
   }
 
   if (selectDates.value) {
-    const dateLabel = Array.isArray(selectDates.value)
-      ? `${selectDates.value[0]} - ${selectDates.value[1]}`
-      : selectDates.value
+    console.log('selectDates.value:', selectDates.value)
+    console.log('Type:', typeof selectDates.value)
+    console.log('Keys:', Object.keys(selectDates.value))
+
+    const formatDate = (date) => {
+      if (!date) return ''
+      const d = new Date(date)
+      const month = String(d.getMonth() + 1).padStart(2, '0')
+      const day = String(d.getDate()).padStart(2, '0')
+      const year = d.getFullYear()
+      return `${month}/${day}/${year}`
+    }
+
+    let dateLabel = ''
+    if (selectDates.value.start && selectDates.value.end) {
+      dateLabel = `${formatDate(selectDates.value.start)} - ${formatDate(selectDates.value.end)}`
+    } else if (Array.isArray(selectDates.value) && selectDates.value.length === 2) {
+      dateLabel = `${formatDate(selectDates.value[0])} - ${formatDate(selectDates.value[1])}`
+    } else {
+      dateLabel = JSON.stringify(selectDates.value)
+    }
+
     filters.push({
       key: 'selectDates',
       filterKey: 'selectDates',
@@ -249,33 +268,42 @@ const activeFilters = computed(() => {
     })
   }
 
-  if (channels.value) {
-    const option = channelOptions.value.find(opt => opt.code === channels.value)
-    filters.push({
-      key: 'channels',
-      filterKey: 'channels',
-      filterValue: channels.value,
-      label: `Channels: ${option?.label || channels.value}`
+  // Channels - individual pill for each selection
+  if (channels.value.length > 0) {
+    channels.value.forEach(code => {
+      const option = channelOptions.value.find(opt => opt.code === code)
+      filters.push({
+        key: `channels-${code}`,
+        filterKey: 'channels',
+        filterValue: code,
+        label: `Channels: ${option?.label || code}`
+      })
     })
   }
 
-  if (bookingStatus.value) {
-    const option = bookingStatusOptions.value.find(opt => opt.code === bookingStatus.value)
-    filters.push({
-      key: 'bookingStatus',
-      filterKey: 'bookingStatus',
-      filterValue: bookingStatus.value,
-      label: `Booking status: ${option?.label || bookingStatus.value}`
+  // Booking status - individual pill for each selection
+  if (bookingStatus.value.length > 0) {
+    bookingStatus.value.forEach(code => {
+      const option = bookingStatusOptions.value.find(opt => opt.code === code)
+      filters.push({
+        key: `bookingStatus-${code}`,
+        filterKey: 'bookingStatus',
+        filterValue: code,
+        label: `Booking status: ${option?.label || code}`
+      })
     })
   }
 
-  if (pmsDeliveryStatus.value) {
-    const option = pmsDeliveryStatusOptions.value.find(opt => opt.code === pmsDeliveryStatus.value)
-    filters.push({
-      key: 'pmsDeliveryStatus',
-      filterKey: 'pmsDeliveryStatus',
-      filterValue: pmsDeliveryStatus.value,
-      label: `PMS delivery status: ${option?.label || pmsDeliveryStatus.value}`
+  // PMS delivery status - individual pill for each selection
+  if (pmsDeliveryStatus.value.length > 0) {
+    pmsDeliveryStatus.value.forEach(code => {
+      const option = pmsDeliveryStatusOptions.value.find(opt => opt.code === code)
+      filters.push({
+        key: `pmsDeliveryStatus-${code}`,
+        filterKey: 'pmsDeliveryStatus',
+        filterValue: code,
+        label: `PMS delivery status: ${option?.label || code}`
+      })
     })
   }
 
@@ -286,21 +314,19 @@ const hasActiveFilters = computed(() => activeFilters.value.length > 0)
 
 const moreFiltersCount = computed(() => {
   let count = 0
-  if (selectDates.value) count++
   if (guestLastName.value) count++
-  if (channels.value) count++
-  if (bookingStatus.value) count++
-  if (pmsDeliveryStatus.value) count++
+  count += channels.value.length
+  count += bookingStatus.value.length
+  count += pmsDeliveryStatus.value.length
   return count
 })
 
 // Methods
 const openDrawer = () => {
-  tempSelectDates.value = selectDates.value
   tempGuestLastName.value = guestLastName.value
-  tempChannels.value = channels.value
-  tempBookingStatus.value = bookingStatus.value
-  tempPmsDeliveryStatus.value = pmsDeliveryStatus.value
+  tempChannels.value = [...channels.value]
+  tempBookingStatus.value = [...bookingStatus.value]
+  tempPmsDeliveryStatus.value = [...pmsDeliveryStatus.value]
   showDrawer.value = true
 }
 
@@ -316,13 +342,13 @@ const clearFilter = (filter) => {
       guestLastName.value = ''
       break
     case 'channels':
-      channels.value = ''
+      channels.value = channels.value.filter(v => v !== filter.filterValue)
       break
     case 'bookingStatus':
-      bookingStatus.value = ''
+      bookingStatus.value = bookingStatus.value.filter(v => v !== filter.filterValue)
       break
     case 'pmsDeliveryStatus':
-      pmsDeliveryStatus.value = ''
+      pmsDeliveryStatus.value = pmsDeliveryStatus.value.filter(v => v !== filter.filterValue)
       break
   }
 }
@@ -332,17 +358,16 @@ const clearAllFilters = () => {
   dateType.value = 'check-in'
   selectDates.value = null
   guestLastName.value = ''
-  channels.value = ''
-  bookingStatus.value = ''
-  pmsDeliveryStatus.value = ''
+  channels.value = []
+  bookingStatus.value = []
+  pmsDeliveryStatus.value = []
 }
 
 const applyFilters = () => {
-  selectDates.value = tempSelectDates.value
   guestLastName.value = tempGuestLastName.value
-  channels.value = tempChannels.value
-  bookingStatus.value = tempBookingStatus.value
-  pmsDeliveryStatus.value = tempPmsDeliveryStatus.value
+  channels.value = [...tempChannels.value]
+  bookingStatus.value = [...tempBookingStatus.value]
+  pmsDeliveryStatus.value = [...tempPmsDeliveryStatus.value]
   showDrawer.value = false
 }
 

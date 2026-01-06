@@ -12,6 +12,7 @@
   // Keep filter inputs and button on same line, don't shrink
   > .filter-select,
   > .filter-input,
+  > .filter-calendar,
   > .more-filters-btn,
   > .search-btn,
   > .filter-segmented,
@@ -52,7 +53,8 @@
 }
 
 .filter-input,
-.filter-select {
+.filter-select,
+.filter-calendar {
   width: 200px;
   min-width: 200px;
 }
@@ -128,14 +130,17 @@
   gap: 16px; // Matches form system $gap-between-form-rows
 
   .filter-select,
-  .filter-input {
+  .filter-input,
+  .filter-calendar {
     width: 100%;
   }
 
   // Remove margins from all form components (like form system resets)
   :deep(.sm-input),
   :deep(.sm-select),
-  :deep(.sm-multi-select) {
+  :deep(.sm-multi-select),
+  :deep(.sm-date-picker),
+  :deep(.sm-calendar) {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
   }
@@ -185,7 +190,8 @@ $breakpoint-mobile: 620px;
 
 // Desktop: Hide responsive-only elements
 .filter-select--show-tablet,
-.filter-select--show-mobile {
+.filter-select--show-mobile,
+.drawer-field--tablet-only {
   display: none !important;
 }
 
@@ -197,6 +203,10 @@ $breakpoint-mobile: 620px;
 
   .filter-select--show-tablet {
     display: flex !important;
+  }
+
+  .drawer-field--tablet-only {
+    display: block !important;
   }
 
   .filter-bar {
@@ -233,7 +243,8 @@ $breakpoint-mobile: 620px;
 
   // Expand remaining filter to fill available space in left group
   .filter-input,
-  .filter-select {
+  .filter-select,
+  .filter-calendar {
     flex: 1 1 auto;
     min-width: 100px; // Reduced to allow more shrinking at very small viewports
     max-width: 100%; // Allow natural expansion

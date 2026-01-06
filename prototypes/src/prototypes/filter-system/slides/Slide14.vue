@@ -6,6 +6,18 @@
       <div class="container-content">
         <!-- Filter Bar -->
         <div class="filter-bar">
+          <!-- Status Radio Group -->
+          <SmRadioGroup
+            label="Status"
+            name="status"
+            class="filter-radio-group"
+            :is-button-style-group="true"
+          >
+            <SmRadioButton name="status" selected-value="all" label="All" v-model="status" />
+            <SmRadioButton name="status" selected-value="enabled" label="Enabled" v-model="status" />
+            <SmRadioButton name="status" selected-value="disabled" label="Disabled" v-model="status" />
+          </SmRadioGroup>
+
           <!-- Sort By Select -->
           <SmSelect
             v-model="sortBy"
@@ -22,7 +34,7 @@
             v-model="filterBy"
             label="Filter by"
             name="filterBy"
-            placeholder="All plugins"
+            placeholder="All categories"
             class="filter-select"
             :options="filterByOptions"
             :filterable="false"
@@ -64,6 +76,7 @@ import DisplaySettings from '@/shared/components/DisplaySettings.vue'
 
 // Options data
 const sortByOptions = ref([
+  { label: 'All plug-ins', code: 'all' },
   { label: 'Name (A-Z)', code: 'name-asc' },
   { label: 'Name (Z-A)', code: 'name-desc' },
   { label: 'Recently added', code: 'recent' },
@@ -76,16 +89,17 @@ const filterByOptions = ref([
   { label: 'Conversion', code: 'conversion' },
 ])
 
-// Filter state
-const sortBy = ref('')
+// Filter state - start with 'all' as defaults
+const status = ref('all')
+const sortBy = ref('all')
 const filterBy = ref([])
 
 // Computed
 const activeFilters = computed(() => {
   const filters = []
 
-  // Sort by - single pill if selected
-  if (sortBy.value) {
+  // Sort by - single pill if selected and not default
+  if (sortBy.value && sortBy.value !== 'all') {
     const option = sortByOptions.value.find(opt => opt.code === sortBy.value)
     filters.push({
       key: 'sortBy',
@@ -117,7 +131,7 @@ const hasActiveFilters = computed(() => activeFilters.value.length > 0)
 const clearFilter = (filter) => {
   switch(filter.filterKey) {
     case 'sortBy':
-      sortBy.value = ''
+      sortBy.value = 'all'
       break
     case 'filterBy':
       filterBy.value = filterBy.value.filter(v => v !== filter.filterValue)
@@ -126,11 +140,16 @@ const clearFilter = (filter) => {
 }
 
 const clearAllFilters = () => {
-  sortBy.value = ''
+  // Keep status and sortBy at default 'all'
+  sortBy.value = 'all'
   filterBy.value = []
 }
 </script>
 
 <style scoped lang="scss">
 @import '../styles/index.scss';
+
+.filter-radio-group {
+  align-self: flex-end;
+}
 </style>
