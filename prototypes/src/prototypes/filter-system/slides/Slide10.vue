@@ -8,60 +8,62 @@
         <div class="filter-bar">
           <!-- Left: Filters -->
           <div class="filter-bar-left">
-            <!-- Check Date Select -->
+            <!-- View by Select -->
             <SmSelect
-              v-model="checkDate"
-              label="Check Date"
-              name="checkDate"
-              placeholder="Check-in date"
+              v-model="viewBy"
+              label="View by"
+              name="viewBy"
+              placeholder="All rates and availability"
               class="filter-select"
-              :options="checkDateOptions"
+              :options="viewByOptions"
               :filterable="false"
             />
 
-            <!-- Next Date Select -->
-            <SmSelect
-              v-model="nextDate"
-              label="Next Date"
-              name="nextDate"
-              placeholder="Next date"
+            <!-- Room Types Multi-Select -->
+            <SmMultiSelect
+              v-model="roomTypes"
+              label="Room types"
+              name="roomTypes"
+              placeholder="Filter room types"
               class="filter-select"
-              :options="nextDateOptions"
+              :options="roomTypeOptions"
               :filterable="false"
+              :multiple="true"
+              :collapse-tags="true"
             />
 
-            <!-- Rate Plans Select -->
-            <SmSelect
-              v-model="ratePlan"
+            <!-- Rate Plans Multi-Select -->
+            <SmMultiSelect
+              v-model="ratePlans"
               label="Rate plans"
-              name="ratePlan"
-              placeholder="Rate plans"
+              name="ratePlans"
+              placeholder="Filter rate plans"
               class="filter-select"
               :options="ratePlanOptions"
               :filterable="false"
+              :multiple="true"
+              :collapse-tags="true"
             />
 
-            <!-- Room Rate Select -->
-            <SmSelect
-              v-model="roomRate"
-              label="Room rate"
-              name="roomRate"
-              placeholder="Room rate"
-              class="filter-select"
-              :options="roomRateOptions"
-              :filterable="false"
+            <!-- Room Rates Search Input -->
+            <SmInput
+              v-model="roomRates"
+              label="Room rates"
+              placeholder="Search room rates"
+              class="filter-input"
+              suffix-icon="action-search"
             />
           </div>
 
-          <!-- Right: Search button -->
+          <!-- Right: Collapse all button -->
           <div class="filter-bar-right">
             <SmButton
-              type="tertiary"
-              class="search-btn"
-              @click="handleSearch"
-              aria-label="Search"
+              type="text"
+              class="collapse-all-btn"
+              @click="handleCollapseAll"
             >
-              <SmIcon name="action-search" />
+              <SmIcon name="action-collapse-all" />
+              Collapse all
             </SmButton>
           </div>
 
@@ -80,7 +82,7 @@
     <div class="slide-bottom">
       <div class="container-header">Reference</div>
       <div class="container-content">
-        <img src="/images/filter-system/image 10.png" alt="Inventory filter with date and rate plan dropdowns" />
+        <img src="/images/filter-system/image 10.png" alt="Inventory filter with view by, room types, rate plans, and room rates search" />
       </div>
     </div>
 
@@ -98,15 +100,16 @@ import PrototypeSettings from '@/shared/components/PrototypeSettings.vue'
 import DisplaySettings from '@/shared/components/DisplaySettings.vue'
 
 // Options data for selects
-const checkDateOptions = ref([
-  { label: 'Check-in date', code: 'check-in' },
-  { label: 'Check-out date', code: 'check-out' },
+const viewByOptions = ref([
+  { label: 'All rates and availability', code: 'all' },
+  { label: 'Rates only', code: 'rates' },
+  { label: 'Availability only', code: 'availability' },
 ])
 
-const nextDateOptions = ref([
-  { label: 'Next 7 days', code: 'next-7' },
-  { label: 'Next 14 days', code: 'next-14' },
-  { label: 'Next 30 days', code: 'next-30' },
+const roomTypeOptions = ref([
+  { label: 'Deluxe Single Room', code: 'deluxe-single' },
+  { label: 'Deluxe Studio', code: 'deluxe-studio' },
+  { label: 'Deluxe Suite', code: 'deluxe-suite' },
 ])
 
 const ratePlanOptions = ref([
@@ -115,63 +118,60 @@ const ratePlanOptions = ref([
   { label: 'Advanced Purchase', code: 'advanced-purchase' },
 ])
 
-const roomRateOptions = ref([
-  { label: 'Standard Rate', code: 'standard' },
-  { label: 'Premium Rate', code: 'premium' },
-  { label: 'Discount Rate', code: 'discount' },
-])
-
-// Filter state - start with empty values
-const checkDate = ref('')
-const nextDate = ref('')
-const ratePlan = ref('')
-const roomRate = ref('')
+// Filter state - start with default value for viewBy
+const viewBy = ref('all')
+const roomTypes = ref([])
+const ratePlans = ref([])
+const roomRates = ref('')
 
 // Computed
 const activeFilters = computed(() => {
   const filters = []
 
-  // Check Date
-  if (checkDate.value) {
-    const option = checkDateOptions.value.find(opt => opt.code === checkDate.value)
+  // View by - only show if not default
+  if (viewBy.value && viewBy.value !== 'all') {
+    const option = viewByOptions.value.find(opt => opt.code === viewBy.value)
     filters.push({
-      key: 'checkDate',
-      filterKey: 'checkDate',
-      filterValue: checkDate.value,
-      label: `Check Date: ${option?.label || checkDate.value}`
+      key: 'viewBy',
+      filterKey: 'viewBy',
+      filterValue: viewBy.value,
+      label: `View by: ${option?.label || viewBy.value}`
     })
   }
 
-  // Next Date
-  if (nextDate.value) {
-    const option = nextDateOptions.value.find(opt => opt.code === nextDate.value)
-    filters.push({
-      key: 'nextDate',
-      filterKey: 'nextDate',
-      filterValue: nextDate.value,
-      label: `Next Date: ${option?.label || nextDate.value}`
+  // Room types - individual pill for each selection
+  if (roomTypes.value.length > 0) {
+    roomTypes.value.forEach(code => {
+      const option = roomTypeOptions.value.find(opt => opt.code === code)
+      filters.push({
+        key: `roomTypes-${code}`,
+        filterKey: 'roomTypes',
+        filterValue: code,
+        label: `Room types: ${option?.label || code}`
+      })
     })
   }
 
-  // Rate Plans
-  if (ratePlan.value) {
-    const option = ratePlanOptions.value.find(opt => opt.code === ratePlan.value)
-    filters.push({
-      key: 'ratePlan',
-      filterKey: 'ratePlan',
-      filterValue: ratePlan.value,
-      label: `Rate plans: ${option?.label || ratePlan.value}`
+  // Rate plans - individual pill for each selection
+  if (ratePlans.value.length > 0) {
+    ratePlans.value.forEach(code => {
+      const option = ratePlanOptions.value.find(opt => opt.code === code)
+      filters.push({
+        key: `ratePlans-${code}`,
+        filterKey: 'ratePlans',
+        filterValue: code,
+        label: `Rate plans: ${option?.label || code}`
+      })
     })
   }
 
-  // Room Rate
-  if (roomRate.value) {
-    const option = roomRateOptions.value.find(opt => opt.code === roomRate.value)
+  // Room rates - single pill for text input
+  if (roomRates.value) {
     filters.push({
-      key: 'roomRate',
-      filterKey: 'roomRate',
-      filterValue: roomRate.value,
-      label: `Room rate: ${option?.label || roomRate.value}`
+      key: 'roomRates',
+      filterKey: 'roomRates',
+      filterValue: roomRates.value,
+      label: `Room rates: ${roomRates.value}`
     })
   }
 
@@ -183,37 +183,37 @@ const hasActiveFilters = computed(() => activeFilters.value.length > 0)
 // Methods
 const clearFilter = (filter) => {
   switch(filter.filterKey) {
-    case 'checkDate':
-      checkDate.value = ''
+    case 'viewBy':
+      viewBy.value = 'all'
       break
-    case 'nextDate':
-      nextDate.value = ''
+    case 'roomTypes':
+      roomTypes.value = roomTypes.value.filter(v => v !== filter.filterValue)
       break
-    case 'ratePlan':
-      ratePlan.value = ''
+    case 'ratePlans':
+      ratePlans.value = ratePlans.value.filter(v => v !== filter.filterValue)
       break
-    case 'roomRate':
-      roomRate.value = ''
+    case 'roomRates':
+      roomRates.value = ''
       break
   }
 }
 
 const clearAllFilters = () => {
-  checkDate.value = ''
-  nextDate.value = ''
-  ratePlan.value = ''
-  roomRate.value = ''
+  viewBy.value = 'all'
+  roomTypes.value = []
+  ratePlans.value = []
+  roomRates.value = ''
 }
 
-const handleSearch = () => {
-  console.log('Search clicked')
+const handleCollapseAll = () => {
+  console.log('Collapse all clicked')
 }
 </script>
 
 <style scoped lang="scss">
 @import '../styles/index.scss';
 
-.search-btn {
+.collapse-all-btn {
   align-self: flex-end;
 }
 </style>
