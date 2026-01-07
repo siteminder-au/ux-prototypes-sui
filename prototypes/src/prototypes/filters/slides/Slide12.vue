@@ -12,6 +12,7 @@
             <SmInput
               v-model="searchQuery"
               label="Promotion codes"
+              name="searchQuery"
               placeholder="Search promotion codes"
               class="filter-input"
               suffix-icon="action-search"

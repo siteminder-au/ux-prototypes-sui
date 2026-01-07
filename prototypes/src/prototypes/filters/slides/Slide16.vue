@@ -12,6 +12,7 @@
             <SmInput
               v-model="bookingReference"
               label="Booking reference"
+              name="bookingReference"
               placeholder="Search booking reference"
               class="filter-input"
               suffix-icon="action-search"
@@ -99,6 +100,7 @@
               <SmInput
                 v-model="tempGuestLastName"
                 label="Guest last name"
+                name="guestLastName"
                 placeholder="Enter a guest last name"
                 class="filter-input"
                 suffix-icon="action-search"

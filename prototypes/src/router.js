@@ -42,7 +42,7 @@ const routes = [
     children: [
       {
         path: '',
-        redirect: '/filters/1'
+        redirect: '/filters/1?slide=1'
       },
       {
         path: ':slideNumber',
@@ -51,10 +51,10 @@ const routes = [
         props: true,
         beforeEnter: (to, from, next) => {
           const slideNum = parseInt(to.params.slideNumber)
-          if (slideNum >= 1 && slideNum <= 7) {
+          if (slideNum >= 1 && slideNum <= 21) {
             next()
           } else {
-            next('/filters/1')
+            next('/filters/1?slide=1')
           }
         }
       }

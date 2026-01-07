@@ -12,6 +12,7 @@
             <SmInput
               v-model="channelName"
               label="Channel name"
+              name="channelName"
               placeholder="Search by channel name"
               class="filter-input"
             />

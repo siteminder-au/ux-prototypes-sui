@@ -12,6 +12,7 @@
             <SmInput
               v-model="yieldRuleName"
               label="Yield rule name"
+              name="yieldRuleName"
               placeholder="Search yield rules"
               class="filter-input"
               suffix-icon="action-search"

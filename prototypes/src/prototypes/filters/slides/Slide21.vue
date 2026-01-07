@@ -6,52 +6,69 @@
       <div class="container-content">
         <!-- Filter Bar -->
         <div class="filter-bar">
-          <!-- Mapping Status Radio Group - Always visible -->
-          <SmRadioGroup
-            label="Mapping status"
-            name="mappingStatus"
-            class="filter-radio-group"
-            :is-button-style-group="true"
-          >
-            <SmRadioButton name="mappingStatus" selected-value="mapped" label="Mapped" v-model="mappingStatus" />
-            <SmRadioButton name="mappingStatus" selected-value="unmapped" label="Unmapped" v-model="mappingStatus" />
-            <SmRadioButton name="mappingStatus" selected-value="all" label="All" v-model="mappingStatus" />
-          </SmRadioGroup>
+          <!-- Left: Filters and More Filters button -->
+          <div class="filter-bar-left">
+            <!-- Mapping Status Radio Group - Always visible -->
+            <SmRadioGroup
+              label="Mapping status"
+              name="mappingStatus"
+              class="filter-radio-group"
+              :is-button-style-group="true"
+            >
+              <SmRadioButton name="mappingStatus" selected-value="mapped" label="Mapped" v-model="mappingStatus" />
+              <SmRadioButton name="mappingStatus" selected-value="unmapped" label="Unmapped" v-model="mappingStatus" />
+              <SmRadioButton name="mappingStatus" selected-value="all" label="All" v-model="mappingStatus" />
+            </SmRadioGroup>
 
-          <!-- Room Types Multi-Select - Always visible -->
-          <SmMultiSelect
-            v-model="roomTypes"
-            label="Room types"
-            name="roomTypes"
-            placeholder="Filter room types"
-            class="filter-select"
-            :options="roomTypeOptions"
-            :filterable="false"
-            :multiple="true"
-            :collapse-tags="true"
-          />
+            <!-- Room Types Multi-Select - Hidden on tablet and mobile -->
+            <SmMultiSelect
+              v-model="roomTypes"
+              label="Room types"
+              name="roomTypes"
+              placeholder="Filter room types"
+              class="filter-select filter-select--hide-tablet"
+              :options="roomTypeOptions"
+              :filterable="false"
+              :multiple="true"
+              :collapse-tags="true"
+            />
 
-          <!-- Rate Plans Multi-Select - Always visible -->
-          <SmMultiSelect
-            v-model="ratePlans"
-            label="Rate plans"
-            name="ratePlans"
-            placeholder="Filter rate plans"
-            class="filter-select"
-            :options="ratePlanOptions"
-            :filterable="false"
-            :multiple="true"
-            :collapse-tags="true"
-          />
+            <!-- Rate Plans Multi-Select - Hidden on tablet and mobile -->
+            <SmMultiSelect
+              v-model="ratePlans"
+              label="Rate plans"
+              name="ratePlans"
+              placeholder="Filter rate plans"
+              class="filter-select filter-select--hide-tablet"
+              :options="ratePlanOptions"
+              :filterable="false"
+              :multiple="true"
+              :collapse-tags="true"
+            />
 
-          <!-- Search Name Input - Always visible -->
-          <SmInput
-            v-model="searchName"
-            label="Search name"
-            placeholder="Search name"
-            class="filter-input"
-            suffix-icon="action-search"
-          />
+            <!-- Search Name Input - Hidden on tablet and mobile -->
+            <SmInput
+              v-model="searchName"
+              label="Search name"
+              name="searchName"
+              placeholder="Search name"
+              class="filter-input filter-select--hide-tablet"
+              suffix-icon="action-search"
+            />
+
+            <!-- More Filters Icon Button - Only visible on tablet and mobile -->
+            <SmButton
+              type="tertiary"
+              class="more-filters-btn filter-select--show-tablet"
+              @click="openDrawer"
+              :aria-label="`More Filters${moreFiltersCount > 0 ? ` (${moreFiltersCount} active)` : ''}`"
+            >
+              <SmIcon name="action-filter" />
+              <SmBadge v-if="moreFiltersCount > 0" type="info" size="medium" class="filter-badge">
+                {{ moreFiltersCount }}
+              </SmBadge>
+            </SmButton>
+          </div>
 
           <!-- Active Filters Pills -->
           <ActiveFiltersPills
@@ -60,6 +77,68 @@
             @clear-filter="clearFilter"
             @clear-all="clearAllFilters"
           />
+
+          <!-- More Filters Drawer -->
+          <SmDrawer
+            v-model:visible="showDrawer"
+            :action-buttons-visible="true"
+            :close-on-click-modal="true"
+            :close-on-press-escape="true"
+            content-class="sm-drawer__fixed-width"
+          >
+            <template #title>
+              <h2>Filters</h2>
+            </template>
+
+            <template #actions="{ close }">
+              <SmButton type="tertiary" @click="close">Cancel</SmButton>
+              <SmButton type="primary" @click="applyFilters">Apply Filters</SmButton>
+            </template>
+
+            <template #mobile-actions="{ close }">
+              <SmButton type="tertiary" @click="close">Cancel</SmButton>
+              <SmButton type="primary" @click="applyFilters">Apply Filters</SmButton>
+            </template>
+
+            <!-- Drawer Body -->
+            <div class="drawer-filters">
+              <!-- Room Types - Only show in drawer on tablet and mobile -->
+              <SmMultiSelect
+                v-model="tempRoomTypes"
+                label="Room types"
+                name="roomTypes"
+                placeholder="Filter room types"
+                class="filter-select drawer-field--tablet-only"
+                :options="roomTypeOptions"
+                :filterable="false"
+                :multiple="true"
+                :collapse-tags="true"
+              />
+
+              <!-- Rate Plans - Only show in drawer on tablet and mobile -->
+              <SmMultiSelect
+                v-model="tempRatePlans"
+                label="Rate plans"
+                name="ratePlans"
+                placeholder="Filter rate plans"
+                class="filter-select drawer-field--tablet-only"
+                :options="ratePlanOptions"
+                :filterable="false"
+                :multiple="true"
+                :collapse-tags="true"
+              />
+
+              <!-- Search Name - Only show in drawer on tablet and mobile -->
+              <SmInput
+                v-model="tempSearchName"
+                label="Search name"
+                name="searchName"
+                placeholder="Search name"
+                class="filter-input drawer-field--tablet-only"
+                suffix-icon="action-search"
+              />
+            </div>
+          </SmDrawer>
         </div>
       </div>
     </div>
@@ -103,6 +182,12 @@ const mappingStatus = ref('mapped')
 const roomTypes = ref([])
 const ratePlans = ref([])
 const searchName = ref('')
+
+// Drawer state
+const showDrawer = ref(false)
+const tempRoomTypes = ref([])
+const tempRatePlans = ref([])
+const tempSearchName = ref('')
 
 // Computed
 const activeFilters = computed(() => {
@@ -152,7 +237,30 @@ const activeFilters = computed(() => {
 
 const hasActiveFilters = computed(() => activeFilters.value.length > 0)
 
+const moreFiltersCount = computed(() => {
+  let count = 0
+  // Count fields that are hidden on tablet/mobile
+  count += roomTypes.value.length
+  count += ratePlans.value.length
+  if (searchName.value) count++
+  return count
+})
+
 // Methods
+const openDrawer = () => {
+  tempRoomTypes.value = [...roomTypes.value]
+  tempRatePlans.value = [...ratePlans.value]
+  tempSearchName.value = searchName.value
+  showDrawer.value = true
+}
+
+const applyFilters = () => {
+  roomTypes.value = [...tempRoomTypes.value]
+  ratePlans.value = [...tempRatePlans.value]
+  searchName.value = tempSearchName.value
+  showDrawer.value = false
+}
+
 const clearFilter = (filter) => {
   switch(filter.filterKey) {
     case 'roomTypes':
@@ -179,6 +287,10 @@ const clearAllFilters = () => {
 @import '../styles/index.scss';
 
 .filter-radio-group {
+  align-self: flex-end;
+}
+
+.more-filters-btn {
   align-self: flex-end;
 }
 </style>

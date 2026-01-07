@@ -25,11 +25,13 @@ defineRule('min_value', min_value)
 defineRule('max_value', max_value)
 defineRule('numeric', numeric)
 
-// Configure validation messages
+// Configure validation - keep it simple and non-intrusive
 configure({
-  generateMessage: (context) => {
-    return `This field is required`
-  },
+  generateMessage: () => 'This field is required',
+  validateOnBlur: false,
+  validateOnChange: false,
+  validateOnInput: false,
+  validateOnModelUpdate: false,
 })
 
 // Set up SUI i18n

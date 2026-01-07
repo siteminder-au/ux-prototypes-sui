@@ -49,6 +49,7 @@
             <SmInput
               v-model="roomRates"
               label="Room rates"
+              name="roomRates"
               placeholder="Search room rates"
               class="filter-input"
               suffix-icon="action-search"

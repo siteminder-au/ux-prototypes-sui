@@ -2,7 +2,7 @@
   <div class="index">
     <div class="index-container">
       <h1 class="index-title">SiteMinder Design System</h1>
-      <p class="index-description">Select a prototype to view:</p>
+      <!-- <p class="index-description">Select a prototype to view:</p> -->
 
       <div class="prototype-grid">
         <router-link v-for="proto in prototypes" :key="proto.id" :to="proto.path" class="prototype-card">

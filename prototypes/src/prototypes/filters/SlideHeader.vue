@@ -13,9 +13,16 @@
       <template v-if="showReadme">
         <!-- EDITABLE CONTENT BELOW -->
         <p>
-          This prototype demonstrates the SiteMinder unified filter system component patterns. The filter system consolidates 26+ different filter implementations across SiteMinder into a unified design system.
+          This prototype demonstrates the SiteMinder unified filter system. For detailed design rules and guidelines,
+          please refer
+          to the
+          <a href="https://siteminder-jira.atlassian.net/wiki/spaces/SMD/pages/319815726/Filters" target="_blank"
+            rel="noopener noreferrer">
+            Design rules and guidelines document
+          </a>.
         </p>
-        <p>The slides below show the system applied to various filter patterns with responsive behavior. These serve as examples of how the unified filter system works across different contexts.</p>
+        <p>The slides below show the system applied to various filter patterns with responsive behavior. These serve as
+          examples of how the unified filter system works across different contexts.</p>
         <p>Press tilda key ~ on your keyboard to see available settings.</p>
         <!-- EDIT THE TEXT ABOVE AS NEEDED -->
       </template>
