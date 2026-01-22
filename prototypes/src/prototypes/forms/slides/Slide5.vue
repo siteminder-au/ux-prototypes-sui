@@ -102,25 +102,69 @@
                     <h4>Inventory</h4>
 
                     <!-- EDIT MODE -->
-                    <SmForm v-if="editingInventory" @submit="saveEdit('inventory')">
+                    <SmForm
+                      v-if="editingInventory"
+                      @submit="saveEdit('inventory')"
+                      @invalid-submit="handleInventoryInvalidSubmit"
+                    >
                       <GridOverlay :show="showGridOverlay" />
                       <SmFormGroup>
-                        <div class="form-row">
-                          <div class="form-col col-span-2">
-                            <SmInput
-                              id="minimumRate"
-                              v-model="minimumRate"
-                              label="Minimum rate"
-                              name="minimumRate"
-                              type="number"
-                              placeholder="0"
-                            >
-                              <template #prefix>
-                                <SmInputPrefixContent>AUD</SmInputPrefixContent>
-                              </template>
-                            </SmInput>
+                        <div v-for="(rate, index) in minimumRates" :key="rate.id" class="minimum-rate-row">
+                          <div class="form-row">
+                            <div class="form-col col-span-2">
+                              <SmInput
+                                :id="`minimumRate-${rate.id}`"
+                                v-model="rate.value"
+                                :name="`minimumRate-${rate.id}`"
+                                type="number"
+                                placeholder="0"
+                                :class="{ 'has-interactive-prefix': index > 0 }"
+                                :rules="validateUniqueCurrency(rate.id)"
+                              >
+                                <template #label>
+                                  <div class="label-with-delete">
+                                    <span>Minimum rate</span>
+                                    <SmButton
+                                      v-if="index > 0"
+                                      type="text-warning"
+                                      size="small"
+                                      @click="deleteMinimumRate(rate.id)"
+                                      :aria-label="`Delete minimum rate ${index + 1}`"
+                                    >
+                                      Delete
+                                    </SmButton>
+                                  </div>
+                                </template>
+
+                                <!-- First input: static prefix -->
+                                <template v-if="index === 0" #prefix>
+                                  <SmInputPrefixContent>AUD</SmInputPrefixContent>
+                                </template>
+
+                                <!-- Additional inputs: interactive prefix -->
+                                <template v-else #prefix>
+                                  <SmSelect
+                                    v-model:selection="rate.currency"
+                                    :name="`currency-${rate.id}`"
+                                    :options="currencyCodeOptions"
+                                    :filterable="false"
+                                  />
+                                </template>
+                              </SmInput>
+                            </div>
                           </div>
                         </div>
+
+                        <SmButton
+                          type="text"
+                          size="large"
+                          @click="addMinimumRate"
+                          :disabled="minimumRates.length >= 5"
+                          class="add-minimum-rate-btn"
+                        >
+                          <SmIcon name="controls-add" />
+                          Add minimum rate
+                        </SmButton>
 
                         <SmSelect
                           id="updatePeriod"
@@ -204,8 +248,12 @@
                     <!-- READ MODE -->
                     <div v-else class="read-fields">
                       <div class="read-field">
-                        <span class="read-field-label">Minimum rate</span>
-                        <span class="read-field-value">{{ minimumRate }} (AUD)</span>
+                        <span class="read-field-label">Minimum rate{{ minimumRates.length > 1 ? 's' : '' }}</span>
+                        <span class="read-field-value">
+                          <span v-for="(rate, index) in minimumRates" :key="rate.id">
+                            {{ rate.value }} {{ rate.currency }}<span v-if="index < minimumRates.length - 1">, </span>
+                          </span>
+                        </span>
                       </div>
 
                       <div class="read-field">
@@ -372,6 +420,9 @@ const enableCurrencyConversion = ref(false)
 
 // Form data - Inventory
 const minimumRate = ref('23')
+const minimumRates = ref([
+  { id: 1, value: '23', currency: 'AUD' }
+])
 const updatePeriod = ref('525')
 const weekendStartsOn = ref('saturday')
 const enableAutoReplenishment = ref(true)
@@ -386,6 +437,7 @@ const timeZone = ref('Australia/Sydney')
 let baseCurrencyBackup = null
 let enableCurrencyConversionBackup = null
 let minimumRateBackup = null
+let minimumRatesBackup = null
 let updatePeriodBackup = null
 let weekendStartsOnBackup = null
 let enableAutoReplenishmentBackup = null
@@ -424,6 +476,16 @@ const currencyOptions = [
   { label: 'GBP - British Pound', code: 'GBP' },
   { label: 'JPY - Japanese Yen', code: 'JPY' },
   { label: 'CAD - Canadian Dollar', code: 'CAD' }
+]
+
+// Currency code options for prefix select
+const currencyCodeOptions = [
+  { label: 'AUD', code: 'AUD' },
+  { label: 'USD', code: 'USD' },
+  { label: 'EUR', code: 'EUR' },
+  { label: 'GBP', code: 'GBP' },
+  { label: 'JPY', code: 'JPY' },
+  { label: 'CAD', code: 'CAD' }
 ]
 
 // Update period options
@@ -502,6 +564,42 @@ const handleLanguageRegionInvalidSubmit = (errors) => {
   languageRegionFormErrors.value = errors?.errors || {}
 }
 
+// Custom validation rule for checking duplicate currencies
+const validateUniqueCurrency = (rateId) => {
+  return (value) => {
+    const rate = minimumRates.value.find(r => r.id === rateId)
+    if (!rate) return true
+
+    const duplicates = minimumRates.value.filter(r => r.currency === rate.currency)
+    if (duplicates.length > 1) {
+      return 'Only one minimum rate can be set per currency'
+    }
+    return true
+  }
+}
+
+const handleInventoryInvalidSubmit = (errors) => {
+  console.log('Inventory validation failed:', errors)
+}
+
+// Add minimum rate handler (max 5 rates)
+const addMinimumRate = () => {
+  if (minimumRates.value.length >= 5) {
+    return
+  }
+  const newId = Math.max(...minimumRates.value.map(r => r.id)) + 1
+  minimumRates.value.push({
+    id: newId,
+    value: '',
+    currency: 'AUD'
+  })
+}
+
+// Delete minimum rate handler
+const deleteMinimumRate = (id) => {
+  minimumRates.value = minimumRates.value.filter(rate => rate.id !== id)
+}
+
 // Edit mode handlers
 const toggleEdit = (section) => {
   if (section === 'currency') {
@@ -515,6 +613,7 @@ const toggleEdit = (section) => {
     if (!editingInventory.value) {
       // Entering edit mode - backup current values
       minimumRateBackup = minimumRate.value
+      minimumRatesBackup = JSON.parse(JSON.stringify(minimumRates.value))
       updatePeriodBackup = updatePeriod.value
       weekendStartsOnBackup = weekendStartsOn.value
       enableAutoReplenishmentBackup = enableAutoReplenishment.value
@@ -543,12 +642,14 @@ const cancelEdit = (section) => {
   } else if (section === 'inventory') {
     // Restore backup values
     minimumRate.value = minimumRateBackup
+    minimumRates.value = minimumRatesBackup
     updatePeriod.value = updatePeriodBackup
     weekendStartsOn.value = weekendStartsOnBackup
     enableAutoReplenishment.value = enableAutoReplenishmentBackup
     autoReplenishmentMode.value = autoReplenishmentModeBackup
     editingInventory.value = false
     minimumRateBackup = null
+    minimumRatesBackup = null
     updatePeriodBackup = null
     weekendStartsOnBackup = null
     enableAutoReplenishmentBackup = null
@@ -578,8 +679,10 @@ const saveEdit = (section) => {
     enableCurrencyConversionBackup = null
   } else if (section === 'inventory') {
     // In a real app, this would save to backend
+    // Note: Validation for duplicate currencies is handled by vee-validate rules
     console.log('Saving inventory:', {
       minimumRate: minimumRate.value,
+      minimumRates: minimumRates.value,
       updatePeriod: updatePeriod.value,
       weekendStartsOn: weekendStartsOn.value,
       enableAutoReplenishment: enableAutoReplenishment.value,
@@ -587,6 +690,7 @@ const saveEdit = (section) => {
     })
     editingInventory.value = false
     minimumRateBackup = null
+    minimumRatesBackup = null
     updatePeriodBackup = null
     weekendStartsOnBackup = null
     enableAutoReplenishmentBackup = null
@@ -609,4 +713,42 @@ const saveEdit = (section) => {
 
 <style scoped lang="scss">
 @import '../styles/index.scss';
+
+// Minimum rate row spacing
+.minimum-rate-row {
+  &:not(:first-child) {
+    margin-top: 24px;
+  }
+}
+
+// Make add minimum rate button only as wide as its content
+.add-minimum-rate-btn {
+  width: fit-content !important;
+}
+
+// Label with delete button inline
+.label-with-delete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  span {
+    flex: 0 0 auto;
+  }
+
+  .sm-button {
+    margin-left: auto;
+  }
+}
+
+// Make the sm-field-label full width ONLY for minimum rate rows
+.minimum-rate-row :deep(.sm-input .sm-field-label) {
+  width: 100% !important;
+}
+
+// Reduce spacing between label and input ONLY for inputs with interactive prefix
+:deep(.has-interactive-prefix .sm-field-label) {
+  margin-bottom: 4px !important;
+}
 </style>

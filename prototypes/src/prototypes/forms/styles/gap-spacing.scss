@@ -108,8 +108,9 @@ $gap-between-form-rows: 16px;
 }
 
 // Remove margins from form input components themselves
+// EXCEPTION: Don't reset SmSelect when used in prefix/suffix slots
 :deep(.sm-input),
-:deep(.sm-select),
+:deep(.sm-select:not(.sm-input__prefix-slot .sm-select):not(.sm-input__suffix-slot .sm-select)),
 :deep(.sm-textarea) {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
