@@ -60,7 +60,7 @@
               <SmInput id="ratePlanName" v-model="ratePlanName" label="Rate plan name" name="ratePlanName"
                 placeholder="Enter rate plan name" rules="required" />
 
-              <SmInput type="textarea" label="Rate plan description" name="ratePlanDescription"
+              <SmInput id="ratePlanDescription" type="textarea" label="Rate plan description" name="ratePlanDescription"
                 v-model="ratePlanDescription" placeholder="Enter description" :rows="3" />
             </SmFormGroup>
 
@@ -69,19 +69,19 @@
               <h2 class="form-heading-1">Restrictions and Inclusions</h2>
               <div class="form-row">
                 <div class="form-col">
-                  <SmInput v-model="defaultMinStay" label="Default minimum stay" name="defaultMinStay" placeholder="" />
+                  <SmInput id="defaultMinStay" v-model="defaultMinStay" label="Default minimum stay" name="defaultMinStay" placeholder="" />
                 </div>
                 <div class="form-col">
-                  <SmInput v-model="defaultMaxStay" label="Default maximum stay" name="defaultMaxStay" placeholder="" />
+                  <SmInput id="defaultMaxStay" v-model="defaultMaxStay" label="Default maximum stay" name="defaultMaxStay" placeholder="" />
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="form-col">
-                  <SmInput v-model="releasePeriod" label="Release period" name="releasePeriod" placeholder="14" />
+                  <SmInput id="releasePeriod" v-model="releasePeriod" label="Release period" name="releasePeriod" placeholder="14" />
                 </div>
                 <div class="form-col">
-                  <SmSelect v-model="inclusions" label="Inclusions" name="inclusions" :options="inclusionsOptions"
+                  <SmSelect id="inclusions" v-model="inclusions" label="Inclusions" name="inclusions" :options="inclusionsOptions"
                     placeholder="None" />
                 </div>
               </div>
@@ -92,11 +92,11 @@
               <h2 class="form-heading-1">Pricing Details</h2>
               <div class="form-row">
                 <div class="form-col">
-                  <SmInput v-model="currency" label="Currency" name="currency" placeholder="Australian Dollar"
+                  <SmInput id="currency" v-model="currency" label="Currency" name="currency" placeholder="Australian Dollar"
                     disabled />
                 </div>
                 <div class="form-col">
-                  <SmInput v-model="minimumRate" label="Minimum rate" name="minimumRate" placeholder="" disabled>
+                  <SmInput id="minimumRate" v-model="minimumRate" label="Minimum rate" name="minimumRate" placeholder="" disabled>
                     <template #prefix>
                       <SmInputPrefixContent>AUD
                       </SmInputPrefixContent>
@@ -134,16 +134,16 @@
                 <SmSelect id="derivedFrom" v-model="derivedFrom" label="Derived from" name="derivedFrom"
                   :options="derivedFromOptions" placeholder="Non-Refundable" :rules="rateSetup === 'derive' ? 'required' : ''" />
 
-                <SmSelect v-model="adjustDailyRatesBy" label="Adjust daily rates by" name="adjustDailyRatesBy"
+                <SmSelect id="adjustDailyRatesBy" v-model="adjustDailyRatesBy" label="Adjust daily rates by" name="adjustDailyRatesBy"
                   :options="adjustByOptions" placeholder="Percentage" :rules="rateSetup === 'derive' ? 'required' : ''" />
 
                 <div class="form-row">
                   <div class="form-col col-span-3">
-                    <SmSelect v-model="percentageAdjustmentType" label="Percentage adjustment"
+                    <SmSelect id="percentageAdjustmentType" v-model="percentageAdjustmentType" label="Percentage adjustment"
                       name="percentageAdjustmentType" :options="percentageTypeOptions" placeholder="Decrease by (%)" :rules="rateSetup === 'derive' ? 'required' : ''" />
                   </div>
                   <div class="form-col col-span-1">
-                    <SmInput v-model="percentageAdjustmentValue" label="Value" name="percentageValue"
+                    <SmInput id="percentageValue" v-model="percentageAdjustmentValue" label="Value" name="percentageValue"
                       placeholder="10" :rules="rateSetup === 'derive' ? 'required' : ''" />
                   </div>
                 </div>
@@ -192,7 +192,7 @@
                     label="Enable days of the week restriction" />
 
                   <div v-if="includedStayDays" class="conditional-form-section">
-                    <SmSelect v-model="stayDatesIncludedDays" label="Included days" name="stayDatesIncludedDays"
+                    <SmSelect id="stayDatesIncludedDays" v-model="stayDatesIncludedDays" label="Included days" name="stayDatesIncludedDays"
                       :options="daysOfWeekOptions" :multiple="true" placeholder="All days" />
                   </div>
 
@@ -303,11 +303,11 @@
                   <div v-if="maxAdvanceBookingDates" class="conditional-form-section">
                     <div class="form-row">
                       <div class="form-col col-span-2">
-                        <SmInput v-model="maxAdvanceBookingDays" name="maxAdvanceBookingDays" label="Number of days"
+                        <SmInput id="maxAdvanceBookingDays" v-model="maxAdvanceBookingDays" name="maxAdvanceBookingDays" label="Number of days"
                           type="number" placeholder="e.g., 30, 60, 90" :rules="maxAdvanceBookingDates ? 'required' : ''" />
                       </div>
                       <div class="form-col col-span-2">
-                        <SmSelect v-model="maxAdvanceBookingTimeframe" name="maxAdvanceBookingTimeframe" label="Timeframe"
+                        <SmSelect id="maxAdvanceBookingTimeframe" v-model="maxAdvanceBookingTimeframe" name="maxAdvanceBookingTimeframe" label="Timeframe"
                           :options="maxAdvanceBookingTimeframeOptions" />
                       </div>
                     </div>
@@ -318,19 +318,19 @@
                 label="Enable dynamic discounts" />
 
                   <div v-if="dynamicDiscounts" class="conditional-form-section">
-                    <SmSelect v-model="discountType" name="discountType" label="Discount type"
+                    <SmSelect id="discountType" v-model="discountType" name="discountType" label="Discount type"
                       placeholder="Select a discount type" :options="discountTypeOptions" />
 
                     <!-- Dynamic Length of Stay Fields -->
                     <div v-if="discountType === 'dynamic_los'" class="discount-type-section los-rules-section">
                       <div v-for="(rule, index) in losRules" :key="index" class="form-row">
                         <div class="form-col">
-                          <SmSelect v-model="rule.nights" :name="`losNights_${index}`" label="Nights"
+                          <SmSelect :id="`losNights_${index}`" v-model="rule.nights" :name="`losNights_${index}`" label="Nights"
                             placeholder="Select nights" :options="losNightsOptions" />
                         </div>
                         <div
                           :class="index === losRules.length - 1 && losRules.length > 1 ? 'form-col col-span-1' : 'form-col'">
-                          <SmInput v-model="rule.discountPercent" :name="`losDiscountPercent_${index}`" label="Discount %"
+                          <SmInput :id="`losDiscountPercent_${index}`" v-model="rule.discountPercent" :name="`losDiscountPercent_${index}`" label="Discount %"
                             type="number" placeholder="0" />
                         </div>
                         <div v-if="index === losRules.length - 1 && losRules.length > 1"
@@ -355,11 +355,11 @@
                     <div v-if="discountType === 'stay_pay'" class="discount-type-section">
                       <div class="form-row">
                         <div class="form-col">
-                          <SmInput v-model="stayNights" name="stayNights" label="Stay nights" type="number"
+                          <SmInput id="stayNights" v-model="stayNights" name="stayNights" label="Stay nights" type="number"
                             placeholder="e.g., 3" />
                         </div>
                         <div class="form-col">
-                          <SmInput v-model="payNights" name="payNights" label="Pay nights" type="number"
+                          <SmInput id="payNights" v-model="payNights" name="payNights" label="Pay nights" type="number"
                             placeholder="e.g., 2" />
                         </div>
                       </div>
@@ -376,7 +376,7 @@
 
                     <!-- Package Deal Fields -->
                     <div v-if="discountType === 'package'" class="discount-type-section">
-                      <SmInput v-model="packageIncludedNights" name="packageIncludedNights"
+                      <SmInput id="packageIncludedNights" v-model="packageIncludedNights" name="packageIncludedNights"
                         label="Number of included nights" type="number" placeholder="0" />
 
                       <h4 class="form-heading-3">Charges for additional nights</h4>

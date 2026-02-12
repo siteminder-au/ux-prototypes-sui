@@ -108,63 +108,63 @@
                       @invalid-submit="handleInventoryInvalidSubmit"
                     >
                       <GridOverlay :show="showGridOverlay" />
+
+                      <!-- Error Summary -->
+                      <SmHelpCard v-if="inventoryHasErrors" type="warning">
+                        <template #header>Please check the following fields for errors.</template>
+                        <template #body>
+                          <ul class="error-list">
+                            <li v-for="field in inventoryErrorFieldsList" :key="field.name">
+                              <a :href="`#${field.id}`" class="error-link">{{ field.label }}</a>
+                            </li>
+                          </ul>
+                        </template>
+                      </SmHelpCard>
+
                       <SmFormGroup>
-                        <div v-for="(rate, index) in minimumRates" :key="rate.id" class="minimum-rate-row">
-                          <div class="form-row">
-                            <div class="form-col col-span-2">
-                              <SmInput
-                                :id="`minimumRate-${rate.id}`"
-                                v-model="rate.value"
-                                :name="`minimumRate-${rate.id}`"
-                                type="number"
-                                placeholder="0"
-                                :class="{ 'has-interactive-prefix': index > 0 }"
-                                :rules="validateUniqueCurrency(rate.id)"
-                              >
-                                <template #label>
-                                  <div class="label-with-delete">
-                                    <span>Minimum rate</span>
-                                    <SmButton
-                                      v-if="index > 0"
-                                      type="text-warning"
-                                      size="small"
-                                      @click="deleteMinimumRate(rate.id)"
-                                      :aria-label="`Delete minimum rate ${index + 1}`"
-                                    >
-                                      Delete
-                                    </SmButton>
-                                  </div>
-                                </template>
-
-                                <!-- First input: static prefix -->
-                                <template v-if="index === 0" #prefix>
-                                  <SmInputPrefixContent>AUD</SmInputPrefixContent>
-                                </template>
-
-                                <!-- Additional inputs: interactive prefix -->
-                                <template v-else #prefix>
-                                  <SmSelect
-                                    v-model:selection="rate.currency"
-                                    :name="`currency-${rate.id}`"
-                                    :options="currencyCodeOptions"
-                                    :filterable="false"
-                                  />
-                                </template>
-                              </SmInput>
-                            </div>
+                        <div v-for="(rate, index) in minimumRates" :key="rate.id" class="form-row">
+                          <div class="form-col">
+                            <SmSelect
+                              :id="`currency-${rate.id}`"
+                              v-model:selection="rate.currency"
+                              :name="`currency-${rate.id}`"
+                              label="Currency"
+                              :options="currencyCodeOptions"
+                              :filterable="false"
+                              :rules="validateUniqueCurrency(rate.id)"
+                            />
+                          </div>
+                          <div :class="index === minimumRates.length - 1 && minimumRates.length > 1 ? 'form-col col-span-1' : 'form-col'">
+                            <SmInput
+                              :id="`minimumRate-${rate.id}`"
+                              v-model="rate.value"
+                              :name="`minimumRate-${rate.id}`"
+                              label="Minimum rate"
+                              type="number"
+                              placeholder="0"
+                            />
+                          </div>
+                          <div v-if="index === minimumRates.length - 1 && minimumRates.length > 1" class="form-col col-span-1 minimum-rate-delete-col">
+                            <SmButton
+                              type="text-warning"
+                              size="small"
+                              @click="deleteMinimumRate(rate.id)"
+                              style="width: 100%;"
+                            >
+                              Delete
+                            </SmButton>
                           </div>
                         </div>
 
-                        <SmButton
-                          type="text"
-                          size="large"
-                          @click="addMinimumRate"
-                          :disabled="minimumRates.length >= 5"
-                          class="add-minimum-rate-btn"
-                        >
-                          <SmIcon name="controls-add" />
-                          Add minimum rate
-                        </SmButton>
+                        <div v-if="minimumRates.length < 5" class="minimum-rate-add-button">
+                          <SmButton type="text" size="large" @click="addMinimumRate">
+                            <SmIcon name="controls-add" />
+                            Add minimum rate
+                          </SmButton>
+                        </div>
+                        <div v-if="minimumRates.length >= 5" class="date-range-limit-message">
+                          Maximum of 5 minimum rates reached
+                        </div>
 
                         <SmSelect
                           id="updatePeriod"
@@ -539,6 +539,30 @@ const getUpdatePeriodLabel = (value) => {
   return updatePeriodOptions.find(opt => opt.code === value)?.label || value
 }
 
+// Validation error handling for Inventory card
+const inventoryFormErrors = ref({})
+
+const inventoryErrorFieldsList = computed(() => {
+  const fieldLabels = {}
+  const fieldIds = {}
+
+  // Build field labels and IDs for each minimum rate currency field
+  minimumRates.value.forEach((rate, index) => {
+    const fieldName = `currency-${rate.id}`
+    fieldLabels[fieldName] = `Currency (Minimum rate ${index + 1})`
+    fieldIds[fieldName] = fieldName
+  })
+
+  return Object.keys(inventoryFormErrors.value).map(fieldName => ({
+    name: fieldName,
+    id: fieldIds[fieldName] || fieldName,
+    label: fieldLabels[fieldName] || fieldName,
+    error: inventoryFormErrors.value[fieldName]
+  }))
+})
+
+const inventoryHasErrors = computed(() => Object.keys(inventoryFormErrors.value).length > 0)
+
 // Validation error handling for Language and Region card
 const languageRegionFormErrors = ref({})
 
@@ -580,6 +604,7 @@ const validateUniqueCurrency = (rateId) => {
 
 const handleInventoryInvalidSubmit = (errors) => {
   console.log('Inventory validation failed:', errors)
+  inventoryFormErrors.value = errors?.errors || {}
 }
 
 // Add minimum rate handler (max 5 rates)
@@ -611,13 +636,14 @@ const toggleEdit = (section) => {
     editingCurrency.value = !editingCurrency.value
   } else if (section === 'inventory') {
     if (!editingInventory.value) {
-      // Entering edit mode - backup current values
+      // Entering edit mode - backup current values and clear errors
       minimumRateBackup = minimumRate.value
       minimumRatesBackup = JSON.parse(JSON.stringify(minimumRates.value))
       updatePeriodBackup = updatePeriod.value
       weekendStartsOnBackup = weekendStartsOn.value
       enableAutoReplenishmentBackup = enableAutoReplenishment.value
       autoReplenishmentModeBackup = autoReplenishmentMode.value
+      inventoryFormErrors.value = {}
     }
     editingInventory.value = !editingInventory.value
   } else if (section === 'languageRegion') {
@@ -640,7 +666,7 @@ const cancelEdit = (section) => {
     baseCurrencyBackup = null
     enableCurrencyConversionBackup = null
   } else if (section === 'inventory') {
-    // Restore backup values
+    // Restore backup values and clear errors
     minimumRate.value = minimumRateBackup
     minimumRates.value = minimumRatesBackup
     updatePeriod.value = updatePeriodBackup
@@ -654,6 +680,7 @@ const cancelEdit = (section) => {
     weekendStartsOnBackup = null
     enableAutoReplenishmentBackup = null
     autoReplenishmentModeBackup = null
+    inventoryFormErrors.value = {}
   } else if (section === 'languageRegion') {
     // Restore backup values
     baseLanguage.value = baseLanguageBackup
@@ -695,6 +722,7 @@ const saveEdit = (section) => {
     weekendStartsOnBackup = null
     enableAutoReplenishmentBackup = null
     autoReplenishmentModeBackup = null
+    inventoryFormErrors.value = {}
   } else if (section === 'languageRegion') {
     // In a real app, this would save to backend
     console.log('Saving language and region:', {
@@ -713,42 +741,4 @@ const saveEdit = (section) => {
 
 <style scoped lang="scss">
 @import '../styles/index.scss';
-
-// Minimum rate row spacing
-.minimum-rate-row {
-  &:not(:first-child) {
-    margin-top: 24px;
-  }
-}
-
-// Make add minimum rate button only as wide as its content
-.add-minimum-rate-btn {
-  width: fit-content !important;
-}
-
-// Label with delete button inline
-.label-with-delete {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-
-  span {
-    flex: 0 0 auto;
-  }
-
-  .sm-button {
-    margin-left: auto;
-  }
-}
-
-// Make the sm-field-label full width ONLY for minimum rate rows
-.minimum-rate-row :deep(.sm-input .sm-field-label) {
-  width: 100% !important;
-}
-
-// Reduce spacing between label and input ONLY for inputs with interactive prefix
-:deep(.has-interactive-prefix .sm-field-label) {
-  margin-bottom: 4px !important;
-}
 </style>

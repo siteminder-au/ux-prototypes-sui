@@ -162,6 +162,13 @@ $gap-between-form-rows: 16px;
   margin-bottom: 0 !important;
 }
 
+// EXCEPTION: Preserve SUI's default padding on field error messages
+// SUI defines padding-top: 3px and padding-bottom: 6px for proper spacing
+:deep(.sm-field-error) {
+  padding-top: 3px !important;
+  padding-bottom: 6px !important;
+}
+
 /* PHASE 2: APPLY HYBRID GAP + MARGIN SPACING */
 
 // Level 0: Main form wrapper - gap between major sections
@@ -169,6 +176,13 @@ $gap-between-form-rows: 16px;
   display: flex !important;
   flex-direction: column !important;
   gap: $gap-between-form-groups !important;
+}
+
+// Level 0.5: SmForm in editable cards - gap between direct children (error summary, form groups, etc.)
+:deep(.sm-card .sm-form) {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: $gap-between-form-rows !important;
 }
 
 // Level 1: SmFormGroup - gap between items

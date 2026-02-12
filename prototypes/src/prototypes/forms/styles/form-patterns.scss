@@ -91,6 +91,15 @@
   padding-bottom: 5px; // Default padding, reset to 0 by gap-spacing.scss
 }
 
+// Minimum Rate - delete column alignment
+// Button naturally sits at top of column, margin-top aligns it with input fields
+.minimum-rate-delete-col {
+  // Note: No justify-content - button stays at top even when errors appear
+  .sm-button {
+    margin-top: 26px; // Align with input field (after label)
+  }
+}
+
 // Highlight hero image preview and empty state with reduced height
 .highlight-image-preview,
 .highlight-image-empty {
@@ -119,6 +128,11 @@
 
 // LOS add button spacing
 .los-add-button {
+  margin-top: 16px;
+}
+
+// Minimum rate add button spacing (same pattern as LOS)
+.minimum-rate-add-button {
   margin-top: 16px;
 }
 
